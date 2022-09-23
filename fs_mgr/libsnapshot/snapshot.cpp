@@ -802,14 +802,6 @@ bool SnapshotManager::DeleteSnapshot(LockedFile* lock, const std::string& name) 
         return false;
     }
 
-    // We can't delete snapshots in recovery. The only way we'd try is it we're
-    // completing or canceling a merge in preparation for a data wipe, in which
-    // case, we don't care if the file sticks around.
-    if (device_->IsRecovery()) {
-        LOG(INFO) << "Skipping delete of snapshot " << name << " in recovery.";
-        return true;
-    }
-
     auto cow_image_name = GetCowImageDeviceName(name);
     if (images_->BackingImageExists(cow_image_name)) {
         if (!images_->DeleteBackingImage(cow_image_name)) {
