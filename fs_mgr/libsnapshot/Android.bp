@@ -112,6 +112,7 @@ cc_library_static {
     static_libs: [
         "libfs_mgr_binder",
     ],
+    recovery_available: true,
     whole_static_libs: [
         "libselinux",
     ],

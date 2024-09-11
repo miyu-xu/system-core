@@ -169,6 +169,7 @@ cc_library {
         "libfs_mgr_defaults",
         "libfiemap_binder_defaults",
     ],
+    recovery_available: true,
 }
 
 cc_library_static {
