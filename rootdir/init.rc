@@ -100,6 +100,11 @@ on early-init
     chown shell shell /tmp
     chmod 0771 /tmp
 
+    # sys.memfd_use set to false by default, which keeps it disabled
+    # until it is confirmed that apps and vendor processes don't make
+    # IOCTLs on ashmem fds any more.
+    setprop sys.use_memfd false
+
 on init
     sysclktz 0
 
@@ -1045,11 +1050,6 @@ on post-fs-data
     # are loaded. APEXes should not access this data until this has been
     # completed and apexd.status becomes "ready".
     exec_start apexd-snapshotde
-
-    # sys.memfd_use set to false by default, which keeps it disabled
-    # until it is confirmed that apps and vendor processes don't make
-    # IOCTLs on ashmem fds any more.
-    setprop sys.use_memfd false
 
     # Set fscklog permission
     chown root system /dev/fscklogs/log
