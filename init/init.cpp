@@ -108,6 +108,8 @@ using android::base::Trim;
 using android::base::unique_fd;
 using android::fs_mgr::AvbHandle;
 using android::snapshot::SnapshotManager;
+using android::base::WaitForProperty;
+using android::base::WriteStringToFile;
 
 namespace android {
 namespace init {
@@ -919,6 +921,26 @@ static Result<void> ConnectEarlyStageSnapuserdAction(const BuiltinArguments& arg
     return {};
 }
 
+static void SecondStageBootMonitor(int timeout_sec) {
+    auto cur_time = boot_clock::now().time_since_epoch();
+    int cur_sec = std::chrono::duration_cast<std::chrono::seconds>(cur_time).count();
+    int extra_sec = timeout_sec <= cur_sec? 0 : timeout_sec - cur_sec;
+    auto boot_timeout = std::chrono::seconds(extra_sec);
+
+    LOG(INFO) << "Started BootMonitorThread, expiring in "
+              << timeout_sec
+              << " seconds from boot-up";
+
+    if (!WaitForProperty("sys.boot_completed", "1", boot_timeout)) {
+        LOG(ERROR) << "BootMonitorThread: boot didn't complete in "
+                   << timeout_sec
+                   << " seconds. Trigger a panic!";
+
+        std::this_thread::sleep_for(200ms);
+        WriteStringToFile("c", PROC_SYSRQ);
+    }
+}
+
 int SecondStageMain(int argc, char** argv) {
     if (REBOOT_BOOTLOADER_ON_PANIC) {
         InstallRebootSignalHandlers();
@@ -1009,6 +1031,17 @@ int SecondStageMain(int argc, char** argv) {
     InstallSignalFdHandler(&epoll);
     InstallInitNotifier(&epoll);
     StartPropertyService(&property_fd);
+
+    // If the boot_timeout property is set in a debug build, a thread will be started to
+    // monitor the second stage boot. This thread ensures the boot process completes within
+    // the time limit specified by the ro.boot.boot_timeout property (in seconds).
+    if (android::base::GetBoolProperty("ro.debuggable", false)) {
+        int boot_timeout = atoi(GetProperty("ro.boot.boot_timeout", "0").c_str());
+        if (boot_timeout > 0) {
+            std::thread boot_monitor_thread(&SecondStageBootMonitor, boot_timeout);
+            boot_monitor_thread.detach();
+        }
+    }
 
     // Make the time that init stages started available for bootstat to log.
     RecordStageBoottimes(start_time);
