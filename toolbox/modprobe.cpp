@@ -23,8 +23,8 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android-base/strings.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 #include <modprobe/modprobe.h>
 
 #include <sys/utsname.h>
@@ -80,8 +80,13 @@ auto syslog = false;
 
 void MyLogger(android::base::LogId id, android::base::LogSeverity severity, const char* tag,
               const char* file, unsigned int line, const char* message) {
+#if defined(ALWAYS_LOG_TO_KMSG)
+    static constexpr bool kAlwaysLogToKmsg = true;
+#else
+    static constexpr bool kAlwaysLogToKmsg = false;
+#endif
     android::base::StdioLogger(id, severity, tag, file, line, message);
-    if (syslog && message[0]) {
+    if ((kAlwaysLogToKmsg || syslog) && message[0]) {
         android::base::KernelLogger(id, severity, tag, file, line, message);
     }
 }
