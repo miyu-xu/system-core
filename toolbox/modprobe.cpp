@@ -123,7 +123,11 @@ static int KernelVersionNameFilter(const dirent* de) {
 }  // anonymous namespace
 
 extern "C" int modprobe_main(int argc, char** argv) {
+#if defined(USE_KERNEL_LOGGER)
+    android::base::InitLogging(argv, android::base::KernelLogger);
+#else
     android::base::InitLogging(argv, MyLogger);
+#endif
     android::base::SetMinimumLogSeverity(android::base::INFO);
 
     std::vector<std::string> modules;
