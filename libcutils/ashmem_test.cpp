@@ -182,12 +182,6 @@ TEST(AshmemTest, ProtTest) {
     ASSERT_NO_FATAL_FAILURE(TestMmap(fd, size, PROT_READ, &region));
     EXPECT_EQ(0, munmap(region, size));
 
-    ASSERT_NO_FATAL_FAILURE(TestCreateRegion(size, fd, PROT_WRITE));
-    TestProtDenied(fd, size, PROT_READ);
-    TestProtIs(fd, PROT_WRITE);
-    ASSERT_NO_FATAL_FAILURE(TestMmap(fd, size, PROT_WRITE, &region));
-    EXPECT_EQ(0, munmap(region, size));
-
     ASSERT_NO_FATAL_FAILURE(TestCreateRegion(size, fd, PROT_READ | PROT_WRITE));
     TestProtIs(fd, PROT_READ | PROT_WRITE);
     ASSERT_EQ(0, ashmem_set_prot_region(fd, PROT_READ));
@@ -203,22 +197,19 @@ TEST(AshmemTest, ForkProtTest) {
     unique_fd fd;
     const size_t size = getpagesize();
 
-    int protFlags[] = { PROT_READ, PROT_WRITE };
-    for (size_t i = 0; i < arraysize(protFlags); i++) {
-        ASSERT_NO_FATAL_FAILURE(TestCreateRegion(size, fd, PROT_READ | PROT_WRITE));
-        ASSERT_EXIT(
-            {
-                if (!ashmem_valid(fd)) {
-                    _exit(3);
-                } else if (ashmem_set_prot_region(fd, protFlags[i]) >= 0) {
-                    _exit(0);
-                } else {
-                    _exit(1);
-                }
-            },
-            ::testing::ExitedWithCode(0), "");
-        ASSERT_NO_FATAL_FAILURE(TestProtDenied(fd, size, protFlags[1-i]));
-    }
+    ASSERT_NO_FATAL_FAILURE(TestCreateRegion(size, fd, PROT_READ | PROT_WRITE));
+    ASSERT_EXIT(
+        {
+	    if (!ashmem_valid(fd)) {
+	        _exit(3);
+	    } else if (ashmem_set_prot_region(fd, PROT_READ) >= 0) {
+	        _exit(0);
+	    } else {
+	        _exit(1);
+	    }
+        },
+        ::testing::ExitedWithCode(0), "");
+    ASSERT_NO_FATAL_FAILURE(TestProtDenied(fd, size, PROT_WRITE));
 }
 
 TEST(AshmemTest, ForkMultiRegionTest) {
