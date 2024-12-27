@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f659a8_77164c42",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2024-12-27T23:49:18Z",
+      "side": 1,
+      "message": "you should probably remove this as well",
+      "range": {
+        "startLine": 406,
+        "startChar": 66,
+        "endLine": 406,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "07113cbe_40cddd86",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 407,
+                "endChar": 0
+              },
+              "replacement": "        ALOGE(\"memfd_set_prot_region(%d, %d): F_SEAL_FUTURE_WRITE seal failed: %s\\n\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d83d4b4440795ba2c1ce5087a0e7fff4dcb5b1ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
