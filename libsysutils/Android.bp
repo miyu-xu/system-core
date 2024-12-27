@@ -14,6 +14,7 @@ cc_library {
         "src/FrameworkCommand.cpp",
         "src/SocketClient.cpp",
         "src/ServiceManager.cpp",
+        "src/LibUringUtils.cpp",
     ],
 
     logtags: ["EventLogTags.logtags"],
@@ -56,6 +57,7 @@ cc_test {
     test_suites: ["device-tests"],
     srcs: [
         "src/SocketListener_test.cpp",
+        "src/LibUringUtils_test.cpp",
     ],
     shared_libs: [
         "libbase",
