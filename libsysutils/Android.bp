@@ -51,6 +51,37 @@ cc_library {
     min_sdk_version: "apex_inherit",
 }
 
+cc_library {
+    name: "liburingutils",
+    vendor_available: true,
+
+    srcs: [
+        "src/LibUringUtils.cpp",
+    ],
+
+    cflags: ["-Werror"],
+
+    export_include_dirs: ["include"],
+
+    tidy: true,
+    tidy_checks: [
+        "-*",
+        "cert-*",
+        "clang-analyzer-security*",
+        "android-*",
+    ],
+    tidy_checks_as_errors: [
+        "cert-*",
+        "clang-analyzer-security*",
+        "android-*",
+    ],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    min_sdk_version: "apex_inherit",
+}
+
 cc_test {
     name: "libsysutils_tests",
     test_suites: ["device-tests"],
@@ -61,5 +92,16 @@ cc_test {
         "libbase",
         "libcutils",
         "libsysutils",
+    ],
+}
+
+cc_test {
+    name: "liburingutils_tests",
+    test_suites: ["device-tests"],
+    srcs: [
+        "src/LibUringUtils_test.cpp",
+    ],
+    shared_libs: [
+        "liburingutils",
     ],
 }
