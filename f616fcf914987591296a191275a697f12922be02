@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55a153c1_b339eb05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1981335
+      },
+      "writtenOn": "2024-12-27T22:26:26Z",
+      "side": 1,
+      "message": "Excuse me, I didn\u0027t quite understand this suggesion. Could you please elaborate on this thanks",
+      "parentUuid": "d2b6e9f3_96979de4",
+      "revId": "f616fcf914987591296a191275a697f12922be02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb9c199c_3d00a291",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-27T22:17:58Z",
       "side": 1,
       "message": "These lines aren\u0027t required in the commit message.",
+      "revId": "f616fcf914987591296a191275a697f12922be02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66da8a8_4e6f4379",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1981335
+      },
+      "writtenOn": "2024-12-27T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9c199c_3d00a291",
       "revId": "f616fcf914987591296a191275a697f12922be02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2024-12-27T22:17:58Z",
       "side": 1,
       "message": "This should be a new library in itself. This will create a dependency on liburing and hence any consumers of libsysutils would have to add liburing even though they may not use the liburing interfaces.",
+      "revId": "f616fcf914987591296a191275a697f12922be02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d62fc3_d261b1e5",
+        "filename": "libsysutils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1981335
+      },
+      "writtenOn": "2024-12-27T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956084d9_0004aefd",
       "revId": "f616fcf914987591296a191275a697f12922be02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
