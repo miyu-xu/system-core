@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7348e6e2_2b142683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2041581
+      },
+      "writtenOn": "2024-12-27T13:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f98470_1fd1282f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 121
+      },
+      "revId": "feb172fed60ce11b8a002e12ce437fd45b9969bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693d1633_007bd24a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-24T13:41:57Z",
       "side": 1,
       "message": "Property is never set in DT. If you are mentioning `ro.boot.*` properties coming from bootconfig (`androidboot.*`) please do mention them explicitly.",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 45
+      },
+      "revId": "feb172fed60ce11b8a002e12ce437fd45b9969bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee21e16_ed7dbc65",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 2041581
+      },
+      "writtenOn": "2024-12-27T13:18:30Z",
+      "side": 1,
+      "message": "\u003e Property is never set in DT. \n\nReally? In our project, we do set properties in device tree, for example:\n```\n\u0026android {\n  property_example \u003d \"true\";\n};\n```\nAnd the property is parsed in `SecondStageMain` (https://cs.android.com/android/platform/superproject/+/android14-qpr3-release:system/core/init/property_service.cpp?q\u003dProcessKernelDt)\nAfter device boots, I can find the property `ro.boot.property_example`.",
+      "parentUuid": "693d1633_007bd24a",
       "range": {
         "startLine": 489,
         "startChar": 17,
