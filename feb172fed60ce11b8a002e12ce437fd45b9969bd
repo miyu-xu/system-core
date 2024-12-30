@@ -93,6 +93,30 @@
       },
       "revId": "feb172fed60ce11b8a002e12ce437fd45b9969bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86954309_ff70f07b",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-12-30T07:23:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I mentioned. You can\u0027t set arbitrary properties using that mechanism. You can only set ro.boot.* properties. So, how about saying like:\n\nNote that, for bootloader-provided properties (`ro.boot.*`), their action cannot be auto-triggered ...\n\n?",
+      "parentUuid": "7ee21e16_ed7dbc65",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 45
+      },
+      "revId": "feb172fed60ce11b8a002e12ce437fd45b9969bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
