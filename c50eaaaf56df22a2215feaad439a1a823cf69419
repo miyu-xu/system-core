@@ -16,6 +16,23 @@
       "message": "PTAL - I can\u0027t reproduce the previous presubmit failure, as it appears to be infra issues",
       "revId": "c50eaaaf56df22a2215feaad439a1a823cf69419",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689129cd_9eea815e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2024-12-30T23:05:23Z",
+      "side": 1,
+      "message": "Hi Alice, Orlando requested that you take a look at this and confirm his +2 😊\n\nPTAL when you\u0027re back from vacation",
+      "revId": "c50eaaaf56df22a2215feaad439a1a823cf69419",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
