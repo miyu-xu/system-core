@@ -19,7 +19,7 @@
 #include <gtest/gtest.h>
 
 class LibUringUtilsTest : public testing::Test {
-public:
+  public:
     void testIsIouringEnabled(bool expectedResult) {
         EXPECT_EQ(LibUringUtils::isIouringEnabled(), expectedResult);
     }

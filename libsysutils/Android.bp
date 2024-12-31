@@ -53,13 +53,20 @@ cc_library {
 
 cc_library {
     name: "liburingutils",
-    vendor_available: true,
 
     srcs: [
         "src/LibUringUtils.cpp",
     ],
 
     cflags: ["-Werror"],
+
+    static_libs: [
+        "liburing",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+    ],
 
     export_include_dirs: ["include"],
 
@@ -100,6 +107,9 @@ cc_test {
     test_suites: ["device-tests"],
     srcs: [
         "src/LibUringUtils_test.cpp",
+    ],
+    static_libs: [
+        "liburing",
     ],
     shared_libs: [
         "liburingutils",
