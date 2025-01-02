@@ -88,6 +88,13 @@ enum class CreateResult : unsigned int {
     NOT_CREATED,
 };
 
+enum class CancelResult : unsigned int {
+    OK,
+    ERROR,
+    LIVE_SNAPSHOTS,
+    NEEDS_MERGE,
+};
+
 class ISnapshotManager {
   public:
     // Dependency injection for testing.
@@ -301,6 +308,9 @@ class ISnapshotManager {
 
     // Return the associated ISnapshotMergeStats instance. Never null.
     virtual ISnapshotMergeStats* GetSnapshotMergeStatsInstance() = 0;
+
+    // Return whether cancelling an update is safe. This is for use in recovery.
+    virtual bool IsCancelUpdateSafe() = 0;
 };
 
 class SnapshotManager final : public ISnapshotManager {
@@ -390,6 +400,7 @@ class SnapshotManager final : public ISnapshotManager {
     bool UnmapAllSnapshots() override;
     std::string ReadSourceBuildFingerprint() override;
     void SetMergeStatsFeatures(ISnapshotMergeStats* stats) override;
+    bool IsCancelUpdateSafe() override;
 
     // We can't use WaitForFile during first-stage init, because ueventd is not
     // running and therefore will not automatically create symlinks. Instead,
@@ -444,6 +455,7 @@ class SnapshotManager final : public ISnapshotManager {
     FRIEND_TEST(SnapshotUpdateTest, SpaceSwapUpdate);
     FRIEND_TEST(SnapshotUpdateTest, InterruptMergeDuringPhaseUpdate);
     FRIEND_TEST(SnapshotUpdateTest, MapAllSnapshotsWithoutSlotSwitch);
+    FRIEND_TEST(SnapshotUpdateTest, CancelInRecovery);
     friend class SnapshotTest;
     friend class SnapshotUpdateTest;
     friend class FlashAfterUpdateTest;
@@ -743,12 +755,9 @@ class SnapshotManager final : public ISnapshotManager {
     // Unmap a dm-user device for user space snapshots
     bool UnmapUserspaceSnapshotDevice(LockedFile* lock, const std::string& snapshot_name);
 
-    // If there isn't a previous update, return true. |needs_merge| is set to false.
-    // If there is a previous update but the device has not boot into it, tries to cancel the
-    //   update and delete any snapshots. Return true if successful. |needs_merge| is set to false.
-    // If there is a previous update and the device has boot into it, do nothing and return true.
-    //   |needs_merge| is set to true.
-    bool TryCancelUpdate(bool* needs_merge);
+    CancelResult TryCancelUpdate();
+    CancelResult TryCancelUpdate(bool force);
+    CancelResult IsCancelUpdateSafe(UpdateState state);
 
     // Helper for CreateUpdateSnapshots.
     // Creates all underlying images, COW partitions and snapshot files. Does not initialize them.
