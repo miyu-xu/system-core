@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "149e8880_f7bdf3a0",
+        "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-01-02T23:56:35Z",
+      "side": 1,
+      "message": "btw this is the same logic we used to have in CTS: aosp/3431548",
+      "parentUuid": "6512e3f9_501af0eb",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "b9d08dec3d2798e581049515c412e9a396918c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f25c337_57a6bb5c",
         "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
         "patchSetId": 2
