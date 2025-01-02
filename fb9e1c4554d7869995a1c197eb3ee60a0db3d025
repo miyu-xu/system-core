@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b995e8fd_da1ccd66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1623611
+      },
+      "writtenOn": "2025-01-02T20:40:27Z",
+      "side": 1,
+      "message": "The crashes reported in the bug will be monitored after this commit, so verify that it fixes the problem.",
+      "revId": "fb9e1c4554d7869995a1c197eb3ee60a0db3d025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
