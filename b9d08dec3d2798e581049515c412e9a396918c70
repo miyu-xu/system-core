@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0f4c70f_95b1862d",
+        "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-02T23:56:04Z",
+      "side": 1,
+      "message": "Ok, but AFAIKT you always handle the return value as `!memcgV2Enabled.has_value() || !memcgV2Enabled.value()`, so nullopt and false are treated the same. If so, why not simplify this by returning false?\n\nIf you want to handle old devices with different sepolicies I would suggest having a separate function to test for that and only after it passes, to use isMemcgV2Enabled().",
+      "parentUuid": "6512e3f9_501af0eb",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "b9d08dec3d2798e581049515c412e9a396918c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f25c337_57a6bb5c",
         "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
         "patchSetId": 2
@@ -234,6 +258,30 @@
       "side": 1,
       "message": "This isn\u0027t just a test that memory.reclaim works. It\u0027s testing that it doesn\u0027t run forever, which will be the case if the kernel under test doesn\u0027t have the patch referenced at the top of the function.",
       "parentUuid": "4433c86d_35e86967",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 47
+      },
+      "revId": "b9d08dec3d2798e581049515c412e9a396918c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1433aeb_463b6892",
+        "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-02T23:56:04Z",
+      "side": 1,
+      "message": "Ah, you expect it to terminate early before timeout expires? Does that mean that if it succeeds in reclaiming requested amount within that timeout, the test will pass?",
+      "parentUuid": "99009de0_529e2dba",
       "range": {
         "startLine": 174,
         "startChar": 4,
