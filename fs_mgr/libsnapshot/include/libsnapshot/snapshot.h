@@ -88,6 +88,13 @@ enum class CreateResult : unsigned int {
     NOT_CREATED,
 };
 
+enum class CancelResult : unsigned int {
+    OK,
+    ERROR,
+    LIVE_SNAPSHOTS,
+    NEEDS_MERGE,
+};
+
 class ISnapshotManager {
   public:
     // Dependency injection for testing.
@@ -301,6 +308,12 @@ class ISnapshotManager {
 
     // Return the associated ISnapshotMergeStats instance. Never null.
     virtual ISnapshotMergeStats* GetSnapshotMergeStatsInstance() = 0;
+
+    // Try to cancel an update. This is the same as CancelUpdate, except in
+    // recovery. In recovery, CancelUpdate() will always return true, even if
+    // cancelling the update would be destructive and cause the device to stop
+    // booting. TryCancelUpdate() allows the recovery to warn the user first.
+    virtual CancelResult TryCancelUpdate() = 0;
 };
 
 class SnapshotManager final : public ISnapshotManager {
@@ -444,6 +457,7 @@ class SnapshotManager final : public ISnapshotManager {
     FRIEND_TEST(SnapshotUpdateTest, SpaceSwapUpdate);
     FRIEND_TEST(SnapshotUpdateTest, InterruptMergeDuringPhaseUpdate);
     FRIEND_TEST(SnapshotUpdateTest, MapAllSnapshotsWithoutSlotSwitch);
+    FRIEND_TEST(SnapshotUpdateTest, CancelInRecovery);
     friend class SnapshotTest;
     friend class SnapshotUpdateTest;
     friend class FlashAfterUpdateTest;
@@ -743,12 +757,9 @@ class SnapshotManager final : public ISnapshotManager {
     // Unmap a dm-user device for user space snapshots
     bool UnmapUserspaceSnapshotDevice(LockedFile* lock, const std::string& snapshot_name);
 
-    // If there isn't a previous update, return true. |needs_merge| is set to false.
-    // If there is a previous update but the device has not boot into it, tries to cancel the
-    //   update and delete any snapshots. Return true if successful. |needs_merge| is set to false.
-    // If there is a previous update and the device has boot into it, do nothing and return true.
-    //   |needs_merge| is set to true.
-    bool TryCancelUpdate(bool* needs_merge);
+    CancelResult TryCancelUpdate();
+    CancelResult TryCancelUpdate(bool force);
+    CancelResult CheckTryCancelUpdate(UpdateState state);
 
     // Helper for CreateUpdateSnapshots.
     // Creates all underlying images, COW partitions and snapshot files. Does not initialize them.

@@ -188,4 +188,9 @@ void SnapshotManagerStub::SetMergeStatsFeatures(ISnapshotMergeStats*) {
     LOG(ERROR) << __FUNCTION__ << " should never be called.";
 }
 
+CancelResult SnapshotManagerStub::TryCancelUpdate() {
+    LOG(ERROR) << __FUNCTION__ << " should never be called.";
+    return CancelResult::ERROR;
+}
+
 }  // namespace android::snapshot
