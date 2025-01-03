@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fc2fe0_963b10c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-03T14:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67557c77_16ec74b5",
+      "revId": "0950a59dd6e73d6bdbd43c6966d10e40896e1841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04820ba9_ab7903b8",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "what happens with logging in ramdisk code? do you need a stub liblog.so that just does nothing?",
       "parentUuid": "619b5ca0_a637ee4d",
+      "revId": "0950a59dd6e73d6bdbd43c6966d10e40896e1841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1c0c3f_fc1e6e9a",
+        "filename": "toolbox/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-03T14:16:35Z",
+      "side": 1,
+      "message": "This change is ready for review.\n\nDoesn\u0027t need a stub. Static linking liblog is enough, as toolbox uses only the stdio logger and kmsg logger. It never uses logd.\n\nI\u0027ve added a build time flag to ensure it only ever tried to use the kernel logger when executed from the ramdisk. However if this is executed before the /dev/kmsg node is created, then the logs would probably be lost, I think?\nI think this *should* be fine probably, as libmodprobe usually doesn\u0027t generate a lot of logs. Even if some kernel module failed to load and the error log message is dropped, this should leave the system in a broken enough state that other system components can report the module failure in some other way.",
+      "parentUuid": "c84c6be3_09ed765e",
       "revId": "0950a59dd6e73d6bdbd43c6966d10e40896e1841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
