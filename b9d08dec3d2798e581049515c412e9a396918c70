@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23c006b5_e1ed7459",
+        "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-01-03T00:06:42Z",
+      "side": 1,
+      "message": "Ah actually the fail for being unable to determine the state is missing here.",
+      "parentUuid": "149e8880_f7bdf3a0",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "b9d08dec3d2798e581049515c412e9a396918c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f25c337_57a6bb5c",
         "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
         "patchSetId": 2
@@ -306,6 +330,30 @@
       "side": 1,
       "message": "Ah, you expect it to terminate early before timeout expires? Does that mean that if it succeeds in reclaiming requested amount within that timeout, the test will pass?",
       "parentUuid": "99009de0_529e2dba",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 47
+      },
+      "revId": "b9d08dec3d2798e581049515c412e9a396918c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9887779c_d868b1a1",
+        "filename": "libprocessgroup/vts/vts_libprocessgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-01-03T00:06:42Z",
+      "side": 1,
+      "message": "\u003e Ah, you expect it to terminate early before timeout expires?\n\nYes.\n\n\u003e Does that mean that if it succeeds in reclaiming requested amount within that timeout, the test will pass?\n\nYes. It will also pass if the requested amount is not reclaimed within the timeout, as long as it terminates when the kernel realizes there is no more memory that can be reclaimed.",
+      "parentUuid": "c1433aeb_463b6892",
       "range": {
         "startLine": 174,
         "startChar": 4,
