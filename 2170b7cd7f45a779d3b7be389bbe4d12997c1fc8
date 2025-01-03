@@ -16,6 +16,24 @@
       "message": "Do you want to measure the boot time impact of this change?",
       "revId": "2170b7cd7f45a779d3b7be389bbe4d12997c1fc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83551b51_1a3ce801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954750
+      },
+      "writtenOn": "2025-01-03T19:41:07Z",
+      "side": 1,
+      "message": "Using bootchart, it looks like init had a +43ms / 3% increase (I only ran it once before/after the change on `aosp_cf_x86_64_phone-trunk_staging-userdebug` on `git_main` on an android virtual device).\n\n```\n$ compare-bootcharts.py ~/android-bootchart2 ~/android-bootchart-changes\nprocess: baseline experiment (delta)\n - Unit is ms (a jiffy is 8 ms on the system)\n------------------------------------\n/system/bin/init: 1408 1452 (+43)\n/system/bin/surfaceflinger: 10530 10304 (-226)\n/system/bin/bootanimation: 12043 11878 (-165)\nzygote64: 9147 8947 (-200)\nzygote: 9156 8956 (-200)\nsystem_server: 14878 14547 (-330)\nbootanimation ends at: 24069 23278 (-791)\n```\n\nConsidering https://source.android.com/docs/core/perf/boot-times as a frame of reference, this seems like a reasonable increase, but I\u0027m certainly not well-versed in boot time.",
+      "parentUuid": "2def7cd9_8a12c068",
+      "revId": "2170b7cd7f45a779d3b7be389bbe4d12997c1fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
