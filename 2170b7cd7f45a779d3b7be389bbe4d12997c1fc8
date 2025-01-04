@@ -34,6 +34,24 @@
       "parentUuid": "2def7cd9_8a12c068",
       "revId": "2170b7cd7f45a779d3b7be389bbe4d12997c1fc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a0da19_85e327f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954750
+      },
+      "writtenOn": "2025-01-04T01:21:27Z",
+      "side": 1,
+      "message": "With the team\u0027s advice, I ran multiple trials, on both a Pixel 8 Pro and the Android virtual device. In 4-5 trials, I\u0027m seeing an average of +0.8% init time (12ms) for AVD, and -0.01% init time (0.25ms) for my Pixel. Very different from my previous comment\u0027s +3% (the +0.8% average includes that first trial). https://docs.google.com/spreadsheets/d/1otE5AlexTfNcTO7_w5TfcU5cF-SsZx6UF0xqtrEI-pE/edit?gid\u003d952651323#gid\u003d952651323",
+      "parentUuid": "83551b51_1a3ce801",
+      "revId": "2170b7cd7f45a779d3b7be389bbe4d12997c1fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
