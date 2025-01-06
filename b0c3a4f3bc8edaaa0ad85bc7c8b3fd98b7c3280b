@@ -34,6 +34,24 @@
       "parentUuid": "a4dcc4a6_801717a3",
       "revId": "b0c3a4f3bc8edaaa0ad85bc7c8b3fd98b7c3280b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad4c841_a28c32cc",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1954115
+      },
+      "writtenOn": "2025-01-06T21:06:30Z",
+      "side": 1,
+      "message": "I was actually trying to point out the equivalent of the old behaviour where TryCancelUpdate() would return false triggering below condition which is before `needs_merge` check.\n\n```\nif (!TryCancelUpdate(\u0026needs_merge)) {\n        return false;\n}\n```\n\nPreviously TryCancelUpdate would return `false` for\n1. LockExclusive() fails \u003d\u003d\u003e CancelResult::ERROR\n2. IsSnapshotWithoutSlotSwitch() \u003d\u003d\u003e CancelResult::LIVE_SNAPSHOTS\n3. RemoveAllUpdateState() fails \u003d\u003d\u003e Ignored in new implementation\n\nFor all these 3 conditions, we would not continue BeginUpdate() and would return false. New implementation ignores all these 3 cases, it wasn\u0027t clear to me if this was intentional. If not, check for this should be before `(TryCancelUpdate() \u003d\u003d CancelResult::NEEDS_MERGE)` check.",
+      "parentUuid": "592a08d6_f0c62cd1",
+      "revId": "b0c3a4f3bc8edaaa0ad85bc7c8b3fd98b7c3280b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
