@@ -16,6 +16,24 @@
       "message": "Previously, we used to bail out if TryCancelUpdate() returned false. To  me it looks like, it may continue even after TryCancelUpdate() returns say `CancelResult::LIVE_SNAPSHOTS`. Is that intended?",
       "revId": "b0c3a4f3bc8edaaa0ad85bc7c8b3fd98b7c3280b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592a08d6_f0c62cd1",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-06T20:35:37Z",
+      "side": 1,
+      "message": "Yeah - the old code would return true and set \"needs_merge \u003d true\". The new code tries to preserve that by making NEEDS_MERGE a dedicated return value. (That said, this code is kind of hard to read and I wouldn\u0027t be surprised if I\u0027m missing something.)",
+      "parentUuid": "a4dcc4a6_801717a3",
+      "revId": "b0c3a4f3bc8edaaa0ad85bc7c8b3fd98b7c3280b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
