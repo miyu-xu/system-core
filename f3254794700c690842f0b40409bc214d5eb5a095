@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d7c34d_bc9608ad",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-01-06T19:34:34Z",
+      "side": 1,
+      "message": "Prefer:\n\n```\n    const std::function\u003cvoid(FuzzedDataProvider\u0026\u0026)\u003e options[] \u003d {\n            [](FuzzedDataProvider\u0026 provider) {\n                ...\n            },\n            ...\n    };\n\n    provider.PickValueInArray(options)(provider);\n```\n\nThat way, you don\u0027t have to duplicate the integral value and the case label, which could become out of sync and lose coverage over time.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "f3254794700c690842f0b40409bc214d5eb5a095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdd684c_7e366573",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-01-06T19:34:34Z",
+      "side": 1,
+      "message": "https://llvm.org/docs/LibFuzzer.html\n\n\u003e If the fuzz target returns -1 on a given input, libFuzzer will not add that input top the corpus, regardless of what coverage it triggers.\n\nYou should always return \u00270\u0027. If you want it to be considered as a crash, abort or LOG_ALWAYS_FATAL_IF etc..",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 30
+      },
+      "revId": "f3254794700c690842f0b40409bc214d5eb5a095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
