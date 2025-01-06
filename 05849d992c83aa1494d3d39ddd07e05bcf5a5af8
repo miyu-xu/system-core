@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d28bf42_04c2795c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-06T14:31:29Z",
+      "side": 1,
+      "message": "use external-updater ... that\u0027ll keep the METADATA file up to date too...",
+      "revId": "05849d992c83aa1494d3d39ddd07e05bcf5a5af8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
