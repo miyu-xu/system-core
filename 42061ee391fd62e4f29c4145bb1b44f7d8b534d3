@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e0587a_82b53566",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-06T22:24:35Z",
+      "side": 1,
+      "message": "Should the condition be reverted?\n```\nif (android::base::ParseInt() \u0026\u0026 virtual_priority \u003e 0) {\n    ...\n} else {\n    LOG(WARNING) \u003c\u003c \"Invalid priority value: \" \u003c\u003c priority_string;\n}\n```",
+      "range": {
+        "startLine": 1014,
+        "startChar": 24,
+        "endLine": 1014,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5dfba939_3cbb8df2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprocessgroup/task_profiles.cpp",
+              "range": {
+                "startLine": 1014,
+                "startChar": 0,
+                "endLine": 1015,
+                "endChar": 0
+              },
+              "replacement": "                        android::base::ParseInt(priority_string, \u0026virtual_priority) \u0026\u0026\n"
+            }
+          ]
+        }
+      ],
+      "revId": "42061ee391fd62e4f29c4145bb1b44f7d8b534d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
