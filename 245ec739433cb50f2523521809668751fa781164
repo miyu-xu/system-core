@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8682f5_dbbb1562",
+        "filename": "libsysutils/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-06T14:33:13Z",
+      "side": 1,
+      "message": "sounds like a new library to me (and, evidently, to you too).\n\neither put this somewhere where there\u0027s existing uring stuff, or get a new git project system/liburingutils.\n\n(though if you don\u0027t have three unrelated users, i advise against creating a new library at all. YAGNI. just stick your code with the caller.)",
+      "revId": "245ec739433cb50f2523521809668751fa781164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
