@@ -508,6 +508,13 @@ static Result<void> KillZramBackingDevice() {
                        << " failed";
     }
 
+    if (!android::base::ReadFileToString(ZRAM_BACK_DEV, &backing_dev)) {
+        return ErrnoError() << "Failed to read " << ZRAM_BACK_DEV;
+    }
+
+    // cut the last "\n"
+    backing_dev.erase(backing_dev.length() - 1);
+
     if (!android::base::StartsWith(backing_dev, "/dev/block/loop")) {
         LOG(INFO) << backing_dev << " is not a loop device. Exiting early";
         return {};
