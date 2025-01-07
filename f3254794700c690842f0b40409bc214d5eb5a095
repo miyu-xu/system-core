@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8de4c9f7_264b7dfa",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2012811
+      },
+      "writtenOn": "2025-01-07T22:18:04Z",
+      "side": 1,
+      "message": "Yeah, that seems more robust, thanks!",
+      "parentUuid": "b7d7c34d_bc9608ad",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "f3254794700c690842f0b40409bc214d5eb5a095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfdd684c_7e366573",
         "filename": "trusty/fuzz/tipc_fuzzer.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-06T19:34:34Z",
       "side": 1,
       "message": "https://llvm.org/docs/LibFuzzer.html\n\n\u003e If the fuzz target returns -1 on a given input, libFuzzer will not add that input top the corpus, regardless of what coverage it triggers.\n\nYou should always return \u00270\u0027. If you want it to be considered as a crash, abort or LOG_ALWAYS_FATAL_IF etc..",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 30
+      },
+      "revId": "f3254794700c690842f0b40409bc214d5eb5a095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a1c475_43c685b5",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 2012811
+      },
+      "writtenOn": "2025-01-07T22:18:04Z",
+      "side": 1,
+      "message": "Ah, okay. I didn\u0027t realize that.",
+      "parentUuid": "bfdd684c_7e366573",
       "range": {
         "startLine": 158,
         "startChar": 0,
