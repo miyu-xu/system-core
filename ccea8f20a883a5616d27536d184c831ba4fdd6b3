@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd4bcf0_3a140756",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-07T18:50:46Z",
+      "side": 1,
+      "message": "if you use `KERNEL_LOGGER` here and `-DKERNEL_LOGGER\u003dandroid::base::KernelLogger` in the .bp file, that forces you to ensure that any way this file is built, someone\u0027s thought about what KERNEL_LOGGER should be set too, rather than having a fallback.\n\nprobably worth a comment explaining why this is a build-time option in the first place. tbh, i still haven\u0027t understood why you can\u0027t just use \"MyLogger\" in both cases. ah, because `-s` isn\u0027t on by default. maybe just change that instead? (either \"so that that\u0027s the default for the ramdisk\" or even \"always log to syslog\" ... when _wouldn\u0027t_ you want modprobe to log to the system log?)",
+      "range": {
+        "startLine": 127,
+        "startChar": 37,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "ccea8f20a883a5616d27536d184c831ba4fdd6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
