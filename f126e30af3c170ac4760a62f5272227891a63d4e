@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9701445e_99539514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-07T08:10:21Z",
+      "side": 1,
+      "message": "Note that userspace reboot (aka soft reboot) is deprecated starting from Android 15. See https://source.android.com/docs/core/runtime/soft-restart",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "f126e30af3c170ac4760a62f5272227891a63d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def0356f_575bb2c9",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-07T08:10:21Z",
+      "side": 1,
+      "message": "can you fix this as well?",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 48
+      },
+      "revId": "f126e30af3c170ac4760a62f5272227891a63d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a1b6a3_a5c51930",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-07T08:10:21Z",
+      "side": 1,
+      "message": "you are advised to use `android::base::Trim`",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 48
+      },
+      "revId": "f126e30af3c170ac4760a62f5272227891a63d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
