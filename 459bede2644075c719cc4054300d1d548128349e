@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4959dae5_7a580a93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-07T15:38:46Z",
+      "side": 1,
+      "message": "Hi Elliott, to pre-emptively answer the question of \"why not TitleCase\", it\u0027s because this API is only planned to be used in Rust, and choosing `TitleCase` results in the much worse `titlecase` names with the current codegen rules. Choosing `snake_case` from the start avoids the issue.",
+      "revId": "459bede2644075c719cc4054300d1d548128349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
