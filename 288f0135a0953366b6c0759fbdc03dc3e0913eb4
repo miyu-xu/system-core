@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5b5d05_1b5a9673",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:18:37Z",
+      "side": 1,
+      "message": "nit: The include groupings are usually \"standard C/Linux headers\", then \"standard C++ headers\", then \"everything else in AOSP\". So everything from android-base/file.h to fs_avb/fs_avb_util.h should be one group.",
+      "revId": "288f0135a0953366b6c0759fbdc03dc3e0913eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056b5e74_c4f7d7f0",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:18:37Z",
+      "side": 1,
+      "message": "Did we just add this in a previous CL? Can we put it in a common hex utility file and link it into both binaries?",
+      "revId": "288f0135a0953366b6c0759fbdc03dc3e0913eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
