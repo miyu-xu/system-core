@@ -33,6 +33,24 @@
       "message": "Did we just add this in a previous CL? Can we put it in a common hex utility file and link it into both binaries?",
       "revId": "288f0135a0953366b6c0759fbdc03dc3e0913eb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481dae53_5f3d5904",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-07T16:23:48Z",
+      "side": 1,
+      "message": "HexToBytes seems like the opposite of android::base::HexString()? in which case, we should probably just add the inverse there?",
+      "parentUuid": "056b5e74_c4f7d7f0",
+      "revId": "288f0135a0953366b6c0759fbdc03dc3e0913eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
