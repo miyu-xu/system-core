@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56497f2a_f2736359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2025-01-07T22:47:46Z",
+      "side": 1,
+      "message": "nit: I think if you use\n```\nBug: 380142627\nBug: 319144781\n```\n\nBoth bugs will be linked. I think this is how multiple bugs are referenced in other commits too.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "f3254794700c690842f0b40409bc214d5eb5a095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7d7c34d_bc9608ad",
         "filename": "trusty/fuzz/tipc_fuzzer.cpp",
         "patchSetId": 1
