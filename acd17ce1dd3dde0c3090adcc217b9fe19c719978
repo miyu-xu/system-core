@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9e7396_6c9707b9",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "std::string?",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c89b83_60475423",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "android::base::ReadFullyAtOffset?",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162b32f6_9880a58a",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "std::string single_hash \u003d hash_block.substr(offset, padded_digest_size);\n\nAnd get free bounds checking.",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7752f86c_d94ae097",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "std::string",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a05d25_e5f32d52",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "Missing EINTR handling and ret !\u003d hash_block_size here. Or, use android::base::ReadFullyAtOffset.",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904d9a93_62ccab57",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "std::string, and then you can get rid of the memcmp().",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bf025d_30bc448d",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "Cast not needed here.",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a51bcb2_ab22b681",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "nit: Use strcmp() or \"using std::string_literals\" and:\n\n    if (argv[3] \u003d\u003d \"-verify\"s) {",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14424384_47c48153",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "android::base::ReadFullyAtOffset.",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc0637a_7b810d0f",
+        "filename": "fs_mgr/libsnapshot/snapshotctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-07T16:13:20Z",
+      "side": 1,
+      "message": "This last marker is appropriate for stdout/stderr but not so much for the system log.",
+      "revId": "acd17ce1dd3dde0c3090adcc217b9fe19c719978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
