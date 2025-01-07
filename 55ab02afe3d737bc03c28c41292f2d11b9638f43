@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e605855f_a21dd5b5",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-07T21:34:24Z",
+      "side": 1,
+      "message": "why additional check `device_-\u003eIsRecovery()` is required ? `force` was already set to true in L235.",
+      "fixSuggestions": [
+        {
+          "fixId": "ee15a745_ddf90f03",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 246,
+                "startChar": 0,
+                "endLine": 247,
+                "endChar": 0
+              },
+              "replacement": "    if (result !\u003d CancelResult::OK \u0026\u0026 force) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac52301_8d355a37",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-07T21:34:24Z",
+      "side": 1,
+      "message": "I am trying to figure out how are snapshots removed in recovery if we siliently return true here ? If the partitions are partially updated through merge, this will return true.\n\nI understand the idea is to force update in recovery - but does that happen if we just silently return true here ?",
+      "fixSuggestions": [
+        {
+          "fixId": "d7ac18f3_0d93b981",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 248,
+                "endChar": 0
+              },
+              "replacement": "        LOG(WARNING) \u003c\u003c \"Cancel result \" \u003c\u003c result \u003c\u003c \" will be overridden in recovery.\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796405d3_0c1c9861",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-07T21:34:24Z",
+      "side": 1,
+      "message": "It looks like we are ignoring return values here. Is the intention here to clear out as much as possible and move on ? If so, then I think we should do that only for recovery cases ?",
+      "fixSuggestions": [
+        {
+          "fixId": "915626cc_797ba80a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 254,
+                "startChar": 0,
+                "endLine": 256,
+                "endChar": 0
+              },
+              "replacement": "            if (!RemoveAllUpdateState(lock.get())) {\n                LOG(ERROR) \u003c\u003c \"Failed to remove all update state.\";\n            }\n            if (!RemoveInvalidSnapshots(lock.get())) {\n                LOG(ERROR) \u003c\u003c \"Failed to remove invalid snapshots.\";\n            }\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 352,
+                "startChar": 0,
+                "endLine": 358,
+                "endChar": 0
+              },
+              "replacement": "bool SnapshotManager::RemoveAllUpdateState(LockedFile* lock) {\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 1198,
+                "startChar": 0,
+                "endLine": 1199,
+                "endChar": 0
+              },
+              "replacement": "        if (!device_-\u003eIsRecovery() \u0026\u0026 !RemoveAllUpdateState(lock.get())) {\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 1732,
+                "startChar": 0,
+                "endLine": 1733,
+                "endChar": 0
+              },
+              "replacement": "        return RemoveAllUpdateState(lock);\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 1754,
+                "startChar": 0,
+                "endLine": 1755,
+                "endChar": 0
+              },
+              "replacement": "    return RemoveAllUpdateState(lock);\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 2013,
+                "startChar": 0,
+                "endLine": 2014,
+                "endChar": 0
+              },
+              "replacement": "bool SnapshotManager::RemoveInvalidSnapshots(LockedFile* lock) {\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 2025,
+                "startChar": 0,
+                "endLine": 2026,
+                "endChar": 0
+              },
+              "replacement": "        return true;\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 2028,
+                "startChar": 0,
+                "endLine": 2028,
+                "endChar": 0
+              },
+              "replacement": "    bool ok \u003d true;\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 2033,
+                "startChar": 0,
+                "endLine": 2033,
+                "endChar": 0
+              },
+              "replacement": "                ok \u003d false;\n"
+            },
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 2038,
+                "startChar": 0,
+                "endLine": 2038,
+                "endChar": 0
+              },
+              "replacement": "    return ok;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
