@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4ea5f8_adde9a22",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-07T15:39:45Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "c0bbfd887d30a0f14bc549376374cf2e3b8d9d74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379a6eb0_d6d04928",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-07T15:39:45Z",
+      "side": 1,
+      "message": "\u003d\u003d -1 ... _exit(1) is probably clearer\n\n\n(but at that point, this doesn\u0027t need to be ASSERT_EXIT? we can just `ASSERT_TRUE(ashmem_valid(fd))` and `ASSERT_NE(-1, ashmem_set...)`, no?)",
+      "revId": "c0bbfd887d30a0f14bc549376374cf2e3b8d9d74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
