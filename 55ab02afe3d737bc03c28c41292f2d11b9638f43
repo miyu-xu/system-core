@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "512cf01f_022a37dc",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-08T19:47:40Z",
+      "side": 1,
+      "message": "Rethinking this now. Should the \"force\" parameter just be removed? The only caller is update_engine, which is only invoked through adb sideload. All the other edge cases go through HandleImminentDataWipe.",
+      "parentUuid": "e605855f_a21dd5b5",
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aac52301_8d355a37",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 4
@@ -67,6 +85,24 @@
           ]
         }
       ],
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "330a3841_56aeff81",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-08T19:47:40Z",
+      "side": 1,
+      "message": "We can\u0027t remove snapshots in recovery. RemoveAllUpdateState sets them to \"disabled\" and then a script removes them on next boot. Since we can\u0027t allocate snapshots in recovery (at least not guaranteed), it should have no conflict.",
+      "parentUuid": "aac52301_8d355a37",
       "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -192,6 +228,24 @@
           ]
         }
       ],
+      "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46653797_89b8d192",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-08T19:47:40Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s the intent. We were calling RemoveAllUpdateState before this patch. The only behavior change is that we now call RemoveInvalidSnapshots unconditionally, whereas before it was only if state \u003d\u003d NONE. That\u0027s just defense in depth, since we\u0027ve gotten reports of invalid snapshots breaking OTAs in the past.",
+      "parentUuid": "796405d3_0c1c9861",
       "revId": "55ab02afe3d737bc03c28c41292f2d11b9638f43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
