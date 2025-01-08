@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ace986_9328c8ef",
+        "filename": "toolbox/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-08T14:57:18Z",
+      "side": 1,
+      "message": "huh, i didn\u0027t know that existed...",
+      "revId": "c044283bd774eac5e74d7d6080ae4d33ed951e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
