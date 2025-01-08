@@ -16,6 +16,23 @@
       "message": "Presubmit fails without the `-current.txt`",
       "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6bf801c_e8fa3ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-08T20:27:44Z",
+      "side": 1,
+      "message": "Hi Jiyong, Elliott suggested I add you to this CL, since you have more information on what sysprop APIs are. Can you please API review at your earliest convenience?",
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
