@@ -16,6 +16,24 @@
       "message": "we should handle LIVE_SNAPSHOTS as well.\n\ncase CancelResult::LIVE_SNAPSHOTS: {\n       return false;\n     }",
       "revId": "510e70841876410b9fadbf38a6b869fdcf47d025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd40f051_dbd1af5f",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-08T21:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc20ccbb_85cfded7",
+      "revId": "510e70841876410b9fadbf38a6b869fdcf47d025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
