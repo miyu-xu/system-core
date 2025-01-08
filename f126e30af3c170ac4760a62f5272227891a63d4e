@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbee41ad_fc11f0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-08T03:48:38Z",
+      "side": 1,
+      "message": "It\u0027s still supported for android 14 and below, but I don\u0027t know any of the real use case of it.",
+      "parentUuid": "98754db7_a92f0b75",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "f126e30af3c170ac4760a62f5272227891a63d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "def0356f_575bb2c9",
