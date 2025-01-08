@@ -34,6 +34,24 @@
       "parentUuid": "75c6be75_77703c39",
       "revId": "aa965c5c3a09eacc25642458304f73c51edc1c74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f06464_c29871c5",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1880185
+      },
+      "writtenOn": "2025-01-08T01:19:54Z",
+      "side": 1,
+      "message": "Thanks. I actually tested it. And F_ADD_SEALS, F_SEAL_WRITE would return \"Device or resource busy\" if there is any page mapped as writtable before the call. So the threat does not exist. Thanks for clarify.",
+      "parentUuid": "5d35c0fd_2c6e0f7f",
+      "revId": "aa965c5c3a09eacc25642458304f73c51edc1c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
