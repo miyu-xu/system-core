@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcc26c1_77213aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-08T05:25:06Z",
+      "side": 1,
+      "message": "David, this needs your vote as it\u0027s an external contribution.",
+      "revId": "b2a64ccfe666c757e9f35fd1f92380367f1086e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
