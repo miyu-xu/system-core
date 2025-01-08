@@ -22,6 +22,30 @@
       },
       "revId": "ccea8f20a883a5616d27536d184c831ba4fdd6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b023d1_3d573547",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-08T08:24:16Z",
+      "side": 1,
+      "message": "I think it makes the most sense to just _always_ log to syslog/klog.\n\nI have the same question too (why not always log to klog?). I suppose there isn\u0027t a strong reason to begin with, other than to act similar to upstream [modprobe(8)](https://man7.org/linux/man-pages/man8/modprobe.8.html)\n\nI\u0027ve uploaded another change to modify modprobe\u0027s logger. This change would just focus on defining the generic ramdisk variant of modprobe executable.",
+      "parentUuid": "efd4bcf0_3a140756",
+      "range": {
+        "startLine": 127,
+        "startChar": 37,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "ccea8f20a883a5616d27536d184c831ba4fdd6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
