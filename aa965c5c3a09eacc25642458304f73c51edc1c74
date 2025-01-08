@@ -16,6 +16,24 @@
       "message": "There still some behaviour difference between ashmem and memfd without F_SEAL_SEAL.\n\nIIRC on the kernel source code, if F_SEAL_FUTURE_WRITE is set without F_SEAL_SEAL. An untrusted process would still be able to set F_SEAL_WRITE and cause crash on the other process when it writes on previously mapped shared memory region. Potentially introduce a bug that can cause DDoS.",
       "revId": "aa965c5c3a09eacc25642458304f73c51edc1c74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d35c0fd_2c6e0f7f",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-01-08T01:10:39Z",
+      "side": 1,
+      "message": "The kernel keeps track of shared mappings that are writable or may become writable in the future, and prevents `F_SEAL_WRITE` from being applied if there are any such mappings.\n\nIIUC, in the scenario that you described, there must exist a writable mapping at the time which `F_SEAL_WRITE` is applied, and the process that would access that would use that mapping to write would encounter an error. However, this situation cannot arise, as `F_SEAL_WRITE` would not be applied successfully, so I don\u0027t see how this could be a threat model.",
+      "parentUuid": "75c6be75_77703c39",
+      "revId": "aa965c5c3a09eacc25642458304f73c51edc1c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
