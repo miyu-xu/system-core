@@ -16,6 +16,24 @@
       "message": "single-use constants should be inlined.",
       "revId": "e2e4ef5d40e6c8aad87159c37ac4437d40f60d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c614cc_6d2d871e",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-01-08T18:17:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bea380_19334764",
+      "revId": "e2e4ef5d40e6c8aad87159c37ac4437d40f60d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
