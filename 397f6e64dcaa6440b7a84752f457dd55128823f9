@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b584489_942ca7f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-08T20:18:09Z",
+      "side": 1,
+      "message": "Presubmit fails without the `-current.txt`",
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
