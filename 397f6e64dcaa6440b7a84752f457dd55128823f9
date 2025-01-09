@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1fd73b_defc7c4c",
+        "filename": "trusty/sysprops/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-09T20:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b862310_8b48fb48",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b516a9_e58236b7",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65956db_6f0165d8",
+        "filename": "trusty/sysprops/android/sysprop/trusty/security_vm.sysprop",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-09T20:50:31Z",
+      "side": 1,
+      "message": "It\u0027s taken longer than I\u0027d have liked to get this CL in. Done.",
+      "parentUuid": "b3b516a9_e58236b7",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c087ab7_0da63675",
@@ -94,6 +142,30 @@
       "writtenOn": "2025-01-09T03:19:03Z",
       "side": 1,
       "message": "nonseucre_vm under security_vm? That sounds odd to me. Would you mind adding a description to each props?",
+      "range": {
+        "startLine": 29,
+        "startChar": 35,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aaa83e6_ebb9f532",
+        "filename": "trusty/sysprops/android/sysprop/trusty/security_vm.sysprop",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-09T20:50:31Z",
+      "side": 1,
+      "message": "I agree it does sound odd - it\u0027s because `security` here means \"VM used to provide security\" as opposed to \"VM used for DRM\". This property signals when an insecure (emulated) VM is started, but is still used in place of secure elements because of the emulated environment.\n\nI\u0027ve added the best descriptions I can - @aliceywang@google.com can you confirm their correctness? Jiyong: I\u0027ll make sure that these descriptions are solid before submission.",
+      "parentUuid": "0c087ab7_0da63675",
       "range": {
         "startLine": 29,
         "startChar": 35,

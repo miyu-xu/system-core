@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4ff9e3_6b19cf32",
+        "filename": "trusty/sysprops/android/sysprop/trusty/security_vm.sysprop",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3562310
+      },
+      "writtenOn": "2025-01-09T20:50:31Z",
+      "side": 1,
+      "message": "Note: I marked the internal-only properties as `Internal` in scope as they\u0027re internal properties. This affects the contents of the `api` directory.",
+      "revId": "f90fbd6df0281885f571f75350c6a76a80b77540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
