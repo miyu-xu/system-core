@@ -16,6 +16,23 @@
       "message": "LGTM but I lack permissions to give CR+2",
       "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c16a23_e229a441",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-10T19:48:14Z",
+      "side": 1,
+      "message": "Any way to give weight to these? We want it to be more likely to send a message to an existing TA, than to connect to a new one. Maybe 10-10-80% or 20-20-60% instead of 33-33-33?",
+      "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
