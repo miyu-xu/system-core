@@ -16,6 +16,24 @@
       "message": "note that this is a stupid warning that isn\u0027t satisfiable in general (because libc types -- especially ones from the kernel -- often have different field orders for different architectures). personally i\u0027d suggest disabling it instead.\n\n(what we really need is for clang to distinguish POD and non-POD types, since the warning is only useful for the latter, and the exceptions only exist for the former.)",
       "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0283560f_a9a4ffea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-10T14:24:47Z",
+      "side": 1,
+      "message": "in additional to all the local disablements, it looks like this is already globally disabled anyway: https://source.corp.google.com/search?q\u003dWno-reorder-init-list\u0026sq\u003drepo:android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-file:prebuilts%2Fvndk%2F%20-file:prebuilts%2Fruntime%2F\n\nso i don\u0027t think this change is needed or desireable (since removing the global disablement would be a bad thing until/unless clang\u0027s diagnostic differentiates POD and non-POD).",
+      "parentUuid": "daedf483_0037a95c",
+      "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
