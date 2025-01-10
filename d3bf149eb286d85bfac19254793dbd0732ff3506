@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "302a05f5_23d2ff15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2025-01-10T00:19:07Z",
+      "side": 1,
+      "message": "LGTM but I lack permissions to give CR+2",
+      "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
