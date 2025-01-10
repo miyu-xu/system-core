@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daedf483_0037a95c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-10T14:22:58Z",
+      "side": 1,
+      "message": "note that this is a stupid warning that isn\u0027t satisfiable in general (because libc types -- especially ones from the kernel -- often have different field orders for different architectures). personally i\u0027d suggest disabling it instead.\n\n(what we really need is for clang to distinguish POD and non-POD types, since the warning is only useful for the latter, and the exceptions only exist for the former.)",
+      "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
