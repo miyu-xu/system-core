@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf3d808_a75b9beb",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-10T20:14:44Z",
+      "side": 1,
+      "message": "TODO for a follow-up.",
+      "parentUuid": "e00c48df_b0cb3680",
+      "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0c16a23_e229a441",
@@ -66,6 +84,24 @@
       "writtenOn": "2025-01-10T19:48:14Z",
       "side": 1,
       "message": "Any way to give weight to these? We want it to be more likely to send a message to an existing TA, than to connect to a new one. Maybe 10-10-80% or 20-20-60% instead of 33-33-33?",
+      "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3d00a8_fe22b2de",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-10T20:14:44Z",
+      "side": 1,
+      "message": "TODO for a follow-up.",
+      "parentUuid": "f0c16a23_e229a441",
       "revId": "d3bf149eb286d85bfac19254793dbd0732ff3506",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
