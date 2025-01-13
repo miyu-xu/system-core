@@ -319,6 +319,12 @@ cc_test {
     },
     test_options: {
         min_shipping_api_level: 30,
+        test_runner_options: [
+            {
+                name: "force-no-test-error",
+                value: "false",
+            },
+        ],
     },
 }
 
