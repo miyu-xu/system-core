@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50daf15a_34ae793b",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-14T00:37:21Z",
+      "side": 1,
+      "message": "For the old 1-1-1 we definitely needed to remove the no-ops. On 1-1-3, it\u0027s probably fine to leave them in.",
+      "parentUuid": "a0e3f516_b973aa36",
+      "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5be12f72_f37f93cc",
