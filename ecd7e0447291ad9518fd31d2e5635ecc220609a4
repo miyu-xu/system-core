@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4990ef37_2b4702ad",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-14T00:00:43Z",
+      "side": 1,
+      "message": "Could this be a `std::vector\u003cstd::function\u003cvoid()\u003e\u003e` and we skip pushing the ones that are no-op? E.g. if `trustyApps.empty()`, we don\u0027t add `remove_ta`.",
+      "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be12f72_f37f93cc",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-01-14T00:00:43Z",
+      "side": 1,
+      "message": "Instead of 2-2-6 you could do 1-1-3 for the same ratios.",
+      "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
