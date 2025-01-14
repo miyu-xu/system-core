@@ -87,6 +87,24 @@
       "parentUuid": "5be12f72_f37f93cc",
       "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a25df71_32a2811a",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-01-14T03:08:44Z",
+      "side": 1,
+      "message": "indeed :) thanks for following-up on this!",
+      "parentUuid": "4473c7e6_b9bbc250",
+      "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
