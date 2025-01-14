@@ -174,6 +174,30 @@
       },
       "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9031e1cd_d17a2d8c",
+        "filename": "trusty/sysprops/android/sysprop/trusty/security_vm.sysprop",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2025-01-14T14:22:30Z",
+      "side": 1,
+      "message": "security_vm is the Trusty VM that hosts KeyMint and GateKeeper, it has two versions secure and non-secure as Alyssa explained in the comment.",
+      "parentUuid": "9aaa83e6_ebb9f532",
+      "range": {
+        "startLine": 29,
+        "startChar": 35,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "397f6e64dcaa6440b7a84752f457dd55128823f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
