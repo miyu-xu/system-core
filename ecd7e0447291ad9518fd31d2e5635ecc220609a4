@@ -105,6 +105,24 @@
       "parentUuid": "4473c7e6_b9bbc250",
       "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9706c7_7898d024",
+        "filename": "trusty/fuzz/tipc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 2012811
+      },
+      "writtenOn": "2025-01-14T14:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a25df71_32a2811a",
+      "revId": "ecd7e0447291ad9518fd31d2e5635ecc220609a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
