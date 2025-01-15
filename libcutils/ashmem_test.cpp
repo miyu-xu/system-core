@@ -60,7 +60,8 @@ void TestProtDenied(const unique_fd &fd, size_t size, int prot) {
 void TestProtIs(const unique_fd& fd, int prot) {
     ASSERT_TRUE(fd >= 0);
     ASSERT_TRUE(ashmem_valid(fd));
-    EXPECT_EQ(prot, ioctl(fd, ASHMEM_GET_PROT_MASK));
+    // memfds can always be mapped with PROT_EXEC, so include it in the test.
+    EXPECT_EQ(prot | PROT_EXEC, ioctl(fd, ASHMEM_GET_PROT_MASK));
 }
 
 void FillData(std::vector<uint8_t>& data) {
