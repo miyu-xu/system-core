@@ -253,6 +253,8 @@ cc_defaults {
         "sockets_test.cpp",
     ],
 
+    isolated: true,
+
     target: {
         android: {
             srcs: [
@@ -271,6 +273,10 @@ cc_defaults {
             srcs: [
                 "str_parms_test.cpp",
             ],
+        },
+
+        windows: {
+            isolated: false, // Not supported on Windows.
         },
     },
 
