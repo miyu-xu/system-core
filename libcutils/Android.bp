@@ -271,6 +271,7 @@ cc_defaults {
             srcs: [
                 "str_parms_test.cpp",
             ],
+            isolated: true,
         },
     },
 
