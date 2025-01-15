@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb1f5ba_c6229bd8",
+        "filename": "debuggerd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-01-15T21:44:31Z",
+      "side": 1,
+      "message": "Is this necessary? I don\u0027t think we want to let anything in the platform use this. If it\u0027s necessary, it\u0027s better to be specific and limit this to only what needs it.",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 36
+      },
+      "revId": "dcb7bb114213a807f64db3d932b70189b61bd9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379a20e6_9ef87172",
+        "filename": "debuggerd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-01-15T21:44:31Z",
+      "side": 1,
+      "message": "This one seems necessary, but can this be made more specific? Allowing anyone in the platform to use this make it harder to figure out who might have problems if this is changed.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 36
+      },
+      "revId": "dcb7bb114213a807f64db3d932b70189b61bd9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
