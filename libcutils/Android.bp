@@ -279,6 +279,8 @@ cc_defaults {
         "-Wextra",
         "-Werror",
     ],
+
+    isolated: true,
 }
 
 always_static_test_libraries = [
