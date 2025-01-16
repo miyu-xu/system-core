@@ -89,6 +89,24 @@
       ],
       "revId": "1030d23c13b6476db400a82481022d36da4713c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462d8db3_ce009660",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-16T21:02:36Z",
+      "side": 1,
+      "message": "That seems much better than trying to call it from fastboot.",
+      "parentUuid": "80af0c9b_5e5e0cad",
+      "revId": "1030d23c13b6476db400a82481022d36da4713c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
