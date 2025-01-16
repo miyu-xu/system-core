@@ -62,7 +62,6 @@ class ImageManagerBinder final : public IImageManager {
                                   std::string* dev) override;
     FiemapStatus ZeroFillNewImage(const std::string& name, uint64_t bytes) override;
     bool RemoveAllImages() override;
-    bool DisableAllImages() override;
     bool DisableImage(const std::string& name) override;
     bool RemoveDisabledImages() override;
     bool GetMappedImageDevice(const std::string& name, std::string* device) override;
@@ -193,9 +192,6 @@ bool ImageManagerBinder::RemoveAllImages() {
                    << " binder returned: " << status.exceptionMessage().c_str();
         return false;
     }
-    return true;
-}
-bool ImageManagerBinder::DisableAllImages() {
     return true;
 }
 
