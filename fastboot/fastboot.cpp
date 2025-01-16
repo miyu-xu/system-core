@@ -638,8 +638,11 @@ static int show_help() {
             " --disable-verification     Sets disable-verification when flashing vbmeta.\n"
             " --disable-super-optimization\n"
             "                            Disables optimizations on flashing super partition.\n"
+            " --exclude-dynamic-partitions\n"
+            "                            Excludes flashing of dynamic partitions.\n"
             " --disable-fastboot-info    Will collects tasks from image list rather than $OUT/fastboot-info.txt.\n"
-            " --flash-incremental        Calls the apply-update.sh script for snapshot based flashing\n"
+            " --flash-incremental        Calls the apply-update.sh script for snapshot based flashing. \n"
+            "                            Device must be accessible by adb (experimental) \n"
             " --fs-options=OPTION[,OPTION]\n"
             "                            Enable filesystem features. OPTION supports casefold, projid, compress\n"
             // TODO: remove --unbuffered?
