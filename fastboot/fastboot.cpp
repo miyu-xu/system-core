@@ -642,6 +642,8 @@ static int show_help() {
             "                            Excludes flashing of dynamic partitions.\n"
             " --disable-fastboot-info    Will collects tasks from image list rather than \n"
             "                            $OUT/fastboot-info.txt.\n"
+            " --disable-fastboot-info    Will collects tasks from image list rather than $OUT/fastboot-info.txt.\n"
+            " --flash-incremental        Calls the apply-update.sh script for snapshot based flashing\n"
             " --fs-options=OPTION[,OPTION]\n"
             "                            Enable filesystem features. OPTION supports casefold, projid, compress\n"
             // TODO: remove --unbuffered?
@@ -1987,6 +1989,17 @@ unique_fd LocalImageSource::OpenFile(const std::string& name) const {
     return unique_fd(TEMP_FAILURE_RETRY(open(path.c_str(), O_RDONLY | O_BINARY)));
 }
 
+static int apply_update() {
+    int result = system(strcat(getenv("ANDROID_BUILD_TOP"),
+                               "/system/core/fs_mgr/libsnapshot/scripts/apply-update.sh"));
+    if (result == 0) {
+        LOG(INFO) << "apply update successful";
+    } else {
+        LOG(ERROR) << "failed to apply update";
+    }
+    return result;
+}
+
 static void do_flashall(FlashingPlan* fp) {
     fp->source.reset(new LocalImageSource());
     FlashAllTool tool(fp);
@@ -2253,6 +2266,7 @@ int FastBootTool::Main(int argc, char* argv[]) {
                                       {"disable-super-optimization", no_argument, 0, 0},
                                       {"exclude-dynamic-partitions", no_argument, 0, 0},
                                       {"disable-fastboot-info", no_argument, 0, 0},
+                                      {"flash-incremental", no_argument, 0, 0},
                                       {"force", no_argument, 0, 0},
                                       {"fs-options", required_argument, 0, 0},
                                       {"header-version", required_argument, 0, 0},
@@ -2296,6 +2310,8 @@ int FastBootTool::Main(int argc, char* argv[]) {
             } else if (name == "exclude-dynamic-partitions") {
                 fp->exclude_dynamic_partitions = true;
                 fp->should_optimize_flash_super = false;
+            } else if (name == "flash-incremental") {
+                return apply_update();
             } else if (name == "disable-fastboot-info") {
                 fp->should_use_fastboot_info = false;
             } else if (name == "force") {
