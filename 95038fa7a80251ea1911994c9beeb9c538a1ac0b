@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d14b45_a366fae2",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-16T15:19:25Z",
+      "side": 1,
+      "message": "why do we need this at all? the single call site already defaults to false if this property isn\u0027t set (https://source.corp.google.com/h/android/platform/superproject/main/+/main:system/core/libcutils/ashmem-dev.cpp;l\u003d107?q\u003dsys.use_memfd\u0026sq\u003drepo:android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-file:prebuilts%2Fvndk%2F%20-file:prebuilts%2Fruntime%2F)...",
+      "revId": "95038fa7a80251ea1911994c9beeb9c538a1ac0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
