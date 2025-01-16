@@ -1,0 +1,94 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ecd1fe_e202cd64",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-16T20:22:33Z",
+      "side": 1,
+      "message": "Maybe add a note that this is experimental given we are hard-coding the path.",
+      "fixSuggestions": [
+        {
+          "fixId": "86a3dbd9_b1fbb77c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/fastboot.cpp",
+              "range": {
+                "startLine": 642,
+                "startChar": 0,
+                "endLine": 643,
+                "endChar": 0
+              },
+              "replacement": "            \" --flash-incremental        Calls the apply-update.sh script for snapshot based flashing (experimental)\\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1030d23c13b6476db400a82481022d36da4713c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80af0c9b_5e5e0cad",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-16T20:22:33Z",
+      "side": 1,
+      "message": "Instead, we could just build the script as part of host build just like fastboot and run it from $OUT ?",
+      "fixSuggestions": [
+        {
+          "fixId": "244fc53f_3bd3b349",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/fastboot.cpp",
+              "range": {
+                "startLine": 1988,
+                "startChar": 0,
+                "endLine": 1995,
+                "endChar": 0
+              },
+              "replacement": "static int apply_update(const std::string\u0026 script_path) {\n    int result \u003d system(script_path.c_str());\n    if (result !\u003d 0) {\n        LOG(ERROR) \u003c\u003c \"failed to apply update: \" \u003c\u003c script_path;\n"
+            },
+            {
+              "path": "fastboot/fastboot.cpp",
+              "range": {
+                "startLine": 1998,
+                "startChar": 0,
+                "endLine": 1998,
+                "endChar": 0
+              },
+              "replacement": "\nstatic std::string GetApplyUpdateScriptPath() {\n    char* dir \u003d get_android_product_out();\n    if (dir \u003d\u003d nullptr || dir[0] \u003d\u003d \u0027\\0\u0027) {\n        return \"\";\n    }\n    return std::string(dir) + \"/fastboot-info.txt\";\n}\n"
+            },
+            {
+              "path": "fastboot/fastboot.cpp",
+              "range": {
+                "startLine": 2310,
+                "startChar": 0,
+                "endLine": 2311,
+                "endChar": 0
+              },
+              "replacement": "                std::string script_path \u003d GetApplyUpdateScriptPath();\n                if (script_path.empty()) {\n                    LOG(ERROR) \u003c\u003c \"ANDROID_PRODUCT_OUT not set\";\n                    return 1;\n                }\n                return apply_update(script_path);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1030d23c13b6476db400a82481022d36da4713c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
