@@ -253,6 +253,8 @@ cc_defaults {
         "sockets_test.cpp",
     ],
 
+    isolated: true,
+
     target: {
         android: {
             srcs: [
