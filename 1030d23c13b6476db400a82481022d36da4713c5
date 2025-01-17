@@ -107,6 +107,24 @@
       "parentUuid": "80af0c9b_5e5e0cad",
       "revId": "1030d23c13b6476db400a82481022d36da4713c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ff5a37_a3dfdb0a",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-17T05:52:13Z",
+      "side": 1,
+      "message": "What I meant was that `apply_update` has to be part of $OUT which can be run independently of fastboot as it has several other options which can\u0027t be called directly from fastboot.\n\nHaving this call from fastboot is a nice-to-have as it gives broader visibilty than advertising yet another new command which will most likely be used by just 2 or 3 of us in our team. We can mark this as an experimental option and see the usage.\n\nThat said, I am ok if this isn\u0027t integrated...",
+      "parentUuid": "462d8db3_ce009660",
+      "revId": "1030d23c13b6476db400a82481022d36da4713c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
