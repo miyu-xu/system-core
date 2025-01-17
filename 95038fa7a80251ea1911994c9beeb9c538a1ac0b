@@ -34,6 +34,24 @@
       "parentUuid": "92d14b45_a366fae2",
       "revId": "95038fa7a80251ea1911994c9beeb9c538a1ac0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6aeafba_d96cf362",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-17T15:30:54Z",
+      "side": 1,
+      "message": "but that would have to be a `setprop ... true`, no? i don\u0027t see what effect this line could possibly have?",
+      "parentUuid": "eec952d8_9c6c37e3",
+      "revId": "95038fa7a80251ea1911994c9beeb9c538a1ac0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
