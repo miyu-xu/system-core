@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6523d94f_367d574c",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-18T04:43:57Z",
+      "side": 1,
+      "message": "this still doesn\u0027t look right. If output_dir is not passed, then the name of the snapshotfile would be: /system.patch which isn\u0027t correct.",
+      "fixSuggestions": [
+        {
+          "fixId": "f3473529_f79b4c64",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+              "range": {
+                "startLine": 600,
+                "startChar": 0,
+                "endLine": 601,
+                "endChar": 0
+              },
+              "replacement": "    std::string snapshotfile;\n    if (FLAGS_output_dir.empty()) {\n        snapshotfile \u003d parts[0] + \".patch\";\n    } else {\n        snapshotfile \u003d FLAGS_output_dir + \"/\" + parts[0] + \".patch\";\n    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "37387f887265713b4732a60dc903ac3e45f5f4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
