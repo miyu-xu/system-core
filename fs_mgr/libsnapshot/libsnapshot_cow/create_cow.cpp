@@ -36,6 +36,9 @@
 
 DEFINE_string(source, "", "Source partition image");
 DEFINE_string(target, "", "Target partition image");
+DEFINE_string(output_file, "",
+              "Output path to write the patch file to. Defaults to current working directory if "
+              "not set.");
 DEFINE_string(compression, "lz4",
               "Compression algorithm. Default is set to lz4. Available options: lz4, zstd, gz");
 DEFINE_bool(merkel_tree, false, "If true, source image hash is obtained from verity merkel tree");
@@ -569,12 +572,15 @@ SYNOPSIS
 
     source.img -> Source partition image
     target.img -> Target partition image
-    compressoin -> compression algorithm. Default set to lz4. Supported types are gz, lz4, zstd.
+    compression -> compression algorithm. Default set to lz4. Supported types are gz, lz4, zstd.
+    merkel_tree -> If true, source image hash is obtained from verity merkel tree.
+    output_file -> Output path to write the patch file to. Defaults to current working directory if not set.
 
 EXAMPLES
 
    $ create_snapshot $SOURCE_BUILD/system.img $TARGET_BUILD/system.img
    $ create_snapshot $SOURCE_BUILD/product.img $TARGET_BUILD/product.img --compression="zstd"
+   $ create_snapshot $SOURCE_BUILD/product.img $TARGET_BUILD/product.img --merkel_tree --output_file=/tmp/output.patch
 
 )";
 
@@ -590,7 +596,7 @@ int main(int argc, char* argv[]) {
 
     std::string fname = android::base::Basename(FLAGS_target.c_str());
     auto parts = android::base::Split(fname, ".");
-    std::string snapshotfile = parts[0] + ".patch";
+    std::string snapshotfile = FLAGS_output_file.empty() ? parts[0] + ".patch" : FLAGS_output_file;
     android::snapshot::CreateSnapshot snapshot(FLAGS_source, FLAGS_target, snapshotfile,
                                                FLAGS_compression, FLAGS_merkel_tree);
 
