@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67a5f5c_9296b80f",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-01-18T00:30:23Z",
+      "side": 1,
+      "message": "sholdn\u0027t this \".patch\" be at the end ? I think `snapshotctl` depends on this suffix.",
+      "fixSuggestions": [
+        {
+          "fixId": "d2cf2809_407b8e1a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+              "range": {
+                "startLine": 599,
+                "startChar": 0,
+                "endLine": 600,
+                "endChar": 0
+              },
+              "replacement": "    std::string snapshotfile \u003d FLAGS_output_file.empty() ? parts[0] : FLAGS_output_file;\n    snapshotfile +\u003d \".patch\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a3d090c84b6be17f473026e180558250d265767f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
