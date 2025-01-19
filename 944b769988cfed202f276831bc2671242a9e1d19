@@ -16,6 +16,23 @@
       "message": "Jason Willis",
       "revId": "944b769988cfed202f276831bc2671242a9e1d19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93324391_d1182c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3798171
+      },
+      "writtenOn": "2025-01-19T12:13:04Z",
+      "side": 1,
+      "message": "install beta preview canary channel",
+      "revId": "944b769988cfed202f276831bc2671242a9e1d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
