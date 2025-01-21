@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bb516c_24e2f241",
+        "filename": "libcutils/include/private/android_filesystem_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-21T19:37:32Z",
+      "side": 1,
+      "message": "is there a reason this shouldn\u0027t just be in the vendor (\"oem\") space for chromebooks, as a temporary chromebook-only hack?",
+      "revId": "c21791d00d1328655d961d9dda16e2d444945306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
