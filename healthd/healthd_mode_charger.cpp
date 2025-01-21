@@ -835,6 +835,18 @@ void Charger::OnInit(struct healthd_config* config) {
     // Retrieve healthd_config from the existing health HAL.
     configuration_->ChargerInitConfig(config);
 
+    char orientation[PROPERTY_VALUE_MAX] = {0};
+    if (property_get("ro.boot.docked_orientation", orientation, "")) {
+        LOGW("Doc orientation: %s.", orientation);
+    }
+    if (!strcmp(orientation,"ORIENTATION_90")) {
+        gr_rotate(GRRotation::RIGHT);
+    } else if (!strcmp(orientation, "ORIENTATION_180")) {
+        gr_rotate(GRRotation::DOWN);
+    } else if (!strcmp(orientation, "ORIENTATION_270")) {
+        gr_rotate(GRRotation::LEFT);
+    }
+
     boot_min_cap_ = config->boot_min_cap;
 }
 
