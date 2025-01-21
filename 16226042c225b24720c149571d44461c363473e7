@@ -34,6 +34,23 @@
       "parentUuid": "52f2a910_04beb185",
       "revId": "16226042c225b24720c149571d44461c363473e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb942b5d_ccbc083d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2025-01-21T18:03:35Z",
+      "side": 1,
+      "message": "Would this remove access for the `log` group? Not sure if there\u0027s existing users in this group",
+      "revId": "16226042c225b24720c149571d44461c363473e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
