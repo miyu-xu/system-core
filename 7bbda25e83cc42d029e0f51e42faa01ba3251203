@@ -34,6 +34,24 @@
       "parentUuid": "daedf483_0037a95c",
       "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb85fcfe_e9a24941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2025-01-21T05:50:29Z",
+      "side": 1,
+      "message": "You\u0027re right, this is globally disabled. Looks like these projects opted into the warning again. Abandoning the change and leaving it to the owners to decide if they want to keep the warning.",
+      "parentUuid": "0283560f_a9a4ffea",
+      "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
