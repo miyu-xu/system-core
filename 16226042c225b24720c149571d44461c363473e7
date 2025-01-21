@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f2a910_04beb185",
+        "filename": "libcutils/include/private/android_filesystem_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-21T15:27:15Z",
+      "side": 1,
+      "message": "fyi",
+      "revId": "16226042c225b24720c149571d44461c363473e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
