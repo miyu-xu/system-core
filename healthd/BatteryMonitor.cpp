@@ -126,11 +126,11 @@ static std::optional<T> mapSysfsString(const char* str, SysfsStringEnumMap<T> ma
 
 static void initHealthInfo(HealthInfo* health_info) {
     *health_info = {
+            .batteryStatus = BatteryStatus::UNKNOWN,
+            .batteryHealth = BatteryHealth::UNKNOWN,
             .batteryCapacityLevel = BatteryCapacityLevel::UNSUPPORTED,
             .batteryChargeTimeToFullNowSeconds =
                     (int64_t)HealthInfo::BATTERY_CHARGE_TIME_TO_FULL_NOW_SECONDS_UNSUPPORTED,
-            .batteryStatus = BatteryStatus::UNKNOWN,
-            .batteryHealth = BatteryHealth::UNKNOWN,
     };
 }
 
