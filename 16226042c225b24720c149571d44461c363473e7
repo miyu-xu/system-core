@@ -16,6 +16,24 @@
       "message": "fyi",
       "revId": "16226042c225b24720c149571d44461c363473e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edab985e_aa3ae6e9",
+        "filename": "libcutils/include/private/android_filesystem_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2025-01-21T15:35:11Z",
+      "side": 1,
+      "message": "My bad, thank you for quick feedback. I will add a corresponding commit and add you as a reviewer.",
+      "parentUuid": "52f2a910_04beb185",
+      "revId": "16226042c225b24720c149571d44461c363473e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
