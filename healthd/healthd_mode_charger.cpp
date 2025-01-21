@@ -35,6 +35,7 @@
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/macros.h>
+#include <android-base/properties.h>
 #include <android-base/strings.h>
 
 #include <linux/netlink.h>
@@ -834,6 +835,15 @@ void Charger::OnInit(struct healthd_config* config) {
 
     // Retrieve healthd_config from the existing health HAL.
     configuration_->ChargerInitConfig(config);
+
+    std::string orientation = android::base::GetProperty("ro.boot.docked_orientation", "ORIENTATION_0");
+    if (orientation == "ORIENTATION_90") {
+        gr_rotate(GRRotation::RIGHT);
+    } else if (orientation == "ORIENTATION_180") {
+        gr_rotate(GRRotation::DOWN);
+    } else if (orientation == "ORIENTATION_270") {
+        gr_rotate(GRRotation::LEFT);
+    }
 
     boot_min_cap_ = config->boot_min_cap;
 }
