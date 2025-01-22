@@ -40,6 +40,8 @@
 #include <string_view>
 #include <thread>
 
+#include <build_flags.h>
+
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
@@ -173,14 +175,36 @@ bool CgroupGetAttributePathForProcess(std::string_view attr_name, uid_t uid, pid
 }
 
 bool UsePerAppMemcg() {
-    bool low_ram_device = GetBoolProperty("ro.config.low_ram", false);
-    return GetBoolProperty("ro.config.per_app_memcg", low_ram_device);
+    const bool low_ram_device = GetBoolProperty("ro.config.low_ram", false);
+    const bool want_per_app_memcg = GetBoolProperty("ro.config.per_app_memcg", low_ram_device);
+
+    if (!want_per_app_memcg) return false;
+
+    const CgroupControllerWrapper descriptor = CgroupMap::GetInstance().FindController("memory");
+    if (!descriptor.IsUsable()) return false;
+
+    // If the memcg v1 mount exists, we're good. We don't need to check for activation depth in v1
+    // because the controller is activated *everywhere* under the mount.
+    // NOTE: Memcg v1 support will be removed in future versions of Android. Use memcg v2 instead.
+    if (descriptor.version() == 1) return true;
+
+    // Per-pid memcg v2 must be configured. Check MaxActivationDepth to verify that it is.
+    bool ret;
+    if (android::libprocessgroup_flags::cgroup_v2_sys_app_isolation()) {
+        ret = descriptor.max_activation_depth() >= 3;  // apps/uid_x/pid_y
+    } else {
+        ret = descriptor.max_activation_depth() >= 2;  // uid_x/pid_y
+    }
+
+    if (!ret) {
+        LOG(ERROR) << "Device has requested per_app_memcg, but per-pid memcg v2 is not configured!";
+    }
+    return ret;
 }
 
-static bool isMemoryCgroupSupported() {
-    static bool memcg_supported = CgroupMap::GetInstance().FindController("memory").IsUsable();
-
-    return memcg_supported;
+static bool MemcgV1() {
+    const CgroupControllerWrapper descriptor = CgroupMap::GetInstance().FindController("memory");
+    return descriptor.IsUsable() && descriptor.version() == 1;
 }
 
 void DropTaskProfilesResourceCaching() {
@@ -629,7 +653,7 @@ static int KillProcessGroup(
         else
             LOG(INFO) << "Removed cgroup " << cgroup_v2_path;
 
-        if (isMemoryCgroupSupported() && UsePerAppMemcg()) {
+        if (UsePerAppMemcg() && MemcgV1()) {
             // This per-application memcg v1 case should eventually be removed after migration to
             // memcg v2.
             std::string memcg_apps_path;
@@ -712,20 +736,17 @@ int createProcessGroup(uid_t uid, pid_t initialPid, bool memControl) {
         return -1;
     }
 
-    if (memControl && !UsePerAppMemcg()) {
-        LOG(ERROR) << "service memory controls are used without per-process memory cgroup support";
+    const bool have_per_app_memcg = UsePerAppMemcg();
+    if (memControl && !have_per_app_memcg) {
+        LOG(ERROR) << "Memory controls are used without per-pid memory cgroup support";
         return -EINVAL;
     }
 
+    // Per-app memcg v1 requires creating a cgroup in the v1 memcg hierarchy
     if (std::string memcg_apps_path;
-        isMemoryCgroupSupported() && UsePerAppMemcg() && CgroupGetMemcgAppsPath(&memcg_apps_path)) {
-        // Note by bvanassche: passing 'false' as fourth argument below implies that the v1
-        // hierarchy is used. It is not clear to me whether the above conditions guarantee that the
-        // v1 hierarchy is used.
+        have_per_app_memcg && MemcgV1() && CgroupGetMemcgAppsPath(&memcg_apps_path)) {
         int ret = createProcessGroupInternal(uid, initialPid, memcg_apps_path, false);
-        if (ret != 0) {
-            return ret;
-        }
+        if (ret != 0) return ret;
     }
 
     std::string cgroup;
@@ -734,11 +755,6 @@ int createProcessGroup(uid_t uid, pid_t initialPid, bool memControl) {
 }
 
 static bool SetProcessGroupValue(pid_t tid, const std::string& attr_name, int64_t value) {
-    if (!isMemoryCgroupSupported()) {
-        LOG(ERROR) << "Memcg is not mounted.";
-        return false;
-    }
-
     std::string path;
     if (!CgroupGetAttributePathForTask(attr_name, tid, &path)) {
         LOG(ERROR) << "Failed to find attribute '" << attr_name << "'";
@@ -753,14 +769,23 @@ static bool SetProcessGroupValue(pid_t tid, const std::string& attr_name, int64_
 }
 
 bool setProcessGroupSwappiness(uid_t, pid_t pid, int swappiness) {
+    // memory.swappiness is supported only on memcg v1
+    if (!UsePerAppMemcg() || !MemcgV1()) return false;
+
     return SetProcessGroupValue(pid, "MemSwappiness", swappiness);
 }
 
 bool setProcessGroupSoftLimit(uid_t, pid_t pid, int64_t soft_limit_in_bytes) {
+    if (!UsePerAppMemcg()) return false;
+
+    // MemSoftLimit has a FileV2
     return SetProcessGroupValue(pid, "MemSoftLimit", soft_limit_in_bytes);
 }
 
 bool setProcessGroupLimit(uid_t, pid_t pid, int64_t limit_in_bytes) {
+    if (!UsePerAppMemcg()) return false;
+
+    // MemLimit has a FileV2
     return SetProcessGroupValue(pid, "MemLimit", limit_in_bytes);
 }
 

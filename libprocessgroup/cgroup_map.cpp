@@ -21,14 +21,17 @@
 #include <unistd.h>
 
 #include <regex>
+#include <string>
 
-#include <android-base/file.h>
-#include <android-base/logging.h>
-#include <android-base/stringprintf.h>
 #include <cgroup_map.h>
 #include <processgroup/processgroup.h>
 #include <processgroup/util.h>
 
+#include <android-base/file.h>
+#include <android-base/logging.h>
+#include <android-base/stringprintf.h>
+
+using android::base::ReadFileToString;
 using android::base::StringPrintf;
 using android::base::WriteStringToFile;
 
@@ -51,19 +54,44 @@ const char* CgroupControllerWrapper::path() const {
     return controller_->path();
 }
 
+uint32_t CgroupControllerWrapper::max_activation_depth() const {
+    CHECK(HasValue());
+    return controller_->max_activation_depth();
+}
+
 bool CgroupControllerWrapper::HasValue() const {
     return controller_ != nullptr;
 }
 
-bool CgroupControllerWrapper::IsUsable() {
+bool CgroupControllerWrapper::IsUsable() const {
     if (!HasValue()) return false;
 
     if (state_ == UNKNOWN) {
-        if (__builtin_available(android 30, *)) {
+        if (controller_->version() == 1) {
             uint32_t flags = controller_->flags();
             state_ = (flags & CGROUPRC_CONTROLLER_FLAG_MOUNTED) != 0 ? USABLE : MISSING;
         } else {
-            state_ = access(GetProcsFilePath("", 0, 0).c_str(), F_OK) == 0 ? USABLE : MISSING;
+            const std::string root_cgroup_procs_path = GetProcsFilePath("", 0, 0);
+            if (access(root_cgroup_procs_path.c_str(), F_OK) != 0) {
+                state_ = MISSING;
+                return false;
+            }
+
+            if (controller_->flags() & CGROUPRC_CONTROLLER_FLAG_NEEDS_ACTIVATION) {
+                const std::string root_cgroup_controllers_path =
+                    std::string(controller_->path()).append("/cgroup.controllers");
+
+                std::string controllers;
+                if (!ReadFileToString(root_cgroup_controllers_path, &controllers)) {
+                    PLOG(WARNING) << "Could not read: " << root_cgroup_controllers_path;
+                    state_ = MISSING;
+                    return false;
+                }
+
+                state_ = controllers.contains(controller_->name()) ? USABLE : MISSING;
+            } else {
+                state_ = USABLE;
+            }
         }
     }
 
