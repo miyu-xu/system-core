@@ -34,9 +34,10 @@ class CgroupControllerWrapper {
     uint32_t version() const;
     const char* name() const;
     const char* path() const;
+    uint32_t max_activation_depth() const;
 
     bool HasValue() const;
-    bool IsUsable();
+    bool IsUsable() const;
 
     std::string GetTasksFilePath(const std::string& path) const;
     std::string GetProcsFilePath(const std::string& path, uid_t uid, pid_t pid) const;
@@ -50,7 +51,7 @@ class CgroupControllerWrapper {
     };
 
     const CgroupController* controller_ = nullptr; // CgroupMap owns the object behind this pointer
-    ControllerState state_ = ControllerState::UNKNOWN;
+    mutable ControllerState state_ = ControllerState::UNKNOWN;
 };
 
 class CgroupMap {
