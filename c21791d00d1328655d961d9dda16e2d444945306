@@ -34,6 +34,24 @@
       "parentUuid": "87bb516c_24e2f241",
       "revId": "c21791d00d1328655d961d9dda16e2d444945306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7902bd67_933f3b27",
+        "filename": "libcutils/include/private/android_filesystem_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-22T14:34:12Z",
+      "side": 1,
+      "message": "\u003e but is designed to be a long-term solution for ADB over USB\n\nsure, but only for those x86 chromebooks with bad usb, not generally.\n\n\u003e Do you know what would be a proper place to define AID_DBC in this case?\n\nhttps://source.android.com/docs/core/permissions/filesystem explains how to add oem aids.",
+      "parentUuid": "cc895e0e_6f73af30",
+      "revId": "c21791d00d1328655d961d9dda16e2d444945306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
