@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d591fae1_87d1016d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2025-01-23T05:55:43Z",
+      "side": 1,
+      "message": "Note, this favors possible build-time incompat as opposed to link-incompatibility by removing the const char* ctor (despite implicit convertability).\n\nConcretely, that means that types which are implicitly convertible to both const char* and std::string_view which are passed to String8 constructed will fail to compile, and they would need to explicitly cast to the std::string_view preferable constructor.",
+      "revId": "940f0755af05d87f82a3ec10046eadfca9f317a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
