@@ -46,6 +46,8 @@
 #include <libgsi/libgsi.h>
 #include <liblp/liblp.h>
 #include <libsnapshot/snapshot.h>
+#include <linux/hdreg.h>
+#include <regex>
 
 #include "block_dev_initializer.h"
 #include "devices.h"
@@ -76,6 +78,7 @@ using android::fs_mgr::TransformFstabForDsu;
 using android::snapshot::SnapshotManager;
 
 using namespace std::literals;
+using namespace android::dm;
 
 namespace android {
 namespace init {
@@ -96,6 +99,9 @@ class FirstStageMountVBootV2 : public FirstStageMount {
     bool InitDevices();
     bool InitRequiredDevices(std::set<std::string> devices);
     bool CreateLogicalPartitions();
+    bool CreateUserdataDmDevice(std::string stripe_0_path,
+                                std::string stripe_1_path,
+                                std::string remainder_path);
     bool CreateSnapshotPartitions(SnapshotManager* sm);
     bool MountPartition(const Fstab::iterator& begin, bool erase_same_mounts,
                         Fstab::iterator* end = nullptr);
@@ -406,10 +412,170 @@ bool FirstStageMountVBootV2::CreateLogicalPartitions() {
     return android::fs_mgr::CreateLogicalPartitions(*metadata.get(), super_path_);
 }
 
+/* Default dm-stripe setting for RAID0 userdata */
+#define STRIPE_CHUNK_OFFSET (10)
+#define STRIPE_CHUNK (1ULL << (STRIPE_CHUNK_OFFSET)) /* 512KB */
+
+static size_t GetDeviceSize(std::string path) {
+    size_t ret = 0;
+    int fd;
+
+    fd = open(path.c_str(), O_RDONLY);
+    if (fd < 0) {
+        PLOG(ERROR) << "open " << path << " fail";
+    } else if (ioctl(fd, BLKGETSIZE, &ret) < 0) {
+        PLOG(ERROR) << "BLKGETSIZE " << path << " fail";
+    }
+    close(fd);
+
+    return ret;
+}
+
+static size_t GetDeviceStartSectors(std::string path) {
+    struct hd_geometry geo;
+    size_t ret = 0;
+    int fd;
+
+    fd = open(path.c_str(), O_RDONLY);
+    if (fd < 0) {
+        PLOG(ERROR) << "open " << path << " fail";
+    } else if (ioctl(fd, HDIO_GETGEO, &geo) < 0) {
+        PLOG(ERROR) << "HDIO_GETGEO " << path << " fail";
+    } else {
+        ret = geo.start;
+    }
+    close(fd);
+
+    return ret;
+}
+
+static bool DmTableAddLinear(DmTable *t, size_t start, size_t cnt, std::string d,
+                            size_t ofs) {
+    std::unique_ptr<DmTarget> target;
+
+    target = std::make_unique<DmTargetLinear>(start, cnt, d, ofs);
+    if (!t->AddTarget(std::move(target))) {
+        PLOG(ERROR) << "add dm linear target fail";
+        return false;
+    }
+    return true;
+}
+
+static bool DmTableAddStripe(DmTable *t, size_t start, size_t cnt, size_t chunk,
+                             std::string d1, std::string d2) {
+    std::unique_ptr<DmTarget> target;
+
+    target = std::make_unique<DmTargetStripe>(start, cnt, chunk, d1, d2);
+    if (!t->AddTarget(std::move(target))) {
+        PLOG(ERROR) << "add dm stripe target fail";
+        return false;
+    }
+    return true;
+}
+
+static std::string CreateDmDevice(DmTable *t, const char *name) {
+    DeviceMapper& dm = DeviceMapper::Instance();
+    std::string path;
+
+    if (!dm.CreateDevice(name, *t, &path, 0ms)) {
+        PLOG(ERROR) << "create dm dev " << name << " fail";
+        return "";
+    }
+
+    LOG(INFO) << "create mapper device " << name << " on " << path;
+
+    return path;
+}
+
+bool FirstStageMountVBootV2::CreateUserdataDmDevice(std::string stripe_0_path,
+                                                    std::string stripe_1_path,
+                                                    std::string remainder_path) {
+    std::string dm_path;
+    size_t dev_size, part_start;
+    size_t start = 0, cnt, ofs;
+    DmTable table;
+
+    dev_size = GetDeviceSize(stripe_0_path);
+    if (!dev_size || dev_size != GetDeviceSize(stripe_1_path)) {
+        LOG(ERROR) << "Invalid stripe device size";
+        return false;
+    }
+
+    // The device size may not be aligned with the chunk size.
+    // Removing the remainder and calculate the size of dm device.
+    cnt = (dev_size & ~(STRIPE_CHUNK - 1)) << 1;
+    if (!DmTableAddStripe(&table, 0, cnt, STRIPE_CHUNK, stripe_0_path,
+                          stripe_1_path))
+        return false;
+    start += cnt;
+
+    // Add dm-linear if remainder device exists.
+    // The partition start of remainder may not be aligned with the chunk
+    // size, so an offset needs to be applied here.
+    if (!remainder_path.empty() && access(remainder_path.c_str(), F_OK) == 0) {
+        dev_size = GetDeviceSize(remainder_path);
+        part_start = GetDeviceStartSectors(remainder_path);
+
+        if (!dev_size)
+            return false;
+
+        ofs = (~part_start + 1) & (STRIPE_CHUNK - 1);
+        cnt = dev_size - ofs;
+        if (!DmTableAddLinear(&table, start, cnt, remainder_path, ofs))
+            return false;
+        start += cnt;
+    }
+
+    // Create dm device and symlink /dev/block/by-name/userdata to it
+    dm_path = CreateDmDevice(&table, "userdata_md");
+    if (dm_path.empty())
+        return false;
+
+    block_dev_init_.InitDmDevice(dm_path);
+
+    if (symlink(dm_path.c_str(), "/dev/block/by-name/userdata") < 0) {
+        PLOG(ERROR) << "symlink /dev/block/by-name/userdata to " << dm_path << " fail";
+        return false;
+    }
+
+    return true;
+}
+
+// get the number of boot_devices. (set by ufs lk)
+static uint8_t get_boot_devices_number() {
+    static const std::regex reg("^soc\\/[0-9,a-f]{8}.ufshci$");
+    auto devs = android::fs_mgr::GetBootDevices();
+
+    if (devs.empty())
+        return 0;
+
+    for (auto dev = devs.begin(); dev != devs.end(); ) {
+        if (std::regex_match(*dev, reg)) {
+            LOG(INFO) << "find boot device " << dev->c_str();
+            ++dev;
+        } else {
+            dev = devs.erase(dev);
+        }
+    }
+
+    return devs.size();
+}
+
 bool FirstStageMountVBootV2::CreateSnapshotPartitions(SnapshotManager* sm) {
     // When COW images are present for snapshots, they are stored on
-    // the data partition.
-    if (!InitRequiredDevices({"userdata"})) {
+    // the data partition. However, for RAID0 userdata, the userdata
+    // partition does not exist and needs to be created by dm.
+    if (get_boot_devices_number() == 2) {
+        if (!InitRequiredDevices({"userdata_stripe_0"}) ||
+            !InitRequiredDevices({"userdata_stripe_1"}) ||
+            !InitRequiredDevices({"userdata_rem"}))
+            return false;
+
+        if (!CreateUserdataDmDevice("/dev/block/by-name/userdata_stripe_0",
+                                    "/dev/block/by-name/userdata_stripe_1",
+                                    "/dev/block/by-name/userdata_rem"))
+            return false;
+    } else if (!InitRequiredDevices({"userdata"})) {
         return false;
     }
 
