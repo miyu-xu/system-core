@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd0d741_4b18f0e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-23T23:47:04Z",
+      "side": 1,
+      "message": "I don\u0027t have access to the design doc mentioned in the bug. Could you share it with us?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8947862d_d7727301",
@@ -14,6 +37,98 @@
       "writtenOn": "2025-01-23T20:38:28Z",
       "side": 1,
       "message": "dvander/jiyong for init design questions...",
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ef5884_44afff24",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-23T23:47:04Z",
+      "side": 1,
+      "message": "WaitForProperty accepts miliseconds.",
+      "range": {
+        "startLine": 928,
+        "startChar": 37,
+        "endLine": 928,
+        "endChar": 44
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2f43d1_7359746f",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-23T23:47:04Z",
+      "side": 1,
+      "message": "What is this sleep for?",
+      "range": {
+        "startLine": 939,
+        "startChar": 8,
+        "endLine": 939,
+        "endChar": 43
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ec7c12_d10597e3",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-23T23:47:04Z",
+      "side": 1,
+      "message": "GetIntProperty is more concise and safer.",
+      "range": {
+        "startLine": 1039,
+        "startChar": 27,
+        "endLine": 1039,
+        "endChar": 43
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed95cac3_0926f713",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-23T23:47:04Z",
+      "side": 1,
+      "message": "Can these lines be factored into a single function?",
+      "range": {
+        "startLine": 1034,
+        "startChar": 0,
+        "endLine": 1044,
+        "endChar": 5
+      },
       "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
