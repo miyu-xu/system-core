@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996423a8_46ed8e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-01-23T07:58:57Z",
+      "side": 1,
+      "message": "As per the email thread, should we instead be declaring v3 everywhere to match what the prebuilts contain?",
+      "revId": "caf853008c09eb9adaf00366be5cdad38277dc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
