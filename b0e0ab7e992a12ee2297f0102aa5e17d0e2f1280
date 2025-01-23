@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fe0335_67a71438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-23T19:03:27Z",
+      "side": 1,
+      "message": ".clang-format-4 is set to 100 for this code... just leave clang-format to do its thing.",
+      "range": {
+        "startLine": 17,
+        "startChar": 44,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "b0e0ab7e992a12ee2297f0102aa5e17d0e2f1280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
