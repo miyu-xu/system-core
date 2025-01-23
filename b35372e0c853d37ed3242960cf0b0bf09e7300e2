@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ec679b_049292ee",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-23T21:38:00Z",
+      "side": 1,
+      "message": "technically the logic here is correct but it combines two different things:\n1. what we want, represented by ro.config.per_app_memcg\n2. what is possible, represented by what is actually mounted\n\nIt seems fine today but I think it might come back to bite us later. It would be better to split those two into separate checks.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1e08eab9_b502f01e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 177,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "bool PerAppMemcgRequested() {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 179,
+                "startChar": 0,
+                "endLine": 180,
+                "endChar": 0
+              },
+              "replacement": "    return GetBoolProperty(\"ro.config.per_app_memcg\", low_ram_device);\n}\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 181,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": "bool PerAppMemcgAvailable() {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 192,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "    bool available;\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 194,
+                "startChar": 0,
+                "endLine": 195,
+                "endChar": 0
+              },
+              "replacement": "        available \u003d descriptor.max_activation_depth() \u003e\u003d 3;  // apps/uid_x/pid_y\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 196,
+                "startChar": 0,
+                "endLine": 197,
+                "endChar": 0
+              },
+              "replacement": "        available \u003d descriptor.max_activation_depth() \u003e\u003d 2;  // uid_x/pid_y\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "    if (!available) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 202,
+                "startChar": 0,
+                "endLine": 203,
+                "endChar": 0
+              },
+              "replacement": "    return available;\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 656,
+                "startChar": 0,
+                "endLine": 657,
+                "endChar": 0
+              },
+              "replacement": "        if (PerAppMemcgRequested() \u0026\u0026 MemcgV1()) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 739,
+                "startChar": 0,
+                "endLine": 741,
+                "endChar": 0
+              },
+              "replacement": "    const bool per_app_memcg_requested \u003d PerAppMemcgRequested();\n    if (memControl \u0026\u0026 !per_app_memcg_requested) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 747,
+                "startChar": 0,
+                "endLine": 748,
+                "endChar": 0
+              },
+              "replacement": "        per_app_memcg_requested \u0026\u0026 MemcgV1() \u0026\u0026 CgroupGetMemcgAppsPath(\u0026memcg_apps_path)) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 773,
+                "startChar": 0,
+                "endLine": 774,
+                "endChar": 0
+              },
+              "replacement": "    if (!PerAppMemcgRequested() || !MemcgV1()) return false;\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 779,
+                "startChar": 0,
+                "endLine": 780,
+                "endChar": 0
+              },
+              "replacement": "    if (!PerAppMemcgRequested()) return false;\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 786,
+                "startChar": 0,
+                "endLine": 787,
+                "endChar": 0
+              },
+              "replacement": "    if (!PerAppMemcgRequested()) return false;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafdaff2_8588f178",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-23T21:38:00Z",
+      "side": 1,
+      "message": "why moving this check into each user is better than the original approach?",
+      "range": {
+        "startLine": 773,
+        "startChar": 8,
+        "endLine": 773,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9acfc074_2e27a543",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 144,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "bool CgroupGetAttributePathForTask(const std::string\u0026 attr_name, pid_t tid, std::string\u0026 path) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 152,
+                "startChar": 0,
+                "endLine": 153,
+                "endChar": 0
+              },
+              "replacement": "    if (!attr-\u003eGetPathForTask(tid, \u0026path)) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 177,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "static bool UsePerAppMemcg() {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 757,
+                "startChar": 0,
+                "endLine": 758,
+                "endChar": 0
+              },
+              "replacement": "static bool SetProcessGroupValue(pid_t tid, const std::string\u0026 attr_name, int64_t value,\n                                bool use_per_app_memcg) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 759,
+                "startChar": 0,
+                "endLine": 760,
+                "endChar": 0
+              },
+              "replacement": "    if (!CgroupGetAttributePathForTask(attr_name, tid, path)) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 771,
+                "startChar": 0,
+                "endLine": 772,
+                "endChar": 0
+              },
+              "replacement": "bool setProcessGroupSwappiness(uid_t uid, pid_t pid, int swappiness) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 773,
+                "startChar": 0,
+                "endLine": 774,
+                "endChar": 0
+              },
+              "replacement": "    if (!use_per_app_memcg || !MemcgV1()) return false;\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 775,
+                "startChar": 0,
+                "endLine": 776,
+                "endChar": 0
+              },
+              "replacement": "    return SetProcessGroupValue(pid, \"MemSwappiness\", swappiness, use_per_app_memcg);\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 778,
+                "startChar": 0,
+                "endLine": 781,
+                "endChar": 0
+              },
+              "replacement": "bool setProcessGroupSoftLimit(uid_t uid, pid_t pid, int64_t soft_limit_in_bytes) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 782,
+                "startChar": 0,
+                "endLine": 783,
+                "endChar": 0
+              },
+              "replacement": "    return SetProcessGroupValue(pid, \"MemSoftLimit\", soft_limit_in_bytes, UsePerAppMemcg());\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 785,
+                "startChar": 0,
+                "endLine": 788,
+                "endChar": 0
+              },
+              "replacement": "bool setProcessGroupLimit(uid_t uid, pid_t pid, int64_t limit_in_bytes) {\n"
+            },
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 789,
+                "startChar": 0,
+                "endLine": 790,
+                "endChar": 0
+              },
+              "replacement": "    return SetProcessGroupValue(pid, \"MemLimit\", limit_in_bytes, UsePerAppMemcg());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
