@@ -334,7 +334,7 @@ VBMetaVerifyResult VerifyVBMetaSignature(const VBMetaData& vbmeta,
     size_t pk_len;
     ::AvbVBMetaVerifyResult vbmeta_ret;
 
-    vbmeta_ret = avb_vbmeta_image_verify(vbmeta.data(), vbmeta.size(), &pk_data, &pk_len);
+    vbmeta_ret = avb_vbmeta_image_verify(nullptr, vbmeta.data(), vbmeta.size(), &pk_data, &pk_len);
 
     if (out_public_key_data != nullptr) {
         out_public_key_data->clear();
