@@ -52,6 +52,24 @@
       "parentUuid": "cc895e0e_6f73af30",
       "revId": "c21791d00d1328655d961d9dda16e2d444945306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b47c7d0_92598aee",
+        "filename": "libcutils/include/private/android_filesystem_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3594453
+      },
+      "writtenOn": "2025-01-24T11:41:13Z",
+      "side": 1,
+      "message": "Thanks a lot for pointing me to the docs! I will abandon this change and either add the dbc group in `/vendor` or use usb group for dbc files as they are rather related to usb.\n\nJust a note related to the long-term solution, AFAIK x86 SoCs will unfortunately not support USB device mode from now on so the bridge will be useful for all future platforms. Moreover, the bridge supports using a Host-to-host cable option in addition to DbC for all desktop devices with SoCs that don\u0027t support USB device mode.",
+      "parentUuid": "7902bd67_933f3b27",
+      "revId": "c21791d00d1328655d961d9dda16e2d444945306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
