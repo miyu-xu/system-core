@@ -31,7 +31,8 @@ cc_library_static {
     native_bridge_supported: true,
     apex_available: [
         "//apex_available:platform",
-        "//apex_available:anyapex",
+        "com.android.adbd",
+        "com.android.virt",
     ],
     min_sdk_version: "30",
     export_include_dirs: [
