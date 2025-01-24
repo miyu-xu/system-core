@@ -46,7 +46,23 @@ cc_library_headers {
     },
     apex_available: [
         "//apex_available:platform",
-        "//apex_available:anyapex",
+        "com.android.adbd",
+        "com.android.bt",
+        "com.android.compos",
+        "com.android.configinfrastructure",
+        "com.android.i18n",
+        "com.android.media",
+        "com.android.media.swcodec",
+        "com.android.microfuchsia",
+        "com.android.neuralnetworks",
+        "com.android.nfcservices",
+        "com.android.os.statsd",
+        "com.android.resolv",
+        "com.android.runtime",
+        "com.android.tethering",
+        "com.android.uwb",
+        "com.android.virt",
+        "com.google.android.imageprocessing",
     ],
     min_sdk_version: "29",
 }
@@ -74,9 +90,8 @@ cc_library {
         "libjsoncpp",
         "libprocessgroup_util",
     ],
-    // for cutils/android_filesystem_config.h
     header_libs: [
-        "libcutils_headers",
+        "libcutils_headers", // for cutils/android_filesystem_config.h
         "libprocessgroup_headers",
     ],
     export_include_dirs: ["include"],
@@ -86,7 +101,8 @@ cc_library {
     defaults: ["libprocessgroup_build_flags_cc"],
     apex_available: [
         "//apex_available:platform",
-        "//apex_available:anyapex",
+        "com.android.adbd",
+        "com.android.virt",
     ],
     min_sdk_version: "29",
 }
