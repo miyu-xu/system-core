@@ -22,6 +22,30 @@
       },
       "revId": "77958cca8d137dae675225bce79d70bda0ad9fa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73c2bba_8666d67f",
+        "filename": "healthd/healthd_mode_charger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2025-01-25T00:04:01Z",
+      "side": 1,
+      "message": "And the HAL APIs are frozen for Android 16 already, AFAIK",
+      "parentUuid": "3506d516_38379249",
+      "range": {
+        "startLine": 839,
+        "startChar": 22,
+        "endLine": 839,
+        "endChar": 48
+      },
+      "revId": "77958cca8d137dae675225bce79d70bda0ad9fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
