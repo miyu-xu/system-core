@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3506d516_38379249",
+        "filename": "healthd/healthd_mode_charger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2025-01-25T00:02:21Z",
+      "side": 1,
+      "message": "1. Where is this documented? Do partners set this attribute as well? This needs to be a public property known by the whole AOSP ecosystem.\n\n2. This seems like an ro property. If the device is rotated when it is charging, how is the value going to change and how does it effect the graphic orientation?\n\n3. Instead of using a property, can this come from the health HAL instead? Otherwise, you are just creating an API on the system-vendor boundary, which will require ANAPIC approval. If you add it to the health HAL instead, you are still creating an API on the system-vendor boundary, but Stable AIDL changes are known to be backwards compatible so it can be approved easily.",
+      "range": {
+        "startLine": 839,
+        "startChar": 22,
+        "endLine": 839,
+        "endChar": 48
+      },
+      "revId": "77958cca8d137dae675225bce79d70bda0ad9fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
