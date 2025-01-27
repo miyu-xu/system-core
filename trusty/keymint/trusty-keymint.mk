@@ -18,26 +18,44 @@
 # This makefile should be included by devices that use Trusty TEE
 # to pull in a set of Trusty KeyMint specific modules.
 #
-# Allow KeyMint HAL service implementation selection at build time. This must be
-# synchronized with the TA implementation included in Trusty. Possible values:
+# When Keymint HAL is selected by vendor apex (KEYMINT_HAL_VENDOR_APEX_SELECT=true)
+# - both the Rust and legacy CPP service are built but disabled by default
+# - when TRUSTY_SYSTEM_VM is defined, the system keymint service is also built
 #
-# - Rust implementation for Trusty VM (requires Trusty VM support):
-#   export TRUSTY_KEYMINT_IMPL=rust
-#   export TRUSTY_SYSTEM_VM=nonsecure
+# Otherwise (KEYMINT_HAL_VENDOR_APEX_SELECT=false):
+# a single KeyMint HAL service implementation is selected at build time.
+# This must be synchronized with the TA implementation included in Trusty TEE.
+# Possible values:
 # - Rust implementation for Trusty TEE (no Trusty VM support):
 #   export TRUSTY_KEYMINT_IMPL=rust
 # - C++ implementation (default): (any other value or unset TRUSTY_KEYMINT_IMPL)
 
-ifeq ($(TRUSTY_KEYMINT_IMPL),rust)
-    ifeq ($(TRUSTY_SYSTEM_VM),nonsecure)
-        LOCAL_KEYMINT_PRODUCT_PACKAGE := android.hardware.security.keymint-service.rust.trusty.system.nonsecure
-    else
-        LOCAL_KEYMINT_PRODUCT_PACKAGE := android.hardware.security.keymint-service.rust.trusty
-    endif
-else
-    # Default to the C++ implementation
-    LOCAL_KEYMINT_PRODUCT_PACKAGE := android.hardware.security.keymint-service.trusty
-endif
+ifeq ($(KEYMINT_HAL_VENDOR_APEX_SELECT),true)
+    PRODUCT_PACKAGES += \
+        android.hardware.security.keymint-service.trusty_tee.cpp \
+        android.hardware.security.keymint-service.trusty_tee \
 
-PRODUCT_PACKAGES += \
-    $(LOCAL_KEYMINT_PRODUCT_PACKAGE) \
+    ifeq ($(findstring $(TRUSTY_SYSTEM_VM),secure nonsecure),$(TRUSTY_SYSTEM_VM))
+        PRODUCT_PACKAGES += \
+            android.hardware.security.keymint-service.trusty_system_vm \
+
+    endif
+
+else
+    # when not using vendor apex, only one keymint HAL shall be selected
+    ifeq ($(findstring $(TRUSTY_SYSTEM_VM),secure nonsecure),$(TRUSTY_SYSTEM_VM))
+        PRODUCT_PACKAGES += \
+            android.hardware.security.keymint-service.trusty_system_vm \
+
+    else
+        ifeq ($(TRUSTY_KEYMINT_IMPL),rust)
+            PRODUCT_PACKAGES += \
+                android.hardware.security.keymint-service.rust.trusty
+        else
+            # Default to the C++ implementation
+            PRODUCT_PACKAGES += \
+                android.hardware.security.keymint-service.trusty \
+
+        endif
+    endif
+endif
