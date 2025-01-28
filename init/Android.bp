@@ -242,6 +242,14 @@ cc_defaults {
             ],
         },
     },
+    product_variables: {
+        debuggable: {
+            cppflags: [
+                "-UALLOW_REMOUNT_OVERLAYS",
+                "-DALLOW_REMOUNT_OVERLAYS=1",
+            ],
+        },
+    },
 }
 
 cc_library_static {
