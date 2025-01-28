@@ -85,8 +85,6 @@ cc_library_static {
         "libext4_utils",
         "libsnapshot_cow",
         "liburing",
-        "libprocessgroup",
-        "libprocessgroup_util",
         "libjsoncpp",
     ],
     export_include_dirs: ["include"],
