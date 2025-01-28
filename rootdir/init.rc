@@ -519,10 +519,6 @@ on late-init
     # /data, which in turn can only be loaded when system properties are present.
     trigger post-fs-data
 
-    # Should be before netd, but after apex, properties and logging is available.
-    trigger load-bpf-programs
-    trigger bpf-progs-loaded
-
     # Now we can start zygote.
     trigger zygote-start
 
@@ -1010,6 +1006,15 @@ on post-fs-data
     # Create directories for boot animation.
     mkdir /data/misc/bootanim 0755 system system
 
+    # This should be started after:
+    # - /sys/fs/bpf is already mounted,
+    # - apex (incl. rollback) is initialized (so that we can load bpf
+    #   programs shipped as part of apex mainline modules)
+    # - logd is ready for us to log stuff
+    # As this takes a long time, this should be started as soon as possible in a non-blocking way.
+    # Commands that depend on this completion should wait on `bpf.progs_loaded` property.
+    start bpfloader
+
     exec_start derive_sdk
 
     init_user0
@@ -1064,25 +1069,13 @@ on post-fs-data
 on property:vold.checkpoint_committed=1
     trigger post-fs-data-checkpointed
 
-# It is important that we start bpfloader after:
-#   - /sys/fs/bpf is already mounted,
-#   - apex (incl. rollback) is initialized (so that we can load bpf
-#     programs shipped as part of apex mainline modules)
-#   - logd is ready for us to log stuff
-#
-# At the same time we want to be as early as possible to reduce races and thus
-# failures (before memory is fragmented, and cpu is busy running tons of other
-# stuff) and we absolutely want to be before netd and the system boot slot is
-# considered to have booted successfully.
-on load-bpf-programs
-    exec_start bpfloader
-
-on bpf-progs-loaded
-    start netd
-
 # It is recommended to put unnecessary data/ initialization from post-fs-data
 # to start-zygote in device's init.rc to unblock zygote start.
 on zygote-start
+    # netd needs to start after bpfloader completes.
+    wait_for_prop bpf.progs_loaded 1
+    start netd
+
     wait_for_prop odsign.verification.done 1
     # A/B update verifier that marks a successful boot.
     exec_start update_verifier
@@ -1250,7 +1243,7 @@ on property:net.tcp_def_init_rwnd=*
 # controlling access. On older kernels, the paranoid value is the only means of
 # controlling access. It is normally 3 (allow only root), but the shell user
 # can lower it to 1 (allowing thread-scoped pofiling) via security.perf_harden.
-on load-bpf-programs && property:sys.init.perf_lsm_hooks=1
+on post-fs-data && property:sys.init.perf_lsm_hooks=1
     write /proc/sys/kernel/perf_event_paranoid -1
 on property:security.perf_harden=0 && property:sys.init.perf_lsm_hooks=""
     write /proc/sys/kernel/perf_event_paranoid 1
