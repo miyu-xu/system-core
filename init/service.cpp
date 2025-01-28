@@ -486,12 +486,6 @@ Result<void> Service::CheckConsole() {
 
 // Configures the memory cgroup properties for the service.
 void Service::ConfigureMemcg() {
-    if (swappiness_ != -1) {
-        if (!setProcessGroupSwappiness(uid(), pid_, swappiness_)) {
-            PLOG(ERROR) << "setProcessGroupSwappiness failed";
-        }
-    }
-
     if (soft_limit_in_bytes_ != -1) {
         if (!setProcessGroupSoftLimit(uid(), pid_, soft_limit_in_bytes_)) {
             PLOG(ERROR) << "setProcessGroupSoftLimit failed";
@@ -721,7 +715,7 @@ Result<void> Service::Start() {
     process_cgroup_empty_ = false;
 
     if (CgroupsAvailable()) {
-        bool use_memcg = swappiness_ != -1 || soft_limit_in_bytes_ != -1 || limit_in_bytes_ != -1 ||
+        bool use_memcg = soft_limit_in_bytes_ != -1 || limit_in_bytes_ != -1 ||
                          limit_percent_ != -1 || !limit_property_.empty();
         errno = -createProcessGroup(uid(), pid_, use_memcg);
         if (errno != 0) {
