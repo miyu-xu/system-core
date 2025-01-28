@@ -60,7 +60,6 @@ class ServiceParser : public SectionParser {
     Result<void> ParseMemcgLimitPercent(std::vector<std::string>&& args);
     Result<void> ParseMemcgLimitProperty(std::vector<std::string>&& args);
     Result<void> ParseMemcgSoftLimitInBytes(std::vector<std::string>&& args);
-    Result<void> ParseMemcgSwappiness(std::vector<std::string>&& args);
     Result<void> ParseNamespace(std::vector<std::string>&& args);
     Result<void> ParseProcessRlimit(std::vector<std::string>&& args);
     Result<void> ParseRebootOnFailure(std::vector<std::string>&& args);

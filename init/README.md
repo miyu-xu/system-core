@@ -309,8 +309,7 @@ runs the service.
   which must be equal or greater than 0.
 
 `memcg.swappiness <value>`
-> Sets the child's memory.swappiness to the specified value (only if memcg is mounted),
-  which must be equal or greater than 0.
+> (This action is deprecated and no-op.)
 
 `namespace <pid|mnt>`
 > Enter a new PID or mount namespace when forking the service.

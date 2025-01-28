@@ -218,7 +218,6 @@ class Service {
 
     int oom_score_adjust_;
 
-    int swappiness_ = -1;
     int soft_limit_in_bytes_ = -1;
 
     int limit_in_bytes_ = -1;
