@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c584e2_fc6e892b",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-29T11:19:26Z",
+      "side": 0,
+      "message": "Instead of removing this completely, can we emit a warning message saying that this is deprecated and is no-op?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 14
+      },
+      "revId": "e78faceb8472b8286518122fd234c6f8dbf4877e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
