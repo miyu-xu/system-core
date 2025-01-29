@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c10acc_715a76a0",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-01-29T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6916339_125de606",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 45
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e1b16a2_c47945fe",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-01-29T11:16:56Z",
       "side": 1,
       "message": "You could instead add `overlay_remounter` here so that you don\u0027t have to touch the `build` directory, and also can keep the fact that overlay_remounter is an impl detail of `init`.\n\n```\nrequired: [\n   \"init_second_stage,\n] + select(product_variable(\"debuggable\"), {\n   true: [\"overlay_remounter\"],\n   false: [],\n}),\n```",
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a286a73_3891387c",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-01-29T21:11:53Z",
+      "side": 1,
+      "message": "I tried this, and indeed the lines are now in the Android.bp file, but it did not remove the need to edit the build/make files. I don\u0027t know if I did something wrong.",
+      "parentUuid": "8e1b16a2_c47945fe",
       "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f583e40_6c1b7286",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-01-29T21:11:53Z",
+      "side": 1,
+      "message": "This is the normal case so I decided not to add log spam here.",
+      "parentUuid": "b6a1fed4_cd4541d6",
+      "range": {
+        "startLine": 718,
+        "startChar": 23,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4340ee_99beb477",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-01-29T11:16:56Z",
       "side": 1,
       "message": "Why not `PLOG`? Is it okay for us to proceed?",
+      "range": {
+        "startLine": 738,
+        "startChar": 8,
+        "endLine": 738,
+        "endChar": 11
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4305cb_d8b514ef",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-01-29T21:11:53Z",
+      "side": 1,
+      "message": "See ag/31241097 (the internal version) and my long exchange with enh about this exact matter.",
+      "parentUuid": "4e4340ee_99beb477",
       "range": {
         "startLine": 738,
         "startChar": 8,
