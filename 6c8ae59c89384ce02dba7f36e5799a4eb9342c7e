@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786d6e42_2b7a877b",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-29T18:38:09Z",
+      "side": 1,
+      "message": "If the resulting crate is going to be used by any apex creating their own sub-library, should we loosen this to `//packages/modules` so we don\u0027t need to keep adding exceptions?",
+      "revId": "6c8ae59c89384ce02dba7f36e5799a4eb9342c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
