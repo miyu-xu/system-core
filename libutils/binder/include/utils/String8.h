@@ -57,9 +57,6 @@ public:
                                 String8(const String8& o);
     explicit                    String8(const char* o);
     explicit                    String8(const char* o, size_t numChars);
-#ifdef HAS_STRING_VIEW
-    explicit                    String8(std::string_view o);
-#endif
 
     explicit                    String8(const String16& o);
     explicit                    String8(const char16_t* o);
@@ -377,9 +374,6 @@ inline String8::operator const char*() const
 }
 
 #ifdef HAS_STRING_VIEW
-
-inline String8::String8(std::string_view o) : String8(o.data(), o.length()) { }
-
 inline String8::operator std::string_view() const
 {
     return {mString, length()};
