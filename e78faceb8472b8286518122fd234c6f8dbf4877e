@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82e8e05_4a8ebf1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-29T00:19:22Z",
+      "side": 1,
+      "message": "with pleasure!",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "e78faceb8472b8286518122fd234c6f8dbf4877e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cd05e9_78a98a2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-01-29T00:19:22Z",
+      "side": 1,
+      "message": "Bug number please",
+      "revId": "e78faceb8472b8286518122fd234c6f8dbf4877e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
