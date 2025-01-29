@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6916339_125de606",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-29T11:16:56Z",
+      "side": 1,
+      "message": "Move this to L139?",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 45
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1b16a2_c47945fe",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-29T11:16:56Z",
+      "side": 1,
+      "message": "You could instead add `overlay_remounter` here so that you don\u0027t have to touch the `build` directory, and also can keep the fact that overlay_remounter is an impl detail of `init`.\n\n```\nrequired: [\n   \"init_second_stage,\n] + select(product_variable(\"debuggable\"), {\n   true: [\"overlay_remounter\"],\n   false: [],\n}),\n```",
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a1fed4_cd4541d6",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-29T11:16:56Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to log this case for debuggability?",
+      "range": {
+        "startLine": 718,
+        "startChar": 23,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4340ee_99beb477",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-29T11:16:56Z",
+      "side": 1,
+      "message": "Why not `PLOG`? Is it okay for us to proceed?",
+      "range": {
+        "startLine": 738,
+        "startChar": 8,
+        "endLine": 738,
+        "endChar": 11
+      },
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
