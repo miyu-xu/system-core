@@ -52,6 +52,24 @@
       "parentUuid": "0283560f_a9a4ffea",
       "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f321d6bb_9f4f86b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2025-01-29T20:22:50Z",
+      "side": 1,
+      "message": "HealthInfo comes from the AIDL type in this case; I don\u0027t think it is POD. It looks something like this: https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/vndk/v33/arm/include/generated-headers/hardware/interfaces/health/aidl/android.hardware.health-V1-ndk-source/gen/include/aidl/android/hardware/health/HealthInfo.h (this is an old snapshot though, but the structure should be similar)\n\nIn this case, do we care?",
+      "parentUuid": "bb85fcfe_e9a24941",
+      "revId": "7bbda25e83cc42d029e0f51e42faa01ba3251203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
