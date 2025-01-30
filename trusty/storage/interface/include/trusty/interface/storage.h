@@ -55,6 +55,8 @@ enum storage_cmd {
 	STORAGE_END_TRANSACTION = 9 << STORAGE_REQ_SHIFT,
 
 	STORAGE_FILE_GET_MAX_SIZE = 12 << STORAGE_REQ_SHIFT,
+
+	STORAGE_CHECKPOINTING_STATE = 13 << STORAGE_REQ_SHIFT,
 };
 
 /**
@@ -289,6 +291,15 @@ struct storage_rpmb_send_req {
 struct storage_rpmb_send_resp {
 	uint8_t data[0];
 };
+
+/**
+ * struct storage_checkpointing_state_resp: response type for STORAGE_CHECKPOINTING_STATE
+ * @data: Zero if /data is known to not be checkpointing. Positive if there is an active checkpoint
+ *        or if the system doesn't yet know whether checkpointing will be needed.
+ */
+ struct storage_checkpointing_state_resp {
+	uint8_t data;
+ };
 
 /**
  * struct storage_msg - generic req/resp format for all storage commands
