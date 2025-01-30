@@ -23,10 +23,22 @@
 #include <string>
 
 #include <libgsi/libgsi.h>
+#include <aidl/android/system/vold/IVold.h>
+#include <aidl/android/system/vold/BnVoldCheckpointListener.h>
 
 namespace {
 
 bool checkpointingDoneForever = false;
+
+std::atomic<bool> voldPossibleCheckpointing = true;
+
+class VoldListener : public BnVoldCheckpointListener {
+   public:
+    ScopedAStatus onCheckpointingComplete() final {
+        assert(voldPossibleCheckpointing);
+        voldPossibleCheckpointing.store(false);
+    }
+};
 
 }  // namespace
 
@@ -89,4 +101,37 @@ int is_data_checkpoint_active(bool* active) {
 bool is_gsi_running() {
     /* TODO(b/210501710): Expose GSI image running state to vendor storageproxyd */
     return !access(android::gsi::kGsiBootedIndicatorFile, F_OK);
+}
+
+int vold_connect() {
+    auto binder = ndk::SpAIBinder(AServiceManager_waitForService("android.system.vold.IVold/default"));
+    auto vold = IVold::fromBinder(binder);
+
+    CheckpointingState state;
+    ScopedAStatus ret = vold->registerCheckpointListener(SharedRefBase::make<VoldListener>(), &state);
+    if (!ret.isOk()) {
+        ALOGE("Could not register VoldCheckpointListener: %s\n", ret.getDescription().c_str());
+        return ret.getExceptionCode();
+    }
+
+    if (state == CheckpointingState::CHECKPOINTING_COMPLETE) {
+        voldPossibleCheckpointing.store(false);
+    }
+    return 0;
+}
+
+int checkpointing_state(struct storage_msg* msg, const void* _r, size_t req_len, struct watcher* watcher) {
+    if (req_len != 0) {
+        ALOGW("malformed rpmb request: invalid length (%zu < %zu)\n", req_len, 0);
+        msg->result = STORAGE_ERR_NOT_VALID;
+        goto err_response;
+    }
+
+    msg->result = STORAGE_NO_ERROR;
+    struct storage_checkpointing_state_resp resp;
+    resp.data = voldPossibleCheckpointing.load() ? 1 : 0;
+    return ipc_respond(msg, &resp, sizeof(resp));
+
+err_response:
+    return ipc_respond(msg, NULL, 0);
 }
