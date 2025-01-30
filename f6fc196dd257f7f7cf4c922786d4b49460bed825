@@ -34,6 +34,75 @@
       "parentUuid": "e99e0d81_36f46bf7",
       "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4cac61_11ddc3e7",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-30T01:00:12Z",
+      "side": 1,
+      "message": "We have a standard, structured way of parsing /proc/mounts, so it\u0027s a little unfortunate if it can\u0027t be used here. But it\u0027s not that much code.",
+      "parentUuid": "c1122fe4_b89d4d3d",
+      "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61929420_db557453",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-30T01:00:12Z",
+      "side": 1,
+      "message": "Since only one case is handled:\n\n    if (!android::base::StartsWith(line, \"overlay\")) {\n        continue;\n    }",
+      "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26451d2_71d7048c",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-30T01:00:12Z",
+      "side": 1,
+      "message": "Reduce some indentation:\n\n    if (result \u003d umount(); result \u003d\u003d -1) {\n        PLOG(FATAL) ...\n    }",
+      "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fba1717_fc6c2a3b",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-01-30T01:00:12Z",
+      "side": 1,
+      "message": "std::string s;",
+      "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
