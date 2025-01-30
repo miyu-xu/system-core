@@ -55,6 +55,8 @@ enum storage_cmd {
     STORAGE_END_TRANSACTION = 9 << STORAGE_REQ_SHIFT,
 
     STORAGE_FILE_GET_MAX_SIZE = 12 << STORAGE_REQ_SHIFT,
+
+    STORAGE_CHECKPOINTING_STATE = 13 << STORAGE_REQ_SHIFT,
 };
 
 /**
@@ -288,6 +290,29 @@ struct storage_rpmb_send_req {
  */
 struct storage_rpmb_send_resp {
     uint8_t data[0];
+};
+
+/**
+ * enum storage_checkpoint_state:
+ * @STORAGE_CHECKPOINT_STATE_UNKNOWN:  `storageproxyd` was not able to request checkpointing
+ *                                     information from the system.
+ * @STORAGE_CHECKPOINT_STATE_DONE:     /data is not checkpointing state.
+ * @STORAGE_CHECKPOINT_STATE_POSSIBLE: /data may be in a checkpointing state.
+ *
+ * Other values are reserved for future use.
+ */
+enum storage_checkpoint_state : uint8_t {
+    STORAGE_CHECKPOINT_STATE_UNKNOWN = 0x00,
+    STORAGE_CHECKPOINT_STATE_DONE = 0x01,
+    STORAGE_CHECKPOINT_STATE_POSSIBLE = 0x02,
+};
+
+/**
+ * struct storage_checkpointing_state_resp: response type for STORAGE_CHECKPOINTING_STATE
+ * @data: Value of type &enum storage_checkpoint_state describing the current state
+ */
+struct storage_checkpointing_state_resp {
+    uint8_t data;
 };
 
 /**

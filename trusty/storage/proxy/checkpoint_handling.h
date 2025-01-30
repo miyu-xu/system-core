@@ -17,6 +17,11 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
+
+#include <trusty/interface/storage.h>
+
+#include "watchdog.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,6 +38,11 @@ extern "C" {
 int is_data_checkpoint_active(bool* active);
 
 bool is_gsi_running();
+
+int vold_connect();
+
+int checkpointing_get_state(struct storage_msg* msg, const void* r, size_t req_len,
+                            struct watcher* watcher);
 
 #ifdef __cplusplus
 }
