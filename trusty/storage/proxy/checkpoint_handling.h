@@ -17,6 +17,11 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
+
+#include <trusty/interface/storage/storage.h>
+
+#include "watchdog.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,6 +38,26 @@ extern "C" {
 int is_data_checkpoint_active(bool* active);
 
 bool is_gsi_running();
+
+/**
+ * vold_connect - Connect to android.system.vold.IVold.
+ *
+ * Return: 0 on success or a negative value if connecting failed.
+ */
+int vold_connect();
+
+/**
+ * checkpointing_get_state - Respond to an incomming STORAGE_CHECKPOINTING_STATE request
+ *
+ * @msg: The incoming message with cmd set to STORAGE_CHECKPOINTING_STATE
+ * @req: The message's request data. Unused because checkpointing state has no specific data.
+ * @req_len: The length of the message's request data. Should be 0.
+ * @watcher: Watcher used to track the request's progress.
+ *
+ * Return: 0 on success or a negative error code value on failure.
+ */
+int checkpointing_get_state(struct storage_msg* msg, const void* req, size_t req_len,
+                            struct watcher* watcher);
 
 #ifdef __cplusplus
 }
