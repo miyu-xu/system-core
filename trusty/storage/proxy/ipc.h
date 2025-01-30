@@ -18,7 +18,15 @@
 #include <stdint.h>
 #include <trusty/interface/storage.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int ipc_connect(const char *device, const char *service_name);
 void ipc_disconnect(void);
 ssize_t ipc_get_msg(struct storage_msg *msg, void *req_buf, size_t req_buf_len);
 int ipc_respond(struct storage_msg *msg, void *out, size_t out_size);
+
+#ifdef __cplusplus
+}
+#endif
