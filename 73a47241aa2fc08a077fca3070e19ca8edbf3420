@@ -83,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3eaed0_09a24750",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-30T14:21:41Z",
+      "side": 1,
+      "message": "Thanks for trying. I don\u0027t understand why this change alone wasn\u0027t enough. I am fine with submithig this as is, and find out the reason later.",
+      "parentUuid": "3a286a73_3891387c",
+      "revId": "73a47241aa2fc08a077fca3070e19ca8edbf3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6a1fed4_cd4541d6",
