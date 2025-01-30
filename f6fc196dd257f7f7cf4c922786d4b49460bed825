@@ -16,6 +16,24 @@
       "message": "Should this use ReadProcMounts() instead? It will also handle all of this parsing for you...",
       "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1122fe4_b89d4d3d",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-01-30T00:16:40Z",
+      "side": 1,
+      "message": "That seems to be a far more complex solution than this. And at the moment it doesn\u0027t seem to handle the overlayfs options other than lowerdir. I\u0027m not seeing what we gain from this.",
+      "parentUuid": "e99e0d81_36f46bf7",
+      "revId": "f6fc196dd257f7f7cf4c922786d4b49460bed825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
