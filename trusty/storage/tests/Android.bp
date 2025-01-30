@@ -40,3 +40,25 @@ cc_test {
 
     srcs: ["main.cpp"],
 }
+
+cc_test {
+    name: "storageproxyd-unit-test",
+    vendor: true,
+
+    cflags: [
+        "-g",
+        "-Wall",
+        "-Werror",
+        "-Wno-missing-field-initializers",
+    ],
+
+    static_libs: [
+        "libtrustystorageinterface",
+    ],
+
+    shared_libs: [
+        "liblog",
+    ],
+
+    srcs: ["proxy.cpp"],
+}

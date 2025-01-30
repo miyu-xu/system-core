@@ -196,6 +196,9 @@ static int handle_req(struct storage_msg* msg, const void* req, size_t req_len) 
             rc = rpmb_send(msg, req, req_len, watcher);
             break;
 
+        case STORAGE_CHECKPOINTING_STATE:
+            rc = checkpointing_get_state(msg, req, req_len, watcher);
+
         default:
             ALOGE("unhandled command 0x%x\n", msg->cmd);
             msg->result = STORAGE_ERR_UNIMPLEMENTED;
@@ -307,29 +310,36 @@ int main(int argc, char* argv[]) {
     parse_args(argc, argv);
 
     /*
-     * Start binder threadpool. At least one extra binder thread is needed to
-     * connect to the wakelock service without relying on polling. If we poll on
-     * the main thread we end up pausing for at least 1s even if the service
-     * starts faster. We set the max thread count to 0 because startThreadPool
-     * "Starts one thread, PLUS those requested in setThreadPoolMaxThreadCount,
-     * PLUS those manually requested in joinThreadPool." We only need a single
-     * binder thread to receive notifications on.
+     * Start binder threadpool. We need at least two threads to receive notifications
+     * without relying on polling, one thread for wakelock and another for vold.
+     * If we poll for wakelock on the main thread we end up pausing for at least 1s even if the
+     * service starts faster. We set the max thread count to 1 because startThreadPool "Starts one
+     * thread, PLUS those requested in setThreadPoolMaxThreadCount, PLUS those manually requested in
+     * joinThreadPool," giving us the required total of 2.
      */
-    ABinderProcess_setThreadPoolMaxThreadCount(0);
+    ABinderProcess_setThreadPoolMaxThreadCount(1);
     ABinderProcess_startThreadPool();
 
+    ALOGI("wcarv calling storage_init");
     /* initialize secure storage directory */
     rc = storage_init(ss_data_root, storage_mapping_head, max_file_size_from);
     if (rc < 0) return EXIT_FAILURE;
 
+    ALOGI("wcarv calling rpmb_open");
     /* open rpmb device */
     rc = rpmb_open(rpmb_devname, dev_type);
     if (rc < 0) return EXIT_FAILURE;
 
+    ALOGI("wcarv calling ipc_connect");
     /* connect to Trusty secure storage server */
     rc = ipc_connect(trusty_devname, ss_srv_name);
     if (rc < 0) return EXIT_FAILURE;
 
+    ALOGI("wcarv calling vold_connect");
+    rc = vold_connect();
+    if (rc < 0) return EXIT_FAILURE;
+
+    ALOGI("wcarv calling proxy_loop");
     /* enter main loop */
     rc = proxy_loop();
     ALOGE("exiting proxy loop with status (%d)\n", rc);

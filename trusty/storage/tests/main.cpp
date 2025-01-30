@@ -3036,4 +3036,3 @@ TEST_P(StorageServiceTest, Transact2_Write_Write_Discard_Discard) {
 
     storage_delete_file(session_, fname, STORAGE_OP_COMPLETE);
 }
-
