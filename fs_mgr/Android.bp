@@ -90,6 +90,7 @@ cc_defaults {
         "libavb",
         "libfs_avb",
         "libgsi",
+        "mmd_flags_c_lib",
     ],
     export_static_lib_headers: [
         "libfs_avb",
