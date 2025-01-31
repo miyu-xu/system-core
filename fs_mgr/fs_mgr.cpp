@@ -2032,6 +2032,14 @@ bool fs_mgr_swapon_all(const Fstab& fstab) {
         }
 
         if (entry.zram_size > 0) {
+            if (android::base::GetBoolProperty("mmd.zram.enabled", false)) {
+                // Skip zram setup since zram is managed by mmd.
+                // TODO: b/394484720 - Make this log as warning after mmd is launched.
+                LINFO << "Skip setting up zram because mmd sets up zram instead.";
+                continue;
+            } else {
+                LWARNING << "mmd is recommended to set up zram over swapon_all command.";
+            }
             if (!PrepareZramBackingDevice(entry.zram_backingdev_size)) {
                 LERROR << "Failure of zram backing device file for '" << entry.blk_device << "'";
             }
