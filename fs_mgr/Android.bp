@@ -85,6 +85,7 @@ cc_defaults {
         "liblog",
         "liblp",
         "libselinux",
+        "mmd_flags_c_lib",
     ],
     static_libs: [
         "libavb",
