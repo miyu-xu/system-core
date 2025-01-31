@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb96e64_94706f1b",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-01-31T09:33:55Z",
+      "side": 0,
+      "message": "This was added in CL:2283372.",
+      "range": {
+        "startLine": 1253,
+        "startChar": 3,
+        "endLine": 1253,
+        "endChar": 20
+      },
+      "revId": "20e20881f5069a65dd0f0a02b2782d3e8adea330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
