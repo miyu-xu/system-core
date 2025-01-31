@@ -46,6 +46,7 @@
 #include <utility>
 #include <vector>
 
+#include <MmdProperties.sysprop.h>
 #include <android-base/chrono_utils.h>
 #include <android-base/file.h>
 #include <android-base/properties.h>
@@ -2023,6 +2024,11 @@ static bool PrepareZramBackingDevice(off64_t size) {
     return InstallZramDevice(loop_device);
 }
 
+// This is a copy from util.h in libinit
+static bool IsRecovery() {
+    return access("/system/bin/recovery", F_OK) == 0;
+}
+
 bool fs_mgr_swapon_all(const Fstab& fstab) {
     bool ret = true;
     for (const auto& entry : fstab) {
@@ -2032,6 +2038,67 @@ bool fs_mgr_swapon_all(const Fstab& fstab) {
         }
 
         if (entry.zram_size > 0) {
+            if (IsRecovery()) {
+                // swapon_all continue to support zram setup in recovery mode after mmd launch.
+            } else {
+                // Since AConfig does not support to load the status from init, we use the system
+                // property "mmd.enabled_aconfig" copied from AConfig by `mmd --set-property`
+                // command to check whether mmd is enabled or not.
+                //
+                // aconfig_prop can have either of:
+                //
+                // * "true": mmd is enabled by AConfig
+                // * "false": mmd is disabled by AConfig
+                // * "": swapon_all is executed before `mmd --set-property`
+                //
+                // During mmd being launched, we request OEMs, who decided to use mmd to set up
+                // zram, to execute swapon_all after "mmd.enabled_aconfig" system property is
+                // initialized.
+                //
+                // After mmd is launched, we deprecate swapon_all command for setting up zram but
+                // recommend to use `mmd --setup-zram`. It means that the system should call
+                // swapon_all with fstab with no zram entry or the system should never call
+                // swapon_all.
+                //
+                // As a transition, OEMs can use the deprecated swapon_all to set up zram for
+                // several versions after mmd is launched. swapon_all command will show warning
+                // logs during the transition period.
+                const std::string aconfig_prop =
+                        android::base::GetProperty("mmd.enabled_aconfig", "");
+                if (aconfig_prop == "false") {
+                    // It is expected to swapon_all command to set up zram before mmd is launched.
+                    LOG(DEBUG) << "mmd is not launched yet. swapon_all setup zram.";
+                } else if (android::sysprop::MmdProperties::mmd_zram_enabled().value()) {
+                    if (aconfig_prop == "true") {
+                        // Skip zram setup since zram is managed by mmd.
+                        //
+                        // We expect swapon_all is not called when mmd is enabled by AConfig flag.
+                        // TODO: b/394484720 - Make this log as warning after mmd is launched.
+                        LINFO << "Skip setting up zram because mmd sets up zram instead.";
+                        continue;
+                    } else {
+                        // This branch is for aconfig_prop == ""
+
+                        // On the system which uses mmd to setup zram, swapon_all must be executed
+                        // after mmd.enabled_aconfig is initialized.
+                        LERROR << "swapon_all must be called after mmd.enabled_aconfig system "
+                                  "property is initialized";
+                        // Since we don't know whether mmd is enabled on the system or not, we
+                        // fall back to enable zram from swapon_all conservatively. Both swapon_all
+                        // and `mmd --setup-zram` command trying to set up zram does not break the
+                        // system but just either ends up failing.
+                    }
+                } else {
+                    // We show the warning log for swapon_all deprecation on both aconfig_prop is
+                    // "true" and "" cases.
+                    // If mmd is enabled, swapon_all is already deprecated.
+                    // If aconfig_prop is "", we don't know whether mmd is launched or not. But we
+                    // show the deprecation warning log conservatively.
+                    LWARNING << "mmd is recommended to set up zram over swapon_all command with "
+                                "fstab entry.";
+                }
+            }
+
             if (!PrepareZramBackingDevice(entry.zram_backingdev_size)) {
                 LERROR << "Failure of zram backing device file for '" << entry.blk_device << "'";
             }
