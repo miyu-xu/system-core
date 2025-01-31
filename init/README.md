@@ -785,6 +785,28 @@ provides the `aidl_lazy_test_1` interface.
   fstab.${ro.hardware} or fstab.${ro.hardware.platform} will be scanned for
   under /odm/etc, /vendor/etc, or / at runtime, in that order.
 
+> swapon_all is deprecated to set up zram after mmd is launched. swapon_all
+  ignores zram entry in fstab if mmd is enabled by AConfig flag and
+  `mmd.zram.enabled` sysprop is enabled.
+
+> OEMs, who decided to use mmd to manage zram, must remove zram entry from fstab
+  or remove swapon_all call from their init script.
+
+> Devices in Teamfood and Trunkfood during mmd launch needs to have both zram
+  setup configurations of swapon_all and mmd on the device. The system is
+  switched by `mmd_enabled` AConfig flag. Due to the AConfig flag limitation
+  that AConfig does not support referencing from init, swapon_all checks
+  `mmd.enabled_aconfig` sysprop which `/system/bin/mmd --set-property` command
+  copies the AConfig flag to instead of the AConfig flag directly. The devices
+  which has the 2 zram setup configurations should wait to execute swapon_all
+  until `mmd.enabled_aconfig` sysprop is initialized by
+  `property:mmd.enabled_aconfig=*` trigger.
+
+> swapon_all continues to support setting up non-zram swap devices.
+
+> swapon_all on recovery mode continues to support setting up zram because mmd
+  does not support the recovery mode.
+
 `swapoff <path>`
 > Stops swapping to the file or block device specified by path.
 

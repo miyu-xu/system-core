@@ -76,6 +76,7 @@ cc_defaults {
         ":libfiemap_srcs",
     ],
     shared_libs: [
+        "libMmdProperties",
         "libbase",
         "libcrypto",
         "libcrypto_utils",
