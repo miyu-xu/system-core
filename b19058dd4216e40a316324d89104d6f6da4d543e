@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7174b22_ed2914d2",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1943561
+      },
+      "writtenOn": "2025-01-31T17:52:20Z",
+      "side": 1,
+      "message": "Maybe add some logging here? This would help in the case where vendor tries to migrate from swapon_all to mmd after mmd is released, but forget removing swapon_all command from their init file during their migration.",
+      "range": {
+        "startLine": 2037,
+        "startChar": 20,
+        "endLine": 2037,
+        "endChar": 68
+      },
+      "revId": "b19058dd4216e40a316324d89104d6f6da4d543e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
