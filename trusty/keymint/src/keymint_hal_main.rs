@@ -98,9 +98,10 @@ fn main() {
 fn inner_main() -> Result<(), HalServiceError> {
     let args = Args::parse();
     // Initialize Android logging.
+    let instance_name = args.dev.replace("/dev/trusty-ipc-dev", "TIPC");
     android_logger::init_once(
         android_logger::Config::default()
-            .with_tag("keymint-hal-trusty")
+            .with_tag(format!("keymint-hal:{}", instance_name))
             .with_max_level(log::LevelFilter::Info)
             .with_log_buffer(android_logger::LogId::System),
     );
