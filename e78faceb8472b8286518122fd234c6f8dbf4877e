@@ -46,6 +46,30 @@
       },
       "revId": "e78faceb8472b8286518122fd234c6f8dbf4877e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b994b817_d145b396",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-02-03T18:01:37Z",
+      "side": 0,
+      "message": "Warning added in the new parent commit.",
+      "parentUuid": "51520278_56e8078d",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 14
+      },
+      "revId": "e78faceb8472b8286518122fd234c6f8dbf4877e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
