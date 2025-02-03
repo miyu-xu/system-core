@@ -22,6 +22,30 @@
       },
       "revId": "b19058dd4216e40a316324d89104d6f6da4d543e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd42df2a_90407059",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-03T08:31:26Z",
+      "side": 1,
+      "message": "I don\u0027t prefer to log warnings for users who is a following correct way (i.e. Pixel internal OEM).\n\nAt least mmd being launched during nextfood and trunkfood, this path shows the warning log.\n\nI think we should add the warning log after we launch mmd 100%.",
+      "parentUuid": "f7174b22_ed2914d2",
+      "range": {
+        "startLine": 2037,
+        "startChar": 20,
+        "endLine": 2037,
+        "endChar": 68
+      },
+      "revId": "b19058dd4216e40a316324d89104d6f6da4d543e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
