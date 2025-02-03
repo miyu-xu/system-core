@@ -16,6 +16,24 @@
       "message": "Any reason not to log as ERROR?",
       "revId": "50fdec65a36fd4ba392343017cba62cba3f66c3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf52f332_82686e30",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-02-03T18:22:34Z",
+      "side": 1,
+      "message": "Here I think it makes sense to keep it WARNING since no behavior is actually changing yet. But changing it to `ERROR` in the next commit where it is actually deprecated in some future Android version sounds good to me.",
+      "parentUuid": "1f3bf3fc_f5f6034d",
+      "revId": "50fdec65a36fd4ba392343017cba62cba3f66c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
