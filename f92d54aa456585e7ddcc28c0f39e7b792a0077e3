@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d7dc75_b3e466b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-02-03T18:20:50Z",
+      "side": 1,
+      "message": "please confirm this won\u0027t break the 16 KB dev option devices",
+      "revId": "f92d54aa456585e7ddcc28c0f39e7b792a0077e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
