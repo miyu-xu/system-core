@@ -3,6 +3,107 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44fdb2da_bc3ce0c9",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-03T20:08:23Z",
+      "side": 1,
+      "message": "Can controller be activated after the first call to this function when `state_` is determined?",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0c30b28c_8d72798b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "bool CgroupControllerWrapper::IsUsable() {\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 79,
+                "endChar": 0
+              },
+              "replacement": "            state_ \u003d IsUsableV2();\n        }\n    }\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 80,
+                "startChar": 0,
+                "endLine": 83,
+                "endChar": 0
+              },
+              "replacement": "    return state_ \u003d\u003d USABLE;\n}\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 84,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "bool CgroupControllerWrapper::IsUsableV2() {\n    const std::string root_cgroup_procs_path \u003d GetProcsFilePath(\"\", 0, 0);\n    if (access(root_cgroup_procs_path.c_str(), F_OK) !\u003d 0) {\n        return false;\n    }\n\n    if (controller_-\u003eflags() \u0026 CGROUPRC_CONTROLLER_FLAG_NEEDS_ACTIVATION) {\n        const std::string root_cgroup_controllers_path \u003d\n            std::string(controller_-\u003epath()).append(\"/cgroup.controllers\");\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 91,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": "        std::string controllers;\n        if (!ReadFileToString(root_cgroup_controllers_path, \u0026controllers)) {\n            PLOG(WARNING) \u003c\u003c \"Could not read: \" \u003c\u003c root_cgroup_controllers_path;\n            return false;\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 96,
+                "startChar": 0,
+                "endLine": 96,
+                "endChar": 0
+              },
+              "replacement": "\n        return controllers.contains(controller_-\u003ename());\n    } else {\n        return true;\n"
+            },
+            {
+              "path": "libprocessgroup/cgroup_map.cpp",
+              "range": {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 99,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6ec679b_049292ee",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 2
@@ -196,6 +297,71 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb08908_6fe4a474",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-03T20:08:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "35751d29_1ccf1bad",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 15
+      },
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf11847_b4c8457a",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-03T20:08:23Z",
+      "side": 1,
+      "message": "can we cache the result into a static variable and return that value on consequitive calls?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c9755469_62816ec9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprocessgroup/processgroup.cpp",
+              "range": {
+                "startLine": 206,
+                "startChar": 0,
+                "endLine": 208,
+                "endChar": 0
+              },
+              "replacement": "    static bool memcg_v1 \u003d []() {\n        const CgroupControllerWrapper descriptor \u003d CgroupMap::GetInstance().FindController(\"memory\");\n        return descriptor.IsUsable() \u0026\u0026 descriptor.version() \u003d\u003d 1;\n    }();\n    return memcg_v1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cafdaff2_8588f178",
@@ -361,6 +527,30 @@
       "side": 1,
       "message": "swappiness is only supported on v1. The other two have v2 equivalents which will work in either case (although their names still refer to the v1 names so callers aren\u0027t required to rebuild).",
       "parentUuid": "cafdaff2_8588f178",
+      "range": {
+        "startLine": 773,
+        "startChar": 8,
+        "endLine": 773,
+        "endChar": 26
+      },
+      "revId": "b35372e0c853d37ed3242960cf0b0bf09e7300e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee28bc85_37efdc42",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-03T20:08:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dbf15f37_c10a3f6d",
       "range": {
         "startLine": 773,
         "startChar": 8,
