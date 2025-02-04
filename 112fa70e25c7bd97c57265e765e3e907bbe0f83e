@@ -70,6 +70,30 @@
       },
       "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c277f1e9_ec532ed6",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1964171
+      },
+      "writtenOn": "2025-02-04T22:54:45Z",
+      "side": 1,
+      "message": "oops you\u0027re right, thought you meant after the quotations. done.",
+      "parentUuid": "96bf180e_935aac23",
+      "range": {
+        "startLine": 591,
+        "startChar": 88,
+        "endLine": 591,
+        "endChar": 89
+      },
+      "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
