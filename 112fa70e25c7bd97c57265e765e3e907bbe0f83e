@@ -22,6 +22,30 @@
       },
       "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b2fd11_a563f0f1",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1964171
+      },
+      "writtenOn": "2025-02-04T22:35:16Z",
+      "side": 1,
+      "message": "The whitespaces are matching the other help text",
+      "parentUuid": "1b37e13f_9c0de83e",
+      "range": {
+        "startLine": 591,
+        "startChar": 88,
+        "endLine": 591,
+        "endChar": 89
+      },
+      "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
