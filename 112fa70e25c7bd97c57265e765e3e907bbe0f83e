@@ -46,6 +46,30 @@
       },
       "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96bf180e_935aac23",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-04T22:44:53Z",
+      "side": 1,
+      "message": "no they\u0027re not? can you point to an example of what you mean?\n\n(i\u0027ll give L582 as an example of a line that _doesn\u0027t_ have trailing whitespace.)",
+      "parentUuid": "f2b2fd11_a563f0f1",
+      "range": {
+        "startLine": 591,
+        "startChar": 88,
+        "endLine": 591,
+        "endChar": 89
+      },
+      "revId": "112fa70e25c7bd97c57265e765e3e907bbe0f83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
