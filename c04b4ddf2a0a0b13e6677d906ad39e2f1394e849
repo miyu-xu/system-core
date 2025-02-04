@@ -16,6 +16,24 @@
       "message": "maybe need to update https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/core/fs_mgr/libsnapshot/scratch_super.cpp;l\u003d399;drc\u003d163780361ca5654cf088e61c66803cdc376c5bd6;bpv\u003d1;bpt\u003d1?q\u003dkOtaMetadataPartitionSize\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main too",
       "revId": "c04b4ddf2a0a0b13e6677d906ad39e2f1394e849",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f2d6dc_0408a4a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-04T23:25:49Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "c542199d_0617589f",
+      "revId": "c04b4ddf2a0a0b13e6677d906ad39e2f1394e849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
