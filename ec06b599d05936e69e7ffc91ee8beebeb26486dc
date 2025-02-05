@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab516cac_e30e361b",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2025-02-05T09:42:19Z",
+      "side": 1,
+      "message": "The VINTF check currently fails in CI:\n\n```\n...INFO] Fetch \u0027out/target/product/vsoc_arm64_only/obj/PACKAGING/check_vintf_all_intermediates/apex/com.android.hardware.keymint/etc/vintf/android.hardware.security.keymint-service.trusty.system.xml\u0027: OK\ngetDeviceHalManifest: status from fetching VINTF information: -2147483648\n...efault (@4) (from /apex/com.android.hardware.keymint/etc/vintf/android.hardware.security.keymint-service.trusty.system.xml). Check whether or not multiple modules providing the same HAL are installed.\nERROR: Cannot fetch vendor manifest.\n```\n\nThis failure likely occurs because the declaration is already included here as `vintf_fragments`. Consequently, no other apex can include it again, even as `prebuilt_etc`. A potential solution is to include the VINTF target as `prebuilt` within all apexes requiring it, similar to how KeyMint apexes are handled on cuttlefish.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "ec06b599d05936e69e7ffc91ee8beebeb26486dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
