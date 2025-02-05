@@ -33,6 +33,24 @@
       "message": "We also got this issue, reproduce rate is very low. this happens when device is wakeup from STR.\n\nWhen device enter STR during setprop (stop kernel timer), and wakeup from STR (start kernel timer), if wakeup, the resume and calling device driver resume callbacks, the overall time is larger than 2s, this issue happens.",
       "revId": "fb9e1c4554d7869995a1c197eb3ee60a0db3d025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb2c1d6_1ea34943",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1623611
+      },
+      "writtenOn": "2025-02-05T16:03:52Z",
+      "side": 1,
+      "message": "Thank you for the report!  I had not considered that possibility, but it explains a lot.  In the end, it was still necessary to retry the sysprop write.  The retry logic is in PropertyInvalidatedCache.java (for a while, now).",
+      "parentUuid": "a2871865_ae7433fb",
+      "revId": "fb9e1c4554d7869995a1c197eb3ee60a0db3d025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
