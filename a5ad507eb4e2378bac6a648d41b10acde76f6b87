@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccc402d_b92bdabb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-05T17:11:30Z",
+      "side": 1,
+      "message": "(superficially lgtm, but zhangkelvin presumably actually knows what this option does, and whether this is a good description, so i defer to him for +2 :-) )",
+      "revId": "a5ad507eb4e2378bac6a648d41b10acde76f6b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
