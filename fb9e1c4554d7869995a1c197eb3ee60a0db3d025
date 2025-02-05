@@ -16,6 +16,23 @@
       "message": "The crashes reported in the bug will be monitored after this commit, so verify that it fixes the problem.",
       "revId": "fb9e1c4554d7869995a1c197eb3ee60a0db3d025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2871865_ae7433fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327776
+      },
+      "writtenOn": "2025-02-05T09:58:27Z",
+      "side": 1,
+      "message": "We also got this issue, reproduce rate is very low. this happens when device is wakeup from STR.\n\nWhen device enter STR during setprop (stop kernel timer), and wakeup from STR (start kernel timer), if wakeup, the resume and calling device driver resume callbacks, the overall time is larger than 2s, this issue happens.",
+      "revId": "fb9e1c4554d7869995a1c197eb3ee60a0db3d025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
