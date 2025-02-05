@@ -22,7 +22,13 @@
 # For gatekeeper, we include the generic -service and -impl to use legacy
 # HAL loading of gatekeeper.trusty.
 
-$(call inherit-product, system/core/trusty/keymint/trusty-keymint.mk)
+ifeq ($(KEYMINT_HAL_VENDOR_APEX_SELECT),true)
+    $(call inherit-product, system/core/trusty/keymint/trusty-keymint-apex.mk)
+
+else
+    $(call inherit-product, system/core/trusty/keymint/trusty-keymint.mk)
+
+endif
 
 ifeq ($(SECRETKEEPER_ENABLED),true)
     LOCAL_SECRETKEEPER_PRODUCT_PACKAGE := android.hardware.security.secretkeeper.trusty
@@ -30,9 +36,15 @@ else
     LOCAL_SECRETKEEPER_PRODUCT_PACKAGE :=
 endif
 
+ifeq ($(GATEKEEPER_RUST_ENABLED),true)
+    LOCAL_GATEKEEPER_PRODUCT_PACKAGE := android.hardware.gatekeeper-service.rust.trusty
+else
+    LOCAL_GATEKEEPER_PRODUCT_PACKAGE := android.hardware.gatekeeper-service.trusty
+endif
+
 PRODUCT_PACKAGES += \
 	$(LOCAL_SECRETKEEPER_PRODUCT_PACKAGE) \
-	android.hardware.gatekeeper-service.trusty \
+	$(LOCAL_GATEKEEPER_PRODUCT_PACKAGE) \
 	trusty_apploader \
 
 PRODUCT_PROPERTY_OVERRIDES += \
