@@ -16,8 +16,8 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-cc_test {
-    name: "tipc-test",
+cc_defaults {
+    name: "tipc-test-defaults",
     vendor: true,
 
     srcs: ["tipc_test.c"],
@@ -27,9 +27,24 @@ cc_test {
         "liblog",
         "libtrusty",
     ],
-    gtest: false,
     cflags: [
         "-Wall",
         "-Werror",
     ],
+}
+
+cc_test {
+    name: "tipc-test",
+    defaults: [
+        "tipc-test-defaults",
+    ],
+    gtest: false,
+}
+
+cc_binary {
+    name: "tipc-test-bin",
+    defaults: [
+        "tipc-test-defaults",
+    ],
+    stem: "tipc-test",
 }
