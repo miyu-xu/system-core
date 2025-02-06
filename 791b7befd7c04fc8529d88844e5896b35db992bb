@@ -16,6 +16,24 @@
       "message": "How does nativetest64 end up in the vendor image? Normally it goes in /data. If there is a mechanism that puts tests in the microdroid vendor image without making them executable then I think that should be fixed. This would affect every test, not just thine one.",
       "revId": "791b7befd7c04fc8529d88844e5896b35db992bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47285384_ed3bae94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-02-06T01:25:35Z",
+      "side": 1,
+      "message": "When I added the `cc_test` `tipc-test` as a dependency of the microdroid vendor image, it put that file under `/vendor/nativetest64/tipc-test/tipc-test` but without making it executable.\n\nAfaict the cause for this is the `fs_config` setup at https://cs.android.com/android/platform/superproject/main/+/main:system/core/libcutils/fs_config.cpp;l\u003d87 or something related to that: everything under `/vendor/bin` is executable and owned by `root:shell` by default, other directories are `root:root`.\n\nOne better option would be for `android_filesystem` to allow us to specify additional `fs_config` entries for the vendor image, but that doesn\u0027t seem implemented yet.",
+      "parentUuid": "b948f883_5e0fa533",
+      "revId": "791b7befd7c04fc8529d88844e5896b35db992bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
