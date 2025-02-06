@@ -22,6 +22,29 @@
       },
       "revId": "20e20881f5069a65dd0f0a02b2782d3e8adea330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e2da9f_68c1fff1",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-06T22:41:49Z",
+      "side": 0,
+      "message": "why delete the comment?  is it no longer relevant?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1076,
+        "endChar": 41
+      },
+      "revId": "20e20881f5069a65dd0f0a02b2782d3e8adea330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
