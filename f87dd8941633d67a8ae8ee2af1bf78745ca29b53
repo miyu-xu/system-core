@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89764ff2_fe189733",
+        "filename": "trusty/keymaster/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2025-02-06T13:47:02Z",
+      "side": 1,
+      "message": "nit: Maybe also move these two lines to `defaults`?",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "f87dd8941633d67a8ae8ee2af1bf78745ca29b53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
