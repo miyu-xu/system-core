@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b948f883_5e0fa533",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2025-02-06T01:15:28Z",
+      "side": 1,
+      "message": "How does nativetest64 end up in the vendor image? Normally it goes in /data. If there is a mechanism that puts tests in the microdroid vendor image without making them executable then I think that should be fixed. This would affect every test, not just thine one.",
+      "revId": "791b7befd7c04fc8529d88844e5896b35db992bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
