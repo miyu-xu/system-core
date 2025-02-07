@@ -16,6 +16,24 @@
       "message": "please confirm this won\u0027t break the 16 KB dev option devices",
       "revId": "f92d54aa456585e7ddcc28c0f39e7b792a0077e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a24dd9_1589ba0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-02-07T07:18:07Z",
+      "side": 1,
+      "message": "That\u0027s right. This won\u0027t break the 16k dev option because the UTS string for the 16k modules won\u0027t include the `-4k` string while the 4k modules dir will.",
+      "parentUuid": "38d7dc75_b3e466b9",
+      "revId": "f92d54aa456585e7ddcc28c0f39e7b792a0077e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
