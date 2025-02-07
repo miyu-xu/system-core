@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05ea854_54eff903",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-07T13:42:47Z",
+      "side": 1,
+      "message": "is this case possible? there are kernels with the ioctl, but a broken implementation of it?",
+      "revId": "1b67b20805db41a1fa5cab57aee624b88d1b8d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
