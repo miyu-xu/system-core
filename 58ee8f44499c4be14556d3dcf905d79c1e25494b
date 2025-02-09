@@ -34,6 +34,24 @@
       "parentUuid": "8d40cf8b_530cf3bb",
       "revId": "58ee8f44499c4be14556d3dcf905d79c1e25494b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4a42be_9ed9b397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-02-09T17:07:48Z",
+      "side": 1,
+      "message": "\u003e How can that happen?\n\nIt could happen for any nested mount tree, which is not that rare. I\u0027ll file a bug to provide more details.\n\n\u003e  I think just reversing the order of the umounts should do it\n\nyup that\u0027s what I thought, too.\n\n\u003e but don\u0027t want to just make changes without a test vehicle.\n\nalso agree. I used to test this configuration by modifying the fstab of cuttlefish, but I could provide some _real_ device examples too. Though I think modifying the fstab of cuttlefish is still simpler to work with, as you don\u0027t need to provision a real device.",
+      "parentUuid": "4c80946b_49254997",
+      "revId": "58ee8f44499c4be14556d3dcf905d79c1e25494b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
