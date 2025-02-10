@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a77ffcc_58ea0d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-10T23:15:32Z",
+      "side": 1,
+      "message": "Honestly this just doesn\u0027t feel safe to do.  I\u0027ve had plenty of crazily hard to debug bpf failures in past years, and most of them went away when we switched to exec_start - they were probably caused by kernel memory fragmentation problems - but who knows.  I\u0027m not convinced slightly improving boot time is worth the potential reliability cost.  Phones reboot very rarely, and when they do it\u0027s usually a very long reboot anyway, because of it being due to an OTA and/or other upgrade.  Similarly for Chrome OS, I just rebooted my laptop and it took minutes.  Trying to optimized out 100ms is not of much value.",
+      "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd2da66_fe959a8d",
