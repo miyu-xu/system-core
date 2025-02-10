@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7cb9a2_fd5b934f",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-02-10T17:19:52Z",
+      "side": 1,
+      "message": "I understand this doesn\u0027t guarantee a GKI kernel, but it gets us close. My thinking is if someone is using our build configuration that adds `-androidX` to the UTS string, then they probably are also using the gki_defconfig that adds the `-4k` suffix for 4k page size strings. \n\nAt the very least, this gives the option for early exit out of the page size filter logic.",
+      "range": {
+        "startLine": 131,
+        "startChar": 41,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "ef58a1d20a892a63a87c99ec8f05689b4c9ea599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
