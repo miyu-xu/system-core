@@ -16,6 +16,23 @@
       "message": "Adding Davin and Steven as apex experts.",
       "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a17c57_fe057d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-02-10T18:24:25Z",
+      "side": 1,
+      "message": "since many libraries depend on this, most new APEX would need it anyway, and they\u0027d have to add things here? is that still true?",
+      "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
