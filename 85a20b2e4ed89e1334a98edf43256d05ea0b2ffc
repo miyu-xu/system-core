@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb0aae2_71e74d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-02-10T13:10:10Z",
+      "side": 1,
+      "message": "jiyong@ I would like to ask you to review this as the owner of `system/core/rootdir/`, since I saw that you also own `system/apex/`. Sorry to add you when you\u0027re still OOO, but this is not urgent, so please take a look when you\u0027re back.\n\nmaze@ Thanks for the comments, please take another look.",
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e2e1798_90e477a1",
@@ -14,6 +31,30 @@
       "writtenOn": "2025-02-06T22:41:49Z",
       "side": 1,
       "message": "so, what does this do?\n\nis it safe to run this after mainline code?\n\nit mentions both apex(d) and rollback...",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f549e5b4_1d800dbb",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-02-10T13:10:10Z",
+      "side": 1,
+      "message": "(@jiyong@google.com, please correct me if I\u0027m wrong)\n\nMy understanding from reading the implementation is that it copies `/data/misc_de/\u003cuser\u003e/apexdata/\u003capex-name\u003e` into `/data/misc_de/\u003cuser\u003e/apexrollback/\u003capex-name\u003e` (for all users and APEXes) so that in case of a rollback, the contents under `/data/misc_de/\u003cuser\u003e/apexdata/\u003capex-name\u003e` can also be restored. Therefore, if `bpfloader` doesn\u0027t use (read or write) `/data/misc_de/\u003cuser\u003e/apexdata/com.android.tethering` or `/data/misc_de/\u003cuser\u003e/apexdata/com.android.uprobestats`, there should be no problem.\n\nThe files under these directories are labeled with [`apex_module_data_file`](https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/file_contexts;l\u003d780;drc\u003d840b607104c13e51e99edc991cf70cc4a033ea7f). Given that `bpfloader` SELinux context does not seem to be allowed to read or write files/dirs with this label, and the build passses with the following neverallow rules, I believe `bpfloader` doesn\u0027t use these directories.\n```\nneverallow bpfloader apex_module_data_file:file { create_file_perms x_file_perms };\nneverallow bpfloader apex_module_data_file:dir create_dir_perms;\n```\n\n(We could add these `neverallow` rules to bpfloader.te, too)",
+      "parentUuid": "9e2e1798_90e477a1",
       "range": {
         "startLine": 1048,
         "startChar": 0,

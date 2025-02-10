@@ -45,6 +45,30 @@
       },
       "revId": "20e20881f5069a65dd0f0a02b2782d3e8adea330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac34db8e_b5509b7c",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-02-10T13:10:10Z",
+      "side": 0,
+      "message": "I moved the first half to L1009-L1017. I wasn\u0027t sure what to do with the latter half but maybe we could move it there as well.\n\n\u003e we absolutely want to be before netd and the system boot slot is considered to have booted successfully.\n\nFor this part, I\u0027m not sure what the \"system boot slot is considered to have booted successfully\" refers to.",
+      "parentUuid": "79e2da9f_68c1fff1",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1076,
+        "endChar": 41
+      },
+      "revId": "20e20881f5069a65dd0f0a02b2782d3e8adea330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
