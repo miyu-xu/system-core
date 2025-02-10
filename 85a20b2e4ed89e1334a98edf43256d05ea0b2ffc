@@ -63,6 +63,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669f1839_2e64fa42",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-10T23:12:42Z",
+      "side": 1,
+      "message": "bpfloader can cause a boot failure and thus trigger a rollback.",
+      "parentUuid": "f549e5b4_1d800dbb",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
