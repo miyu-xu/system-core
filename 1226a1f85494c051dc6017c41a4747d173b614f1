@@ -33,6 +33,24 @@
       "message": "since many libraries depend on this, most new APEX would need it anyway, and they\u0027d have to add things here? is that still true?",
       "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2eb976_f98347db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2025-02-10T18:40:07Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the idea. The headers lib is mostly because of libcutils including this lib, and lots of those includes don\u0027t seem to actually be used. Many dependencies on the headers lib isn\u0027t a worry, but I want a list of those using the .so.",
+      "parentUuid": "b8a17c57_fe057d5a",
+      "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
