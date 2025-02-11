@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a7e9f8c_0dfaeb1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-11T17:58:06Z",
+      "side": 1,
+      "message": "You are stating the *what*. I (and future SWEs) will be much more interested in the *why*. Neither the commit message nor the bug explain well what problem this CL solves.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f9b470_a5cd234c",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-11T17:58:06Z",
+      "side": 1,
+      "message": "What about osx and windows backends? They don\u0027t need it?",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e79d0504_b1deb0eb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 155,
+                "startChar": 0,
+                "endLine": 155,
+                "endChar": 0
+              },
+              "replacement": "// TODO(b/230692593): Refactor to use android::base::ReadFileToString\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
