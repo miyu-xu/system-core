@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e740d2_44a79e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-11T17:59:28Z",
+      "side": 1,
+      "message": "Same comment as in the other CL. I would like to see a better commit message and explanation why this change is only for Linux while excluding macosx and windows.",
+      "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
