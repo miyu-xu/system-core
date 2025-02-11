@@ -3112,7 +3112,8 @@ int main(int argc, char** argv) {
     // thereby interfering with the update and snapshot-merge progress.
     // Hence, wait until the update is complete.
     auto sm = android::snapshot::SnapshotManager::New();
-    while (sm->IsUserspaceSnapshotUpdateInProgress()) {
+    std::vector<std::string> ignore_partitions;
+    while (sm->IsUserspaceSnapshotUpdateInProgress(ignore_partitions)) {
         LOG(INFO) << "Snapshot update is in progress. Waiting...";
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
