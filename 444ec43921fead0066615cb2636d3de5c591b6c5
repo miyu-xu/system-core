@@ -34,6 +34,24 @@
       "parentUuid": "cb994341_d6019096",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4526492_6f01c80b",
+        "filename": "fs_mgr/libsnapshot/snapuserd/include/snapuserd/snapuserd_client.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1964171
+      },
+      "writtenOn": "2025-02-11T22:13:24Z",
+      "side": 1,
+      "message": "How is the merge resumed then after the reboot?",
+      "parentUuid": "0ff761d0_87f94cad",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
