@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a708e0_38b2de33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-11T12:12:03Z",
+      "side": 1,
+      "message": "How big/small is the improvement?",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9a77ffcc_58ea0d6a",
@@ -31,6 +54,30 @@
       "writtenOn": "2025-02-10T13:10:10Z",
       "side": 1,
       "message": "Note that this will block the boot forever when bpfloader fails to complete successfully.\nMeanwhile, the current behavior seems to be that the boot fails immediately when bpfloader fails (I checked by inserting `exec(1)` after [this line](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Connectivity/bpf/loader/NetBpfLoad.cpp;l\u003d1700;drc\u003d8701983198b5071060efc630c07cf23ded72f628)).\n\nShould we keep the current behavior? (Maybe we could do that by doing `wait_for_prop init.svc.bpfloader stopped` instead and check the value of `bpf.progs_loaded` afterwards somehow?)",
+      "range": {
+        "startLine": 1079,
+        "startChar": 4,
+        "endLine": 1079,
+        "endChar": 36
+      },
+      "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2002a8f0_c15b10a9",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-11T12:12:03Z",
+      "side": 1,
+      "message": "can netd wait for the property value with a sensible timeout instead?",
+      "parentUuid": "2bd2da66_fe959a8d",
       "range": {
         "startLine": 1079,
         "startChar": 4,

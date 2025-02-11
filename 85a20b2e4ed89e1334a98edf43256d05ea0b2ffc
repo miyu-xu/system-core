@@ -87,6 +87,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fc6174_21bc43bf",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-11T12:12:03Z",
+      "side": 1,
+      "message": "In my understanding, bpf programs don\u0027t (can\u0027t?) access the `apexdata` directories. So, this line has nothing to do with bpf.",
+      "parentUuid": "669f1839_2e64fa42",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
