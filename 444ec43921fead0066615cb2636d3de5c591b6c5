@@ -16,6 +16,24 @@
       "message": "do we also need client code to call ResumeMerge()?",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff761d0_87f94cad",
+        "filename": "fs_mgr/libsnapshot/snapuserd/include/snapuserd/snapuserd_client.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-11T22:12:07Z",
+      "side": 1,
+      "message": "There is no use case to resume the merge. Hence, I haven\u0027t exposed the client API.",
+      "parentUuid": "cb994341_d6019096",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
