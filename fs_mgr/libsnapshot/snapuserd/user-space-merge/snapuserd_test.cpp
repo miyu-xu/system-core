@@ -287,6 +287,8 @@ class SnapuserdTest : public SnapuserdTestBase {
     void MergeInterruptRandomly(int max_duration);
     bool StartMerge();
     void CheckMergeCompletion();
+    void PauseMerge();
+    void ResumeMerge();
 
     static const uint64_t kSectorSize = 512;
 
@@ -328,6 +330,20 @@ void SnapuserdTest::SetUp() {
 void SnapuserdTest::TearDown() {
     SnapuserdTestBase::TearDown();
     Shutdown();
+}
+
+void SnapuserdTest::PauseMerge() {
+    if (!handlers_) {
+        return;
+    }
+    handlers_->PauseMerge();
+}
+
+void SnapuserdTest::ResumeMerge() {
+    if (!handlers_) {
+        return;
+    }
+    handlers_->ResumeMerge();
 }
 
 void SnapuserdTest::Shutdown() {
@@ -825,7 +841,9 @@ void SnapuserdTest::MergeInterruptFixed(int duration) {
     ASSERT_TRUE(StartMerge());
 
     for (int i = 0; i < 25; i++) {
+        PauseMerge();
         std::this_thread::sleep_for(std::chrono::milliseconds(duration));
+        ResumeMerge();
         ASSERT_NO_FATAL_FAILURE(SimulateDaemonRestart());
         ASSERT_TRUE(StartMerge());
     }
@@ -855,7 +873,9 @@ void SnapuserdTest::MergeInterrupt() {
     ASSERT_NO_FATAL_FAILURE(SimulateDaemonRestart());
 
     ASSERT_TRUE(StartMerge());
+    PauseMerge();
     std::this_thread::sleep_for(250ms);
+    ResumeMerge();
     ASSERT_NO_FATAL_FAILURE(SimulateDaemonRestart());
 
     ASSERT_TRUE(StartMerge());
@@ -929,6 +949,24 @@ TEST_P(SnapuserdTest, Snapshot_MERGE_IO_TEST_1) {
     // Issue I/O in parallel when merge is in-progress
     auto read_future =
             std::async(std::launch::async, &SnapuserdTest::ReadSnapshotDeviceAndValidate, this);
+    CheckMergeCompletion();
+    ValidateMerge();
+    read_future.wait();
+}
+
+TEST_P(SnapuserdTest, Snapshot_MERGE_PAUSE_RESUME) {
+    if (!harness_->HasUserDevice()) {
+        GTEST_SKIP() << "Skipping snapshot read; not supported";
+    }
+    ASSERT_NO_FATAL_FAILURE(SetupDefault());
+    // Start the merge
+    ASSERT_TRUE(StartMerge());
+    PauseMerge();
+    // Issue I/O after pausing the merge and validate
+    auto read_future =
+            std::async(std::launch::async, &SnapuserdTest::ReadSnapshotDeviceAndValidate, this);
+    // Resume the merge
+    ResumeMerge();
     CheckMergeCompletion();
     ValidateMerge();
     read_future.wait();
