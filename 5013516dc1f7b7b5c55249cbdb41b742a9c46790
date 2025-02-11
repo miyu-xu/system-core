@@ -16,6 +16,24 @@
       "message": "Quick question - one of our projects has android12-5.10 vendor BSP on tip-of-tree android platform code. Is `userxattr` option available on 5.10 kernels? Currently, we fail to `adb remount` as a result of this change. Was this expected?",
       "revId": "5013516dc1f7b7b5c55249cbdb41b742a9c46790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71edf9ad_b6b85346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2025-02-11T16:00:02Z",
+      "side": 1,
+      "message": "See aosp/3489530 for probable fix",
+      "parentUuid": "53985ebf_f4ea3031",
+      "revId": "5013516dc1f7b7b5c55249cbdb41b742a9c46790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
