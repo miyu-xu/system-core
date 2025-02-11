@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb994341_d6019096",
+        "filename": "fs_mgr/libsnapshot/snapuserd/include/snapuserd/snapuserd_client.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1964171
+      },
+      "writtenOn": "2025-02-11T22:10:06Z",
+      "side": 1,
+      "message": "do we also need client code to call ResumeMerge()?",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
