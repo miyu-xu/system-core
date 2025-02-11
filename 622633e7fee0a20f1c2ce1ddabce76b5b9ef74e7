@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77d8276_007de8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2013070
+      },
+      "writtenOn": "2025-02-11T17:13:06Z",
+      "side": 1,
+      "message": "I still want to run a local test before we land. I also do acknowledge that later Android versions doesn\u0027t support 5.10 anyways - so thank you for making this change for us!",
+      "revId": "622633e7fee0a20f1c2ce1ddabce76b5b9ef74e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
