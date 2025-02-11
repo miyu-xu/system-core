@@ -34,6 +34,23 @@
       "parentUuid": "f77d8276_007de8cd",
       "revId": "622633e7fee0a20f1c2ce1ddabce76b5b9ef74e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19736be0_853c1a18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3313371
+      },
+      "writtenOn": "2025-02-11T21:27:07Z",
+      "side": 1,
+      "message": "tested patch; and remount works (no reboot was needed)\n\n```\ncd system/core\ngit fetch https://android.googlesource.com/platform/system/core refs/changes/30/3489530/1 \u0026\u0026 git cherry-pick FETCH_HEAD\n```",
+      "revId": "622633e7fee0a20f1c2ce1ddabce76b5b9ef74e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
