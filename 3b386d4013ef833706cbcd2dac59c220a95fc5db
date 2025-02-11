@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1ff1a7d_af753113",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3472316
+      },
+      "writtenOn": "2025-02-11T18:33:24Z",
+      "side": 1,
+      "message": "I will update the commit message tomorrow, but in short, USB device may have multiple configurations (https://www.beyondlogic.org/usbnutshell/usb5.shtml#ConfigurationDescriptors), but setting different configuration will disturb other users of this device. Even more, Linux documentation discourage using USBDEVFS_SETCONFIGURATION (https://www.kernel.org/doc/html/latest/driver-api/usb/usb.html#synchronous-i-o-support). Because of that I think that fastboot should use only active USB configuration to avoid implementing logic for switching configurations.\nAt the moment fastboot can find interface X at configuration 1 and claim it, even if the device\u0027s active configuration is Y and interface X at configuration Y is something completely different (e.g. has only one endpoint).",
+      "parentUuid": "5a7e9f8c_0dfaeb1b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13f9b470_a5cd234c",
         "filename": "fastboot/usb_linux.cpp",
         "patchSetId": 2
