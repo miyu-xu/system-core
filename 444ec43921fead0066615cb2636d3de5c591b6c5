@@ -52,6 +52,24 @@
       "parentUuid": "0ff761d0_87f94cad",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024124e0_f1c03226",
+        "filename": "fs_mgr/libsnapshot/snapuserd/include/snapuserd/snapuserd_client.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-11T22:18:21Z",
+      "side": 1,
+      "message": "I just uploaded a follow up patch which uses the client APIs.\n\nThis is primarily used in the shutdown/reboot path. Init will pause the snapshot-merge threads during shutdown.\n\nPost device reboot, merge threads will automatically resume when the daemon is spin up.\n\nThere is no use case to pause/resume the snapshot-merge apart from device reboot.",
+      "parentUuid": "d4526492_6f01c80b",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
