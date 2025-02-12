@@ -193,13 +193,6 @@ static bool fs_mgr_is_read_only_f2fs(const std::string& dev) {
 }
 
 static bool fs_mgr_overlayfs_enabled(FstabEntry* entry) {
-    // readonly filesystem, can not be mount -o remount,rw
-    // for squashfs, erofs or if free space is (near) zero making such a remount
-    // virtually useless, or if there are shared blocks that prevent remount,rw
-    if (!fs_mgr_filesystem_has_space(entry->mount_point)) {
-        return true;
-    }
-
     // blk_device needs to be setup so we can check superblock.
     // If we fail here, because during init first stage and have doubts.
     if (!fs_mgr_update_blk_device(entry)) {
