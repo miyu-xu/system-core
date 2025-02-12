@@ -32,6 +32,8 @@ int ashmem_set_prot_region(int fd, int prot);
 int ashmem_pin_region(int fd, size_t offset, size_t len);
 int ashmem_unpin_region(int fd, size_t offset, size_t len);
 int ashmem_get_size_region(int fd);
+long ashmem_get_id(int fd);
+const char* ashmem_get_name(int fd);
 
 #ifdef __cplusplus
 }

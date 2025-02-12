@@ -426,3 +426,44 @@ int ashmem_get_size_region(int fd) {
 
     return __ashmem_check_failure(fd, TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_SIZE, NULL)));
 }
+
+long ashmem_get_id(int fd)
+{
+    if (is_memfd_fd(fd)) {
+        struct stat sb;
+        if (fstat(fd, &sb) == -1) {
+            ALOGE("ashmem_get_id(%d): fstat failed: %m", fd);
+            return -1;
+        }
+        return static_cast<long>(sb.st_ino);
+    }
+
+    long _id = -1;
+    if (__ashmem_check_failure(fd, TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_FILE_ID, &_id))) < 0) {
+        ALOGE("ashmem_get_id(%d) failed: %m", fd);
+        return -1;
+    }
+    return _id;
+}
+
+const char* ashmem_get_name(int fd)
+{
+    std::string _name;
+    if (is_memfd_fd(fd)) {
+        if (!android::base::Readlink(std::format("/proc/self/fd/{}", fd), &_name)) {
+            ALOGE("ashmem_get_name(%d) failed in readlink: %m", fd);
+            return nullptr;
+        }
+        std::string_view v = _name;
+        android::base::ConsumePrefix(&v, "/memfd:");
+        android::base::ConsumeSuffix(&v, " (delete)");
+        return strndup(v.data(), v.size());
+    }
+
+    _name.reserve(ASHMEM_NAME_LEN + 1);
+    if (__ashmem_check_failure(fd, TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_NAME, _name.data()))) < 0) {
+        ALOGE("ashmem_get_name(%d) failed: %m", fd);
+        return nullptr;
+    }
+    return strdup(_name.c_str());
+}
