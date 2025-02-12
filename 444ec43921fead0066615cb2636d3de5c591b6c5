@@ -70,6 +70,57 @@
       "parentUuid": "d4526492_6f01c80b",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be943834_4a8c63fe",
+        "filename": "fs_mgr/libsnapshot/snapuserd/snapuserd_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:17:06Z",
+      "side": 1,
+      "message": "detach?",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83e504a_2c8c11fc",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:17:06Z",
+      "side": 1,
+      "message": "These helpers are only called in one place, where it looks like handlers_ is never null?",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a5ce79_19d3f2a1",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_transitions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:17:06Z",
+      "side": 1,
+      "message": "This log line should be outside of the while loop, I think?",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
