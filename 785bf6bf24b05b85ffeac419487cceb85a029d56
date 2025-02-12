@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ee0838_cefec46c",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-12T18:49:34Z",
+      "side": 1,
+      "message": "worth being more specific and checking for the actual size, since you know it?",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "785bf6bf24b05b85ffeac419487cceb85a029d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
