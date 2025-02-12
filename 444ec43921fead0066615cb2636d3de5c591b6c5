@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2cbcd1d_f4931bb4",
+        "filename": "fs_mgr/libsnapshot/snapuserd/snapuserd_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-12T06:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be943834_4a8c63fe",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83e504a_2c8c11fc",
@@ -106,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d849dcb_a4203e25",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-12T06:07:24Z",
+      "side": 1,
+      "message": "I have added these helpers for couple of more tests.",
+      "parentUuid": "b83e504a_2c8c11fc",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82a5ce79_19d3f2a1",
@@ -119,6 +155,24 @@
       "writtenOn": "2025-02-12T01:17:06Z",
       "side": 1,
       "message": "This log line should be outside of the while loop, I think?",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922af292_b8dec41e",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_transitions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-12T06:07:24Z",
+      "side": 1,
+      "message": "Adding it outside while loop will flood the logs when the merge is in-progress as this is invoked in hot path.\n\ncv.wait should block until resume is invoked. Even if cv wakes up is spurious, it would go back to sleep immediately if merge isn\u0027t resumed.",
+      "parentUuid": "82a5ce79_19d3f2a1",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
