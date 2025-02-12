@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3011048f_8ca77059",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4711,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:56:04Z",
+      "side": 1,
+      "message": "If the first entry fails but the second would have succeeded, it seems like the return value is a bit of a lie. Should it continue instead?",
+      "revId": "cda2741e49b73acdccb0c16c15ea4fd0e9d73680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55d8e44_0925591d",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4716,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:56:04Z",
+      "side": 1,
+      "message": "This logic should be at the caller.",
+      "revId": "cda2741e49b73acdccb0c16c15ea4fd0e9d73680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7142ff_14632dbd",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4726,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:56:04Z",
+      "side": 1,
+      "message": "This function needs to be renamed if it is going to implicitly start a pause operation. PauseSnapshotMerge?\n\nAlso, can PauseMerge() fail, eg if the socket dies?",
+      "revId": "cda2741e49b73acdccb0c16c15ea4fd0e9d73680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e04087a_849ab51c",
+        "filename": "fs_mgr/libsnapshot/snapshot_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3116,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:56:04Z",
+      "side": 1,
+      "message": "Instead, take an out pointer and default it to null? Also, won\u0027t this infinite loop, since nothing will resume the merge?",
+      "revId": "cda2741e49b73acdccb0c16c15ea4fd0e9d73680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4961d4f_0d5dc23e",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T01:56:04Z",
+      "side": 1,
+      "message": "const",
+      "revId": "cda2741e49b73acdccb0c16c15ea4fd0e9d73680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
