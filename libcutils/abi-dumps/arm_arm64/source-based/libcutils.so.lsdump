@@ -141,6 +141,12 @@
    "name" : "ashmem_create_region"
   },
   {
+   "name" : "ashmem_get_id"
+  },
+  {
+   "name" : "ashmem_get_name"
+  },
+  {
    "name" : "ashmem_get_size_region"
   },
   {
@@ -468,6 +474,38 @@
  "elf_objects" :
  [
   {
+   "binding" : "weak",
+   "name" : "_ZNSt3__111__formatter14__bool_stringsIcE6__trueE"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__111__formatter14__bool_stringsIcE7__falseE"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa10__pow10_32E"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa10__pow10_64E"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa12__base_2_lutE"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa12__base_8_lutE"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa13__base_16_lutE"
+  },
+  {
+   "binding" : "weak",
+   "name" : "_ZNSt3__16__itoa16__digits_base_10E"
+  },
+  {
    "name" : "atrace_enabled_tags"
   },
   {
@@ -670,6 +708,30 @@
     }
    ],
    "return_type" : "_ZTIi",
+   "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
+  },
+  {
+   "function_name" : "ashmem_get_id",
+   "linker_set_key" : "ashmem_get_id",
+   "parameters" :
+   [
+    {
+     "referenced_type" : "_ZTIi"
+    }
+   ],
+   "return_type" : "_ZTIl",
+   "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
+  },
+  {
+   "function_name" : "ashmem_get_name",
+   "linker_set_key" : "ashmem_get_name",
+   "parameters" :
+   [
+    {
+     "referenced_type" : "_ZTIi"
+    }
+   ],
+   "return_type" : "_ZTIPc",
    "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
   },
   {
