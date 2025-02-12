@@ -109,3 +109,17 @@ int ashmem_get_size_region(int fd)
 
     return buf.st_size;
 }
+
+long ashmem_get_id(int fd)
+{
+    struct stat buf;
+    if (!ashmem_validate_stat(fd, &buf)) {
+        return -1;
+    }
+    return static_cast<long>(buf.st_ino);
+}
+
+char* ashmem_get_name(int /*fd*/)
+{
+    return nullptr;
+}

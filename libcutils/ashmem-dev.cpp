@@ -478,3 +478,53 @@ int ashmem_get_size_region(int fd)
 
     return __ashmem_check_failure(fd, TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_SIZE, NULL)));
 }
+
+long ashmem_get_id(int fd)
+{
+    long _id = 0;
+    if (has_memfd_support() && !memfd_is_ashmem(fd)) {
+        struct stat sb;
+
+        if (fstat(fd, &sb) == -1) {
+            ALOGE("ashmem_get_id(%d): fstat failed: %m", fd);
+            return -1;
+        }
+
+        _id = static_cast<long>(sb.st_ino);
+    } else {
+        int err = __ashmem_check_failure(fd,
+                        TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_FILE_ID, &_id)));
+        if (err) {
+            ALOGE("ashmem_get_id(%d) failed: %s", fd, strerror(err));
+            return -1;
+        }
+    }
+    if (debug_log) {
+        ALOGD("ashmem_get_id(%d): %ld", fd, _id);
+    }
+    return _id;
+}
+
+char* ashmem_get_name(int fd)
+{
+    char* _name = (char*)malloc(ASHMEM_NAME_LEN);
+    if (!_name) {
+        return nullptr;
+    }
+
+    if (has_memfd_support() && !memfd_is_ashmem(fd)) {
+        char path[64];
+        snprintf(path, 64, "/proc/self/fd/%d", fd);
+        readlink(path, _name, ASHMEM_NAME_LEN);
+    } else {
+        int err = __ashmem_check_failure(fd, TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_GET_NAME, _name)));
+        if (err) {
+            ALOGE("ashmem_get_name(%d) failed: %s", fd, strerror(err));
+            return nullptr;
+        }
+    }
+    if (debug_log) {
+        ALOGD("ashmem_get_name(%d): %s", fd, _name);
+    }
+    return _name;
+}

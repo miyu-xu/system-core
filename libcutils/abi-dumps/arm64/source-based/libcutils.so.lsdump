@@ -145,6 +145,12 @@
    "name" : "ashmem_create_region"
   },
   {
+   "name" : "ashmem_get_id"
+  },
+  {
+   "name" : "ashmem_get_name"
+  },
+  {
    "name" : "ashmem_get_size_region"
   },
   {
@@ -674,6 +680,30 @@
     }
    ],
    "return_type" : "_ZTIi",
+   "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
+  },
+  {
+   "function_name" : "ashmem_get_id",
+   "linker_set_key" : "ashmem_get_id",
+   "parameters" :
+   [
+    {
+     "referenced_type" : "_ZTIi"
+    }
+   ],
+   "return_type" : "_ZTIl",
+   "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
+  },
+  {
+   "function_name" : "ashmem_get_name",
+   "linker_set_key" : "ashmem_get_name",
+   "parameters" :
+   [
+    {
+     "referenced_type" : "_ZTIi"
+    }
+   ],
+   "return_type" : "_ZTIPc",
    "source_file" : "system/core/libcutils/include/cutils/ashmem.h"
   },
   {
