@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc192fc4_3f5bbb4c",
+        "filename": "trusty/storage/proxy/ipc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1962190
+      },
+      "writtenOn": "2025-02-12T21:53:28Z",
+      "side": 1,
+      "message": "For `ssize_t`",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "2939cd3cae4b3177058bfaa5ad9986b09c94873b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
