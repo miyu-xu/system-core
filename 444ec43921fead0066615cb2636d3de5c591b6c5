@@ -175,6 +175,24 @@
       "parentUuid": "82a5ce79_19d3f2a1",
       "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33822317_168d641e",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_transitions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-12T17:15:33Z",
+      "side": 1,
+      "message": "The merge isn\u0027t actually resumed here, though? Should it be guarded by \"if (!pause_merge_)?",
+      "parentUuid": "922af292_b8dec41e",
+      "revId": "444ec43921fead0066615cb2636d3de5c591b6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
