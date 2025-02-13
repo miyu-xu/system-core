@@ -111,6 +111,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27d6e1b_caf10dc2",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-13T18:58:07Z",
+      "side": 1,
+      "message": "bpf programs cannot access anything on disk, but the bpfloader mainline code is just a native C++ (+ hopefully soon rust) binary, and it additionally triggers platform bpfloader (C++ \u0026 rust) and another 2nd mainline bpfloader (C++ in another apex)...  Those *could* obviously touch apexdata.  (not sure if they should)\n\nI don\u0027t know what \u0027device encrypted apex data\u0027 is used for... and thus if we use it, nor what it could be used for in the future with a mainline update.  Is some of this needed for non-build-time flagging of any sort??  Mainline code can\u0027t really use build time flags at all (because there\u0027s a single build rolled out to all aarch64 devices across multiple OS versions).",
+      "parentUuid": "35fc6174_21bc43bf",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
