@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d1a8cf4d_7a988a40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-02-13T15:44:33Z",
+      "side": 1,
+      "message": "It is expected to shorten the boot time by 140ms on `brya` (which currently takes  9s+ to boot) and 380ms on `corsola` (which currently takes 15s+ to boot).",
+      "parentUuid": "d6a708e0_38b2de33",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9a77ffcc_58ea0d6a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -37,6 +61,23 @@
       "writtenOn": "2025-02-10T23:15:32Z",
       "side": 1,
       "message": "Honestly this just doesn\u0027t feel safe to do.  I\u0027ve had plenty of crazily hard to debug bpf failures in past years, and most of them went away when we switched to exec_start - they were probably caused by kernel memory fragmentation problems - but who knows.  I\u0027m not convinced slightly improving boot time is worth the potential reliability cost.  Phones reboot very rarely, and when they do it\u0027s usually a very long reboot anyway, because of it being due to an OTA and/or other upgrade.  Similarly for Chrome OS, I just rebooted my laptop and it took minutes.  Trying to optimized out 100ms is not of much value.",
+      "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082fd976_59d35608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951675
+      },
+      "writtenOn": "2025-02-13T15:44:33Z",
+      "side": 1,
+      "message": "Thanks for the reviews and sorry for my late reply...\n\nLooks like we need to re-evaluate the feasibility of this change. Let us continue the discussion on the bug: b/376365651",
       "revId": "fcbccedda0de29c211f2e8f02ec8a8d2a07fe9b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
