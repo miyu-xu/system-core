@@ -183,6 +183,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7f08249_8cdf57b5",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-13T23:33:10Z",
+      "side": 1,
+      "message": "such cookie could live outside of the apexdata directory if kernel version and the apex version are tagged on it. \n\nthen when the tagged versions don\u0027t match with the real versions on the device (i.e. due to an apex rollback), you could simply ignore the cache and do the verification again, instead of expecting that you see the previous snapshot of the cache in the apexdata directory, which would be convenient, but not a deal breaker I believe.",
+      "parentUuid": "76bf5e69_ee0a82d9",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
