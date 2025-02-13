@@ -135,6 +135,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad2458c_22c46ea9",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-13T23:16:27Z",
+      "side": 1,
+      "message": "apexdata is the directory we provide to each APEX as a place to save some states which need to be reverted when the APEX gets rolled back. go/apex-data-directories\n\nSo, I don\u0027t think bpfloader is using the directory, or will ever be.",
+      "parentUuid": "e27d6e1b_caf10dc2",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
