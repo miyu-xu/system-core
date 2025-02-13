@@ -87,6 +87,30 @@
       ],
       "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05123cea_964676b2",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 3472316
+      },
+      "writtenOn": "2025-02-13T15:38:23Z",
+      "side": 1,
+      "message": "I belive that current implementation of osx and windows backend use functions that doesn\u0027t enumaretae interfaces from non active USB configurations, but I am going to check it to be 100% sure.",
+      "parentUuid": "13f9b470_a5cd234c",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
