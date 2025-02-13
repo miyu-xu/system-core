@@ -16,6 +16,24 @@
       "message": "Same comment as in the other CL. I would like to see a better commit message and explanation why this change is only for Linux while excluding macosx and windows.",
       "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cf4189_157a8bbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3472316
+      },
+      "writtenOn": "2025-02-13T15:41:06Z",
+      "side": 1,
+      "message": "I was hopeing that alternate interfaces are implmented for free by current osx and windows backends, but I quickly tested it and this is not true.",
+      "parentUuid": "a5e740d2_44a79e21",
+      "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
