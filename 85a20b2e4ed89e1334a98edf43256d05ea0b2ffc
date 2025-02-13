@@ -159,6 +159,30 @@
       },
       "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bf5e69_ee0a82d9",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-13T23:23:35Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s certainly true now, and I don\u0027t immediately see a need for it, but I\u0027m not sure there won\u0027t be future usecases.\n\nIn particular there\u0027s been *idle* musing about optimizing kernel ebpf verifier performance by storing some sort of it-verified-correctly-cookie/signature from one bootup to the next.  This would need to be tied to the specific apex version *and* the specific kernel version, and invalidated/ignored if either changes.",
+      "parentUuid": "0ad2458c_22c46ea9",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 0
+      },
+      "revId": "85a20b2e4ed89e1334a98edf43256d05ea0b2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
