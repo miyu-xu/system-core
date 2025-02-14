@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01743985_a7e0d9cc",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2041,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-14T16:58:23Z",
+      "side": 1,
+      "message": "This is pretty indented and there\u0027s a \"continue\" embedded quite deep. Can you extract all this logic into a helper function, like \"ShouldSkipZramSetup\" or something?",
+      "revId": "62809c8b7c478599eaa42949b6778bd2da7f105e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
