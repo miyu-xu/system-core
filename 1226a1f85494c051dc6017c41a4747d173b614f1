@@ -51,6 +51,24 @@
       "parentUuid": "b8a17c57_fe057d5a",
       "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e422d43_46088048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-02-14T23:46:03Z",
+      "side": 1,
+      "message": "Okay, can you do initial cleanup work first removing these or confirm which libraries are being used? If there are core libraries using this, after this CL, you become a blocker for any APEX being added using those libs. That is not good for velocity.",
+      "parentUuid": "3b2eb976_f98347db",
+      "revId": "1226a1f85494c051dc6017c41a4747d173b614f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
