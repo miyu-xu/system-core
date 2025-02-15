@@ -131,7 +131,7 @@ static int handle_req(struct storage_msg* msg, const void* req, size_t req_len) 
          * handling post commit messages on commands other than rpmb and write
          * operations are not implemented as there is no use case for this yet.
          */
-        ALOGE("cmd 0x%x: post commit option is not implemented\n", msg->cmd);
+        ALOGE("[%s] cmd 0x%x: post commit option is not implemented\n", trusty_devname, msg->cmd);
         msg->result = STORAGE_ERR_UNIMPLEMENTED;
         goto err_response;
     }
@@ -140,8 +140,10 @@ static int handle_req(struct storage_msg* msg, const void* req, size_t req_len) 
         rc = storage_sync_checkpoint(watcher);
         if (rc < 0) {
             msg->result = STORAGE_ERR_SYNC_FAILURE;
+            ALOGI("[%s] STORAGE_MSG_FLAG_PRE_COMMIT STORAGE_ERR_SYNC_FAILURE\n", trusty_devname);
             goto err_response;
         }
+        ALOGI("[%s] STORAGE_MSG_FLAG_PRE_COMMIT OK\n", trusty_devname);
     }
 
     if (msg->flags & STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT) {
@@ -149,55 +151,66 @@ static int handle_req(struct storage_msg* msg, const void* req, size_t req_len) 
 
         rc = is_data_checkpoint_active(&is_checkpoint_active);
         if (rc != 0) {
-            ALOGE("is_data_checkpoint_active failed in an unexpected way. Aborting.\n");
+            ALOGE("[%s] is_data_checkpoint_active failed in an unexpected way. Aborting.\n",
+                  trusty_devname);
             msg->result = STORAGE_ERR_GENERIC;
             goto err_response;
         } else if (is_checkpoint_active) {
-            ALOGE("Checkpoint in progress, dropping write ...\n");
+            ALOGE("[%s] Checkpoint in progress, dropping write ...\n", trusty_devname);
             msg->result = STORAGE_ERR_GENERIC;
             goto err_response;
         }
+        ALOGI("[%s] STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT OK\n", trusty_devname);
     }
 
     switch (msg->cmd) {
         case STORAGE_FILE_DELETE:
             rc = storage_file_delete(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_DELETE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_OPEN:
             rc = storage_file_open(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_OPEN returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_CLOSE:
             rc = storage_file_close(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_CLOSE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_WRITE:
             rc = storage_file_write(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_WRITE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_READ:
             rc = storage_file_read(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_READ returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_GET_SIZE:
             rc = storage_file_get_size(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_GET_SIZE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_SET_SIZE:
             rc = storage_file_set_size(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_SET_SIZE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_FILE_GET_MAX_SIZE:
             rc = storage_file_get_max_size(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_FILE_GET_MAX_SIZE returned %d\n", trusty_devname, rc);
             break;
 
         case STORAGE_RPMB_SEND:
             rc = rpmb_send(msg, req, req_len, watcher);
+            ALOGI("[%s] STORAGE_RPMB_SEND returned %d\n", trusty_devname, rc);
             break;
 
         default:
-            ALOGE("unhandled command 0x%x\n", msg->cmd);
+            ALOGE("[%s] unhandled command 0x%x\n", trusty_devname, msg->cmd);
             msg->result = STORAGE_ERR_UNIMPLEMENTED;
             goto err_response;
     }
@@ -325,10 +338,12 @@ int main(int argc, char* argv[]) {
     /* open rpmb device */
     rc = rpmb_open(rpmb_devname, dev_type);
     if (rc < 0) return EXIT_FAILURE;
+    ALOGI("rpmb_open success\n");
 
     /* connect to Trusty secure storage server */
     rc = ipc_connect(trusty_devname, ss_srv_name);
     if (rc < 0) return EXIT_FAILURE;
+    ALOGI("ipc_connect %s success\n", trusty_devname);
 
     /* enter main loop */
     rc = proxy_loop();

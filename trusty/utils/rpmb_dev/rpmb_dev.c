@@ -393,7 +393,6 @@ static void rpmb_dev_process_cmd(struct rpmb_dev_state* s) {
     }
 
     result = cmd->func(s);
-
 err:
     if (s->header.write_counter == MAX_WRITE_COUNTER) {
         result |= RPMB_RES_WRITE_COUNTER_EXPIRED;
@@ -408,6 +407,23 @@ err:
     }
     if (cmd->res_mac) {
         rpmb_mac(s->header.key, s->res, s->res_count, &s->res[s->res_count - 1].key_mac);
+    }
+    switch (cmd_index) {
+        case RPMB_REQ_PROGRAM_KEY:
+            ALOGI("RPMB_REQ_PROGRAM_KEY returned %d\n", result);
+            break;
+        case RPMB_REQ_GET_COUNTER:
+            ALOGI("RPMB_REQ_PROGRAM_KEY returned %d\n", result);
+            break;
+        case RPMB_REQ_DATA_WRITE:
+            ALOGI("RPMB_REQ_PROGRAM_KEY returned %d\n", result);
+            break;
+        case RPMB_REQ_DATA_READ:
+            ALOGI("RPMB_REQ_PROGRAM_KEY returned %d\n", result);
+            break;
+        default:
+            ALOGE("RPMB_UNKNOWN_CMD returned %d\n", result);
+            break;
     }
 }
 

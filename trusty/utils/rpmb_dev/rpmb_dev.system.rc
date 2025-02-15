@@ -27,8 +27,8 @@ on late-fs && \
     property:trusty.security_vm.nonsecure_vm_ready=1 && \
     property:storageproxyd_system.trusty_ipc_dev=*
     wait /dev/socket/rpmb_mock_system
+    write /dev/kmsg "boot_kpi: K - start storageproxyd_system"
     start storageproxyd_system
-
 
 # RPMB Mock
 on post-fs && \
@@ -50,7 +50,9 @@ on post-fs && \
     symlink /metadata/secure_storage_persist_system \
             /mnt/secure_storage_persist_system/persist
     setprop storageproxyd_system.trusty_ipc_dev VSOCK:${trusty.security_vm.vm_cid}:1
+    write /dev/kmsg "boot_kpi: K - exec start rpmb_mock_init_system"
     exec_start rpmb_mock_init_system
+    write /dev/kmsg "boot_kpi: K - start rpmb_mock_system"
     start rpmb_mock_system
 
 on post-fs-data && \
