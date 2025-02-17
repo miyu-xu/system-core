@@ -76,6 +76,7 @@ struct healthd_config {
     android::String8 batteryHealthStatusPath;
     android::String8 batteryManufacturingDatePath;
     android::String8 batteryFirstUsageDatePath;
+    android::String8 batteryAacpHealthStatusPath;
     android::String8 chargingStatePath;
     android::String8 chargingPolicyPath;
 
