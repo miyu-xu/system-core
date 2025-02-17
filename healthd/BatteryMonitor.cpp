@@ -140,6 +140,7 @@ BatteryMonitor::BatteryMonitor()
       mBatteryFixedCapacity(0),
       mBatteryFixedTemperature(0),
       mBatteryHealthStatus(BatteryMonitor::BH_UNKNOWN),
+      mBatteryAacpHealthStatus(BatteryMonitor::BH_UNKNOWN),
       mHealthInfo(std::make_unique<HealthInfo>()) {
     initHealthInfo(mHealthInfo.get());
 }
@@ -413,6 +414,9 @@ void BatteryMonitor::updateValues(void) {
         mHealthInfo->batteryHealthData->batteryFirstUsageSeconds =
                 getIntField(mHealthdConfig->batteryFirstUsageDatePath);
 
+    if (!mHealthdConfig->batteryAacpHealthStatusPath.empty())
+        mBatteryAacpHealthStatus = getIntField(mHealthdConfig->batteryAacpHealthStatusPath);
+
     mHealthInfo->batteryTemperatureTenthsCelsius =
             mBatteryFixedTemperature ? mBatteryFixedTemperature
                                      : getIntField(mHealthdConfig->batteryTemperaturePath);
@@ -425,12 +429,14 @@ void BatteryMonitor::updateValues(void) {
     if (readFromFile(mHealthdConfig->batteryStatusPath, &buf) > 0)
         mHealthInfo->batteryStatus = getBatteryStatus(buf.c_str());
 
-    // Backward compatible with android.hardware.health V1
-    if (mBatteryHealthStatus < BatteryMonitor::BH_MARGINAL) {
+    if (mBatteryHealthStatus >= BatteryMonitor::BH_MARGINAL) {
+        mHealthInfo->batteryHealth = getBatteryHealthStatus(mBatteryHealthStatus);
+    } else if (mBatteryAacpHealthStatus >= BatteryMonitor::BH_MARGINAL) {
+        mHealthInfo->batteryHealth = getBatteryHealthStatus(mBatteryAacpHealthStatus);
+    } else {
+        // Backward compatible with android.hardware.health V1
         if (readFromFile(mHealthdConfig->batteryHealthPath, &buf) > 0)
             mHealthInfo->batteryHealth = getBatteryHealth(buf.c_str());
-    } else {
-        mHealthInfo->batteryHealth = getBatteryHealthStatus(mBatteryHealthStatus);
     }
 
     if (readFromFile(mHealthdConfig->batteryTechnologyPath, &buf) > 0)
@@ -961,6 +967,14 @@ void BatteryMonitor::init(struct healthd_config *hc) {
                     if (access(path.c_str(), R_OK) == 0) mHealthdConfig->chargingPolicyPath = path;
                 }
 
+                if (mHealthdConfig->batteryAacpHealthStatusPath.empty()) {
+                    path.clear();
+                    path.appendFormat("%s/%s/aacp_health_status", POWER_SUPPLY_SYSFS_PATH, name);
+                    if (access(path.c_str(), R_OK) == 0) {
+                        mHealthdConfig->batteryAacpHealthStatusPath = path;
+                    }
+                }
+
                 break;
 
             case ANDROID_POWER_SUPPLY_TYPE_UNKNOWN:
@@ -1023,6 +1037,8 @@ void BatteryMonitor::init(struct healthd_config *hc) {
             KLOG_WARNING(LOG_TAG, "chargingStatePath not found\n");
         if (mHealthdConfig->chargingPolicyPath.empty())
             KLOG_WARNING(LOG_TAG, "chargingPolicyPath not found\n");
+        if (mHealthdConfig->batteryAacpHealthStatusPath.empty())
+            KLOG_WARNING(LOG_TAG, "batteryAacpHealthStatusPath not found\n");
     }
 
     if (property_get("ro.boot.fake_battery", pval, NULL) > 0
