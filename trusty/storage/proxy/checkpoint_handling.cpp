@@ -66,7 +66,12 @@ int is_data_checkpoint_active(bool* active) {
     }
 
     *active = false;
+    if (voldConnected) {
+        *active = !voldPossibleCheckpointing.load();
+        return 0;
+    }
 
+    static bool checkpointingDoneForever = false;
     if (checkpointingDoneForever) {
         return 0;
     }
