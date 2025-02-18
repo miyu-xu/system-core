@@ -30,31 +30,31 @@
                                 it cannot modify on-disk data.
  * @STORAGE_DISK_PROXY_PORT:    Port used by non-secure proxy server
  */
-#define STORAGE_CLIENT_TD_PORT     "com.android.trusty.storage.client.td"
-#define STORAGE_CLIENT_TDEA_PORT   "com.android.trusty.storage.client.tdea"
-#define STORAGE_CLIENT_TP_PORT     "com.android.trusty.storage.client.tp"
-#define STORAGE_DISK_PROXY_PORT    "com.android.trusty.storage.proxy"
+#define STORAGE_CLIENT_TD_PORT "com.android.trusty.storage.client.td"
+#define STORAGE_CLIENT_TDEA_PORT "com.android.trusty.storage.client.tdea"
+#define STORAGE_CLIENT_TP_PORT "com.android.trusty.storage.client.tp"
+#define STORAGE_DISK_PROXY_PORT "com.android.trusty.storage.proxy"
 
 enum storage_cmd {
-	STORAGE_REQ_SHIFT = 1,
-	STORAGE_RESP_BIT  = 1,
+    STORAGE_REQ_SHIFT = 1,
+    STORAGE_RESP_BIT = 1,
 
-	STORAGE_RESP_MSG_ERR   = STORAGE_RESP_BIT,
+    STORAGE_RESP_MSG_ERR = STORAGE_RESP_BIT,
 
-	STORAGE_FILE_DELETE    = 1 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_OPEN      = 2 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_CLOSE     = 3 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_READ      = 4 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_WRITE     = 5 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_GET_SIZE  = 6 << STORAGE_REQ_SHIFT,
-	STORAGE_FILE_SET_SIZE  = 7 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_DELETE = 1 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_OPEN = 2 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_CLOSE = 3 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_READ = 4 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_WRITE = 5 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_GET_SIZE = 6 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_SET_SIZE = 7 << STORAGE_REQ_SHIFT,
 
-	STORAGE_RPMB_SEND      = 8 << STORAGE_REQ_SHIFT,
+    STORAGE_RPMB_SEND = 8 << STORAGE_REQ_SHIFT,
 
-	/* transaction support */
-	STORAGE_END_TRANSACTION = 9 << STORAGE_REQ_SHIFT,
+    /* transaction support */
+    STORAGE_END_TRANSACTION = 9 << STORAGE_REQ_SHIFT,
 
-	STORAGE_FILE_GET_MAX_SIZE = 12 << STORAGE_REQ_SHIFT,
+    STORAGE_FILE_GET_MAX_SIZE = 12 << STORAGE_REQ_SHIFT,
 };
 
 /**
@@ -68,7 +68,8 @@ enum storage_cmd {
  * @STORAGE_ERR_UNIMPLEMENTED:  the command passed in is not recognized
  * @STORAGE_ERR_ACCESS:         the file is not accessible in the requested mode
  * @STORAGE_ERR_NOT_FOUND:      the file was not found
- * @STORAGE_ERR_EXIST           the file exists when it shouldn't as in with OPEN_CREATE | OPEN_EXCLUSIVE.
+ * @STORAGE_ERR_EXIST           the file exists when it shouldn't as in with OPEN_CREATE |
+ *                              OPEN_EXCLUSIVE.
  * @STORAGE_ERR_TRANSACT        returned by various operations to indicate that current transaction
  *                              is in error state. Such state could be only cleared by sending
  *                              STORAGE_END_TRANSACTION message.
@@ -77,22 +78,22 @@ enum storage_cmd {
  *                              STORAGE_MSG_FLAG_POST_COMMIT was set for the request.
  */
 enum storage_err {
-	STORAGE_NO_ERROR          = 0,
-	STORAGE_ERR_GENERIC       = 1,
-	STORAGE_ERR_NOT_VALID     = 2,
-	STORAGE_ERR_UNIMPLEMENTED = 3,
-	STORAGE_ERR_ACCESS        = 4,
-	STORAGE_ERR_NOT_FOUND     = 5,
-	STORAGE_ERR_EXIST         = 6,
-	STORAGE_ERR_TRANSACT      = 7,
-	STORAGE_ERR_SYNC_FAILURE  = 8,
+    STORAGE_NO_ERROR = 0,
+    STORAGE_ERR_GENERIC = 1,
+    STORAGE_ERR_NOT_VALID = 2,
+    STORAGE_ERR_UNIMPLEMENTED = 3,
+    STORAGE_ERR_ACCESS = 4,
+    STORAGE_ERR_NOT_FOUND = 5,
+    STORAGE_ERR_EXIST = 6,
+    STORAGE_ERR_TRANSACT = 7,
+    STORAGE_ERR_SYNC_FAILURE = 8,
 };
 
 /**
  * storage_delete_flag - flags for controlling delete semantics
  */
 enum storage_file_delete_flag {
-	STORAGE_FILE_DELETE_MASK = 0,
+    STORAGE_FILE_DELETE_MASK = 0,
 };
 
 /**
@@ -108,12 +109,11 @@ enum storage_file_delete_flag {
  *                                      All other bits must be set to 0.
  */
 enum storage_file_open_flag {
-	STORAGE_FILE_OPEN_CREATE             = (1 << 0),
-	STORAGE_FILE_OPEN_CREATE_EXCLUSIVE   = (1 << 1),
-	STORAGE_FILE_OPEN_TRUNCATE           = (1 << 2),
-	STORAGE_FILE_OPEN_MASK               = STORAGE_FILE_OPEN_CREATE |
-					       STORAGE_FILE_OPEN_TRUNCATE |
-					       STORAGE_FILE_OPEN_CREATE_EXCLUSIVE,
+    STORAGE_FILE_OPEN_CREATE = (1 << 0),
+    STORAGE_FILE_OPEN_CREATE_EXCLUSIVE = (1 << 1),
+    STORAGE_FILE_OPEN_TRUNCATE = (1 << 2),
+    STORAGE_FILE_OPEN_MASK = STORAGE_FILE_OPEN_CREATE | STORAGE_FILE_OPEN_TRUNCATE |
+                             STORAGE_FILE_OPEN_CREATE_EXCLUSIVE,
 };
 
 /**
@@ -155,8 +155,8 @@ enum storage_msg_flag {
  * @name:  the name of the file
  */
 struct storage_file_delete_req {
-	uint32_t flags;
-	char name[0];
+    uint32_t flags;
+    char name[0];
 };
 
 /**
@@ -165,8 +165,8 @@ struct storage_file_delete_req {
  * @name:  the name of the file
  */
 struct storage_file_open_req {
-	uint32_t flags;
-	char     name[0];
+    uint32_t flags;
+    char name[0];
 };
 
 /**
@@ -174,7 +174,7 @@ struct storage_file_open_req {
  * @handle: opaque handle to the opened file. Only present on success.
  */
 struct storage_file_open_resp {
-	uint32_t handle;
+    uint32_t handle;
 };
 
 /**
@@ -182,7 +182,7 @@ struct storage_file_open_resp {
  * @handle: the handle for the file to close
  */
 struct storage_file_close_req {
-	uint32_t handle;
+    uint32_t handle;
 };
 
 /**
@@ -191,7 +191,7 @@ struct storage_file_close_req {
  * @handle: the handle for the file whose max size is requested
  */
 struct storage_file_get_max_size_req {
-	uint32_t handle;
+    uint32_t handle;
 };
 
 /**
@@ -200,7 +200,7 @@ struct storage_file_get_max_size_req {
  * @max_size:   the maximum size of the file
  */
 struct storage_file_get_max_size_resp {
-	uint64_t max_size;
+    uint64_t max_size;
 };
 
 /**
@@ -210,9 +210,9 @@ struct storage_file_get_max_size_resp {
  * @offset: the offset in the file from whence to read
  */
 struct storage_file_read_req {
-	uint32_t handle;
-	uint32_t size;
-	uint64_t offset;
+    uint32_t handle;
+    uint32_t size;
+    uint64_t offset;
 };
 
 /**
@@ -220,7 +220,7 @@ struct storage_file_read_req {
  * @data: beginning of data retrieved from file
  */
 struct storage_file_read_resp {
-	uint8_t data[0];
+    uint8_t data[0];
 };
 
 /**
@@ -231,10 +231,10 @@ struct storage_file_read_resp {
  * @data:       beginning of the data to be written
  */
 struct storage_file_write_req {
-	uint64_t offset;
-	uint32_t handle;
-	uint32_t __reserved;
-	uint8_t  data[0];
+    uint64_t offset;
+    uint32_t handle;
+    uint32_t __reserved;
+    uint8_t data[0];
 };
 
 /**
@@ -242,7 +242,7 @@ struct storage_file_write_req {
  * @handle: handle for which the size is requested
  */
 struct storage_file_get_size_req {
-	uint32_t handle;
+    uint32_t handle;
 };
 
 /**
@@ -250,7 +250,7 @@ struct storage_file_get_size_req {
  * @size:   the size of the file
  */
 struct storage_file_get_size_resp {
-	uint64_t size;
+    uint64_t size;
 };
 
 /**
@@ -259,8 +259,8 @@ struct storage_file_get_size_resp {
  * @size:   the desired size of the file
  */
 struct storage_file_set_size_req {
-	uint64_t size;
-	uint32_t handle;
+    uint64_t size;
+    uint32_t handle;
 };
 
 /**
@@ -275,11 +275,11 @@ struct storage_file_set_size_req {
  * Only used in proxy<->server interface.
  */
 struct storage_rpmb_send_req {
-	uint32_t reliable_write_size;
-	uint32_t write_size;
-	uint32_t read_size;
-	uint32_t __reserved;
-	uint8_t  payload[0];
+    uint32_t reliable_write_size;
+    uint32_t write_size;
+    uint32_t read_size;
+    uint32_t __reserved;
+    uint8_t payload[0];
 };
 
 /**
@@ -287,7 +287,7 @@ struct storage_rpmb_send_req {
  * @data: the data frames frames retrieved from the MMC.
  */
 struct storage_rpmb_send_resp {
-	uint8_t data[0];
+    uint8_t data[0];
 };
 
 /**
@@ -302,12 +302,11 @@ struct storage_rpmb_send_resp {
  * @payload:    beginning of command specific message format
  */
 struct storage_msg {
-	uint32_t cmd;
-	uint32_t op_id;
-	uint32_t flags;
-	uint32_t size;
-	int32_t  result;
-	uint32_t __reserved;
-	uint8_t  payload[0];
+    uint32_t cmd;
+    uint32_t op_id;
+    uint32_t flags;
+    uint32_t size;
+    int32_t result;
+    uint32_t __reserved;
+    uint8_t payload[0];
 };
-
