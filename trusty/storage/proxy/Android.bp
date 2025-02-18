@@ -41,7 +41,6 @@ cc_defaults {
     ],
 
     static_libs: [
-        "libfstab",
         "libtrustystorageinterface",
         "libtrusty",
         "android.system.vold-V1-ndk",
