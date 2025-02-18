@@ -137,13 +137,18 @@ enum storage_file_open_flag {
  * @STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT: if set, indicates that server needs to ensure
  *                                          that there is not a pending checkpoint for
  *                                          userdata before processing this message.
+ * @STORAGE_MSG_FLAG_EXPECT_CHECKPOINT:     if set, indicates that the client is expecting a
+ *                                          pending userdata checkpoint to exist (or at least
+ *                                          to *possibly* exist) so the server should return
+ *                                          an error if it knows there is not.
  */
 enum storage_msg_flag {
-    STORAGE_MSG_FLAG_BATCH = 0x1,
-    STORAGE_MSG_FLAG_PRE_COMMIT = 0x2,
-    STORAGE_MSG_FLAG_POST_COMMIT = 0x4,
+    STORAGE_MSG_FLAG_BATCH = 0x01,
+    STORAGE_MSG_FLAG_PRE_COMMIT = 0x02,
+    STORAGE_MSG_FLAG_POST_COMMIT = 0x04,
     STORAGE_MSG_FLAG_TRANSACT_COMPLETE = STORAGE_MSG_FLAG_POST_COMMIT,
-    STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT = 0x8,
+    STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT = 0x08,
+    STORAGE_MSG_FLAG_EXPECT_CHECKPOINT = 0x10,
 };
 
 /*
