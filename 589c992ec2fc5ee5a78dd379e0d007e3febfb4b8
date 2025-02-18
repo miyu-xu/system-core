@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a06530_9d93d26c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-18T16:20:57Z",
+      "side": 1,
+      "message": "Wear and TV are still on 32-bit kernels, no? (not sure about Go...)",
+      "revId": "589c992ec2fc5ee5a78dd379e0d007e3febfb4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
