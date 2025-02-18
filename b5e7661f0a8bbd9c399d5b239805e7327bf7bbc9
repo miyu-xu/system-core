@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24652bf_baf8d7da",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-18T19:29:09Z",
+      "side": 1,
+      "message": "All these rules and recommendations should be described in https://cs.android.com/android/platform/superproject/+/android15-qpr1-release:system/core/init/README.md where `swapon_all` is documented.",
+      "range": {
+        "startLine": 2052,
+        "startChar": 6,
+        "endLine": 2054,
+        "endChar": 88
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "83bff423_b6cc6948",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/fs_mgr.cpp",
+              "range": {
+                "startLine": 2052,
+                "startChar": 0,
+                "endLine": 2063,
+                "endChar": 0
+              },
+              "replacement": "    // See https://cs.android.com/android/platform/superproject/+/android15-qpr1-release:system/core/init/README.md\n    // for the details of swapon_all command.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b5e7661f0a8bbd9c399d5b239805e7327bf7bbc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
