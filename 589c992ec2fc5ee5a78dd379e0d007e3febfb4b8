@@ -16,6 +16,24 @@
       "message": "Wear and TV are still on 32-bit kernels, no? (not sure about Go...)",
       "revId": "589c992ec2fc5ee5a78dd379e0d007e3febfb4b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7e57ae_9891f7ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-18T18:37:12Z",
+      "side": 1,
+      "message": "They\u0027re on 32-bit arm userspace with 64-bit kernels.\nIndeed 32-on-aarch64 6.12 tv/wear cf is being spun up now for regression testing.\n\nI merged https://android-review.googlesource.com/c/platform/packages/modules/Connectivity/+/3486345\n\u0027NetBpfLoad: on 25Q2+ force 64-bit kernel\u0027 a week ago, which causes a boot failure on a 32-bit kernel, and it hasn\u0027t been reverted.\n\nIt did discover we had some (minimal, very throttled) x86 32-bit kernel CF tests, but those were simply turned down.  32-bit x86 kernels have actually been busted since ~2019...  See the comment in //system/netd/server/XfrmController.h:148\n\nSimilarly there\u0027s some java netlink parsing code that also assumes 64-bit kernel struct ABI.",
+      "parentUuid": "c3a06530_9d93d26c",
+      "revId": "589c992ec2fc5ee5a78dd379e0d007e3febfb4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
