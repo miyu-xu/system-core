@@ -29,6 +29,7 @@
 #include <modprobe/modprobe.h>
 
 #include <sys/utsname.h>
+#include <thread>
 
 namespace {
 
@@ -56,6 +57,7 @@ void print_usage(void) {
     LOG(INFO) << "  -s, --syslog: print to syslog also";
     LOG(INFO) << "  -q, --quiet: disable messages";
     LOG(INFO) << "  -v, --verbose: enable more messages, even more with a second -v";
+    LOG(INFO) << "  -p, --parallel: Load modules in parallel";
     LOG(INFO);
 }
 
@@ -157,7 +159,7 @@ extern "C" int modprobe_main(int argc, char** argv) {
     std::string mods;
     std::vector<std::string> mod_dirs;
     modprobe_mode mode = AddModulesMode;
-    bool blocklist = false;
+    bool blocklist = false, parallel = false;
     int rv = EXIT_SUCCESS;
 
     int opt, fd;
@@ -176,9 +178,10 @@ extern "C" int modprobe_main(int argc, char** argv) {
         { "remove",              no_argument,       0, 'r' },
         { "syslog",              no_argument,       0, 's' },
         { "verbose",             no_argument,       0, 'v' },
+        { "parallel",            no_argument,       0, 'p' },
     };
     // clang-format on
-    while ((opt = getopt_long(argc, argv, "a::bd:Dhlqrsv", long_options, &option_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "a::bd:Dhlqrsvp", long_options, &option_index)) != -1) {
         switch (opt) {
             case 'a':
                 // toybox modprobe supported -a to load multiple modules, this
@@ -233,6 +236,9 @@ extern "C" int modprobe_main(int argc, char** argv) {
                 } else {
                     android::base::SetMinimumLogSeverity(android::base::DEBUG);
                 }
+                break;
+            case 'p':
+                parallel = true;
                 break;
             default:
                 LOG(ERROR) << "Unrecognized option: " << opt;
@@ -300,7 +306,10 @@ extern "C" int modprobe_main(int argc, char** argv) {
 
     Modprobe m(mod_dirs, modules_load_file.empty() ? "modules.load" : modules_load_file, blocklist);
     if (mode == AddModulesMode && !modules_load_file.empty()) {
-        if (!m.LoadListedModules(false)) {
+        bool retval = (parallel) ? m.LoadModulesParallel(std::thread::hardware_concurrency())
+                                 : m.LoadListedModules(false);
+
+        if (!retval) {
             PLOG(ERROR) << "Failed to load all the modules from " << modules_load_file;
             return EXIT_FAILURE;
         }
