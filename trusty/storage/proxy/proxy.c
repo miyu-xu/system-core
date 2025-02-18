@@ -143,17 +143,26 @@ static int handle_req(struct storage_msg* msg, const void* req, size_t req_len) 
             goto err_response;
         }
     }
+    bool expect_no_checkpoint = msg->flags & STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT;
+    bool expect_checkpoint = msg->flags & STORAGE_MSG_FLAG_EXPECT_CHECKPOINT;
+    if (expect_no_checkpoint && expect_checkpoint) {
+        ALOGE("STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT and STORAGE_MSG_FLAG_EXPECT_CHECKPOINT are "
+              "mutually exclusive.\n");
+        msg->result = STORAGE_ERR_NOT_VALID;
+        goto err_response;
+    }
 
-    if (msg->flags & STORAGE_MSG_FLAG_PRE_COMMIT_CHECKPOINT) {
-        bool is_checkpoint_active = false;
+    if (expect_no_checkpoint || expect_checkpoint) {
+        bool is_checkpoint_active = is_data_checkpoint_active();
 
-        rc = is_data_checkpoint_active(&is_checkpoint_active);
-        if (rc != 0) {
-            ALOGE("is_data_checkpoint_active failed in an unexpected way. Aborting.\n");
+        if (expect_no_checkpoint && is_checkpoint_active) {
+            ALOGE("Checkpoint in progress, dropping write ...\n");
             msg->result = STORAGE_ERR_GENERIC;
             goto err_response;
-        } else if (is_checkpoint_active) {
-            ALOGE("Checkpoint in progress, dropping write ...\n");
+        }
+        if (expect_checkpoint && !is_checkpoint_active) {
+            /* TODO: more specific error? */
+            ALOGE("No checkpoint in progress, dropping write ...\n");
             msg->result = STORAGE_ERR_GENERIC;
             goto err_response;
         }
