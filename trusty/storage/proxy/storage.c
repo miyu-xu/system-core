@@ -542,19 +542,14 @@ int storage_file_open(struct storage_msg* msg, const void* r, size_t req_len,
 #ifdef VENDOR_FS_READY_PROPERTY
     /* a backing file has been opened, notify any waiting init steps */
     if (!fs_ready_set || !fs_ready_rw_set) {
-        bool is_checkpoint_active = false;
+        bool is_checkpoint_active = is_data_checkpoint_active();
 
-        rc = is_data_checkpoint_active(&is_checkpoint_active);
-        if (rc != 0) {
-            ALOGE("is_data_checkpoint_active() failed (%d)\n", rc);
-        } else {
-            if (!fs_ready_rw_set && !is_checkpoint_active) {
-                fs_ready_rw_set = property_set_helper(FS_READY_RW_PROPERTY);
-            }
+        if (!fs_ready_rw_set && !is_checkpoint_active) {
+            fs_ready_rw_set = property_set_helper(FS_READY_RW_PROPERTY);
+        }
 
-            if (!fs_ready_set) {
-                fs_ready_set = property_set_helper(FS_READY_PROPERTY);
-            }
+        if (!fs_ready_set) {
+            fs_ready_set = property_set_helper(FS_READY_PROPERTY);
         }
     }
 #endif  // #ifdef VENDOR_FS_READY_PROPERTY
