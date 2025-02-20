@@ -2788,10 +2788,6 @@ TEST_F(CrasherTest, fault_address_between_maps) {
   void* start_ptr =
       mmap(nullptr, 3 * getpagesize(), PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
   ASSERT_NE(MAP_FAILED, start_ptr);
-  // Add a name to guarantee that this map is distinct and not combined in the map listing.
-  EXPECT_EQ(
-      prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, start_ptr, 3 * getpagesize(), "debuggerd map start"),
-      0);
   // Unmap the page in the middle.
   void* middle_ptr =
       reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(start_ptr) + getpagesize());
@@ -2838,8 +2834,6 @@ TEST_F(CrasherTest, fault_address_in_map) {
   // Create a map before the fork so it will be present in the child.
   void* ptr = mmap(nullptr, getpagesize(), 0, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
   ASSERT_NE(MAP_FAILED, ptr);
-  // Add a name to guarantee that this map is distinct and not combined in the map listing.
-  EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, ptr, getpagesize(), "debuggerd map"), 0);
 
   StartProcess([ptr]() {
     ASSERT_EQ(0, crash_call(reinterpret_cast<uintptr_t>(ptr)));
@@ -2911,7 +2905,7 @@ TEST_F(CrasherTest, verify_dex_pc_with_function_name) {
         mmap(nullptr, sizeof(kDexData), PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
     ASSERT_TRUE(ptr != MAP_FAILED);
     memcpy(ptr, kDexData, sizeof(kDexData));
-    EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, ptr, sizeof(kDexData), "dex"), 0);
+    prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, ptr, sizeof(kDexData), "dex");
 
     JITCodeEntry dex_entry = {.symfile_addr = reinterpret_cast<uintptr_t>(ptr),
                               .symfile_size = sizeof(kDexData)};
@@ -3012,18 +3006,12 @@ TEST_F(CrasherTest, verify_map_format) {
   // Create multiple maps to make sure that the map data is formatted properly.
   void* none_map = mmap(nullptr, getpagesize(), 0, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
   ASSERT_NE(MAP_FAILED, none_map);
-  // Add names to guarantee that the maps are distinct and not combined in the map listing.
-  EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, none_map, getpagesize(), "debuggerd map none"),
-            0);
   void* r_map = mmap(nullptr, getpagesize(), PROT_READ, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
   ASSERT_NE(MAP_FAILED, r_map);
-  EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, r_map, getpagesize(), "debuggerd map r"), 0);
   void* w_map = mmap(nullptr, getpagesize(), PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
-  EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, w_map, getpagesize(), "debuggerd map w"), 0);
   ASSERT_NE(MAP_FAILED, w_map);
   void* x_map = mmap(nullptr, getpagesize(), PROT_EXEC, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
   ASSERT_NE(MAP_FAILED, x_map);
-  EXPECT_EQ(prctl(PR_SET_VMA, PR_SET_VMA_ANON_NAME, x_map, getpagesize(), "debuggerd map x"), 0);
 
   TemporaryFile tf;
   ASSERT_EQ(0x2000, lseek(tf.fd, 0x2000, SEEK_SET));
@@ -3058,7 +3046,7 @@ TEST_F(CrasherTest, verify_map_format) {
   std::string match_str;
   // Verify none.
   match_str = android::base::StringPrintf(
-      "    %s-%s ---         0      %x  \\[anon:debuggerd map none\\]\\n",
+      "    %s-%s ---         0      %x\\n",
       format_map_pointer(reinterpret_cast<uintptr_t>(none_map)).c_str(),
       format_map_pointer(reinterpret_cast<uintptr_t>(none_map) + getpagesize() - 1).c_str(),
       getpagesize());
@@ -3066,7 +3054,7 @@ TEST_F(CrasherTest, verify_map_format) {
 
   // Verify read-only.
   match_str = android::base::StringPrintf(
-      "    %s-%s r--         0      %x  \\[anon:debuggerd map r\\]\\n",
+      "    %s-%s r--         0      %x\\n",
       format_map_pointer(reinterpret_cast<uintptr_t>(r_map)).c_str(),
       format_map_pointer(reinterpret_cast<uintptr_t>(r_map) + getpagesize() - 1).c_str(),
       getpagesize());
@@ -3074,7 +3062,7 @@ TEST_F(CrasherTest, verify_map_format) {
 
   // Verify write-only.
   match_str = android::base::StringPrintf(
-      "    %s-%s -w-         0      %x  \\[anon:debuggerd map w\\]\\n",
+      "    %s-%s -w-         0      %x\\n",
       format_map_pointer(reinterpret_cast<uintptr_t>(w_map)).c_str(),
       format_map_pointer(reinterpret_cast<uintptr_t>(w_map) + getpagesize() - 1).c_str(),
       getpagesize());
@@ -3082,7 +3070,7 @@ TEST_F(CrasherTest, verify_map_format) {
 
   // Verify exec-only.
   match_str = android::base::StringPrintf(
-      "    %s-%s --x         0      %x  \\[anon:debuggerd map x\\]\\n",
+      "    %s-%s --x         0      %x\\n",
       format_map_pointer(reinterpret_cast<uintptr_t>(x_map)).c_str(),
       format_map_pointer(reinterpret_cast<uintptr_t>(x_map) + getpagesize() - 1).c_str(),
       getpagesize());
