@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21c7189_48192b8e",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-20T16:31:09Z",
+      "side": 1,
+      "message": "\"Property triggers are also checked\"",
+      "revId": "57499a44f7b8f31ab875cb161ea9eea8ca2f7b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "064e7285_549c81a0",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-20T16:31:09Z",
+      "side": 1,
+      "message": "\"but also when\"",
+      "revId": "57499a44f7b8f31ab875cb161ea9eea8ca2f7b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
