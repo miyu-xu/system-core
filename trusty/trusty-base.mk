@@ -40,6 +40,7 @@ PRODUCT_PACKAGES += \
 	$(LOCAL_SECRETKEEPER_PRODUCT_PACKAGE) \
 	android.hardware.gatekeeper-service.trusty \
 	trusty_apploader \
+	android.hardware.trusty.hwcryptohal-service \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hardware.keystore_desede=true \
