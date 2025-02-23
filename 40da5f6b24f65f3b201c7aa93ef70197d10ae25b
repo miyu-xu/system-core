@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a418ad2c_28d436c7",
+        "filename": "trusty/trusty-base.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-02-23T07:29:05Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `trusty-hwcryptohal-service`?",
+      "revId": "40da5f6b24f65f3b201c7aa93ef70197d10ae25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
