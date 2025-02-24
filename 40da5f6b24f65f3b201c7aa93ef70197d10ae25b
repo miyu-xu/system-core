@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be `trusty-hwcryptohal-service`?",
       "revId": "40da5f6b24f65f3b201c7aa93ef70197d10ae25b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1fabb3f_5d7c5bfa",
+        "filename": "trusty/trusty-base.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2025-02-24T04:21:06Z",
+      "side": 1,
+      "message": "Is that the normal way to name service binaries? I was following the pattern I found on this file: https://android-review.git.corp.google.com/c/platform/system/sepolicy/+/3502262/3/vendor/file_contexts",
+      "parentUuid": "a418ad2c_28d436c7",
+      "revId": "40da5f6b24f65f3b201c7aa93ef70197d10ae25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
