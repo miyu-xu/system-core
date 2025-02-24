@@ -16,6 +16,24 @@
       "message": "ping is this ready to merge?",
       "revId": "b4459741af659819fe490677e8cc8bb851f1105e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78cf3e2_c9278113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-02-24T12:49:00Z",
+      "side": 1,
+      "message": "https://r.android.com/c/3460992/5 is the new CL created.\n\nBojian, please abandon this CL",
+      "parentUuid": "b85b2069_86acf860",
+      "revId": "b4459741af659819fe490677e8cc8bb851f1105e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
