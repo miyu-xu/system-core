@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6a7e98_38a4cf0b",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2025-02-25T18:48:10Z",
+      "side": 1,
+      "message": "In libinit, this make sense because init should have permissions on /system/bin/recovery if it exists. (Assuming that init is the only executable linking libinit)\n\nFor libfs_mgr, you also need to make sure ALL relevant executables that links to libfs_mgr has access to /system/bin/recovery in recovery mode. This includes SELinux permissions and UNIX permissions.\n\n(I am not saying this is incorrect; this is just a reminder for you to check all the binaries linking to libfs_mgr, since you are using this method in a library, not a single binary).",
+      "range": {
+        "startLine": 2026,
+        "startChar": 0,
+        "endLine": 2029,
+        "endChar": 1
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
