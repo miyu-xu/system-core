@@ -16,6 +16,24 @@
       "message": "Did you mean to delete this? None of the other debug_log code was removed.",
       "revId": "311c24511fc180fe2d590852421dd62d895988ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b595005_60d37208",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T23:41:31Z",
+      "side": 0,
+      "message": "yeah, the _other_ debug_log code is basically \"is memfd working on this device?\". that seems useful at least until we\u0027ve fully moved over and are coming back to delete the legacy ashmem code. but this was one weird special case of \"regular use\" logging ... and the idiom was being copied in the new code [https://android-review.git.corp.google.com/c/platform/system/core/+/3507070] that prompted me to clean this up.",
+      "parentUuid": "9264f9a3_a8728bd4",
+      "revId": "311c24511fc180fe2d590852421dd62d895988ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
