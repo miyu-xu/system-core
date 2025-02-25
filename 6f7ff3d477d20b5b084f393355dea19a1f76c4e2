@@ -22,6 +22,175 @@
       },
       "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe56e91_56c02c54",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-25T20:16:16Z",
+      "side": 1,
+      "message": "Which AConfig flag? Readers of this file will be trying to determine if mmd is active on their system. You need to provide and describe here a simple way for them to check that.",
+      "range": {
+        "startLine": 789,
+        "startChar": 48,
+        "endLine": 789,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e3f16813_5ce02a43",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/README.md",
+              "range": {
+                "startLine": 789,
+                "startChar": 0,
+                "endLine": 791,
+                "endChar": 0
+              },
+              "replacement": "  ignores zram entry in fstab if mmd is enabled by AConfig flag\n  `mmd.enabled_aconfig` and `mmd.zram.enabled` sysprop is enabled.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4659be9_e05d7b99",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-25T20:16:16Z",
+      "side": 1,
+      "message": "Can this be documented simply as `swapon_all is deprecated and will do nothing if xxx AConfig flag and mmd.zram.enabled sysprop are enabled.`?",
+      "range": {
+        "startLine": 788,
+        "startChar": 2,
+        "endLine": 790,
+        "endChar": 40
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f391d44_be9ff6db",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-25T20:16:16Z",
+      "side": 1,
+      "message": "I don\u0027t think this belongs here. This is a user guide for `swapon_all` command, instructions on how to setup Teamfood and Trunkfood during mmd launch do not belong here IMO.",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 796,
+        "endChar": 60
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3810fc4d_eea78d19",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/README.md",
+              "range": {
+                "startLine": 795,
+                "startChar": 0,
+                "endLine": 805,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf38e28_a51b2398",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-25T20:16:16Z",
+      "side": 1,
+      "message": "These are implementation details. Does not belong in the user guide.",
+      "range": {
+        "startLine": 797,
+        "startChar": 42,
+        "endLine": 800,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "75686546_f6bb9c2d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/README.md",
+              "range": {
+                "startLine": 797,
+                "startChar": 0,
+                "endLine": 804,
+                "endChar": 0
+              },
+              "replacement": "  switched by `mmd_enabled` AConfig flag. The devices which has the 2 zram setup\n  configurations should wait to execute swapon_all until `mmd_enabled` AConfig\n  flag is initialized by `property:mmd_enabled\u003d*` trigger.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712355fe_0527b5c8",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-02-25T20:16:16Z",
+      "side": 1,
+      "message": "have",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 11
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
