@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0c9603_3bb4822d",
+        "filename": "init/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-25T03:36:56Z",
+      "side": 1,
+      "message": "The formatting here looks inconsistent with the other README.md entries. Is there supposed to be a \"\u003e\" marker on every line? Or does it not matter?",
+      "revId": "a9c35c3ba3e57f1d020a0dd290cadb3f33639b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
