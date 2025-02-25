@@ -52,6 +52,24 @@
       "parentUuid": "5cd8a7a4_97c874f6",
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672009dd_0c39603c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T19:42:53Z",
+      "side": 1,
+      "message": "\u003e Let me know Elliott if you want me to rebase on top of that.\n\nyeah, i was planning on getting that in first and then -- if you don\u0027t just want to play \"guess the nits\" come back with the nits. (because you did the sensible thing of \"copy the local style\", but it\u0027s time we did something about the state of the local style :-) )\n\n\u003e And what\u0027s our timeline for moving to memfd?\n\nyeah, i don\u0027t know the timeline --- that\u0027s why i added other folks.\n\non the one hand \"it\u0027s clearly the long-term plan, so you\u0027ll want something for that\" but on the other \"it\u0027s been the plan for many years already, so...\".\n\n\u003e I\u0027ll be looking into whether we have similar APIs with memfd.\n\nthere are definitely folks who\u0027re already using memfd_create() directly (because it\u0027s easier to use memfd_create() directly for a new use case than to port all existing ashmem users!) so it\u0027s possible that you want memfd readlink()/fstat() support in your caller regardless, to cover those cases. (and memfd_create() is in bionic so even apps can use it, whereas libcutils is for OS code only.)",
+      "parentUuid": "ef90500f_a9042b3c",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
