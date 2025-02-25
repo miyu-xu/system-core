@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2900ccf_29c1aee0",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T23:28:11Z",
+      "side": 1,
+      "message": "one of my higher-level \"nits\" here was going to be \"just use android::base::Readlink() instead\" anyway :-)",
+      "parentUuid": "fe4c21b2_ed7b4c92",
+      "range": {
+        "startLine": 510,
+        "startChar": 32,
+        "endLine": 510,
+        "endChar": 47
+      },
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adb90a2a_2e5de161",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 2
@@ -174,6 +198,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6931be42_b87814b9",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T23:28:11Z",
+      "side": 1,
+      "message": "...because readlink(2) is awful :-)",
+      "parentUuid": "adb90a2a_2e5de161",
+      "range": {
+        "startLine": 518,
+        "startChar": 8,
+        "endLine": 518,
+        "endChar": 47
+      },
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04293a86_a8c1bb21",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 2
@@ -209,6 +257,30 @@
           ]
         }
       ],
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cc5221_89f1dbb0",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T23:28:11Z",
+      "side": 1,
+      "message": "(android::base::ConsumePrefix() is your friend here...)",
+      "parentUuid": "04293a86_a8c1bb21",
+      "range": {
+        "startLine": 520,
+        "startChar": 7,
+        "endLine": 524,
+        "endChar": 9
+      },
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
