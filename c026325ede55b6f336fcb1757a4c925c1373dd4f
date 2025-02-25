@@ -16,6 +16,51 @@
       "message": "Looks much cleaner!!!",
       "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218f29fd_90409128",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-02-25T20:21:43Z",
+      "side": 1,
+      "message": "This causes a slightly different behavior that before, but I think it makes sense to do.\n\nBefore, sending in a name that is null will skip the set name call. Now, it will be called with none.\n\nIs this intended?",
+      "fixSuggestions": [
+        {
+          "fixId": "99d7b22e_a105faef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 341,
+                "startChar": 0,
+                "endLine": 343,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 348,
+                "startChar": 0,
+                "endLine": 351,
+                "endChar": 0
+              },
+              "replacement": "    if (!fd.ok()) {\n        return -1;\n    }\n\n    if (name !\u003d NULL) {\n        if (TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_SET_NAME, name) \u003c 0)) {\n            return -1;\n        }\n    }\n\n    if (TEMP_FAILURE_RETRY(ioctl(fd, ASHMEM_SET_SIZE, size) \u003c 0)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
