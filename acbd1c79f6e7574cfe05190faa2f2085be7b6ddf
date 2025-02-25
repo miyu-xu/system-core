@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c539c1b8_55da40ba",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-25T01:29:45Z",
+      "side": 1,
+      "message": "reviewers: probably worth doing in a separate cl either way, but this should be dead code by now?",
+      "revId": "acbd1c79f6e7574cfe05190faa2f2085be7b6ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
