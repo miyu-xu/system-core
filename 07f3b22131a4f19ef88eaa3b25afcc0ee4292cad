@@ -70,6 +70,147 @@
       "parentUuid": "ef90500f_a9042b3c",
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9535d2_18bfa707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-25T23:16:55Z",
+      "side": 1,
+      "message": "The plan is to move to memfd in android 17.",
+      "parentUuid": "672009dd_0c39603c",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4c21b2_ed7b4c92",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-25T23:16:55Z",
+      "side": 1,
+      "message": "This is fine for ashmem, but not for memfd files. memfd files have different naming conventions. Consider a memfd created with `memfd_create(\"test-buf\", ...)`.\n\nUsing `readlink()` on the path that points to the memfd in `/proc/self/fd/` will yield the following string: `/memfd:test-buf (deleted)`, so you have to allocate the worst case buffer size:\n\n1 (for the / character) + 6 (for the memfd: prefix) + 249 (for the max string length of the name argument in `memfd_create()` [2]) + 10 (for the \" (deleted)\" string) + 1 for the NUL terminator, which adds up to 267 bytes.",
+      "range": {
+        "startLine": 510,
+        "startChar": 32,
+        "endLine": 510,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2883a95a_b72a7859",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 516,
+                "startChar": 0,
+                "endLine": 519,
+                "endChar": 0
+              },
+              "replacement": "        struct stat sb;\n\n        if (fstat(fd, \u0026sb) \u003d\u003d -1) {\n            ALOGE(\"ashmem_get_name(%d): fstat failed: %m\", fd);\n            return nullptr;\n        }\n\n        strncpy(_name, sb.st_dev, ASHMEM_NAME_LEN);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb90a2a_2e5de161",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-25T23:16:55Z",
+      "side": 1,
+      "message": "We should also be checking the return value of `readlink()` for errors. In the case there isn\u0027t an error, we should use the amount of bytes printed to add a null terminator, since `readlink()` doesn\u0027t do that by default [1].\n\n[1] https://man7.org/linux/man-pages/man2/readlink.2.html",
+      "range": {
+        "startLine": 518,
+        "startChar": 8,
+        "endLine": 518,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3452747b_10b1bfc1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 518,
+                "startChar": 0,
+                "endLine": 519,
+                "endChar": 0
+              },
+              "replacement": "        int len \u003d readlink(path, _name, ASHMEM_NAME_LEN);\n        if (len \u003c 0) {\n            ALOGE(\"ashmem_get_name(%d) failed: %s\", fd, strerror(errno));\n            return nullptr;\n        }\n        _name[len] \u003d \u0027\\0\u0027;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04293a86_a8c1bb21",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-25T23:16:55Z",
+      "side": 1,
+      "message": "Note: the ashmem driver will either return the default name(/dev/ashmem)--if no name has been set--or the name that was used with `ASHMEM_SET_NAME`. So for example, if you just allocate an ashmem buffer, and don\u0027t name it, you will get `/dev/ashmem`. If you name it test-buf, you will get \"test-buf\".\n\nI think we should do the same thing for memfd and strip out the \"/memfd:\" prefix and the \" (deleted)\" suffix.",
+      "range": {
+        "startLine": 520,
+        "startChar": 7,
+        "endLine": 524,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dfeadab0_a2ec1cf5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 516,
+                "startChar": 0,
+                "endLine": 519,
+                "endChar": 0
+              },
+              "replacement": "        struct stat sb;\n\n        if (fstat(fd, \u0026sb) \u003d\u003d -1) {\n            ALOGE(\"ashmem_get_name(%d): fstat failed: %m\", fd);\n            return nullptr;\n        }\n\n        _name \u003d (char*)malloc(sb.st_size + 1);\n        if (!_name) {\n            return nullptr;\n        }\n\n        ssize_t len \u003d readlink(android::base::StringPrintf(\"/proc/self/fd/%d\", fd).c_str(), _name, sb.st_size);\n        if (len \u003d\u003d -1) {\n            ALOGE(\"ashmem_get_name(%d): readlink failed: %m\", fd);\n            free(_name);\n            return nullptr;\n        }\n\n        _name[len] \u003d \u0027\\0\u0027;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
