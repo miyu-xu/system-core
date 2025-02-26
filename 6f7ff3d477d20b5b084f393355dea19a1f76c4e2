@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "870a083d_e09fa4d0",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "Thanks for the recommendation!\n\nI confirmed that there is no usage of `fs_mgr_swapon_all()` other than init.\n\nI added your note to the code comment of this function.\n\nhttps://cs.android.com/search?q\u003dfs_mgr_swapon_all%20-f:prebuilts\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nhttp://cs/search?q\u003d%20fs_mgr_swapon_all%20-f:prebuilts%20-f:fs_mgr.c%20-f:fs_mgr.h%20-f:system%2Fsepolicy%2Fprivate%2Finit.te%20-f:system%2Fsepolicy%2Finit.te%20-f:external%2Fsepolicy%2Finit.te%20-f:system%2Fsepolicy%2Fpublic%2Finit.te%20-f:system%2Fcore%2Finit%2Fbuiltins.cpp\u0026sq\u003d",
+      "parentUuid": "5b6a7e98_38a4cf0b",
+      "range": {
+        "startLine": 2026,
+        "startChar": 0,
+        "endLine": 2029,
+        "endChar": 1
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efe56e91_56c02c54",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9637904b_e3c79b92",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "Sorry. I missed it. Thanks for the catch!",
+      "parentUuid": "efe56e91_56c02c54",
+      "range": {
+        "startLine": 789,
+        "startChar": 48,
+        "endLine": 789,
+        "endChar": 63
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4659be9_e05d7b99",
@@ -78,6 +126,30 @@
       "writtenOn": "2025-02-25T20:16:16Z",
       "side": 1,
       "message": "Can this be documented simply as `swapon_all is deprecated and will do nothing if xxx AConfig flag and mmd.zram.enabled sysprop are enabled.`?",
+      "range": {
+        "startLine": 788,
+        "startChar": 2,
+        "endLine": 790,
+        "endChar": 40
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7abde80_87955b4a",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! That\u0027s simpler.",
+      "parentUuid": "a4659be9_e05d7b99",
       "range": {
         "startLine": 788,
         "startChar": 2,
@@ -129,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb1ae2e_c94dedcc",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "SG. Removed.",
+      "parentUuid": "6f391d44_be9ff6db",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 796,
+        "endChar": 60
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf38e28_a51b2398",
@@ -170,6 +266,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8231c13_9e14f331",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "fcf38e28_a51b2398",
+      "range": {
+        "startLine": 797,
+        "startChar": 42,
+        "endLine": 800,
+        "endChar": 66
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "712355fe_0527b5c8",
@@ -183,6 +303,30 @@
       "writtenOn": "2025-02-25T20:16:16Z",
       "side": 1,
       "message": "have",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 11
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91da850d_3f84e84b",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-26T05:46:49Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "712355fe_0527b5c8",
       "range": {
         "startLine": 801,
         "startChar": 8,
