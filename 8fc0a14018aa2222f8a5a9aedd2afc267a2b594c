@@ -16,6 +16,24 @@
       "message": "Hi Jaegeuk,\n\nWith this change, if all f2fs partitions are cleanly unmounted, we will never end up calling the ioctl F2FS_IOC_SHUTDOWN:\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/core/init/reboot.cpp;l\u003d818\n\nToday, this IOCTL is called during every reboot cycle as some partitions weren\u0027t cleany unmounted.\n\nPlease let know if this is ok.",
       "revId": "8fc0a14018aa2222f8a5a9aedd2afc267a2b594c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48822b9_f9d55db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2025-02-26T15:46:15Z",
+      "side": 1,
+      "message": "It\u0027d be awesome to avoid shutdown, which improves the stability. Hence, +2. Thank you for the work!",
+      "parentUuid": "dcd5324a_b31b40f1",
+      "revId": "8fc0a14018aa2222f8a5a9aedd2afc267a2b594c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
