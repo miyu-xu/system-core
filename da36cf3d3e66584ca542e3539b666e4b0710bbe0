@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b3cda68_1f6d58a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "Shared please check out.",
+      "parentUuid": "cdd0d741_4b18f0e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8947862d_d7727301",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,23 @@
       "writtenOn": "2025-01-23T20:38:28Z",
       "side": 1,
       "message": "dvander/jiyong for init design questions...",
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f842293_22e095e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "g/",
       "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +95,30 @@
       "writtenOn": "2025-01-23T23:47:04Z",
       "side": 1,
       "message": "WaitForProperty accepts miliseconds.",
+      "range": {
+        "startLine": 928,
+        "startChar": 37,
+        "endLine": 928,
+        "endChar": 44
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e6e9ba_5c2c5acb",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "Thanks. Since a normal boot time is expected to be 2-3 minutes, it might be ok to use seconds here, instead of miliseconds?",
+      "parentUuid": "f0ef5884_44afff24",
       "range": {
         "startLine": 928,
         "startChar": 37,
@@ -89,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4432e3cc_c6ace798",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "It\u0027s short delay for the logs to be flushed out.",
+      "parentUuid": "9d2f43d1_7359746f",
+      "range": {
+        "startLine": 939,
+        "startChar": 8,
+        "endLine": 939,
+        "endChar": 43
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90ec7c12_d10597e3",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -100,6 +189,30 @@
       "writtenOn": "2025-01-23T23:47:04Z",
       "side": 1,
       "message": "GetIntProperty is more concise and safer.",
+      "range": {
+        "startLine": 1039,
+        "startChar": 27,
+        "endLine": 1039,
+        "endChar": 43
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4e8370_f0970803",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "90ec7c12_d10597e3",
       "range": {
         "startLine": 1039,
         "startChar": 27,
@@ -123,6 +236,30 @@
       "writtenOn": "2025-01-23T23:47:04Z",
       "side": 1,
       "message": "Can these lines be factored into a single function?",
+      "range": {
+        "startLine": 1034,
+        "startChar": 0,
+        "endLine": 1044,
+        "endChar": 5
+      },
+      "revId": "da36cf3d3e66584ca542e3539b666e4b0710bbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e082d3fb_73966cdc",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-02-26T21:19:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ed95cac3_0926f713",
       "range": {
         "startLine": 1034,
         "startChar": 0,
