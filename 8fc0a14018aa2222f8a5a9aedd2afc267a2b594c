@@ -69,6 +69,24 @@
       "parentUuid": "a58e8158_06afb47c",
       "revId": "8fc0a14018aa2222f8a5a9aedd2afc267a2b594c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e40d32_4e1038ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-27T00:27:10Z",
+      "side": 1,
+      "message": "You might not be able to get it during shutdown. I meant looking at dmesg from the next boot, since you should be able to tell whether /data was unmounted properly.",
+      "parentUuid": "335490ce_ff14c650",
+      "revId": "8fc0a14018aa2222f8a5a9aedd2afc267a2b594c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
