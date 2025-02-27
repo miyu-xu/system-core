@@ -124,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1333ff_2c463125",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-27T18:58:04Z",
+      "side": 1,
+      "message": "(note that this code would be an _error_ in c because c only allows _constants_ on the rhs of a static initializer. there\u0027s some work on bringing `constexpr` to c [very basic stuff is in c23 already], but i\u0027m not aware of any work on this, despite the fact that c does now include threads.)",
+      "parentUuid": "17e9c1ef_211b429e",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 56
+      },
+      "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5c0843a_ce988d99",
