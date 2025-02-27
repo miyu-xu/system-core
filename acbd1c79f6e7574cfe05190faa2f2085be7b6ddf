@@ -70,6 +70,24 @@
       "parentUuid": "70e02dde_e0690218",
       "revId": "acbd1c79f6e7574cfe05190faa2f2085be7b6ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487222f3_f9267d77",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-27T15:23:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "68d000b8_bee4fe76",
+      "revId": "acbd1c79f6e7574cfe05190faa2f2085be7b6ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
