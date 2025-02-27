@@ -1141,6 +1141,10 @@ on boot
     # set readahead multiplier for POSIX_FADV_SEQUENTIAL files
     write /dev/sys/fs/by-name/userdata/seq_file_ra_mul 128
 
+    # enable f2fs sanity check to dump more metadata info to kmsg
+    # once it detects inode corruption
+    write /dev/sys/fs/by-name/userdata/sanity_check 1
+
     # limit discard size to 128MB in order to avoid long IO latency
     # for filesystem tuning first (dm or sda)
     # this requires enabling selinux entry for sda/mmcblk0 in vendor side
