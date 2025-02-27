@@ -37,6 +37,129 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6faad28c_9290aa88",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-27T18:36:03Z",
+      "side": 1,
+      "message": "Unrelated, but while we\u0027re on the topic of cleaning up the code:\n\nThis is declared as static, but we re-evaluate it on every invocation. I wonder if we should change that to only invoke `__has_memfd_support()` if `memfd_supported` is false? Otherwise, I don\u0027t think we should use `static` here.",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9e9d7fb3_0dbaa1f0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 160,
+                "startChar": 0,
+                "endLine": 162,
+                "endChar": 0
+              },
+              "replacement": "    static bool has_memfd_support \u003d __has_memfd_support();\n    return has_memfd_support;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c0843a_ce988d99",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-27T18:36:03Z",
+      "side": 1,
+      "message": "Similar comment as above; I\u0027m assuming that we could cache this?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 75
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e53604b5_934046c2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 178,
+                "startChar": 0,
+                "endLine": 179,
+                "endChar": 0
+              },
+              "replacement": "    static const std::string ashmem_device_path \u003d []() {\n        return get_ashmem_device_path();\n    }();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae5c0ce_639da942",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-02-27T18:36:03Z",
+      "side": 1,
+      "message": "I\u0027ll check to see if this is actually needed, but we can have a separate CL to remove it later.",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1e92d32a_76b33a43",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libcutils/ashmem-dev.cpp",
+              "range": {
+                "startLine": 187,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "    // TODO(b/139086456): remove this?\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c026325ede55b6f336fcb1757a4c925c1373dd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218f29fd_90409128",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 3
