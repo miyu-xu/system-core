@@ -358,6 +358,30 @@
       },
       "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c002a3_42a70da9",
+        "filename": "init/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-27T04:12:02Z",
+      "side": 1,
+      "message": "This is a part of \"setup Teamfood and Trunkfood during mmd launch\".\n\n* OEMs who use mmd to set up zram:\n  * They are supposed to call swapon_all without zram entry fstab, or never to call swapon_all. So `mmd.enabled_aconfig` sysprop value never matters.\n* OEMs who don\u0027t use mmd to set up zram:\n  * They are free from the mmd timing to call swapon_all command. But it just shows the warning log of deprecation of swapon_all for zram setup.",
+      "parentUuid": "40fd79db_920a345f",
+      "range": {
+        "startLine": 800,
+        "startChar": 67,
+        "endLine": 803,
+        "endChar": 43
+      },
+      "revId": "6f7ff3d477d20b5b084f393355dea19a1f76c4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
