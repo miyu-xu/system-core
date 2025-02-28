@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf003d3f_392502f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-02-28T22:53:01Z",
+      "side": 1,
+      "message": "LGTM, thanks for starting this thread after the signal fd handler (needed to not break process reaping).",
+      "revId": "1b40fce401e2c7b6d2540caa3d6ff45e5af94f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
