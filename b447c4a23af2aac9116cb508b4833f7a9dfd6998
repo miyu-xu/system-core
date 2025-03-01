@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b3d486_5cfe71bd",
+        "filename": "trusty/utils/trusty-ut-ctrl/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-03-01T15:00:29Z",
+      "side": 1,
+      "message": "I think this needs `gtest: false` since it\u0027s not a googletest program.",
+      "revId": "b447c4a23af2aac9116cb508b4833f7a9dfd6998",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
