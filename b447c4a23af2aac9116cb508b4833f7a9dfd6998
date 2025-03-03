@@ -16,6 +16,24 @@
       "message": "I think this needs `gtest: false` since it\u0027s not a googletest program.",
       "revId": "b447c4a23af2aac9116cb508b4833f7a9dfd6998",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c5b5a6_ffe7496b",
+        "filename": "trusty/utils/trusty-ut-ctrl/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-03-03T05:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b3d486_5cfe71bd",
+      "revId": "b447c4a23af2aac9116cb508b4833f7a9dfd6998",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
