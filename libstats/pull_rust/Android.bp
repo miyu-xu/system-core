@@ -25,6 +25,7 @@ rust_bindgen {
     visibility: [
         "//frameworks/proto_logging/stats/stats_log_api_gen",
         "//packages/modules:__subpackages__",
+        "//vendor:__subpackages__",
     ],
     source_stem: "bindings",
     bindgen_flags: [
@@ -50,9 +51,12 @@ rust_bindgen {
     min_sdk_version: "apex_inherit",
     apex_available: [
         "//apex_available:platform",
+        "com.android.hardware.*",
         "com.android.resolv",
         "com.android.virt",
     ],
+    vendor_available: true,
+    host_supported: true,
 }
 
 rust_library {
