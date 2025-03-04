@@ -34,6 +34,24 @@
       "parentUuid": "e87b19f5_8eb0bca4",
       "revId": "1dcb8ed50b276ccba975069192123c04b0d2c4a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3254ed3_f6bf3522",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3832128
+      },
+      "writtenOn": "2025-03-04T02:50:41Z",
+      "side": 1,
+      "message": "Hi Jaegeuk, Sandeep, I need to update the patch to enable this for CF only, please ignore this version, sorry.",
+      "parentUuid": "98355200_6915ec5b",
+      "revId": "1dcb8ed50b276ccba975069192123c04b0d2c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
