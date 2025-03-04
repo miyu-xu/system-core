@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51f75f8d_933377dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Rebased to aosp/3506451",
+      "parentUuid": "4b9535d2_18bfa707",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe4c21b2_ed7b4c92",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 2
@@ -162,6 +180,30 @@
       "side": 1,
       "message": "one of my higher-level \"nits\" here was going to be \"just use android::base::Readlink() instead\" anyway :-)",
       "parentUuid": "fe4c21b2_ed7b4c92",
+      "range": {
+        "startLine": 510,
+        "startChar": 32,
+        "endLine": 510,
+        "endChar": 47
+      },
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174ca848_c16d7798",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Updated with a version that uses `android::base::Readlink()`",
+      "parentUuid": "a2900ccf_29c1aee0",
       "range": {
         "startLine": 510,
         "startChar": 32,
@@ -237,6 +279,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b931fe11_73b0814f",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6931be42_b87814b9",
+      "range": {
+        "startLine": 518,
+        "startChar": 8,
+        "endLine": 518,
+        "endChar": 47
+      },
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04293a86_a8c1bb21",
@@ -302,6 +368,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e228bb_d2495314",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b9cc5221_89f1dbb0",
+      "range": {
+        "startLine": 520,
+        "startChar": 7,
+        "endLine": 524,
+        "endChar": 9
+      },
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08731905_d59ea5db",
@@ -315,6 +405,24 @@
       "writtenOn": "2025-02-28T00:02:48Z",
       "side": 1,
       "message": "you know this because of L49 :-)",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "431089e7_f9732590",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "08731905_d59ea5db",
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -336,6 +444,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb534141_c2ec6ea0",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8f3130dc_85b56c4d",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6961a39_7d1079cf",
@@ -349,6 +475,24 @@
       "writtenOn": "2025-02-28T00:02:48Z",
       "side": 1,
       "message": "no need for the cast. but you can also just put this straight in a unique_ptr on L48?",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428aabbc_8ed9419a",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f6961a39_7d1079cf",
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -370,6 +514,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e414390_fb6e7098",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5eaf181a_b0218a1e",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa133529_3c91a164",
@@ -387,6 +549,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbaa1a7_ac952f8c",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa133529_3c91a164",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a78ef1d4_be46d146",
@@ -400,6 +580,24 @@
       "writtenOn": "2025-02-28T00:02:48Z",
       "side": 1,
       "message": "std::unique_ptr again",
+      "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6878bf_b8f11910",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2025-03-04T19:34:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a78ef1d4_be46d146",
       "revId": "07f3b22131a4f19ef88eaa3b25afcc0ee4292cad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
