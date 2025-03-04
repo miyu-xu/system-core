@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16ecb3b2_b3373262",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-03-04T23:45:28Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that be true if prot \u003d -1, which could happen if `ioctl()` fails? The current logic would catch that, but I don\u0027t think that what you\u0027re proposing does.",
+      "parentUuid": "bfb87929_290b1363",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 45
+      },
+      "revId": "8afeb3a5e7bdd2099c34b897636a10d6afbdd26a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65a3b841_af138159",
         "filename": "libcutils/ashmem_test.cpp",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2025-03-04T18:32:05Z",
       "side": 1,
       "message": "(same)",
+      "revId": "8afeb3a5e7bdd2099c34b897636a10d6afbdd26a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062fd41f_5b4dff51",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1934715
+      },
+      "writtenOn": "2025-03-04T23:45:28Z",
+      "side": 1,
+      "message": "same response as above.",
+      "parentUuid": "65a3b841_af138159",
       "revId": "8afeb3a5e7bdd2099c34b897636a10d6afbdd26a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
