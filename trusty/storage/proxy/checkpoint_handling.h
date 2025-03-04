@@ -28,14 +28,10 @@ extern "C" {
 #endif
 
 /**
- * is_data_checkpoint_active() - Check for an active, uncommitted checkpoint of
- * /data. If a checkpoint is active, storage should not commit any
- * rollback-protected writes to /data.
- * @active: Out parameter that will be set to the result of the check.
- *
- * Return: 0 if active was set and is valid, non-zero otherwise.
+ * is_data_checkpoint_active() - Check for a possible active, uncommitted checkpoint of /data. If a
+ * checkpoint is active, storage should not commit any rollback-protected writes.
  */
-int is_data_checkpoint_active(bool* active);
+bool is_data_checkpoint_active();
 
 bool is_gsi_running();
 
