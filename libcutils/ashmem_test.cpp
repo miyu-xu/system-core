@@ -24,10 +24,14 @@
 
 #include <vector>
 
+#include <android-base/file.h>
 #include <android-base/macros.h>
+#include <android-base/stringprintf.h>
 #include <android-base/unique_fd.h>
 #include <cutils/ashmem.h>
 #include <gtest/gtest.h>
+
+#include "ashmem-internal.h"
 
 using android::base::unique_fd;
 
@@ -67,6 +71,17 @@ static void FillData(std::vector<uint8_t>& data) {
     for (size_t i = 0; i < data.size(); i++) {
         data[i] = i & 0xFF;
     }
+}
+
+static bool isMemfdFile(const unique_fd& fd) {
+    std::string filePath;
+    std::string memfdProcPath = android::base::StringPrintf("/proc/self/fd/%d", fd.get());
+
+    if (!android::base::Readlink(memfdProcPath, &filePath)) {
+        return false;
+    }
+
+    return filePath.starts_with("/memfd:");
 }
 
 static void waitForChildProcessExit(pid_t pid) {
@@ -315,4 +330,74 @@ TEST(AshmemTest, ForkMultiRegionTest) {
     }
 
     ASSERT_NO_FATAL_FAILURE(ForkMultiRegionTest(fds, nRegions, size));
+}
+
+TEST(AshmemTest, MemfdAshmemCompatTest) {
+    if (!has_memfd_support()) {
+        GTEST_SKIP() << "No memfd support; skipping memfd-ashmem compat tests";
+    }
+
+    std::string bufName = "ashmem-test-buf";
+    size_t bufSize = getpagesize();
+    unique_fd fd = unique_fd(ashmem_create_region(bufName.c_str(), bufSize));
+    ASSERT_TRUE(fd >= 0);
+    ASSERT_TRUE(isMemfdFile(fd));
+
+    // These commands aren't expected to work, since memfd names cannot be changed after the buffer
+    // has been created, and libcutils seals the size after creating the memfd.
+    ASSERT_LT(ioctl(fd, ASHMEM_SET_NAME, "invalid-command"), 0);
+    ASSERT_LT(ioctl(fd, ASHMEM_SET_SIZE, 2 * bufSize), 0);
+
+    char testBuf[ASHMEM_NAME_LEN];
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_GET_NAME, &testBuf));
+    ASSERT_STREQ(testBuf, bufName.c_str());
+
+    ASSERT_EQ(static_cast<int>(bufSize), ioctl(fd, ASHMEM_GET_SIZE, 0));
+
+    // We can only change PROT_WRITE for memfds since memfd implements ashmem's prot_mask through
+    // file seals, and only write seals exist.
+    //
+    // All memfd files start off as being writable (i.e. PROT_WRITE is part of the prot_mask).
+    // Test to ensure that the implementation only clears the PROT_WRITE bit when requested.
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_SET_PROT_MASK, PROT_READ | PROT_WRITE | PROT_EXEC));
+    int prot = ioctl(fd, ASHMEM_GET_PROT_MASK, 0);
+    ASSERT_GT(prot, 0);
+    ASSERT_EQ(PROT_WRITE, prot & PROT_WRITE);
+
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_SET_PROT_MASK, PROT_READ | PROT_EXEC));
+    prot = ioctl(fd, ASHMEM_GET_PROT_MASK, 0);
+    ASSERT_EQ(0, prot & PROT_WRITE);
+
+    // The shim layer should implement clearing PROT_WRITE via file seals, so check the file
+    // seals to ensure that F_SEAL_FUTURE_WRITE is set.
+    int seals = fcntl(fd, F_GET_SEALS, 0);
+    ASSERT_GT(0, seals);
+    ASSERT_EQ(F_SEAL_FUTURE_WRITE, seals & F_SEAL_FUTURE_WRITE);
+
+    // And similarly, ensure that file seals affect prot_mask
+    unique_fd fd2 = unique_fd(ashmem_create_region("ashmem-test-buf-2", bufSize));
+    ASSERT_TRUE(fd2 >= 0);
+    ASSERT_TRUE(isMemfdFile(fd2));
+
+    ASSERT_EQ(0, fcntl(fd2, F_ADD_SEALS, F_SEAL_FUTURE_WRITE));
+    prot = ioctl(fd2, ASHMEM_GET_PROT_MASK, 0);
+    ASSERT_EQ(0, prot & PROT_WRITE);
+
+    unsigned long ino;
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_GET_FILE_ID, &ino));
+
+    struct stat st;
+    ASSERT_EQ(0, fstat(fd, &st));
+    ASSERT_EQ(ino, st.st_ino);
+
+    // There's no good way of ensuring that these commands are implemented as stubs, so the next
+    // best thing is just to make sure they don't fail.
+    struct ashmem_pin pin = {
+        .offset = 0,
+        .len = static_cast<uint32_t>(bufSize),
+    };
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_UNPIN, &pin));
+    ASSERT_GE(0, ioctl(fd, ASHMEM_PIN, &pin));
+    ASSERT_GE(0, ioctl(fd, ASHMEM_GET_PIN_STATUS, &pin));
+    ASSERT_EQ(0, ioctl(fd, ASHMEM_PURGE_ALL_CACHES, 0));
 }
