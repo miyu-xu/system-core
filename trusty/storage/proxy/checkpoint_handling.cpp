@@ -41,8 +41,6 @@ using ::ndk::SharedRefBase;
 
 const char kVoldService[] = "android.system.vold.IVold/default";
 
-bool checkpointingDoneForever = false;
-
 /* Written once from main thread before any checkpointing_get_state
  * calls could be reading it. */
 bool voldConnected = false;
@@ -65,8 +63,14 @@ int is_data_checkpoint_active(bool* active) {
         return 0;
     }
 
+    if (voldConnected) {
+        *active = voldPossibleCheckpointing.load();
+        return 0;
+    }
+
     *active = false;
 
+    static bool checkpointingDoneForever = false;
     if (checkpointingDoneForever) {
         return 0;
     }
