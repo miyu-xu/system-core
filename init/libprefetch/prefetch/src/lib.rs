@@ -59,6 +59,19 @@ pub use arch::android::*;
 
 /// Records prefetch data for the given configuration
 pub fn record(args: &RecordArgs) -> Result<(), Error> {
+    #[cfg(target_os = "android")]
+    {
+        // Exit process here if we are running on first boot
+        // right after the data wipe has occurred.
+        skip_firstboot_after_datawipe(&args.ready_path)?;
+
+        if !can_perform_record(&args.path, &args.build_fingerprint_path)? {
+            info!("Cannot perform record -- skipping");
+            return Ok(());
+        }
+    }
+
+    info!("Starting record.");
     let (mut tracer, exit_tx) = tracer::Tracer::create(
         args.trace_buffer_size_kib,
         args.tracing_subsystem.clone(),
@@ -109,6 +122,13 @@ pub fn record(args: &RecordArgs) -> Result<(), Error> {
 
 /// Replays prefetch data for the given configuration
 pub fn replay(args: &ReplayArgs) -> Result<(), Error> {
+    #[cfg(target_os = "android")]
+    if !can_perform_replay(&args.path, &args.build_fingerprint_path)? {
+        info!("Cannot perform replay -- exiting.");
+        return Ok(());
+    }
+
+    info!("Starting replay.");
     let replay = Replay::new(args)?;
     replay.replay()
 }
