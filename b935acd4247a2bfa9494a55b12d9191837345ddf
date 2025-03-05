@@ -33,6 +33,40 @@
       "message": "Can we move this out of prefetch.rc and allow the record/replay to be started as required by various devices. Although starting replay at the very early phase is good but some devices which has significantly long boot times would mean prefetching everything at early may not help. Instead, let devices start replay as required ?",
       "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d15d2b_c8755d09",
+        "filename": "init/libprefetch/prefetch/src/arch/android.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-05T07:32:26Z",
+      "side": 1,
+      "message": "Can I enlighten me about the motivation of having `skip_firstboot_after_datawipe` from `record`, instead of `can_perform_record` calling this?",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6b8e54_9011f64e",
+        "filename": "init/libprefetch/prefetch/src/arch/android.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-05T07:32:26Z",
+      "side": 1,
+      "message": "I feel this is a bit confusing at first glance with just returning the result of `can_perform_replay`. Does `!can_perform_replay(...)?` also work?",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
