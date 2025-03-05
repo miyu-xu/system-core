@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99523d30_4bc01f5c",
+        "filename": "init/libprefetch/prefetch/src/arch/android.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-05T08:19:22Z",
+      "side": 1,
+      "message": "\u003e exits silently\n\nFor this part, I don\u0027t think `skip_firstboot_after_datawipe` has to call `exit(0)` either. It can just return a bool? What confused me a bit was that I didn\u0027t find motivational difference in `skip_firstboot_after_datawipe` doing `exit` and `record` also exiting through returning `Ok(())` immediately after that.\n\nI don\u0027t feel the name of `skip_firstboot_after_datawipe` indicates the existence of any side effects either. How about renaming `can_perform_record` to `ensure_record_is_ready` or something that you feel doesn\u0027t imply the absence of side effects?",
+      "parentUuid": "5c60fc2b_13d84324",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf6b8e54_9011f64e",
         "filename": "init/libprefetch/prefetch/src/arch/android.rs",
         "patchSetId": 1
