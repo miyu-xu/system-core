@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed8905e_b04eda2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-05T08:43:30Z",
+      "side": 1,
+      "message": "LGTM except the point Akilesh pointed out.",
+      "revId": "e335d2dd407ca6d96a58e64c9dfe830d8f2ee8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
