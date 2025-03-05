@@ -16,6 +16,23 @@
       "message": "Hello Akilesh, Takaya,\n\nPlease take a look when you have time.\nThank you,",
       "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d622f76_9bcf4eff",
+        "filename": "init/libprefetch/prefetch/prefetch.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-03-05T07:05:53Z",
+      "side": 1,
+      "message": "Can we move this out of prefetch.rc and allow the record/replay to be started as required by various devices. Although starting replay at the very early phase is good but some devices which has significantly long boot times would mean prefetching everything at early may not help. Instead, let devices start replay as required ?",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
