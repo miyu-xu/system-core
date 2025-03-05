@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68f3358_41f265be",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2025-03-05T09:07:17Z",
+      "side": 1,
+      "message": "What about unpinning some pages and calling `PURGE_ALL_CACHES` and then pinning them again? The return value when you pin them will tell if they are stubs or not.",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 55
+      },
+      "revId": "eae22d6b4e59a5f60dbd59e0bc5e63b12842e368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
