@@ -39,8 +39,8 @@ cc_binary {
     vendor: true,
 }
 
-cc_test {
+cc_binary {
     name: "trusty-ut-ctrl.system",
     defaults: ["trusty-ut-ctrl.defaults"],
-    gtest: false,
+    system_ext_specific: true,
 }
