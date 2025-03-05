@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bc0717_d1db0491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-05T06:49:16Z",
+      "side": 1,
+      "message": "Hello Akilesh, Takaya,\n\nI made this into a separate CL to distinguish feature removal and behavior change. Please take a look when you have time.\nThank you,",
+      "revId": "6fe4c37ec372bcb4ad6a6598e3d490d43eaf0361",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
