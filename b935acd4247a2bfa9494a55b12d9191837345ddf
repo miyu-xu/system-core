@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "941bc6ab_b9a6b4c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-05T06:45:38Z",
+      "side": 1,
+      "message": "Hello Akilesh, Takaya,\n\nPlease take a look when you have time.\nThank you,",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
