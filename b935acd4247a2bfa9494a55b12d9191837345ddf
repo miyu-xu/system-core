@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c60fc2b_13d84324",
+        "filename": "init/libprefetch/prefetch/src/arch/android.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-05T08:05:31Z",
+      "side": 1,
+      "message": "`can_perform_` name struck me as a validator, which made me unsure about putting a behavior that could possibly be considered a side effect (creates files and exits silently).\n\nI opted for explicitly communicating that this behavior is deliberate in initial patch set, but I do not have strong preference.",
+      "parentUuid": "e1d15d2b_c8755d09",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf6b8e54_9011f64e",
         "filename": "init/libprefetch/prefetch/src/arch/android.rs",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2025-03-05T07:32:26Z",
       "side": 1,
       "message": "I feel this is a bit confusing at first glance with just returning the result of `can_perform_replay`. Does `!can_perform_replay(...)?` also work?",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "200f3d0f_2c4ec597",
+        "filename": "init/libprefetch/prefetch/src/arch/android.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-05T08:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf6b8e54_9011f64e",
       "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
