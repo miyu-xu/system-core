@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83d3b71d_1bfb2d34",
+        "filename": "init/libprefetch/prefetch/prefetch.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-05T09:30:37Z",
+      "side": 1,
+      "message": "Let me remove trigger from prefetch.rc and update commit messages to reflect the change better.",
+      "parentUuid": "2d622f76_9bcf4eff",
+      "revId": "b935acd4247a2bfa9494a55b12d9191837345ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1d15d2b_c8755d09",
         "filename": "init/libprefetch/prefetch/src/arch/android.rs",
         "patchSetId": 1
