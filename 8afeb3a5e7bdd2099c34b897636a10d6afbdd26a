@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e6f95e7_bc31dfe9",
+        "filename": "libcutils/ashmem_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-03-05T14:12:15Z",
+      "side": 1,
+      "message": "oh, yeah, i didn\u0027t notice that this is one of those _especially_ awful ioctls :-(\n\ni\u0027d still probably go with\n```\n  ASSERT_NE(prot, -1);\n  ASSERT_TRUE(prot \u0026 PROT_WRITE) \u003c\u003c prot;\n```\nfor clarity though?",
+      "parentUuid": "16ecb3b2_b3373262",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 45
+      },
+      "revId": "8afeb3a5e7bdd2099c34b897636a10d6afbdd26a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65a3b841_af138159",
         "filename": "libcutils/ashmem_test.cpp",
         "patchSetId": 3
