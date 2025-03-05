@@ -33,6 +33,10 @@
 #include <cutils/sockets.h>
 #include <processgroup/processgroup.h>
 
+#if defined(__ANDROID__)
+#include <fs_mgr.h>
+#endif
+
 #include "mount_namespace.h"
 #include "util.h"
 
@@ -71,6 +75,13 @@ Result<void> SetUpMountNamespace(bool remount_proc, bool remount_sys) {
         return ErrnoError() << "Could not remount(/) recursively as MS_SLAVE";
     }
 
+#if defined(__ANDROID__)
+    android::fs_mgr::Fstab mounts;
+    if (!ReadFstabFromFile("/proc/mounts", &mounts)) {
+        LOG(ERROR) << "Could not read /proc/mounts";
+    }
+#endif
+
     // umount() then mount() /proc and/or /sys
     // Note that it is not sufficient to mount with MS_REMOUNT.
     if (remount_proc) {
@@ -85,9 +96,24 @@ Result<void> SetUpMountNamespace(bool remount_proc, bool remount_sys) {
         if (umount2("/sys", MNT_DETACH) == -1) {
             return ErrnoError() << "Could not umount(/sys)";
         }
-        if (mount("", "/sys", "sysfs", kSafeFlags, "") == -1) {
+        if (mount("sysfs", "/sys", "sysfs", kSafeFlags, "") == -1) {
             return ErrnoError() << "Could not mount(/sys)";
         }
+#if defined(__ANDROID__)
+        // Unmounting /sys also unmounts all nested mounts like tracefs.
+        //
+        // Look up the filesystems that were mounted under /sys before we wiped
+        // it and attempt to restore them.
+        for (const auto& entry : mounts) {
+            if (entry.mount_point.starts_with("/sys/")) {
+                if (mount(entry.blk_device.c_str(), entry.mount_point.c_str(),
+                          entry.fs_type.c_str(), entry.flags, "")) {
+                    LOG(WARNING) << "Could not mount(" << entry.mount_point
+                                 << ") after switching netns: " << ErrnoError().str();
+                }
+            }
+        }
+#endif
     }
     return {};
 }
