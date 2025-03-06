@@ -422,7 +422,7 @@ const std::map<std::string, int32_t> kBootReasonMap = {
     {"reboot,mount_userdata_failed", 190},
     {"reboot,forcedsilent", 191},
     {"reboot,forcednonsilent", 192},
-    {"reboot,thermal,tj", 193},
+    {"reboot,thermal,tj,.*", 193},
     {"reboot,emergency", 194},
     {"reboot,factory", 195},
     {"reboot,fastboot", 196},
