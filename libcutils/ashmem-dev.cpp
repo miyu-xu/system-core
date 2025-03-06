@@ -133,7 +133,7 @@ static bool __has_memfd_support() {
         return false;
     }
 
-    size_t buf_size = getpagesize();
+    size_t buf_size = getpagesize();;
     if (ftruncate(fd, buf_size) == -1) {
         ALOGE("ftruncate(%zd) failed to set memfd buffer size: %m, no memfd support", buf_size);
         return false;
