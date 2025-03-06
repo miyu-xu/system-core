@@ -34,6 +34,24 @@
       "parentUuid": "9981ed30_e24b5b61",
       "revId": "c91d8568fc48560534e72ab00db244da252cb834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31b4be7_b81faf5b",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2025-03-06T13:45:29Z",
+      "side": 1,
+      "message": "`libfs_mgr` is unfortunately not `host_supported` (only [`libfs_mgr_file_wait`](https://cs.android.com/android/platform/superproject/main/+/main:system/core/fs_mgr/Android.bp;l\u003d187;drc\u003dc132bf80aec74e362826e895c25d9eaf69a08cb9) is) so this doesn\u0027t work without the defines 😞",
+      "parentUuid": "d02aac0a_b96d2750",
+      "revId": "c91d8568fc48560534e72ab00db244da252cb834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
