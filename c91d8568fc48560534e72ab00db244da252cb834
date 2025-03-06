@@ -70,6 +70,24 @@
       "parentUuid": "d31b4be7_b81faf5b",
       "revId": "c91d8568fc48560534e72ab00db244da252cb834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e034a45a_49350338",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2025-03-06T18:16:31Z",
+      "side": 1,
+      "message": "Oh yeah, that one seems to work just fine, at least locally. Thanks a lot!",
+      "parentUuid": "5f652e92_ccc6d514",
+      "revId": "c91d8568fc48560534e72ab00db244da252cb834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
