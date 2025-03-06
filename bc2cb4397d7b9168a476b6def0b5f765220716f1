@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b67d723_c8e36291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-03-06T09:31:44Z",
+      "side": 1,
+      "message": "FYI: I manually tested 2 builds flipping the build flag at build/release/flag_values/trunk_staging/RELEASE_MEMORY_MANAGEMENT_DAEMON.textproto",
+      "revId": "bc2cb4397d7b9168a476b6def0b5f765220716f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
