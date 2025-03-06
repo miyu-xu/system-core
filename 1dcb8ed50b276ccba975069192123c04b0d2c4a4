@@ -52,6 +52,23 @@
       "parentUuid": "98355200_6915ec5b",
       "revId": "1dcb8ed50b276ccba975069192123c04b0d2c4a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd947ec1_fd0cfda7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3832128
+      },
+      "writtenOn": "2025-03-06T02:18:26Z",
+      "side": 1,
+      "message": "Hi David,\n\nThanks for your code review, but as we discussed above, we need to enable this for cuttlefish device only, anyway, let me abandon this patch and upload another one later, thank you.",
+      "revId": "1dcb8ed50b276ccba975069192123c04b0d2c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
