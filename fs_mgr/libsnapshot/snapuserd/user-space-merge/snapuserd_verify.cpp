@@ -96,7 +96,7 @@ void UpdateVerify::VerifyUpdatePartition() {
 }
 
 bool UpdateVerify::VerifyBlocks(const std::string& partition_name,
-                                const std::string& dm_block_device, off_t offset, int skip_blocks,
+                                const std::string& dm_block_device, off_t offset, int,
                                 uint64_t dev_sz) {
     unique_fd fd(TEMP_FAILURE_RETRY(open(dm_block_device.c_str(), O_RDONLY | O_DIRECT)));
     if (fd < 0) {
@@ -104,43 +104,88 @@ bool UpdateVerify::VerifyBlocks(const std::string& partition_name,
         return false;
     }
 
-    loff_t file_offset = offset;
-    auto verify_block_size = android::base::GetUintProperty<uint>("ro.virtual_ab.verify_block_size",
-                                                                  kBlockSizeVerify);
-    const uint64_t read_sz = verify_block_size;
-
-    void* addr;
-    ssize_t page_size = getpagesize();
-    if (posix_memalign(&addr, page_size, read_sz) < 0) {
-        SNAP_PLOG(ERROR) << "posix_memalign failed "
-                         << " page_size: " << page_size << " read_sz: " << read_sz;
+    ring_ = std::make_unique<struct io_uring>();
+    int queue_depth = 1;
+    int ret = io_uring_queue_init(queue_depth, ring_.get(), 0);
+    if (ret) {
+        LOG(ERROR) << "Verify: io_uring_queue_init failed with ret: " << ret;
         return false;
     }
 
-    std::unique_ptr<void, decltype(&::free)> buffer(addr, ::free);
+    struct iovec* vecs;
+    vecs = (struct iovec*)malloc(queue_depth * sizeof(struct iovec));
+
+    loff_t file_offset = offset;
+    // 1M block size
+    int verify_block_size = 1024 * 1024L;
+
+    for (int i = 0; i < queue_depth; i++) {
+        void* addr;
+        ssize_t page_size = getpagesize();
+        if (posix_memalign(&addr, page_size, verify_block_size) < 0) {
+            LOG(ERROR) << "posix_memalign failed";
+            return false;
+        }
+        vecs[i].iov_base = addr;
+        vecs[i].iov_len = verify_block_size;
+    }
+
+    ret = io_uring_register_buffers(ring_.get(), vecs, queue_depth);
+    if (ret < 0) {
+        SNAP_LOG(ERROR) << "io_uring_register_buffers failed";
+        return false;
+    }
 
     uint64_t bytes_read = 0;
 
-    while (true) {
-        size_t to_read = std::min((dev_sz - file_offset), read_sz);
+    struct io_uring_sqe* sqe;
+    struct io_uring_cqe* cqe;
+    const uint64_t read_sz = verify_block_size;
+    uint64_t total_read = 0;
+    int num_submitted = 0;
 
-        if (!android::base::ReadFullyAtOffset(fd.get(), buffer.get(), to_read, file_offset)) {
-            SNAP_PLOG(ERROR) << "Failed to read block from block device: " << dm_block_device
-                             << " partition-name: " << partition_name
-                             << " at offset: " << file_offset << " read-size: " << to_read
-                             << " block-size: " << dev_sz;
-            return false;
+    while (total_read < dev_sz) {
+        for (int i = 0; i < queue_depth; i++) {
+            uint64_t to_read = std::min((dev_sz - file_offset), read_sz);
+            if (to_read <= 0) break;
+            sqe = io_uring_get_sqe(ring_.get());
+            if (!sqe) {
+                SNAP_LOG(ERROR) << "io_uring_get_sqe failed";
+                return false;
+            }
+
+            io_uring_prep_read_fixed(sqe, fd.get(), vecs[i].iov_base, to_read, file_offset, i);
+            file_offset += to_read;
+            total_read += to_read;
+            num_submitted += 1;
         }
 
-        bytes_read += to_read;
-        file_offset += (skip_blocks * verify_block_size);
-        if (file_offset >= dev_sz) {
-            break;
+        ret = io_uring_submit(ring_.get());
+        SNAP_LOG(DEBUG) << "io_uring_submit: " << total_read << "num_submitted: " << num_submitted
+                        << "ret: " << ret;
+
+        while (num_submitted) {
+            ret = io_uring_wait_cqe(ring_.get(), &cqe);
+            if (ret < 0) {
+                SNAP_LOG(ERROR) << "io_uring_wait_sqe: " << ret;
+                return false;
+            }
+            io_uring_cqe_seen(ring_.get(), cqe);
+            num_submitted -= 1;
         }
+
+        SNAP_LOG(DEBUG) << "io_uring_submit success: " << total_read;
     }
 
-    SNAP_LOG(DEBUG) << "Verification success with bytes-read: " << bytes_read
-                    << " dev_sz: " << dev_sz << " partition_name: " << partition_name;
+    io_uring_unregister_buffers(ring_.get());
+    for (int i = 0; i < queue_depth; i++) {
+        free(vecs[i].iov_base);
+    }
+    free(vecs);
+    io_uring_queue_exit(ring_.get());
+
+    SNAP_LOG(INFO) << "Verification success with io_uring: bytes-read: " << bytes_read
+                   << " dev_sz: " << dev_sz << " partition_name: " << partition_name;
 
     return true;
 }
@@ -187,11 +232,6 @@ bool UpdateVerify::VerifyPartition(const std::string& partition_name,
      * latency.
      */
     int num_threads = kMinThreadsToVerify;
-    auto verify_threshold_size = android::base::GetUintProperty<uint>(
-            "ro.virtual_ab.verify_threshold_size", kThresholdSize);
-    if (dev_sz > verify_threshold_size) {
-        num_threads = kMaxThreadsToVerify;
-    }
 
     std::vector<std::future<bool>> threads;
     off_t start_offset = 0;
