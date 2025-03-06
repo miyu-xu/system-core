@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9981ed30_e24b5b61",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-06T00:16:50Z",
+      "side": 1,
+      "message": "Do we need this, here and elsewhere? fs_mgr is host_supported, so it should compile fine.",
+      "revId": "c91d8568fc48560534e72ab00db244da252cb834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
