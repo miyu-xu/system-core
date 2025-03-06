@@ -20,6 +20,8 @@
 namespace android {
 namespace snapshot {
 
+#define ALIGN_TO(val, alignment) (((uintptr_t)(val) + ((alignment) - 1)) & ~((alignment) - 1))
+
 bool SetThreadPriority(int priority);
 bool SetProfiles(std::initializer_list<std::string_view> profiles);
 bool KernelSupportsIoUring();

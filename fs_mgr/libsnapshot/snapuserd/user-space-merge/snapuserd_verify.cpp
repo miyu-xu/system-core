@@ -22,6 +22,7 @@
 
 #include "android-base/properties.h"
 #include "snapuserd_core.h"
+#include "utility.h"
 
 namespace android {
 namespace snapshot {
@@ -96,50 +97,120 @@ void UpdateVerify::VerifyUpdatePartition() {
 }
 
 bool UpdateVerify::VerifyBlocks(const std::string& partition_name,
-                                const std::string& dm_block_device, off_t offset, int skip_blocks,
-                                uint64_t dev_sz) {
+                                const std::string& dm_block_device, uint64_t dev_sz) {
     unique_fd fd(TEMP_FAILURE_RETRY(open(dm_block_device.c_str(), O_RDONLY | O_DIRECT)));
     if (fd < 0) {
         SNAP_LOG(ERROR) << "open failed: " << dm_block_device;
         return false;
     }
 
-    loff_t file_offset = offset;
-    auto verify_block_size = android::base::GetUintProperty<uint>("ro.virtual_ab.verify_block_size",
-                                                                  kBlockSizeVerify);
-    const uint64_t read_sz = verify_block_size;
+    bool registered_buffers = false;
+    int queue_depth = queue_depth_;
+    int verify_block_size = kBlockSizeVerify;
 
-    void* addr;
-    ssize_t page_size = getpagesize();
-    if (posix_memalign(&addr, page_size, read_sz) < 0) {
-        SNAP_PLOG(ERROR) << "posix_memalign failed "
-                         << " page_size: " << page_size << " read_sz: " << read_sz;
+    // Smaller partitions don't need a bigger queue-depth.
+    // This is required for low-memory devices.
+    if (dev_sz < kThresholdSize) {
+        queue_depth >>= 1;
+        verify_block_size >>= 2;
+    }
+
+    if (queue_depth == 0) {
+        queue_depth = 1;
+    }
+    if (!IsBlockAligned(verify_block_size)) {
+        verify_block_size = ALIGN_TO(verify_block_size, BLOCK_SZ);
+    }
+
+    SNAP_LOG(DEBUG) << "VerifyBlockS: queue_depth: " << queue_depth
+                    << " verify_block_size: " << verify_block_size << " dev_sz: " << dev_sz;
+
+    ring_ = std::make_unique<struct io_uring>();
+    int ret = io_uring_queue_init(queue_depth, ring_.get(), 0);
+    if (ret) {
+        LOG(ERROR) << "Verify: io_uring_queue_init failed with ret: " << ret;
         return false;
     }
 
-    std::unique_ptr<void, decltype(&::free)> buffer(addr, ::free);
+    auto scope_guard = android::base::make_scope_guard([this, &registered_buffers]() -> void {
+        if (registered_buffers) {
+            io_uring_unregister_buffers(ring_.get());
+        }
+        io_uring_queue_exit(ring_.get());
+    });
 
-    uint64_t bytes_read = 0;
-
-    while (true) {
-        size_t to_read = std::min((dev_sz - file_offset), read_sz);
-
-        if (!android::base::ReadFullyAtOffset(fd.get(), buffer.get(), to_read, file_offset)) {
-            SNAP_PLOG(ERROR) << "Failed to read block from block device: " << dm_block_device
-                             << " partition-name: " << partition_name
-                             << " at offset: " << file_offset << " read-size: " << to_read
-                             << " block-size: " << dev_sz;
+    std::unique_ptr<struct iovec[]> vecs = std::make_unique<struct iovec[]>(queue_depth);
+    std::vector<std::unique_ptr<void, decltype(&::free)>> buffers;
+    buffers.reserve(queue_depth);
+    for (int i = 0; i < queue_depth; i++) {
+        void* addr;
+        ssize_t page_size = getpagesize();
+        if (posix_memalign(&addr, page_size, verify_block_size) < 0) {
+            LOG(ERROR) << "posix_memalign failed";
             return false;
         }
 
-        bytes_read += to_read;
-        file_offset += (skip_blocks * verify_block_size);
-        if (file_offset >= dev_sz) {
-            break;
-        }
+        buffers.emplace_back(addr, ::free);
+        vecs[i].iov_base = addr;
+        vecs[i].iov_len = verify_block_size;
     }
 
-    SNAP_LOG(DEBUG) << "Verification success with bytes-read: " << bytes_read
+    ret = io_uring_register_buffers(ring_.get(), vecs.get(), queue_depth);
+    if (ret < 0) {
+        SNAP_LOG(ERROR) << "io_uring_register_buffers failed";
+        return false;
+    }
+    registered_buffers = true;
+
+    loff_t file_offset = 0;
+    struct io_uring_sqe* sqe;
+    struct io_uring_cqe* cqe;
+    const uint64_t read_sz = verify_block_size;
+    uint64_t total_read = 0;
+    int num_submitted = 0;
+
+    while (total_read < dev_sz) {
+        for (size_t i = 0; i < queue_depth; i++) {
+            uint64_t to_read = std::min((dev_sz - file_offset), read_sz);
+            if (to_read <= 0) break;
+            sqe = io_uring_get_sqe(ring_.get());
+            if (!sqe) {
+                SNAP_LOG(ERROR) << "io_uring_get_sqe failed";
+                return false;
+            }
+
+            io_uring_prep_read_fixed(sqe, fd.get(), vecs[i].iov_base, to_read, file_offset, i);
+            file_offset += to_read;
+            total_read += to_read;
+            num_submitted += 1;
+        }
+
+        ret = io_uring_submit_and_wait(ring_.get(), num_submitted);
+        if (ret != num_submitted) {
+            SNAP_LOG(ERROR) << "io_uring_submit failed: " << ret << " expected: " << num_submitted;
+            return false;
+        }
+        SNAP_LOG(DEBUG) << "io_uring_submit: " << total_read << "num_submitted: " << num_submitted
+                        << "ret: " << ret;
+
+        while (num_submitted) {
+            ret = io_uring_wait_cqe(ring_.get(), &cqe);
+            if (ret) {
+                SNAP_LOG(ERROR) << "io_uring_wait_cqe: " << ret;
+                return false;
+            }
+            if (cqe->res < 0) {
+                SNAP_LOG(ERROR) << "I/O failed: cqe->res: " << cqe->res;
+                return false;
+            }
+            io_uring_cqe_seen(ring_.get(), cqe);
+            num_submitted -= 1;
+        }
+
+        SNAP_LOG(DEBUG) << "io_uring_submit success: " << total_read;
+    }
+
+    SNAP_LOG(DEBUG) << "Verification success with io_uring: "
                     << " dev_sz: " << dev_sz << " partition_name: " << partition_name;
 
     return true;
@@ -175,47 +246,13 @@ bool UpdateVerify::VerifyPartition(const std::string& partition_name,
         return false;
     }
 
-    /*
-     * Not all partitions are of same size. Some partitions are as small as
-     * 100Mb. We can just finish them in a single thread. For bigger partitions
-     * such as product, 4 threads are sufficient enough.
-     *
-     * TODO: With io_uring SQ_POLL support, we can completely cut this
-     * down to just single thread for all partitions and potentially verify all
-     * the partitions with zero syscalls. Additionally, since block layer
-     * supports polling, IO_POLL could be used which will further cut down
-     * latency.
-     */
-    int num_threads = kMinThreadsToVerify;
-    auto verify_threshold_size = android::base::GetUintProperty<uint>(
-            "ro.virtual_ab.verify_threshold_size", kThresholdSize);
-    if (dev_sz > verify_threshold_size) {
-        num_threads = kMaxThreadsToVerify;
+    if (!KernelSupportsIoUring()) {
+        SNAP_LOG(INFO) << "Kernel does not support io_uring. Skipping verification.\n";
+        // This will fallback to update_verifier to do the verification.
+        return false;
     }
 
-    std::vector<std::future<bool>> threads;
-    off_t start_offset = 0;
-    const int skip_blocks = num_threads;
-
-    auto verify_block_size =
-            android::base::GetUintProperty("ro.virtual_ab.verify_block_size", kBlockSizeVerify);
-    while (num_threads) {
-        threads.emplace_back(std::async(std::launch::async, &UpdateVerify::VerifyBlocks, this,
-                                        partition_name, dm_block_device, start_offset, skip_blocks,
-                                        dev_sz));
-        start_offset += verify_block_size;
-        num_threads -= 1;
-        if (start_offset >= dev_sz) {
-            break;
-        }
-    }
-
-    bool ret = true;
-    for (auto& t : threads) {
-        ret = t.get() && ret;
-    }
-
-    if (ret) {
+    if (VerifyBlocks(partition_name, dm_block_device, dev_sz)) {
         succeeded = true;
         UpdatePartitionVerificationState(UpdateVerifyState::VERIFY_SUCCESS);
         SNAP_LOG(INFO) << "Partition: " << partition_name << " Block-device: " << dm_block_device
