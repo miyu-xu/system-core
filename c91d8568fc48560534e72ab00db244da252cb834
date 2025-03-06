@@ -16,6 +16,24 @@
       "message": "Do we need this, here and elsewhere? fs_mgr is host_supported, so it should compile fine.",
       "revId": "c91d8568fc48560534e72ab00db244da252cb834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02aac0a_b96d2750",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2025-03-06T11:10:24Z",
+      "side": 1,
+      "message": "It looks we don\u0027t, great spot! Thanks 😊",
+      "parentUuid": "9981ed30_e24b5b61",
+      "revId": "c91d8568fc48560534e72ab00db244da252cb834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
