@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <liburing.h>
 #include <stdint.h>
 #include <sys/types.h>
 
@@ -48,6 +49,8 @@ class UpdateVerify {
     std::mutex m_lock_;
     std::condition_variable m_cv_;
 
+    std::unique_ptr<struct io_uring> ring_;
+
     /*
      * Scanning of partitions is an expensive operation both in terms of memory
      * and CPU usage. The goal here is to scan the partitions fast enough without
@@ -66,7 +69,7 @@ class UpdateVerify {
      * functionality for source block device.
      */
     int kMinThreadsToVerify = 1;
-    int kMaxThreadsToVerify = 3;
+    int kMaxThreadsToVerify = 1;
     uint64_t kThresholdSize = 750_MiB;
     uint64_t kBlockSizeVerify = 2_MiB;
 
