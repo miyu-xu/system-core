@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a26537d_ed3edac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-03-06T00:51:00Z",
+      "side": 1,
+      "message": "I will remove this from PRODUCT_PACKAGES",
+      "revId": "9adadeceb225cefb3b5764b7ba46e79b064ec893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
