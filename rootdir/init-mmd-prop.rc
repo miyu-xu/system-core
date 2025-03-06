@@ -1,0 +1,6 @@
+on property:sys.boot_completed=1
+    # When mmd package is not included in the image, we need to initialize
+    # `mmd.enabled_aconfig` sysprop instead of `mmd --set-property`.
+    # Note that this init file must not be in the image if mmd is built into the
+    # image.
+    setprop mmd.enabled_aconfig false
