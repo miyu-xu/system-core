@@ -34,6 +34,24 @@
       "parentUuid": "a5e740d2_44a79e21",
       "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d72a0b_55a6db90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-03-07T18:00:57Z",
+      "side": 1,
+      "message": "I wonder if we had a misunderstanding. From your answer I thought you were going to add Windows and Macos support.\n\nI have two problems with this CL as is.\n\n1/ Merging \"Linux now and other platforms later\" usually means that the other platforms never get it. This will reverse the dynamic where I will have to run after you/your team to finish it.\n\n2/ 95% of developers are using Windows/Mac. Support for these platforms is mandatory.",
+      "parentUuid": "84cf4189_157a8bbc",
+      "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
