@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4ef0ca_961bcc0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3594307
+      },
+      "writtenOn": "2025-03-07T08:46:45Z",
+      "side": 1,
+      "message": "Hello Akilesh, Takaya,\n\nPlease take a look at following change when you have time.\n\nThank you,",
+      "revId": "8e650d38744df6ff84de1ad9f4a175f3c8070206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
