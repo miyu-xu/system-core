@@ -16,6 +16,24 @@
       "message": "I will remove this from PRODUCT_PACKAGES",
       "revId": "9adadeceb225cefb3b5764b7ba46e79b064ec893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3745c8f_0265bb92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-08T01:02:30Z",
+      "side": 1,
+      "message": "Hey Armelle, I recently ran into this as part of b/385383524 (Convert the `target_files.zip` dist artifact to Soong). `trusty-ut-ctrl.system` is packaged into the `DATA/` subdirectory of this artfiact when building with Make, but currently missing from `target_files.zip` when building with Soong.\n\nCan we remove `trusty-ut-ctrl.system` from the PRODUCT_PACKAGES of cuttlefish?",
+      "parentUuid": "1a26537d_ed3edac5",
+      "revId": "9adadeceb225cefb3b5764b7ba46e79b064ec893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
