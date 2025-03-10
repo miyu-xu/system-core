@@ -16,6 +16,24 @@
       "message": "Tests should have been a separate CL.",
       "revId": "5b40f2d136a899ef40f56116b7c659d416f342d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca8929f_a992ee9a",
+        "filename": "trusty/libtrusty/tipc-test/tipc_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-03-10T22:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c1c4a4f_0e57abe5",
+      "revId": "5b40f2d136a899ef40f56116b7c659d416f342d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "We might need to revert just the test, because libbinder uses this now, I think,",
       "revId": "1b75aba47ee8c6ebd2bb3a2ae059aff5a73a7c1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2b5a8a_22928869",
+        "filename": "trusty/libtrusty/include/trusty/ipc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-03-10T22:33:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1ffc7fe2_164f3dab",
+      "revId": "1b75aba47ee8c6ebd2bb3a2ae059aff5a73a7c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
