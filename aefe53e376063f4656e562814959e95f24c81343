@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "100dfef1_91d8350e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-10T23:34:26Z",
+      "side": 1,
+      "message": "i think this is against where we are heading. currently, a lot of things are tied to the single ro.debuggable property which makes it an attractive target for attack. in addition to that, it\u0027s just difficult to reason what will change (and not change) when ro.debuggable is set or unset.\n\nthe direction we are (and should be) heading I guess is introducing sysprops each of which controls a specific aspect of the OS, eventually leaving ro.debuggable as an info-only sysprop.\n\ncc: jeffv@",
+      "range": {
+        "startLine": 12,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "217c7cf5_f263285d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
