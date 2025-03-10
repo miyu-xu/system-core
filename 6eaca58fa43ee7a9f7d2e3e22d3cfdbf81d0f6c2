@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf23fb5_728ebe1f",
+        "filename": "debuggerd/debuggerd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-03-10T14:09:53Z",
+      "side": 1,
+      "message": "stick this in bionic/mte.h with mte_supported()? (probably as `mte_enabled()`?)",
+      "revId": "6eaca58fa43ee7a9f7d2e3e22d3cfdbf81d0f6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
