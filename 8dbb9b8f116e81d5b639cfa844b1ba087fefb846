@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d270d2_605410fa",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "queue_depth \u003d std::max(queue_depth / 2, 1);",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865e679e_a0d93ea6",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "Is this reserve() needed? The vector is only 4 entries?",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc750b15_5b888f61",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "Split the scope guard above in two, and move the registered one down here. Then the registered_buffers state is not needed.",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fae2bd6_b7cf7315",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "These are not needed outside the loop, so they should be declared inside the loop when first used.",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86613aae_e47a7f96",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "Is this variable used for anything? Do we have -Wall -Werror enabled?",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf3693e_6d931513",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "Don\u0027t we have an io_uring cpp library?",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efaeab5_018d3640",
+        "filename": "fs_mgr/libsnapshot/snapuserd/user-space-merge/snapuserd_verify.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "If this is a constant, use \"static constexpr\". If it\u0027s not a constant, drop the k prefix.",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33574f76_1d17d0ca",
+        "filename": "fs_mgr/libsnapshot/snapuserd/utility.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:44:49Z",
+      "side": 1,
+      "message": "Make this an inline function instead. If you want, copy AlignTo in liblp/utility.h or move it into liblp/include so it can be used in header_only_libs.",
+      "revId": "8dbb9b8f116e81d5b639cfa844b1ba087fefb846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
