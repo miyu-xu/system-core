@@ -52,6 +52,24 @@
       "parentUuid": "84cf4189_157a8bbc",
       "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5395dc19_421d852f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2031040
+      },
+      "writtenOn": "2025-03-10T07:11:04Z",
+      "side": 1,
+      "message": "Hi Fabien, thank you for your comments.\n\nWe do acknowledge the mandatory support for Mac \u0026 Windows and a need for fixing that in proper way. Tomasz will address the Mac and Windows support in this CL once he\u0027s back from OoO (April 13th).",
+      "parentUuid": "78d72a0b_55a6db90",
+      "revId": "0ee11e9142be684429052ca7e12d483fb8c557e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
