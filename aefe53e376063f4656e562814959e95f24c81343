@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217c7cf5_f263285d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-10T21:11:26Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need adb changes? And lots of code checks ro.debuggable, which this is circumventing... and then it will be confusing which flag needs to be checked.\n\nIt seems like it would be better to identify the places where ro.debuggable is negatively impacting device performance/functionality and address those.",
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
