@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c65248_055b34c8",
+        "filename": "trusty/libtrusty/tipc-test/tipc_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2025-03-10T19:32:51Z",
+      "side": 1,
+      "message": "What is the purpose of this change? You are sending the same buffer multiple times, but not checking the result each time. Also, TRUSTY_LEND will make the buffer inaccessible here on real hardware. How do you know when the reclaim has finished and the memory is accessible again? And, if the purpose of using TRUSTY_SEND_SECURE_OR_SHARE on the same buffer as TRUSTY_LEND is to send the buffer while it is secure, how do you ensure it has not already been reclaimed. It seem you would need to pass some data along with these buffers to tell the server on the other side that they should not all be handled the same way for this test to work.",
+      "revId": "1b75aba47ee8c6ebd2bb3a2ae059aff5a73a7c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
