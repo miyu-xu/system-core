@@ -16,6 +16,23 @@
       "message": "Doesn\u0027t this need adb changes? And lots of code checks ro.debuggable, which this is circumventing... and then it will be confusing which flag needs to be checked.\n\nIt seems like it would be better to identify the places where ro.debuggable is negatively impacting device performance/functionality and address those.",
       "revId": "aefe53e376063f4656e562814959e95f24c81343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5fbd5c_bf2af82a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-03-10T21:16:05Z",
+      "side": 1,
+      "message": "If you want to make a change to serveral repos (adb \u0026 system/core so far), you need to group them in a topic. \n\nThat being said the change you are attempting to make is drastic and you have not answered the question of what problem this is actually solving.",
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
