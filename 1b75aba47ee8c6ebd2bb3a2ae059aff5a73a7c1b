@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5228f9d8_e439b7d9",
+        "filename": "trusty/libtrusty/tipc-test/tipc_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2025-03-10T22:07:29Z",
+      "side": 1,
+      "message": "Tests should have been a separate CL, so we can revert them separately of the header change.",
+      "revId": "1b75aba47ee8c6ebd2bb3a2ae059aff5a73a7c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54c65248_055b34c8",
         "filename": "trusty/libtrusty/tipc-test/tipc_test.c",
         "patchSetId": 3
