@@ -16,6 +16,23 @@
       "message": "Hello, any other updates for this review?\nWe need to merge this patch to prevent corner cases.",
       "revId": "e7cd106c5b3d8db3cdf19f6c6d6be4dab4f5addb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65be6154_639e99ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975505
+      },
+      "writtenOn": "2025-03-11T02:47:02Z",
+      "side": 1,
+      "message": "Hi, Omar\n\nCould you submit this change?\n\nThanks",
+      "revId": "e7cd106c5b3d8db3cdf19f6c6d6be4dab4f5addb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
