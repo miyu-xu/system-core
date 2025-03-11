@@ -33,6 +33,24 @@
       "message": "Hi, Omar\n\nCould you submit this change?\n\nThanks",
       "revId": "e7cd106c5b3d8db3cdf19f6c6d6be4dab4f5addb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a7d7fd_1c41f3d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943016
+      },
+      "writtenOn": "2025-03-11T11:08:19Z",
+      "side": 1,
+      "message": "Hey, sorry for the late info but seems we can\u0027t cherry pick changes to android-15 since Nov.",
+      "parentUuid": "65be6154_639e99ab",
+      "revId": "e7cd106c5b3d8db3cdf19f6c6d6be4dab4f5addb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
