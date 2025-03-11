@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85fc6124_6e3a280f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-03-11T02:51:44Z",
+      "side": 1,
+      "message": "Could you please file a bug and add `Bug: \u003cbug number\u003e` tag here?",
+      "revId": "00130c2d1acf8e9f6e02c649df8c5bfc5d730ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
