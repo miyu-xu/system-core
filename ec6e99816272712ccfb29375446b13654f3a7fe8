@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c28e57f_dc9f7f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2025-03-12T09:30:44Z",
+      "side": 1,
+      "message": "@delphij@google.com with this CL these denials are gone:\n\n```\n03-11 15:40:21.824   292   292 I auditd  : type\u003d1400 audit(0.0:5): avc:  denied  { mounton } for  comm\u003d\"init\" path\u003d\"/sys/kernel/debug/tracing\" dev\u003d\"debugfs\" ino\u003d2068 scontext\u003du:r:init:s0 tcontext\u003du:object_r:debugfs_tracing_debug:s0 tclass\u003ddir permissive\u003d0\n```\n\nThere are still some other failures that look unrelated.",
+      "revId": "ec6e99816272712ccfb29375446b13654f3a7fe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
