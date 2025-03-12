@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcafc673_583ba783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-12T01:59:33Z",
+      "side": 1,
+      "message": "this patch set should have nothing to do with bootloader regression",
+      "revId": "c4a7cea38301ab46cda96af07ff77a28aa13d678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
