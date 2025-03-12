@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77ae7d3_9eb6c45d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010363
+      },
+      "writtenOn": "2025-03-12T07:00:30Z",
+      "side": 1,
+      "message": "Do not submit this CL until there has been sufficient testing and review to insure that it does not cause any additional breakages.",
+      "revId": "1be67544a4be6496ceb1b3e1bb5439cced79780b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
