@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e67f823_dabc7812",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-12T20:01:16Z",
+      "side": 1,
+      "message": "Merge this with \"want_parallel\" and add a NONE option to LoadParallelMode?",
+      "revId": "9dca9ff30db0d1127bb332437caaa261e572eac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
