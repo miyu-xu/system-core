@@ -835,6 +835,15 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
         } else {
             LOG(INFO) << "Shutdown /data";
         }
+    } else if (IsDataMounted("ext4")) {
+        uint32_t flag = EXT4_GOING_FLAGS_DEFAULT;
+        unique_fd fd(TEMP_FAILURE_RETRY(open("/data", O_RDONLY)));
+        int ret = ioctl(fd.get(), EXT4_IOC_SHUTDOWN, &flag);
+        if (ret) {
+            PLOG(ERROR) << "Shutdown /data: ";
+        } else {
+            LOG(INFO) << "Shutdown /data";
+        }
     }
     RebootSystem(cmd, reboot_target, reason);
     abort();
