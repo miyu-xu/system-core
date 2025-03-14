@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318fef64_3d7c0089",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2025-03-14T20:37:11Z",
+      "side": 1,
+      "message": "if this cargo is vendor partition availible - it cannot depend on these libraries - since they expose hidden system APIs not availible to vendor partition\n\nthere is alternatice stats logging mechanism availible for vendor partition which does not have above dependency and instead uses IStats AIDL APIs to communicate via dedicated system server exposed service\n\nLet me know if you want more details",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
