@@ -1,0 +1,105 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fccafbfb_98d85b35",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1067793
+      },
+      "writtenOn": "2025-03-14T05:06:18Z",
+      "side": 1,
+      "message": "probably should update IsDataMounted to be GetDataFsType and return the file system type.",
+      "range": {
+        "startLine": 828,
+        "startChar": 8,
+        "endLine": 828,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0656bdd3_98d59aec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 212,
+                "startChar": 0,
+                "endLine": 213,
+                "endChar": 0
+              },
+              "replacement": "static std::string GetDataFsType() {\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "        return \"\";\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 221,
+                "startChar": 0,
+                "endLine": 222,
+                "endChar": 0
+              },
+              "replacement": "            return mentry-\u003emnt_type;\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": "    return \"\";\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 703,
+                "startChar": 0,
+                "endLine": 704,
+                "endChar": 0
+              },
+              "replacement": "    if (GetDataFsType().empty()) {\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 828,
+                "startChar": 0,
+                "endLine": 829,
+                "endChar": 0
+              },
+              "replacement": "    std::string data_fs_type \u003d GetDataFsType();\n    if (data_fs_type \u003d\u003d \"f2fs\") {\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 838,
+                "startChar": 0,
+                "endLine": 839,
+                "endChar": 0
+              },
+              "replacement": "    } else if (data_fs_type \u003d\u003d \"ext4\") {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3d03267390001a1bda583a1de7508ffb5953d900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
