@@ -89,6 +89,11 @@ python_binary_host {
     name: "simg_dump",
     main: "simg_dump.py",
     srcs: ["simg_dump.py"],
+    version: {
+        py3: {
+            embedded_launcher: true,
+        },
+    },
 }
 
 cc_fuzz {

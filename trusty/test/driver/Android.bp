@@ -23,4 +23,10 @@ python_test {
         "**/*.py",
     ],
     test_suites: ["general-tests"],
+    version: {
+        py3: {
+            embedded_launcher: true,
+            enabled: true,
+        },
+    },
 }
