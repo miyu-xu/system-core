@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "412012a0_d800d6c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-16T13:40:00Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this. The other CL should be enough?",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
