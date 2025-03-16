@@ -16,6 +16,24 @@
       "message": "I don\u0027t think you need this. The other CL should be enough?",
       "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f23bbf_8ad52232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-03-16T22:01:44Z",
+      "side": 1,
+      "message": "Are you saying this is dead code?\nThis used to be needed for non-apex using builds.\n(perhaps flattened apex isn\u0027t a thing any more?)",
+      "parentUuid": "412012a0_d800d6c9",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
