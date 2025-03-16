@@ -46,6 +46,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179df61d_33e4df4d",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2025-03-16T03:11:58Z",
+      "side": 1,
+      "message": "The logging from the vendor partition is done via IStats system service - please refer to the guide:\n\nhttps://g3doc.corp.google.com/company/teams/androidmetrics/westworld/use-westworld/create-atom.md?cl\u003dhead#add-logging\n\nLook for vendor native/java tab\n\nThe example is here\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:hardware/google/pixel/pixelstats/StatsHelper.cpp",
+      "parentUuid": "94de119f_fa29cc9f",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
