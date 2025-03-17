@@ -34,6 +34,24 @@
       "parentUuid": "412012a0_d800d6c9",
       "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2288c79e_b6f832a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-17T00:24:12Z",
+      "side": 1,
+      "message": "These are not dead, but fallback matches. The primary config is from the canned_fs_config file.\n\nAnd yes, flattend apex is a dead thing.",
+      "parentUuid": "39f23bbf_8ad52232",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
