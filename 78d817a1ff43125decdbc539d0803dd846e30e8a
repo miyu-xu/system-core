@@ -70,6 +70,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68119034_6bd5a4ab",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3010084
+      },
+      "writtenOn": "2025-03-17T03:13:43Z",
+      "side": 1,
+      "message": "I know it but it doesn\u0027t support rust directly. That\u0027s why I decided to follow go/android-rust-patterns to build the rust version IStatslib. Isn\u0027t --rust param of stats-log-api-gen available with the vendor partition?\n\nFor more information: https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google/desktop/+/32013705",
+      "parentUuid": "179df61d_33e4df4d",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
