@@ -94,6 +94,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae552a85_abbf733e",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2025-03-17T23:36:15Z",
+      "side": 1,
+      "message": "That doc is not owned by our team, and it only applies to platform code. Vendor code cannot directly use libstatssocket/libstatspull. It must use the IStats service. We do not have api-gen support for rust, but since rust can call cpp, you can make a cpp autogen lib and call it from your rust code. That is likely the best path for now. \n\nIf there are more vendor rust use cases in the future, we can look into adding native rust api gen support.",
+      "parentUuid": "68119034_6bd5a4ab",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
