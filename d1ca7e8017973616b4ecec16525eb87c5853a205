@@ -122,6 +122,24 @@
       "message": "Global-Approval given that this is likely dead code and we want to merge the actual change in the connectivity code ASAP.",
       "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24187c88_1b2e74f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-18T03:35:05Z",
+      "side": 1,
+      "message": "this part isn\u0027t dead. it\u0027s just that you don\u0027t need to touch this as this exists as a fallback. \n\nflattened apex is dead. support for it was removed from the build system and the runtime long ago. you don\u0027t need to care about it.",
+      "parentUuid": "cd5bf529_5d5b68d1",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
