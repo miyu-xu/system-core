@@ -356,6 +356,107 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6218697_dd842b20",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T19:25:50Z",
+      "side": 1,
+      "message": "see my comment in https://r.android.com/c/3534701/ about potential lock contention.",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "36aae69e_bcc43dff",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 517,
+                "startChar": 0,
+                "endLine": 519,
+                "endChar": 0
+              },
+              "replacement": "    std::mutex mods_lock;\n    std::condition_variable cv_update_mods, cv_load_mods;\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 544,
+                "startChar": 0,
+                "endLine": 545,
+                "endChar": 0
+              },
+              "replacement": "            std::unique_lock lock(mods_lock);\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 550,
+                "startChar": 0,
+                "endLine": 551,
+                "endChar": 0
+              },
+              "replacement": "                    cv_update_mods.notify_one();\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 552,
+                "startChar": 0,
+                "endLine": 553,
+                "endChar": 0
+              },
+              "replacement": "                cv_load_mods.wait(lock, [\u0026](){\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 579,
+                "startChar": 0,
+                "endLine": 580,
+                "endChar": 0
+              },
+              "replacement": "        std::unique_lock\u003cstd::mutex\u003e lock(mods_lock);\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 604,
+                "startChar": 0,
+                "endLine": 606,
+                "endChar": 0
+              },
+              "replacement": "        cv_load_mods.notify_all();\n        cv_update_mods.wait(lock, [\u0026](){ return mods_to_load_parallel.empty(); });\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 626,
+                "startChar": 0,
+                "endLine": 627,
+                "endChar": 0
+              },
+              "replacement": "    cv_load_mods.notify_all();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fe3c0c6_37617925",
         "filename": "libmodprobe/libmodprobe.cpp",
         "patchSetId": 6
