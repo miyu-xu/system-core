@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9ce558_23c83819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2025-03-18T04:08:51Z",
+      "side": 1,
+      "message": "If this change is not needed, can we delete the line instead? Or delete the whole file?",
+      "revId": "24254fcac3056fc5b9967dd37e0f6f57325b900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
