@@ -142,6 +142,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3dd174_a964d0d2",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2025-03-18T01:50:17Z",
+      "side": 1,
+      "message": "not to my knowladge, that is why the FR for vendor/rust code generation does not active - no use case so far, so please vote up for http://b/264923580\n\nin meantime the stats-log-api-gen can produce C++ code which can be invoked from the rust library with https://doc.rust-lang.org/nomicon/ffi.html",
+      "parentUuid": "604f064d_26359c75",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
