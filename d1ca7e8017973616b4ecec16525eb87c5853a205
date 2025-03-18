@@ -87,6 +87,24 @@
       "parentUuid": "2288c79e_b6f832a8",
       "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5bf529_5d5b68d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-03-18T02:46:43Z",
+      "side": 1,
+      "message": "If this is truly dead, then someone can just delete it.\n\nIf it isn\u0027t, and it doesn\u0027t match the checks in the connectivity module, than flattened apex and/or gsi or something else like that would cease to boot, so it is much safer to keep it synced with the canned_fs_config file in p/m/Connectivity/Tethering/apex/canned_fs_config",
+      "parentUuid": "04e2607e_c3512f02",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
