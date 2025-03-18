@@ -105,6 +105,23 @@
       "parentUuid": "04e2607e_c3512f02",
       "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb53a70b_94c259a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2025-03-18T02:47:14Z",
+      "side": 1,
+      "message": "Global-Approval given that this is likely dead code and we want to merge the actual change in the connectivity code ASAP.",
+      "revId": "d1ca7e8017973616b4ecec16525eb87c5853a205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
