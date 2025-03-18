@@ -16,6 +16,567 @@
       "message": "@",
       "revId": "afd48f478195337161028e245789f1db978113dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af77e41_43aea90f",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "\"alone\" is a weird term here. Can you rename this to `mods_to_load_sequential`. Or even something simple like `parallel_modules` and `sequential_modules` might be easier to follow.",
+      "range": {
+        "startLine": 513,
+        "startChar": 52,
+        "endLine": 513,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ffe25577_bed84fb8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 513,
+                "startChar": 0,
+                "endLine": 514,
+                "endChar": 0
+              },
+              "replacement": "    std::vector\u003cstd::string\u003e parallel_modules, sequential_modules;\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 546,
+                "startChar": 0,
+                "endLine": 547,
+                "endChar": 0
+              },
+              "replacement": "            if (sequential_modules.empty() \u0026\u0026 parallel_modules.empty()) {\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 553,
+                "startChar": 0,
+                "endLine": 555,
+                "endChar": 0
+              },
+              "replacement": "                    return !parallel_modules.empty() ||\n                           !sequential_modules.empty() ||\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 560,
+                "startChar": 0,
+                "endLine": 563,
+                "endChar": 0
+              },
+              "replacement": "            if (!sequential_modules.empty()) {\n                auto mod_to_load \u003d std::move(sequential_modules.back());\n                sequential_modules.pop_back();\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 564,
+                "startChar": 0,
+                "endLine": 567,
+                "endChar": 0
+              },
+              "replacement": "            } else if (!parallel_modules.empty()) {\n                auto mod_to_load \u003d std::move(parallel_modules.back());\n                parallel_modules.pop_back();\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 598,
+                "startChar": 0,
+                "endLine": 599,
+                "endChar": 0
+              },
+              "replacement": "                    sequential_modules.emplace_back(cnd_last);\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 600,
+                "startChar": 0,
+                "endLine": 601,
+                "endChar": 0
+              },
+              "replacement": "                    parallel_modules.emplace_back(cnd_last);\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 605,
+                "startChar": 0,
+                "endLine": 606,
+                "endChar": 0
+              },
+              "replacement": "        cv_update_module.wait(lock, [\u0026](){ return parallel_modules.empty(); });\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75532ec_af0e4f35",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "This name is not clear. Can the name describe what the lock is protecting?",
+      "range": {
+        "startLine": 517,
+        "startChar": 15,
+        "endLine": 517,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "87c30182_3f5a8d11",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 517,
+                "startChar": 0,
+                "endLine": 518,
+                "endChar": 0
+              },
+              "replacement": "    std::mutex mods_to_load_lock;\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 544,
+                "startChar": 0,
+                "endLine": 545,
+                "endChar": 0
+              },
+              "replacement": "            std::unique_lock lock(mods_to_load_lock);\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 579,
+                "startChar": 0,
+                "endLine": 580,
+                "endChar": 0
+              },
+              "replacement": "        std::unique_lock\u003cstd::mutex\u003e lock(mods_to_load_lock);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "493393ca_039dcb03",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "sequentially",
+      "range": {
+        "startLine": 541,
+        "startChar": 45,
+        "endLine": 541,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d8842995_23c7df6c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 541,
+                "startChar": 0,
+                "endLine": 542,
+                "endChar": 0
+              },
+              "replacement": "    // Consumers load modules in parallel or sequentially\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f6b637_06494c8b",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "Should this be `ret.load()`?",
+      "range": {
+        "startLine": 543,
+        "startChar": 42,
+        "endLine": 543,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1365f43e_7c5e8402",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 543,
+                "startChar": 0,
+                "endLine": 544,
+                "endChar": 0
+              },
+              "replacement": "        while (!mods_with_deps.empty() \u0026\u0026 ret.load()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec670eb_5e1146be",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "Should this be `std::unique_lock\u003cstd::mutex\u003e` similar to below in the producer check?",
+      "range": {
+        "startLine": 544,
+        "startChar": 12,
+        "endLine": 544,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "73cf8af6_87b988c4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 544,
+                "startChar": 0,
+                "endLine": 545,
+                "endChar": 0
+              },
+              "replacement": "            std::unique_lock\u003cstd::mutex\u003e lock(vector_lock);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7c1c05_8ad9b646",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "Should this be `std::unique_lock\u003cstd::mutex\u003e`?",
+      "range": {
+        "startLine": 544,
+        "startChar": 12,
+        "endLine": 544,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6e77f392_47394b87",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 544,
+                "startChar": 0,
+                "endLine": 545,
+                "endChar": 0
+              },
+              "replacement": "            std::unique_lock\u003cstd::mutex\u003e lock(vector_lock);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe3c0c6_37617925",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "Loading the sequential modules like this seems like it will cause more overhead than before because you will be bouncing around to different threads as you load each sequential module. It makes more sense to me to just load all of the sequential modules in one go (like before) instead of switching to a new thread for each sequential module.\n\nThis may not be a big issue if you only have a few modules (\u003c5) that are required to be loaded sequentially. Ideally, you don\u0027t want any modules loaded sequentially.",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7469dc6f_df1dfbf5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 504,
+                "startChar": 0,
+                "endLine": 634,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 668,
+                "startChar": 0,
+                "endLine": 681,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3304eff4_b0d1fe9a",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "Why doesn\u0027t this take into consideration `mods_to_load_alone`?",
+      "range": {
+        "startLine": 605,
+        "startChar": 36,
+        "endLine": 605,
+        "endChar": 81
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4f71fe8b_c6a76b9c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 605,
+                "startChar": 0,
+                "endLine": 606,
+                "endChar": 0
+              },
+              "replacement": "        cv_update_module.wait(lock, [\u0026](){\n            return mods_to_load_parallel.empty() \u0026\u0026 mods_to_load_alone.empty();\n        });\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa0f4b4_c32f31d4",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "nit: from",
+      "range": {
+        "startLine": 611,
+        "startChar": 32,
+        "endLine": 611,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c4e0aa3e_d88eeb4d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 611,
+                "startChar": 0,
+                "endLine": 612,
+                "endChar": 0
+              },
+              "replacement": "        // Remove loaded module from mods_with_deps\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1381479e_d86f6d04",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "nit: from",
+      "range": {
+        "startLine": 615,
+        "startChar": 32,
+        "endLine": 615,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9494cdf6_cfd82433",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 615,
+                "startChar": 0,
+                "endLine": 616,
+                "endChar": 0
+              },
+              "replacement": "        // Remove loaded module from dependency list\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a33cc0_e8138097",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2025-03-18T18:57:42Z",
+      "side": 1,
+      "message": "To better match the module option, can this be `IsLoadSequential()` or `LoadSequentialRequested()`?",
+      "range": {
+        "startLine": 669,
+        "startChar": 15,
+        "endLine": 669,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "00814b25_66b51b86",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 597,
+                "startChar": 0,
+                "endLine": 598,
+                "endChar": 0
+              },
+              "replacement": "                if (IsLoadSequential(cnd_last))\n"
+            },
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 669,
+                "startChar": 0,
+                "endLine": 670,
+                "endChar": 0
+              },
+              "replacement": "bool Modprobe::IsLoadSequential(const std::string\u0026 module)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
