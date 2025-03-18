@@ -118,6 +118,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604f064d_26359c75",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3010084
+      },
+      "writtenOn": "2025-03-18T01:05:34Z",
+      "side": 1,
+      "message": "I see. Do you know whether there are any rust vendor clients using atoms that I can refer to?",
+      "parentUuid": "68119034_6bd5a4ab",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
