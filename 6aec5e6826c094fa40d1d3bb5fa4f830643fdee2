@@ -16,6 +16,41 @@
       "message": "pid seems clearer here because this code is saying \"please give me all the tids corresponding to a pid\"?",
       "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b735e04b_40595487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-03-19T18:10:45Z",
+      "side": 1,
+      "message": "Yeah, this function is taking a pid assuming multiple threads, so changing the variable name doesn\u0027t make sense.\n\nYou could make an argument that the dump_backtrace_to_file and dump_backtrace_to_file_timeout should have pid as the first parameter not tid and that\u0027s what is causing confusion. Looking at the callers, they do send in what they consider a pid not a tid.",
+      "parentUuid": "481b23ba_5512d97c",
+      "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4cc100_18a4f93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-03-19T18:10:45Z",
+      "side": 1,
+      "message": "I agree with enh",
+      "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
