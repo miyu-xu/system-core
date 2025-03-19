@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62ddfa1a_dc47d61c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3911142
+      },
+      "writtenOn": "2025-03-19T00:10:08Z",
+      "side": 1,
+      "message": "The issue lies with ro.debuggable being set in both userdebug and user builds with root access. This enables debug code that alters build behavior, making performance and power testing unreliable compared to release builds.\n\nIn total there are 274 references to ro.debuggable in AOSP (+ apps and vendor code), which makes it difficult to fix and monitor its use in the furture. Examples:\n1. mediaserver: https://tinyurl.com/yc2feh27\n2. inputflinger: https://tinyurl.com/yzvrb89r",
+      "parentUuid": "41cd1914_0c4b44dc",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "100dfef1_91d8350e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-10T23:34:26Z",
       "side": 1,
       "message": "i think this is against where we are heading. currently, a lot of things are tied to the single ro.debuggable property which makes it an attractive target for attack. in addition to that, it\u0027s just difficult to reason what will change (and not change) when ro.debuggable is set or unset.\n\nthe direction we are (and should be) heading I guess is introducing sysprops each of which controls a specific aspect of the OS, eventually leaving ro.debuggable as an info-only sysprop.\n\ncc: jeffv@",
+      "range": {
+        "startLine": 12,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da3771c_b73c9857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3911142
+      },
+      "writtenOn": "2025-03-19T00:10:08Z",
+      "side": 1,
+      "message": "What\u0027s the best way to separate root access from debug options by using distinct system properties? Please help provide specific guidance.",
+      "parentUuid": "100dfef1_91d8350e",
       "range": {
         "startLine": 12,
         "startChar": 52,
@@ -77,6 +125,42 @@
       "writtenOn": "2025-03-10T21:16:05Z",
       "side": 1,
       "message": "If you want to make a change to serveral repos (adb \u0026 system/core so far), you need to group them in a topic. \n\nThat being said the change you are attempting to make is drastic and you have not answered the question of what problem this is actually solving.",
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd68b4ef_95f9464f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3911142
+      },
+      "writtenOn": "2025-03-19T00:10:08Z",
+      "side": 1,
+      "message": "I will group them in a topic.\n\nThe issue is when we enable root access (either using userdebug or user+su though debug ramdisk) ro.debuggable gets enabled, which is used to add debug code. This will cause build behavior to deviate from release builds, making it not ideal for performance or power testing.\n\nThere is widespread use of ro.debuggable (referenced 274 times in AOSP, plus apps and vendor code) all of which we can\u0027t monitor. Hence, this change to replace ro.debuggable with ro.force.debuggable for root access control.",
+      "parentUuid": "2f5fbd5c_bf2af82a",
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d330e2_5333d12b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3911142
+      },
+      "writtenOn": "2025-03-19T00:10:08Z",
+      "side": 1,
+      "message": "Yes, this would need adb changes. \n\nThe widespread use of ro.debuggable (referenced 274 times in AOSP, plus apps and vendor code) is precisely why we need this change. Since we can\u0027t effectively monitor all its uses, we should replace ro.debuggable with ro.force.debuggable for root access control.",
+      "parentUuid": "217c7cf5_f263285d",
       "revId": "aefe53e376063f4656e562814959e95f24c81343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
