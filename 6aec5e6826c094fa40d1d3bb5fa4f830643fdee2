@@ -51,6 +51,24 @@
       "message": "I agree with enh",
       "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10eff6b_824f4039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2025-03-19T18:20:26Z",
+      "side": 1,
+      "message": "FWIW this confused me too and I tried to change `tid` to `pid` in https://r.android.com/c/2941065/1 and changed it back to `tid` in patchset 2 after Elliott\u0027s and Josh\u0027s comments here https://android-review.git.corp.google.com/c/platform/system/core/+/2941065/comments/0608ebda_d1c63a2c.",
+      "parentUuid": "b735e04b_40595487",
+      "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
