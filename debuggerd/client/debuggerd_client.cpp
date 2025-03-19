@@ -85,30 +85,30 @@ static void populate_timeval(struct timeval* tv, const Duration& duration) {
  * Returns the wchan data for each thread in the process,
  * or empty string if unable to obtain any data.
  */
-static std::string get_wchan_data(int fd, pid_t pid) {
+static std::string get_wchan_data(int fd, pid_t tid) {
   std::vector<pid_t> tids;
-  if (!android::procinfo::GetProcessTids(pid, &tids)) {
+  if (!android::procinfo::GetProcessTids(tid, &tids)) {
     log_error(fd, 0, "failed to get process tids");
     return "";
   }
 
   std::stringstream data;
-  for (int tid : tids) {
-    std::string path = "/proc/" + std::to_string(pid) + "/task/" + std::to_string(tid) + "/wchan";
+  for (int id : tids) {
+    std::string path = "/proc/" + std::to_string(tid) + "/task/" + std::to_string(id) + "/wchan";
     std::string wchan_str;
     if (!ReadFileToString(path, &wchan_str, true)) {
       log_error(fd, errno, "failed to read \"%s\"", path.c_str());
       continue;
     }
-    data << "sysTid=" << std::left << std::setw(10) << tid << wchan_str << "\n";
+    data << "sysTid=" << std::left << std::setw(10) << id << wchan_str << "\n";
   }
 
   std::stringstream buffer;
   if (std::string str = data.str(); !str.empty()) {
-    buffer << "\n----- Waiting Channels: pid " << pid << " at " << get_timestamp() << " -----\n"
-           << "Cmd line: " << android::base::Join(get_command_line(pid), " ") << "\n";
+    buffer << "\n----- Waiting Channels: pid " << tid << " at " << get_timestamp() << " -----\n"
+           << "Cmd line: " << android::base::Join(get_command_line(tid), " ") << "\n";
     buffer << "\n" << str << "\n";
-    buffer << "----- end " << std::to_string(pid) << " -----\n";
+    buffer << "----- end " << std::to_string(tid) << " -----\n";
     buffer << "\n";
   }
   return buffer.str();
