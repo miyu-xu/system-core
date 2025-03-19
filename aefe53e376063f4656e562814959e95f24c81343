@@ -187,6 +187,23 @@
       "parentUuid": "217c7cf5_f263285d",
       "revId": "aefe53e376063f4656e562814959e95f24c81343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e550fdd3_04ea3a80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2025-03-19T10:01:56Z",
+      "side": 1,
+      "message": "Thanks for the discussion. It sounds like consensus is that we will not accept this change. However, we would be happy to consider CLs that remove differences between userdebug and user builds.",
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
