@@ -16,6 +16,23 @@
       "message": "wait, jiyong isn\u0027t in OWNERS for fs_config.cpp?! that\u0027s silly!\n\njiyong: want to add yourself? (i\u0027ll let you decide the scope you want for yourself :-) )",
       "revId": "9cdca9a61d484b7defea4101c0eb3e90aff779b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a25d581_2614330b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-19T08:16:38Z",
+      "side": 1,
+      "message": "This is confirmed. Even with the removal, `for-system` is owned by `clat.\n\n```\nvsoc_x86_64_only:/apex/com.android.tethering/bin/for-system # ls -al\ntotal 20\ndrwxr-x--- 2 clat system    44 1970-01-01 00:00 .\ndrwxr-xr-x 3 root shell    111 1970-01-01 00:00 ..\n-rwsr-sr-x 1 clat clat   51792 1970-01-01 00:00 clat\n```",
+      "revId": "9cdca9a61d484b7defea4101c0eb3e90aff779b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
