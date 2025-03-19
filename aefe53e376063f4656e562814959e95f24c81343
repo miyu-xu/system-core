@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95b12736_4f2b82a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-19T04:34:34Z",
+      "side": 1,
+      "message": "allowing root access in a user build (in whatever way) I think is a hard-no, because it\u0027s less secure than making it impossible by removing the support for it at build-time.\n\nThe guidance is basically what Jeff said. If you experience a perf difference between user and userdebug builds, please fix it.",
+      "parentUuid": "0da3771c_b73c9857",
+      "range": {
+        "startLine": 12,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "aefe53e376063f4656e562814959e95f24c81343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "217c7cf5_f263285d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
