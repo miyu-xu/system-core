@@ -69,6 +69,24 @@
       "parentUuid": "b735e04b_40595487",
       "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbaeade_a207b3f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881587
+      },
+      "writtenOn": "2025-03-20T07:57:43Z",
+      "side": 1,
+      "message": "In fact, I am more aggree with pid here, especially https://android-review.googlesource.com/c/platform/system/core/+/2941065/1/debuggerd/client/debuggerd_client.cpp#123\n\nthis patch is an idea after I see the second merged one，only for keep consistent with the debuggerd_trigger_dump and get_wchan_data client",
+      "parentUuid": "a10eff6b_824f4039",
+      "revId": "6aec5e6826c094fa40d1d3bb5fa4f830643fdee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
