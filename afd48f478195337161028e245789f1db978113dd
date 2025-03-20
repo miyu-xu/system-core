@@ -129,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb892d91_1778e091",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af77e41_43aea90f",
+      "range": {
+        "startLine": 513,
+        "startChar": 52,
+        "endLine": 513,
+        "endChar": 70
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a75532ec_af0e4f35",
@@ -190,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56f5a5e_af98c292",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75532ec_af0e4f35",
+      "range": {
+        "startLine": 517,
+        "startChar": 15,
+        "endLine": 517,
+        "endChar": 26
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "493393ca_039dcb03",
@@ -231,6 +279,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03993608_58857bff",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "493393ca_039dcb03",
+      "range": {
+        "startLine": 541,
+        "startChar": 45,
+        "endLine": 541,
+        "endChar": 50
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47f6b637_06494c8b",
@@ -268,6 +340,30 @@
           ]
         }
       ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97e07be_57d09d10",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "47f6b637_06494c8b",
+      "range": {
+        "startLine": 543,
+        "startChar": 42,
+        "endLine": 543,
+        "endChar": 45
+      },
       "revId": "afd48f478195337161028e245789f1db978113dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -455,6 +551,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee75ed28_ef8451e3",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec670eb_5e1146be",
+      "range": {
+        "startLine": 544,
+        "startChar": 12,
+        "endLine": 544,
+        "endChar": 28
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2162091_ab8b36fe",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7c1c05_8ad9b646",
+      "range": {
+        "startLine": 544,
+        "startChar": 12,
+        "endLine": 544,
+        "endChar": 28
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fe3c0c6_37617925",
@@ -506,6 +650,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "933f9cf9_71643f48",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "replace `if (!mods_to_load_alone.empty())` with while loop",
+      "parentUuid": "8fe3c0c6_37617925",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 0
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3304eff4_b0d1fe9a",
@@ -543,6 +711,30 @@
           ]
         }
       ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a1d351_c9b87a70",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3304eff4_b0d1fe9a",
+      "range": {
+        "startLine": 605,
+        "startChar": 36,
+        "endLine": 605,
+        "endChar": 81
+      },
       "revId": "afd48f478195337161028e245789f1db978113dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -588,6 +780,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8624e921_7dc84ff3",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aa0f4b4_c32f31d4",
+      "range": {
+        "startLine": 611,
+        "startChar": 32,
+        "endLine": 611,
+        "endChar": 36
+      },
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1381479e_d86f6d04",
@@ -625,6 +841,30 @@
           ]
         }
       ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e494ebe_b0317590",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1381479e_d86f6d04",
+      "range": {
+        "startLine": 615,
+        "startChar": 32,
+        "endLine": 615,
+        "endChar": 36
+      },
       "revId": "afd48f478195337161028e245789f1db978113dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -676,6 +916,30 @@
           ]
         }
       ],
+      "revId": "afd48f478195337161028e245789f1db978113dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31f6669_094778ed",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-20T07:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a33cc0_e8138097",
+      "range": {
+        "startLine": 669,
+        "startChar": 15,
+        "endLine": 669,
+        "endChar": 28
+      },
       "revId": "afd48f478195337161028e245789f1db978113dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
