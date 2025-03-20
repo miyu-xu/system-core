@@ -150,7 +150,7 @@ EXPORT_GLOBAL_ASAN_OPTIONS = select(soong_config_variable("ANDROID", "ASAN_ENABL
 })
 
 EXPORT_GLOBAL_HWASAN_OPTIONS = select(soong_config_variable("ANDROID", "HWASAN_ENABLED"), {
-    true: "export HWASAN_OPTIONS heap_history_size=1023,stack_history_size=512,export_memory_stats=0,max_malloc_fill_size=131072,malloc_fill_byte=0",
+    true: "export HWASAN_OPTIONS heap_history_size=1023,stack_history_size=512,export_memory_stats=0,max_malloc_fill_size=131072,malloc_fill_byte=0,disable_coredump=0",
     default: "",
 })
 
