@@ -166,6 +166,30 @@
       },
       "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89969bc_455a17b5",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3010084
+      },
+      "writtenOn": "2025-03-21T08:17:40Z",
+      "side": 1,
+      "message": "Thanks. I have verified it works. Just uploaded the rust_bindgen CL on\nhttps://googleplex-android-review.git.corp.google.com/c/platform/vendor/google/desktop/+/32322803/4",
+      "parentUuid": "0a3dd174_a964d0d2",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "78d817a1ff43125decdbc539d0803dd846e30e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
