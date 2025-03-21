@@ -378,27 +378,41 @@ bool CreateSnapshot::WriteNonOrderedSnapshots() {
 }
 
 bool CreateSnapshot::WriteOrderedSnapshots() {
+    std::vector<std::pair<uint64_t, uint64_t>> sorted_copy_blocks(copy_blocks_.begin(),
+                                                                  copy_blocks_.end());
+
+    // Sort based on the *values* (source block indices)
+    std::sort(sorted_copy_blocks.begin(), sorted_copy_blocks.end(),
+              [](const std::pair<uint64_t, uint64_t>& a, const std::pair<uint64_t, uint64_t>& b) {
+                  return a.second < b.second;
+              });
+
     std::unordered_map<uint64_t, uint64_t> overwritten_blocks;
-    std::vector<std::pair<uint64_t, uint64_t>> merge_sequence;
-    for (auto it = copy_blocks_.begin(); it != copy_blocks_.end(); it++) {
-        if (overwritten_blocks.count(it->second)) {
-            replace_blocks_.push_back(it->first);
+    copy_ops_ = 0;
+    for (const auto& pair : sorted_copy_blocks) {
+        uint64_t target = pair.first;
+        uint64_t source = pair.second;
+
+        // Check for conflicts
+        if (overwritten_blocks.count(source)) {
+            // Conflict detected!
+            LOG(DEBUG) << "Converting copy operation to replace: target=" << target
+                       << ", source=" << source;
+            replace_blocks_.push_back(target);
+            copy_blocks_.erase(target);  // Remove the conflicting operation
             continue;
         }
-        overwritten_blocks[it->first] = it->second;
-        merge_sequence.emplace_back(std::make_pair(it->first, it->second));
+        // No conflict, add the copy operation
+        if (!writer_->AddCopy(target, source, 1)) {
+            return false;
+        }
+        overwritten_blocks[target] = source;
+        copy_ops_++;
     }
     // Sort the blocks so that if the blocks are contiguous, it would help
     // compress multiple blocks in one shot based on the compression factor.
     std::sort(replace_blocks_.begin(), replace_blocks_.end());
-
-    copy_ops_ = merge_sequence.size();
-    for (auto it = merge_sequence.begin(); it != merge_sequence.end(); it++) {
-        if (!writer_->AddCopy(it->first, it->second, 1)) {
-            return false;
-        }
-    }
-
+    LOG(DEBUG) << "Total copy ops: " << copy_ops_;
     return true;
 }
 
