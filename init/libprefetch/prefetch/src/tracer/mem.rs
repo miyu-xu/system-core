@@ -320,8 +320,8 @@ impl TraceLineInfo {
     // Convenience function to create regex. Used once per life of `record` but multiple times in
     // case of tests.
     pub fn get_trace_line_regex() -> Result<Regex, Error> {
-        // TODO: Fix this Regex expression for 5.15 kernels. This expression
-        // works only on 6.1+. Prior to 6.1, "<page>" was present in the output.
+        // `page=[hex]` entry exists in 5.x kernel format but not in 6.x.
+        // Conversely, `order=[digit]` entry exists in 6.x kernel format but not in 5.x.
         Regex::new(concat!(
             r"^\s+(?P<cmd_pid>\S+)",
             r"\s+(?P<cpu>\S+)",
@@ -330,9 +330,10 @@ impl TraceLineInfo {
             r"\s+mm_filemap_add_to_page_cache:",
             r"\s+dev\s+(?P<major>[0-9]+):(?P<minor>[0-9]+)",
             r"\s+ino\s+(?P<ino>\S+)",
-            //r"\s+(?P<page>\S+)",
+            r"(?:\s+(?P<page>page=\S+))?",
             r"\s+(?P<pfn>\S+)",
-            r"\s+ofs=(?P<offset>[0-9]+)"
+            r"\s+ofs=(?P<offset>[0-9]+)",
+            r"(?:\s+(?P<order>\S+))?"
         ))
         .map_err(|e| Error::Custom {
             error: format!("create regex for tracing failed with: {}", e),
@@ -691,6 +692,11 @@ mod tests {
  .gms.peent-843  [001] ....   485.545820: mm_filemap_add_to_page_cache: dev 254:6 ino cf3 page=6233ce pfn=58108 ofs=0
       an.bg-459  [001] ....   494.029396: mm_filemap_add_to_page_cache: dev 254:3 ino 7cf page=c5b5c7 pfn=373933 ofs=1310720
       an.bg-459  [001] ....   494.029398: mm_filemap_add_to_page_cache: dev 254:3 ino 7cf page=b8b9ec pfn=410074 ofs=1314816
+ logcat-686     [006] ..... 148216.040320: mm_filemap_add_to_page_CACHE: dev 254:85 ino 3f15 page=b8b9ec pfn=0x213bc2 ofs=528384 order=0
+ logcat-686     [001] ..... 148217.776227: mm_filemap_add_to_page_cache: dev 254:85 ino 3f15 page=b8b9ec pfn=0x21d306 ofs=532480 order=0
+ logcat-686     [003] ..... 148219.044389: mm_filemap_add_to_pag_ecache: dev 254:85 ino 3f15 page=b8b9ec pfn=0x224b8d ofs=536576 order=0
+ logcat-686     [001] ..... 148220.780964: mm_filemap_add_to_page_cache: dev 254:85 ino 3f15 page=b8b9ec pfn=0x1bfe0a ofs=540672 order=0
+ logcat-686     [001] ..... 148223.046560: mm_filemap_add_to_page_cache: dev 254:85 ino 3f15 page=b8b9ec pfn=0x1f3d29 ofs=544768 order=0
        "#;
 
     fn sample_mem_traces() -> (String, Vec<Option<TraceLineInfo>>) {
@@ -706,6 +712,11 @@ mod tests {
                 Some(TraceLineInfo::from_fields(254, 6, 0xcf3, 0, 485545820000)),
                 Some(TraceLineInfo::from_fields(254, 3, 0x7cf, 1310720, 494029396000)),
                 Some(TraceLineInfo::from_fields(254, 3, 0x7cf, 1314816, 494029398000)),
+                None,
+                Some(TraceLineInfo::from_fields(254, 85, 0x3f15, 532480, 148217776227000)),
+                None,
+                Some(TraceLineInfo::from_fields(254, 85, 0x3f15, 540672, 148220780964000)),
+                Some(TraceLineInfo::from_fields(254, 85, 0x3f15, 544768, 148223046560000)),
                 None,
             ],
         )
