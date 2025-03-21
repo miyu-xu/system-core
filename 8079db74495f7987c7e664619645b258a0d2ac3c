@@ -33,6 +33,76 @@
       "message": "Hello,\nPlease take a look when you have time.\n\nThank you,",
       "revId": "8079db74495f7987c7e664619645b258a0d2ac3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af9f6ff9_7c19c865",
+        "filename": "init/libprefetch/prefetch/src/tracer/mem.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-21T05:48:51Z",
+      "side": 1,
+      "message": "just curious, didn\u0027t `(\\s+(?P\u003cpage\u003epage\u003d\\S+))?` work instead of making `\\s+` of pfn to `\\s*`?",
+      "fixSuggestions": [
+        {
+          "fixId": "197f8cda_7f6d9766",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/libprefetch/prefetch/src/tracer/mem.rs",
+              "range": {
+                "startLine": 333,
+                "startChar": 0,
+                "endLine": 334,
+                "endChar": 0
+              },
+              "replacement": "            r\"\\s*(?P\u003cpage\u003epage\u003d\\S+)?\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8079db74495f7987c7e664619645b258a0d2ac3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763d19e0_ae5060a7",
+        "filename": "init/libprefetch/prefetch/src/tracer/mem.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1981075
+      },
+      "writtenOn": "2025-03-21T05:48:51Z",
+      "side": 1,
+      "message": "I don\u0027t think we have to limit the order to be followed by `$` to prevent future breakage. WDYT?",
+      "fixSuggestions": [
+        {
+          "fixId": "536e94d4_aa185f9c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/libprefetch/prefetch/src/tracer/mem.rs",
+              "range": {
+                "startLine": 336,
+                "startChar": 0,
+                "endLine": 337,
+                "endChar": 0
+              },
+              "replacement": "            r\"\\s*(?P\u003corder\u003e\\S+)?.*$\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8079db74495f7987c7e664619645b258a0d2ac3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
