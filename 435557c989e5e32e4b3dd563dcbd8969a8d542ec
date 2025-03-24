@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8a4e13_999e8f1c",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2025-03-24T13:43:07Z",
+      "side": 1,
+      "message": "`insert()` also (internally) performs a `find()`, so in the case when we\u0027re adding this, we end up searching through the set twice.  And we\u0027re doing that while holding a lock.\n\nSince `insert()` returns a pair, where the second element tells us if the insert happened or not, this is more efficient to write as:\n\n```\n  if (mods_loading.insert(cnd_last).second) {\n      // cnd_last wasn\u0027t already in mods_loading\n      if (IsLoadSequential(cnd_last))\n      [...]\n```\n\nSee https://en.cppreference.com/w/cpp/container/unordered_set/insert for more details.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 46
+      },
+      "revId": "435557c989e5e32e4b3dd563dcbd8969a8d542ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
