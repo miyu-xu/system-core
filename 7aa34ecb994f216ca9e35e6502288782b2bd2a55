@@ -73,6 +73,41 @@
       "message": "continue",
       "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c9e536_d45db2df",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-03-25T20:22:27Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "fixSuggestions": [
+        {
+          "fixId": "22610684_61e36f00",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 844,
+                "startChar": 0,
+                "endLine": 845,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

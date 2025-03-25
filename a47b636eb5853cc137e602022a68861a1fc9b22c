@@ -16,6 +16,40 @@
       "message": "Is there a reason this got removed?",
       "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa38fb2c_85ae9a24",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-03-25T20:22:27Z",
+      "side": 0,
+      "message": "This got dropped as well.",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac3db6d_8adeaa1c",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-03-25T20:22:27Z",
+      "side": 0,
+      "message": "This info message got dropped as well in the refactoring.",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
