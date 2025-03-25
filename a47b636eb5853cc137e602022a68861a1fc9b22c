@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ccfd4a_8ff9a767",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T15:54:08Z",
+      "side": 0,
+      "message": "Is there a reason this got removed?",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

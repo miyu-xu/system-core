@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d4d4df_f6944a92",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T15:54:08Z",
+      "side": 1,
+      "message": "/metadata is not an R/O partition that gets remounted",
+      "range": {
+        "startLine": 248,
+        "startChar": 54,
+        "endLine": 248,
+        "endChar": 62
+      },
+      "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944cbad4_11eb812c",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T15:54:08Z",
+      "side": 1,
+      "message": "nit: \"Shutdown\" for consistency",
+      "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d94107_ae9cd34f",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T15:54:08Z",
+      "side": 1,
+      "message": "if (!IsDataMounted(fstype)) {\n        continue;\n    }",
+      "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fcd1b2_0545c356",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T15:54:08Z",
+      "side": 1,
+      "message": "continue",
+      "revId": "7aa34ecb994f216ca9e35e6502288782b2bd2a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
