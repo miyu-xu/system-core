@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5a5168_a0dfa62a",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-03-25T21:55:48Z",
+      "side": 1,
+      "message": "I think you want a deque here?",
+      "revId": "92d4cb0c0bd2682893d4b43a367d2d661396e6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
