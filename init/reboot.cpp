@@ -18,6 +18,7 @@
 
 #include <dirent.h>
 #include <fcntl.h>
+#include <linux/ext4.h>
 #include <linux/f2fs.h>
 #include <linux/fs.h>
 #include <linux/loop.h>
@@ -85,6 +86,7 @@ namespace init {
 static bool shutting_down = false;
 
 static const std::set<std::string> kDebuggingServices{"tombstoned", "logd", "adbd", "console"};
+static const std::vector<std::string> kSupportedDataFsType{"f2fs", "ext4"};
 
 static void PersistRebootReason(const char* reason, bool write_to_property) {
     if (write_to_property) {
@@ -104,7 +106,7 @@ static void PersistRebootReason(const char* reason, bool write_to_property) {
 // represents umount status during reboot / shutdown.
 enum UmountStat {
     /* umount succeeded. */
-    UMOUNT_STAT_SUCCESS = 0,
+    UMOUNT_STAT_SUCCESS= 0,
     /* umount was not run. */
     UMOUNT_STAT_SKIPPED = 1,
     /* umount failed with timeout. */
@@ -243,7 +245,7 @@ static bool FindPartitionsToUmount(std::vector<MountEntry>* block_dev_partitions
             // These are R/O partitions changed to R/W after adb remount.
             // Do not umount them as shutdown critical services may rely on them.
             if (mount_dir != "/" && mount_dir != "/system" && mount_dir != "/vendor" &&
-                mount_dir != "/oem") {
+                mount_dir != "/oem" && mount_dir != "/metadata") {
                 block_dev_partitions->emplace(block_dev_partitions->begin(), *mentry);
             }
         } else if (MountEntry::IsEmulatedDevice(*mentry)) {
@@ -644,6 +646,37 @@ static Result<void> UnmountAllApexes() {
     return Error() << "'/system/bin/apexd --unmount-all' failed : " << status;
 }
 
+/**
+ * Uses ioctl to Shut down the /data filesystem if it's mounted with a supported filesystem type.
+ */
+static void ShutDownDataFsIfMounted() {
+    for (const std::string & fstype : kSupportedDataFsType) {
+        if (IsDataMounted(fstype)) {
+            int op;
+            uint32_t flag;
+            if (fstype == "f2fs") {
+                op = F2FS_IOC_SHUTDOWN;
+                flag = F2FS_GOING_DOWN_FULLSYNC;
+            } else if (fstype == "ext4") {
+                op = EXT4_IOC_SHUTDOWN;
+                flag = EXT4_GOING_FLAGS_DEFAULT;
+            } else {
+                LOG(ERROR) << "unsupported fstype: " << fstype;
+                return;
+            }
+
+            unique_fd fd(TEMP_FAILURE_RETRY(open("/data", O_RDONLY)));
+            int ret = ioctl(fd.get(), op, &flag);
+            if (ret) {
+                PLOG(ERROR) << "Shutdown /data: ";
+            } else {
+                LOG(INFO) << "Shutdown /data";
+            }
+        }
+    }
+}
+
+
 //* Reboot / shutdown the system.
 // cmd ANDROID_RB_* as defined in android_reboot.h
 // reason Reason string like "reboot", "shutdown,userrequested"
@@ -653,7 +686,6 @@ static Result<void> UnmountAllApexes() {
 static void DoReboot(unsigned int cmd, const std::string& reason, const std::string& reboot_target,
                      bool run_fsck) {
     Timer t;
-    LOG(INFO) << "Reboot start, reason: " << reason << ", reboot_target: " << reboot_target;
 
     bool is_thermal_shutdown = cmd == ANDROID_RB_THERMOFF;
 
@@ -803,13 +835,13 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
     // 5. drop caches and disable zram backing device, if exist
     KillZramBackingDevice();
 
-    LOG(INFO) << "Ready to unmount apexes. So far shutdown sequence took " << t;
     // 6. unmount active apexes, otherwise they might prevent clean unmount of /data.
     if (auto ret = UnmountAllApexes(); !ret.ok()) {
         LOG(ERROR) << ret.error();
     }
     UmountStat stat =
             TryUmountAndFsck(cmd, run_fsck, shutdown_timeout - t.duration(), &reboot_semaphore);
+
     // Follow what linux shutdown is doing: one more sync with little bit delay
     {
         Timer sync_timer;
@@ -825,17 +857,8 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
     sem_post(&reboot_semaphore);
 
     // Reboot regardless of umount status. If umount fails, fsck after reboot will fix it.
-    if (IsDataMounted("f2fs")) {
-        uint32_t flag = F2FS_GOING_DOWN_FULLSYNC;
-        unique_fd fd(TEMP_FAILURE_RETRY(open("/data", O_RDONLY)));
-        LOG(INFO) << "Invoking F2FS_IOC_SHUTDOWN during shutdown";
-        int ret = ioctl(fd.get(), F2FS_IOC_SHUTDOWN, &flag);
-        if (ret) {
-            PLOG(ERROR) << "Shutdown /data: ";
-        } else {
-            LOG(INFO) << "Shutdown /data";
-        }
-    }
+    ShutDownDataFsIfMounted();
+
     RebootSystem(cmd, reboot_target, reason);
     abort();
 }
