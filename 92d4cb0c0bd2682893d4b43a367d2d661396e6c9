@@ -16,6 +16,24 @@
       "message": "I think you want a deque here?",
       "revId": "92d4cb0c0bd2682893d4b43a367d2d661396e6c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0dfffe_79424cf7",
+        "filename": "fs_mgr/libsnapshot/libsnapshot_cow/create_cow.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1954115
+      },
+      "writtenOn": "2025-03-25T22:31:14Z",
+      "side": 1,
+      "message": "Thanks, indeed! On a large image with 600k copy ops, using deque helped the time to create by 50%. I have updated the patch to use deque.\n\nBefore\n\n```\n Time (mean ± σ):      9.337 s ±  0.733 s    [User: 13.956 s, System: 6.452 s]\n  Range (min … max):    8.499 s … 10.807 s    10 runs\n```\n\nAfter\n```\n Time (mean ± σ):      4.559 s ±  0.044 s    [User: 9.118 s, System: 6.664 s]\n  Range (min … max):    4.515 s …  4.636 s    10 runs\n```",
+      "parentUuid": "8f5a5168_a0dfa62a",
+      "revId": "92d4cb0c0bd2682893d4b43a367d2d661396e6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
