@@ -1,5 +1,47 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3155d1_441f2c37",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1247518
+      },
+      "writtenOn": "2025-03-26T08:07:21Z",
+      "side": 1,
+      "message": "Is it intentional that this branch can now be taken if mode \u003d\u003d LoadParallelMode::NONE ?",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "34781f3c_527d33fa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libmodprobe/libmodprobe.cpp",
+              "range": {
+                "startLine": 549,
+                "startChar": 0,
+                "endLine": 552,
+                "endChar": 0
+              },
+              "replacement": "                if (mode \u003d\u003d LoadParallelMode::PERFORMANCE ||\n                    sleeping_threads \u003d\u003d num_threads)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4211aeb4c6b47e9d45f5aa7b751514fc84e084b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
