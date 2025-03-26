@@ -16,6 +16,110 @@
       "message": "Duplicated to https://android-review.git.corp.google.com/c/platform/system/core/+/3543620 by Junichi, either will be fine.",
       "revId": "16182917d2e25bde2dc6c3fb00ab3a2f09e6b55c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca57f96_0916adc9",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1067793
+      },
+      "writtenOn": "2025-03-26T01:09:31Z",
+      "side": 1,
+      "message": "We shouldn\u0027t try to fix this in this patch, this can be a follow up: (This is introducing yet another static initializer, do we have constexpr things such as fixed_set_of / fixed_map_of? ... but we can fix that later. )",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 75
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4bca7632_2e9f8f4d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "static constexpr std::array\u003cconst char*, 4\u003e kDebuggingServices \u003d {\"tombstoned\", \"logd\", \"adbd\", \"console\"};\nstatic constexpr std::array\u003cconst char*, 2\u003e kSupportedDataFsType \u003d {\"f2fs\", \"ext4\"};\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 412,
+                "startChar": 0,
+                "endLine": 413,
+                "endChar": 0
+              },
+              "replacement": "static bool UmountDynamicPartitions(const std::set\u003cstd::string\u003e\u0026 dynamic_partitions) {\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 444,
+                "startChar": 0,
+                "endLine": 445,
+                "endChar": 0
+              },
+              "replacement": "    std::set\u003cstd::string\u003e dynamic_partitions;\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 653,
+                "startChar": 0,
+                "endLine": 654,
+                "endChar": 0
+              },
+              "replacement": "    for (const auto \u0026 fstype : kSupportedDataFsType) {\n"
+            },
+            {
+              "path": "init/reboot.cpp",
+              "range": {
+                "startLine": 831,
+                "startChar": 0,
+                "endLine": 832,
+                "endChar": 0
+              },
+              "replacement": "    StopServices(std::set\u003cstd::string\u003e(kDebuggingServices.begin(), kDebuggingServices.end()), 0ms, false /* SIGKILL */);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "16182917d2e25bde2dc6c3fb00ab3a2f09e6b55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7eb361_013b9a10",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1067793
+      },
+      "writtenOn": "2025-03-26T01:09:31Z",
+      "side": 1,
+      "message": "this is doing something wasteful, we can follow up with https://android-review.git.corp.google.com/c/platform/system/core/+/3543620/comment/fccafbfb_98d85b35/\n\nbut maybe not in this CL, as a followup",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 37
+      },
+      "revId": "16182917d2e25bde2dc6c3fb00ab3a2f09e6b55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
