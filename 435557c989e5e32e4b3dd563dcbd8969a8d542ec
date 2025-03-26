@@ -46,6 +46,30 @@
       },
       "revId": "435557c989e5e32e4b3dd563dcbd8969a8d542ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa121c4_5d8b9458",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1888377
+      },
+      "writtenOn": "2025-03-26T07:14:26Z",
+      "side": 1,
+      "message": "Done, 0455ecee35417d8405e031b9ed37e508e4bd8fd5 patch was merged",
+      "parentUuid": "bed8c845_4bf56969",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 46
+      },
+      "revId": "435557c989e5e32e4b3dd563dcbd8969a8d542ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
