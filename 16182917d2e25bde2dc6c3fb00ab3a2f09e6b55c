@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ca7342_6a432e3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3364509
+      },
+      "writtenOn": "2025-03-26T00:30:48Z",
+      "side": 1,
+      "message": "Duplicated to https://android-review.git.corp.google.com/c/platform/system/core/+/3543620 by Junichi, either will be fine.",
+      "revId": "16182917d2e25bde2dc6c3fb00ab3a2f09e6b55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

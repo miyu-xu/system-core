@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40285d65_572137d0",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 3364509
+      },
+      "writtenOn": "2025-03-26T00:30:48Z",
+      "side": 0,
+      "message": "It should be kept. Sorry, there are some codes unclean while doing refactoring.",
+      "parentUuid": "66ccfd4a_8ff9a767",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa38fb2c_85ae9a24",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9caa4d4f_b55e5eaf",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 3364509
+      },
+      "writtenOn": "2025-03-26T00:30:48Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "aa38fb2c_85ae9a24",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac3db6d_8adeaa1c",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-03-25T20:22:27Z",
       "side": 0,
       "message": "This info message got dropped as well in the refactoring.",
+      "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e18c35_d8b4234b",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 3364509
+      },
+      "writtenOn": "2025-03-26T00:30:48Z",
+      "side": 0,
+      "message": "Added back the log, and changed to `LOG(INFO) \u003c\u003c \"Invoking ioctl shutdown for /data\";`",
+      "parentUuid": "6ac3db6d_8adeaa1c",
       "revId": "a47b636eb5853cc137e602022a68861a1fc9b22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
