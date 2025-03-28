@@ -54,6 +54,7 @@ subsystem vfio
 /dev/dma_heap/system      0444   system     system
 /dev/dma_heap/system-uncached      0444   system     system
 /dev/dma_heap/system-secure        0444   system     system
+/dev/udmabuf              0666   system     system
 
 # kms driver for drm based gpu
 /dev/dri/*                0666   root       graphics
