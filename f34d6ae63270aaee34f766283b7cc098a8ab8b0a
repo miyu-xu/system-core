@@ -16,6 +16,40 @@
       "message": "Hey",
       "revId": "f34d6ae63270aaee34f766283b7cc098a8ab8b0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f4be01_365f9f0d",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-03-28T17:26:09Z",
+      "side": 1,
+      "message": "IIUC this is only necessary if the TA is a v4 implementation:\n- If it\u0027s a v3 implementation, it would ignore a HAL service asking it to be v4\n- The HAL version should get automatically downgraded by the stable AIDL infrastructure.",
+      "revId": "f34d6ae63270aaee34f766283b7cc098a8ab8b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c894f2f_816a14e1",
+        "filename": "trusty/keymint/android.hardware.security.keymint-service.rust.trusty_V3.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-03-28T17:26:09Z",
+      "side": 1,
+      "message": "Getting 3 here (instead of 4) should happen automatically due to being frozen: https://source.android.com/docs/core/architecture/aidl/stable-aidl#manifests",
+      "revId": "f34d6ae63270aaee34f766283b7cc098a8ab8b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
