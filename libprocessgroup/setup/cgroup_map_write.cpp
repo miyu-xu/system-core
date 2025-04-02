@@ -294,8 +294,8 @@ bool CgroupSetup() {
         }
 
         if (!SetupCgroup(descriptor)) {
-            // issue a warning and proceed with the next cgroup
-            LOG(WARNING) << "Failed to setup " << name << " cgroup";
+            LOG(ERROR) << "Failed to setup " << name << " cgroup";
+            return false;
         }
     }
 
