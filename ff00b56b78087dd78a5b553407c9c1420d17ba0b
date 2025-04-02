@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763d95d2_28f767bf",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-04-02T18:28:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether this branch is supposed to support build targets with either/both variants of `RELEASE_AIDL_USE_UNFROZEN`, so it\u0027s probably best to cover both (like line 64 below) -- e.g. something like https://r.android.com/3565086. \n Will that work for your setup?",
+      "revId": "ff00b56b78087dd78a5b553407c9c1420d17ba0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d49e49e_4c625941",
+        "filename": "trusty/keymint/android.hardware.security.keymint-service.rust.trusty.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-04-02T18:28:00Z",
+      "side": 1,
+      "message": "I _think_ this shouldn\u0027t be needed -- AIUI the AIDL infrastructure will automatically reduce the version from the unfrozen (v4) to the frozen (v3) version for a build target with `RELEASE_AIDL_USE_UNFROZEN\u003dfalse`: \nhttps://source.android.com/docs/core/architecture/aidl/stable-aidl#manifests\n\nWhat build target are you using?  And does it have `RELEASE_AIDL_USE_UNFROZEN\u003dfalse` ?",
+      "revId": "ff00b56b78087dd78a5b553407c9c1420d17ba0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
