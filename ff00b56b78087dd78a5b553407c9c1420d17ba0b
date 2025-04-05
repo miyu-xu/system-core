@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7182652_faca80a8",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1206463
+      },
+      "writtenOn": "2025-04-05T13:34:19Z",
+      "side": 1,
+      "message": "Hi David, the CL in the link would work for me (except for the typo, it should be \"libkmr_wire_hal_v3\" instead of \"libkmr_wire_v3\").",
+      "parentUuid": "763d95d2_28f767bf",
+      "revId": "ff00b56b78087dd78a5b553407c9c1420d17ba0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d49e49e_4c625941",
         "filename": "trusty/keymint/android.hardware.security.keymint-service.rust.trusty.xml",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-04-02T18:28:00Z",
       "side": 1,
       "message": "I _think_ this shouldn\u0027t be needed -- AIUI the AIDL infrastructure will automatically reduce the version from the unfrozen (v4) to the frozen (v3) version for a build target with `RELEASE_AIDL_USE_UNFROZEN\u003dfalse`: \nhttps://source.android.com/docs/core/architecture/aidl/stable-aidl#manifests\n\nWhat build target are you using?  And does it have `RELEASE_AIDL_USE_UNFROZEN\u003dfalse` ?",
+      "revId": "ff00b56b78087dd78a5b553407c9c1420d17ba0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e368a92_eb183987",
+        "filename": "trusty/keymint/android.hardware.security.keymint-service.rust.trusty.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1206463
+      },
+      "writtenOn": "2025-04-05T13:34:19Z",
+      "side": 1,
+      "message": "Thanks for the explanation! I\u0027m building the target ```bp1a``` thus with ```RELEASE_AIDL_USE_UNFROZEN\u003dfalse```.",
+      "parentUuid": "2d49e49e_4c625941",
       "revId": "ff00b56b78087dd78a5b553407c9c1420d17ba0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
