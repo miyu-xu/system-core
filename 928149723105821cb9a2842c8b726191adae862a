@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd62bac_ec61b0ae",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1206463
+      },
+      "writtenOn": "2025-04-05T13:14:32Z",
+      "side": 1,
+      "message": "Should be \"libkmr_wire_hal_v3\" instead of \"libkmr_wire_v3\".",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "928149723105821cb9a2842c8b726191adae862a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
