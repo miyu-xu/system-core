@@ -22,6 +22,30 @@
       },
       "revId": "928149723105821cb9a2842c8b726191adae862a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae07921_c136ac7d",
+        "filename": "trusty/keymint/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-04-07T11:03:36Z",
+      "side": 1,
+      "message": "Yep, thanks (I confused myself in between patchset 3 \u0026 4)",
+      "parentUuid": "9fd62bac_ec61b0ae",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "928149723105821cb9a2842c8b726191adae862a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
