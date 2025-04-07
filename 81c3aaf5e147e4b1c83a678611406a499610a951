@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba0ca220_7ecf7291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2025-04-07T16:44:56Z",
+      "side": 1,
+      "message": "I\u0027m not able to submit this, which I _think_ is [as-intended](https://source.android.com/docs/setup/about/faqs#main-merge).  It also won\u0027t make sense to cherry-pick this to internal `main`, because the KeyMint HAL is frozen at v4 (for Android 16) there.\n\nBut when we make future changes, the unfrozen version will then be v5 and we\u0027ll put something similar to this into internal `main`.",
+      "revId": "81c3aaf5e147e4b1c83a678611406a499610a951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
