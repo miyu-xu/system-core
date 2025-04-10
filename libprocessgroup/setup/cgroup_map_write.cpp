@@ -198,7 +198,7 @@ static bool MountV1CgroupController(const CgroupDescriptor& descriptor) {
     if (!strcmp(controller->name(), "cpuset")) {
         // mount cpuset none /dev/cpuset nodev noexec nosuid
         res = mount("none", controller->path(), controller->name(),
-                    MS_NODEV | MS_NOEXEC | MS_NOSUID, nullptr);
+                    MS_NODEV | MS_NOEXEC | MS_NOSUID, "cpuset_v2_mode");
     } else {
         // mount cgroup none <path> nodev noexec nosuid <controller>
         res = mount("none", controller->path(), "cgroup", MS_NODEV | MS_NOEXEC | MS_NOSUID,
