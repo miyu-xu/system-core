@@ -562,7 +562,8 @@ int FirstStageMain(int argc, char** argv) {
     dup2(fd, STDOUT_FILENO);
     dup2(fd, STDERR_FILENO);
     close(fd);
-    execv(path, const_cast<char**>(args));
+    const char* env[] = {"HWASAN_OPTIONS=disable_coredump=0", nullptr};
+    execve(path, const_cast<char**>(args), const_cast<char**>(env));
 
     // execv() only returns if an error happened, in which case we
     // panic and never fall through this conditional.
