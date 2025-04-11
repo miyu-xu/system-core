@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060c7308_48803d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2025-04-11T07:17:24Z",
+      "side": 1,
+      "message": "It looks fine to me if it solves your problem, but please remove the comments to make the code simplicity. Thanks.",
+      "revId": "e7ec4f98d77a7692233604c84c3e920508cdd1ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
