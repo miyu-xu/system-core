@@ -24,6 +24,7 @@
 #include <android-base/logging.h>
 
 #define DEV_NAME "/dev/watchdog"
+#define RETRY_CNT 10
 
 int main(int argc, char** argv) {
     android::base::InitLogging(argv, &android::base::KernelLogger);
@@ -36,11 +37,22 @@ int main(int argc, char** argv) {
 
     LOG(INFO) << "watchdogd started (interval " << interval << ", margin " << margin << ")!";
 
-    int fd = open(DEV_NAME, O_RDWR | O_CLOEXEC);
-    if (fd == -1) {
-        PLOG(ERROR) << "Failed to open " << DEV_NAME;
-        return 1;
-    }
+    int retry_cnt = RETRY_CNT;
+    int fd = -1;
+    do {
+        fd = open(DEV_NAME, O_RDWR | O_CLOEXEC);
+        if (fd == -1) {
+            retry_cnt --;
+            if (retry_cnt == 0) {
+                PLOG(ERROR) << "Failed to open " << DEV_NAME;
+                return 1;
+            }
+            LOG(WARNING) << "Failed to open " << DEV_NAME << ", wait for " << retry_cnt;
+            sleep(1);
+        } else {
+            break;
+        }
+    } while (retry_cnt > 0);
 
     int timeout = interval + margin;
     int ret = ioctl(fd, WDIOC_SETTIMEOUT, &timeout);
