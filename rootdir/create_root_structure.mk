@@ -44,6 +44,10 @@ ALL_ROOTDIR_SYMLINKS := \
   $(TARGET_ROOT_OUT)/sdcard \
   $(TARGET_ROOT_OUT)/adb_keys \
 
+ifdef BOARD_SUPPORTS_RAMDISK_EARLY_INIT
+  LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/vendor_early_services
+endif
+
 ifdef BOARD_USES_VENDORIMAGE
   LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/vendor
 else

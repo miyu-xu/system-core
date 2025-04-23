@@ -91,6 +91,9 @@ class FirstStageMountVBootV2 : public FirstStageMount {
 
     bool DoCreateDevices() override;
     bool DoFirstStageMount() override;
+#ifdef ENABLE_EARLY_SERVICES
+    bool DoCreateEarlyDevices() override;
+#endif
 
   private:
     bool InitDevices();
@@ -319,6 +322,21 @@ bool FirstStageMountVBootV2::InitDevices() {
     }
     return true;
 }
+
+#ifdef ENABLE_EARLY_SERVICES
+bool FirstStageMountVBootV2::DoCreateEarlyDevices() {
+    std::set<std::string> devices;
+
+    std::string ab_suffix = fs_mgr_get_slot_suffix();
+    std::string mdm_dev = "modem"s+ab_suffix;
+
+    devices.emplace(mdm_dev);
+
+    LOG(INFO) << "CreateEarlyDevices";
+
+    return InitRequiredDevices(std::move(devices));
+}
+#endif
 
 bool FirstStageMountVBootV2::IsDmLinearEnabled() {
     for (const auto& entry : fstab_) {

@@ -73,14 +73,45 @@ void SwitchRoot(const std::string& new_root) {
     auto mounts = GetMounts(new_root);
 
     LOG(INFO) << "Switching root to '" << new_root << "'";
+#ifdef ENABLE_EARLY_SERVICES
+    const std::string sEarlyServicesFwMnt = "/vendor_early_services/vendor/firmware_mnt";
+    const std::string sEarlyServices = "/vendor_early_services";
+
+    std::sort(mounts.begin(), mounts.end());
+#endif
 
     for (const auto& mount_path : mounts) {
         auto new_mount_path = new_root + mount_path;
+#ifdef ENABLE_EARLY_SERVICES
+        if (mount_path == sEarlyServices) {
+            mkdir(new_mount_path.c_str(), 0755);
+            if (mount(mount_path.c_str(), new_mount_path.c_str(), nullptr, MS_BIND | MS_REC, nullptr) != 0)
+                PLOG(ERROR) << "Unable to bind mount at '" << mount_path << "'";
+        } else if (mount_path == sEarlyServicesFwMnt) {
+            continue;
+        } else if (mount_path == "/dev") {
+            mkdir(new_mount_path.c_str(), 0755);
+            if (mount(mount_path.c_str(), new_mount_path.c_str(), nullptr, MS_BIND | MS_REC , nullptr) != 0)
+                PLOG(ERROR) << "Unable to bind mount at '" << mount_path << "'" << new_mount_path;
+        } else if (mount_path == "/sys") {
+            auto new_selinux_mount_path =  new_mount_path ;
+            new_selinux_mount_path.append("/fs/selinux");
+            mkdir(new_mount_path.c_str(), 0755);
+            if (mount("sysfs", new_mount_path.c_str(), "sysfs", 0, nullptr) != 0) {
+                PLOG(FATAL) << "Unable to mount sysfs at '" << new_mount_path << "'";
+            } else if (mount("selinuxfs", new_selinux_mount_path.c_str(), "selinuxfs", 0, nullptr) != 0) {
+                PLOG(FATAL) << "Unable to mount selinuxfs at '" << new_selinux_mount_path << "'";
+            }
+        } else {
+#endif
         mkdir(new_mount_path.c_str(), 0755);
         if (mount(mount_path.c_str(), new_mount_path.c_str(), nullptr, MS_MOVE, nullptr) != 0) {
             PLOG(FATAL) << "Unable to move mount at '" << mount_path << "' to "
                         << "'" << new_mount_path << "'";
         }
+#ifdef ENABLE_EARLY_SERVICES
+        }
+#endif
     }
 
     if (chdir(new_root.c_str()) != 0) {

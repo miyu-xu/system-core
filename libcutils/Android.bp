@@ -21,6 +21,26 @@ filegroup {
     srcs: ["include/private/android_filesystem_config.h"],
 }
 
+soong_config_module_type {
+    name: "android_libcutils_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "ANDROID",
+    bool_variables: ["BOARD_SUPPORTS_RAMDISK_EARLY_INIT"],
+    properties: ["installable", "cflags"],
+}
+
+android_libcutils_cc_defaults {
+    name: "android_libcutils_defaults",
+    soong_config_variables: {
+        BOARD_SUPPORTS_RAMDISK_EARLY_INIT: {
+            cflags: [
+                "-UENABLE_EARLY_SERVICES",
+                "-DENABLE_EARLY_SERVICES=1",
+            ],
+        },
+    },
+}
+
 rust_bindgen {
     name: "libandroid_ids",
     crate_name: "android_ids",
@@ -38,6 +58,7 @@ cc_defaults {
         "-Wno-exit-time-destructors",
     ],
 
+    defaults: ["android_libcutils_defaults"],
     product_available: true,
     ramdisk_available: true,
     recovery_available: true,

@@ -185,6 +185,13 @@ static const struct fs_path_config android_files[] = {
                                            CAP_MASK_LONG(CAP_SETGID),
                                               "system/bin/simpleperf_app_runner" },
     { 00755, AID_ROOT,      AID_ROOT,      0, "first_stage_ramdisk/system/bin/e2fsck" },
+#ifdef ENABLE_EARLY_SERVICES
+    { 00755, AID_ROOT,      AID_ROOT,      0, "first_stage_ramdisk/vendor_early_services/" },
+    { 00755, AID_ROOT,      AID_ROOT,      0, "first_stage_ramdisk/vendor_early_services/bin/early_services_init" },
+    { 00755, AID_ROOT,      AID_SHELL,     0, "vendor_early_services/bin/*" },
+    { 00755, AID_ROOT,      AID_SHELL,     0, "vendor_early_services/system/bin/*" },
+    { 00755, AID_ROOT,      AID_SHELL,     0, "vendor_early_services/vendor/bin/*" },
+#endif
 #ifdef __LP64__
     { 00755, AID_ROOT,      AID_ROOT,      0, "first_stage_ramdisk/system/bin/linker64" },
 #else

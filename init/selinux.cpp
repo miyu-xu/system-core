@@ -797,6 +797,8 @@ int SetupSelinux(char** argv) {
         PLOG(FATAL) << "restorecon failed of /system/bin/init failed";
     }
 
+    setexeccon("u:r:init:s0");
+
     setenv(kEnvSelinuxStartedAt, std::to_string(start_time.time_since_epoch().count()).c_str(), 1);
 
     // SetupOverlays does not return if overlays exist, instead it execs overlay_remounter

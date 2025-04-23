@@ -33,6 +33,10 @@ class FirstStageMount {
     virtual bool DoCreateDevices() = 0;
     // Mounts fstab entries read from device tree.
     virtual bool DoFirstStageMount() = 0;
+#ifdef ENABLE_EARLY_SERVICES
+    // Creates devices required for Early service
+    virtual bool DoCreateEarlyDevices() = 0;
+#endif
 
   protected:
     FirstStageMount() = default;
