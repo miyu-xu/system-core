@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54197db8_2155d40d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-04-23T00:20:26Z",
+      "side": 1,
+      "message": "This patch can give retry chance for WDT kernel driver to be registered. I hope we can start watchdog damon at any android boot stage.",
+      "revId": "99b5ad606b4768a1a7b71b0cf8bacf58a8687ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
