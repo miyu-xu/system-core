@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dce7e9_9951831f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-04-23T13:09:45Z",
+      "side": 1,
+      "message": "why not? and how does it know that watchdogd started?\n\n(or by \"until\" do you just mean \"some SoCs\u0027 kernels are so slow at adding /dev/watchdog that watchdogd has already started before they\u0027re ready\"?)\n\nand why can\u0027t we just fix this so /dev/watchdog is available sooner, like other SoCs?",
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3733168a_1426051d",
