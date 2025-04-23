@@ -334,8 +334,8 @@ soong_config_module_type {
     name: "init_first_stage_cc_defaults",
     module_type: "cc_defaults",
     config_namespace: "ANDROID",
-    bool_variables: ["BOARD_USES_RECOVERY_AS_BOOT"],
-    properties: ["no_full_install"],
+    bool_variables: ["BOARD_USES_RECOVERY_AS_BOOT", "BOARD_SUPPORTS_RAMDISK_EARLY_INIT"],
+    properties: ["installable", "cflags"],
 }
 
 // Do not install init_first_stage even with mma if we're system-as-root.
@@ -344,7 +344,13 @@ init_first_stage_cc_defaults {
     name: "init_first_stage_defaults",
     soong_config_variables: {
         BOARD_USES_RECOVERY_AS_BOOT: {
-            no_full_install: true,
+            installable: false,
+        },
+        BOARD_SUPPORTS_RAMDISK_EARLY_INIT: {
+            cflags: [
+                "-UENABLE_EARLY_SERVICES",
+                "-DENABLE_EARLY_SERVICES=1",
+            ],
         },
     },
 
