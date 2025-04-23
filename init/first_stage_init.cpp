@@ -330,6 +330,63 @@ static std::unique_ptr<FirstStageMount> CreateFirstStageMount(const std::string&
     }
 }
 
+#ifdef ENABLE_EARLY_SERVICES
+int StartEarlyServices(void) {
+    const char* path = "/vendor_early_services/bin/vendor_earlyservice_init";
+    const char* args[] = {path, "early_service", nullptr};
+
+    if (access(path, F_OK) != 0) {
+        LOG(WARNING) << "Start Early Services, File Not found!";
+        return -1;
+    }
+
+    pid_t pid = fork();
+    if (pid == 0) {
+        int ret;
+        auto fd = open("/dev/kmsg", O_WRONLY | O_CLOEXEC);
+        dup2(fd, STDOUT_FILENO);
+        dup2(fd, STDERR_FILENO);
+        close(fd);
+        ret = execv(path, const_cast<char**>(args));
+        if(ret < 0) {
+            LOG(ERROR) << "FirstStageMain ES launch failed " << errno << " ret " << ret;
+        }
+        PLOG(FATAL) << "execv(\"" << path << "\") failed";
+        return -1;
+    } else if (pid < 0) {
+        LOG(ERROR) << "Start Early Services, Fork Failed!";
+        return -1;
+    }
+
+    bool not_loaded = true;
+    while (true) {
+        if (not_loaded && access("/dev/kmdone", F_OK) == 0) {
+            not_loaded = false;
+            LOG(INFO) << "Start Early Services kmdone";
+
+            // Create Early Devices
+            std::string cmdline;
+            android::base::ReadFileToString("/proc/cmdline", &cmdline);
+            LOG(INFO) << "ES: cmdline " << cmdline;
+            std::unique_ptr<FirstStageMount> fsm;
+            fsm = CreateFirstStageMount(cmdline);
+            if (fsm) {
+                fsm->DoCreateEarlyDevices();
+            } else {
+                LOG(ERROR) << "Failed to create ES device nodes early";
+            }
+        }
+        if (access("/dev/sedone", F_OK) == 0) {
+            break;
+        }
+        usleep(20*1000);
+    }
+    LOG(INFO) << "Start Early Services sedone ";
+ 
+    return 0;
+}
+#endif // ENABLE_EARLY_SERVICES
+
 int FirstStageMain(int argc, char** argv) {
     if (REBOOT_BOOTLOADER_ON_PANIC) {
         InstallRebootSignalHandlers();
@@ -439,6 +496,12 @@ int FirstStageMain(int argc, char** argv) {
     auto want_console = ALLOW_FIRST_STAGE_CONSOLE ? FirstStageConsole(cmdline, bootconfig) : 0;
     auto want_parallel =
             bootconfig.find("androidboot.load_modules_parallel = \"true\"") != std::string::npos;
+
+    #ifdef ENABLE_EARLY_SERVICES
+      if (!(IsRecoveryMode() && !ForceNormalBoot(cmdline, bootconfig))) {
+          StartEarlyServices();
+      } else {
+    #endif
 
     boot_clock::time_point module_start_time = boot_clock::now();
     int module_count = 0;
