@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a2ae31bf_d9280ae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-04-24T00:53:29Z",
+      "side": 1,
+      "message": "With our latest SOC, we have some challenge with Booting time, so we are tring to use Module Parallel loading scheme. \n\nIn that case, module can be loaded after \"on early-init\" stage. So, we moved watchdogd to \"on boot\" stage and resolve it. But we just start watchdogd as soon as possible after bootup, so I suggest this retrying scheme.",
+      "parentUuid": "e2dce7e9_9951831f",
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3733168a_1426051d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
