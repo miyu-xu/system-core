@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a122cd53_faaf8390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964171
+      },
+      "writtenOn": "2025-04-24T22:19:39Z",
+      "side": 1,
+      "message": "this patch has been merged internally.",
+      "revId": "866e66fa16d3ba9ec00cfb685b44db6c5a3e9344",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
