@@ -16,6 +16,24 @@
       "message": "this patch has been merged internally.",
       "revId": "866e66fa16d3ba9ec00cfb685b44db6c5a3e9344",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de107ac2_b8d89657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480345
+      },
+      "writtenOn": "2025-04-25T08:35:15Z",
+      "side": 1,
+      "message": "Could you help also put the patch on the android15-tests-dev branch",
+      "parentUuid": "a122cd53_faaf8390",
+      "revId": "866e66fa16d3ba9ec00cfb685b44db6c5a3e9344",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
