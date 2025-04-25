@@ -18,6 +18,7 @@
 #include <pthread.h>
 
 #include <android-base/properties.h>
+#include <sys/prctl.h>
 
 #include "merge_worker.h"
 #include "snapuserd_core.h"
@@ -598,7 +599,8 @@ void MergeWorker::FinalizeIouring() {
 bool MergeWorker::Run() {
     SNAP_LOG(DEBUG) << "Waiting for merge begin...";
 
-    pthread_setname_np(pthread_self(), "MergeWorker");
+    std::string thread_name = "Merge_" + misc_name_;
+    prctl(PR_SET_NAME, thread_name.c_str());
 
     if (!snapuserd_->WaitForMergeBegin()) {
         return true;
@@ -611,10 +613,10 @@ bool MergeWorker::Run() {
     }
 
     if (!SetProfiles({"CPUSET_SP_BACKGROUND"})) {
-        SNAP_PLOG(ERROR) << "Failed to assign task profile to Mergeworker thread";
+        SNAP_LOG(ERROR) << "Failed to assign task profile to Mergeworker thread";
     }
 
-    SNAP_LOG(INFO) << "Merge starting..";
+    SNAP_LOG(INFO) << "Merge starting: " << thread_name;
 
     bufsink_.Initialize(PAYLOAD_BUFFER_SZ);
 

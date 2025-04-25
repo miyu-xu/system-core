@@ -65,6 +65,7 @@ class ReadWorker : public Worker, public IBlockServer::Delegate {
     unique_fd backing_store_fd_;
     unique_fd backing_store_direct_fd_;
     bool direct_read_ = false;
+    bool setProfiles_ = false;
 
     std::shared_ptr<IBlockServerOpener> block_server_opener_;
     std::unique_ptr<IBlockServer> block_server_;
