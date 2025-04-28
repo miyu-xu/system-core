@@ -29,5 +29,7 @@ bool KernelSupportsCompressedSnapshots();
 bool CanUseUserspaceSnapshots();
 bool IsVendorFromAndroid12();
 
+bool InitializeUringForMerge(struct io_uring* ring, int queue_depth);
+
 }  // namespace snapshot
 }  // namespace android

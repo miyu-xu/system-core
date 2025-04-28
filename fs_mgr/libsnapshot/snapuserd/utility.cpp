@@ -12,19 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "utility.h"
-
-#include <android-base/properties.h>
+#include <liburing.h>
 #include <sys/resource.h>
 #include <sys/utsname.h>
 #include <unistd.h>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <libdm/dm.h>
 #include <processgroup/processgroup.h>
 
 #include <private/android_filesystem_config.h>
+
+#include "utility.h"
 
 namespace android {
 namespace snapshot {
@@ -60,9 +61,8 @@ bool KernelSupportsIoUring() {
         return false;
     }
 
-    // We will only support kernels from 5.6 onwards as IOSQE_ASYNC flag and
-    // IO_URING_OP_READ/WRITE opcodes were introduced only on 5.6 kernel
-    return major > 5 || (major == 5 && minor >= 6);
+    // Flags used in InitializeUringForMerge() is available only from 6.1
+    return major > 6 || (major == 6 && minor >= 1);
 }
 
 bool GetUserspaceSnapshotsEnabledProperty() {
@@ -95,6 +95,26 @@ bool CanUseUserspaceSnapshots() {
         LOG(ERROR) << "Userspace snapshots requested, but no kernel support is available.";
         return false;
     }
+    return true;
+}
+
+bool InitializeUringForMerge(struct io_uring* ring, int queue_depth) {
+    struct io_uring_params params = {};
+    params.flags |=
+            (IORING_SETUP_COOP_TASKRUN | IORING_SETUP_SINGLE_ISSUER | IORING_SETUP_DEFER_TASKRUN);
+    int ret = io_uring_queue_init_params(queue_depth, ring, &params);
+    if (ret) {
+        LOG(ERROR) << "io_uring_queue_init_params failed with ret: " << ret;
+        return false;
+    }
+
+    unsigned int values[2];
+    values[0] = values[1] = 1;
+    ret = io_uring_register_iowq_max_workers(ring, values);
+    if (ret) {
+        LOG(ERROR) << "io_uring_register_iowq_max_workers failed: " << ret;
+    }
+
     return true;
 }
 
