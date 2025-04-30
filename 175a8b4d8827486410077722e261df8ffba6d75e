@@ -34,6 +34,24 @@
       "parentUuid": "bcb41fb2_3f2ae4da",
       "revId": "175a8b4d8827486410077722e261df8ffba6d75e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f917848f_ed680cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-04-30T21:20:55Z",
+      "side": 1,
+      "message": "Moved to main branch (http://r.android.com/3612263). If it passes there, we can merge into the next release of Android. This seems like a great change, thanks!",
+      "parentUuid": "980e83d2_9ce95406",
+      "revId": "175a8b4d8827486410077722e261df8ffba6d75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
