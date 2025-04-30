@@ -52,6 +52,24 @@
       "parentUuid": "980e83d2_9ce95406",
       "revId": "175a8b4d8827486410077722e261df8ffba6d75e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e9c7a1e_f894682b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-04-30T21:38:27Z",
+      "side": 1,
+      "message": "oh, sorry --- i didn\u0027t notice that this was from outside!",
+      "parentUuid": "f917848f_ed680cbb",
+      "revId": "175a8b4d8827486410077722e261df8ffba6d75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
