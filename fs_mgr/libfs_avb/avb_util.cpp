@@ -80,6 +80,14 @@ bool ConstructVerityTable(const FsAvbHashtreeDescriptor& hashtree_desc,
     // Always use ignore_zero_blocks.
     target.IgnoreZeroBlocks();
 
+    // Use the try_verify_in_tasklet option.
+    std::string try_verify_in_tasklet;
+    if (fs_mgr_get_boot_config("try_verify_in_tasklet",
+            &try_verify_in_tasklet) &&
+            try_verify_in_tasklet == "true") {
+        target.TryVerifyInTasklet();
+    }
+
     if (hashtree_desc.flags & AVB_HASHTREE_DESCRIPTOR_FLAGS_CHECK_AT_MOST_ONCE) {
         target.CheckAtMostOnce();
     }
