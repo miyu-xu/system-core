@@ -201,14 +201,15 @@ TEST_F(DmTest, DmVerityArgsAvb2) {
     target.UseFec(device, 2, 126955, 126955);
     target.SetVerityMode("restart_on_corruption");
     target.IgnoreZeroBlocks();
+    target.TryVerifyInTasklet();
 
     // Verity table from a walleye build.
     std::string expected =
             "1 /dev/block/platform/soc/1da4000.ufshc/by-name/vendor_a "
             "/dev/block/platform/soc/1da4000.ufshc/by-name/vendor_a 4096 4096 125961 125961 sha1 "
-            "4be7e823b8c40f7bd5c8ccd5123f0722c5baca21 cc99f81ecb9484220a003b0719ee59dcf9be7e5d 10 "
+            "4be7e823b8c40f7bd5c8ccd5123f0722c5baca21 cc99f81ecb9484220a003b0719ee59dcf9be7e5d 11 "
             "use_fec_from_device /dev/block/platform/soc/1da4000.ufshc/by-name/vendor_a fec_roots "
-            "2 fec_blocks 126955 fec_start 126955 restart_on_corruption ignore_zero_blocks";
+            "2 fec_blocks 126955 fec_start 126955 restart_on_corruption ignore_zero_blocks try_verify_in_tasklet";
     EXPECT_EQ(target.GetParameterString(), expected);
 }
 

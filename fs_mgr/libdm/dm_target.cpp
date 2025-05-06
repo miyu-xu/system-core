@@ -117,6 +117,15 @@ void DmTargetVerity::CheckAtMostOnce() {
     optional_args_.emplace_back("check_at_most_once");
 }
 
+void DmTargetVerity::TryVerifyInTasklet() {
+    DeviceMapper& dm = DeviceMapper::Instance();
+    DmTargetTypeInfo info;
+    if (!dm.GetTargetByName(name(), &info)) return;
+    if (info.IsAtLeast(1, 9, 0)) {
+        optional_args_.emplace_back("try_verify_in_tasklet");
+    }
+}
+
 std::string DmTargetVerity::GetParameterString() const {
     std::string base = android::base::Join(base_args_, " ");
     if (optional_args_.empty()) {
