@@ -80,6 +80,9 @@ bool ConstructVerityTable(const FsAvbHashtreeDescriptor& hashtree_desc,
     // Always use ignore_zero_blocks.
     target.IgnoreZeroBlocks();
 
+    // Use tasklets for performance boost (if supported)
+    target.UseTasklet();
+
     if (hashtree_desc.flags & AVB_HASHTREE_DESCRIPTOR_FLAGS_CHECK_AT_MOST_ONCE) {
         target.CheckAtMostOnce();
     }
