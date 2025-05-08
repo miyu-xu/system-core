@@ -102,6 +102,70 @@
       "message": "i have low-level nits about this specific implementation, but i\u0027m also still not convinced this is a good idea at the high level...\n\n+dvander,jiyong for their thoughts.",
       "revId": "f460c731e02720468f1beb19441218a9d7680047",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c15c4f6_e6e411c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-05-08T23:53:59Z",
+      "side": 1,
+      "message": "I think it is fine for a service to poll on a file it depends on. It at least isn\u0027t unusual.",
+      "parentUuid": "c52594af_fd66ad68",
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3f0006_3a8b7ebb",
+        "filename": "watchdogd/watchdogd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-05-08T23:53:59Z",
+      "side": 1,
+      "message": "it would be great if this is measured as timeout, not number of retries.\n\nSee [1] as an example.\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/core/init/util.cpp;drc\u003decbc1eb4bcff8584c053902367056a89f02320a5;l\u003d232",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20153c10_d264d089",
+        "filename": "watchdogd/watchdogd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-05-08T23:53:59Z",
+      "side": 1,
+      "message": "consider breaking early.\n\n```\nfd \u003d open(...);\nif (fd \u003e\u003d 0) break;\n// retry routine comes\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
