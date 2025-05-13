@@ -147,6 +147,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b030998f_dce7e1a8",
+        "filename": "watchdogd/watchdogd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-05-13T23:58:53Z",
+      "side": 1,
+      "message": "Hi, I\u0027m sorry but I cannot follow your link. (Not accessable) When I check init.cpp, there are several timeout scheme, but I cannot find what is good for this simple watchdogd.\n\nWould you give me some point? or when I tryied to find it in git history I found it like below :\n\n\nif (process_needs_restart) {\n    timeout \u003d (process_needs_restart - gettime()) * 1000;\n    if (timeout \u003c 0)\n        timeout \u003d 0;\n}\n\nif (!action_queue_empty() || cur_action)\n    timeout \u003d 0;",
+      "parentUuid": "2c3f0006_3a8b7ebb",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20153c10_d264d089",
         "filename": "watchdogd/watchdogd.cpp",
         "patchSetId": 3
@@ -158,6 +182,30 @@
       "writtenOn": "2025-05-08T23:53:59Z",
       "side": 1,
       "message": "consider breaking early.\n\n```\nfd \u003d open(...);\nif (fd \u003e\u003d 0) break;\n// retry routine comes\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e3424e_efe40093",
+        "filename": "watchdogd/watchdogd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-05-13T23:58:53Z",
+      "side": 1,
+      "message": "OK, I\u0027m going to fix it. Thanks!",
+      "parentUuid": "20153c10_d264d089",
       "range": {
         "startLine": 52,
         "startChar": 10,
