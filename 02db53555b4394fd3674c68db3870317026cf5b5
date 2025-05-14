@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8458e12b_7f22115f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-05-14T00:11:04Z",
+      "side": 1,
+      "message": "Still, I think I have to fix \"retry count\" to \"timeout\".\n\nPlease give me some hint. Thanks!!",
+      "revId": "02db53555b4394fd3674c68db3870317026cf5b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

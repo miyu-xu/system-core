@@ -122,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb9b2e0_01fb6e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-05-14T00:11:04Z",
+      "side": 1,
+      "message": "Thanks!\n\nI also think it cannot be useful for most of other SOC Vendors, but we have to care for watchdog kernel device late init (Moddule probing). So first of all, I just want to remove kernel dependency when init starts watchdog dameon.",
+      "parentUuid": "1c15c4f6_e6e411c4",
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c3f0006_3a8b7ebb",
@@ -206,6 +224,30 @@
       "side": 1,
       "message": "OK, I\u0027m going to fix it. Thanks!",
       "parentUuid": "20153c10_d264d089",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "f460c731e02720468f1beb19441218a9d7680047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b112ddd_3098f664",
+        "filename": "watchdogd/watchdogd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1684042
+      },
+      "writtenOn": "2025-05-14T00:11:04Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "28e3424e_efe40093",
       "range": {
         "startLine": 52,
         "startChar": 10,
