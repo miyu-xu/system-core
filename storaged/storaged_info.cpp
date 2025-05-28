@@ -40,7 +40,7 @@ using aidl::android::hardware::health::IHealth;
 using aidl::android::hardware::health::StorageInfo;
 
 const string emmc_info_t::emmc_sysfs = "/sys/bus/mmc/devices/mmc0:0001/";
-const char* emmc_info_t::emmc_ver_str[9] = {
+const char* const emmc_info_t::emmc_ver_str[9] = {
     "4.0", "4.1", "4.2", "4.3", "Obsolete", "4.41", "4.5", "5.0", "5.1"
 };
 

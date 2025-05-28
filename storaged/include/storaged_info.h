@@ -89,7 +89,7 @@ private:
 public:
     static const string emmc_sysfs;
     static const string emmc_debugfs;
-    static const char* emmc_ver_str[];
+    static const char* const emmc_ver_str[];
 
     virtual ~emmc_info_t() {}
     virtual void report();
