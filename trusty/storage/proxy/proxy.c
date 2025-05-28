@@ -72,12 +72,13 @@ static int parse_and_append_file_mapping(const char* file_mapping) {
         ALOGE("Couldn't duplicate string: %s\n", file_mapping);
         return -1;
     }
-    const char* file_name = strtok(file_mapping_dup, ":");
+    char *save;
+    const char* file_name = strtok_r(file_mapping_dup, ":", save);
     if (file_name == NULL) {
         ALOGE("No file name found\n");
         return -1;
     }
-    const char* backing_storage = strtok(NULL, ":");
+    const char* backing_storage = strtok_r(NULL, ":", save);
     if (backing_storage == NULL) {
         ALOGE("No backing storage found\n");
         return -1;

@@ -77,6 +77,7 @@ static void dumpProcessFooter(Printer& printer, pid_t pid) {
 static String8 getThreadName(pid_t tid) {
     char path[PATH_MAX];
     char* procName = nullptr;
+    char* save;
     char procNameBuf[MAX_PROC_PATH];
     FILE* fp;
 
@@ -94,7 +95,7 @@ static String8 getThreadName(pid_t tid) {
     }
 
     // Strip ending newline
-    strtok(procName, "\n");
+    strtok_r(procName, "\n", &save);
 
     return String8(procName);
 }

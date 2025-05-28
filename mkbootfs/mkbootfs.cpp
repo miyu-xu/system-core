@@ -259,7 +259,7 @@ static void read_canned_config(char* filename)
     FILE* fp = fopen(filename, "r");
     if (fp == NULL) err(1, "failed to open canned file '%s'", filename);
 
-    char* line = NULL;
+    char* line = NULL, *save;
     size_t allocated_len;
     while (getline(&line, &allocated_len, fp) != -1) {
         if (!line[0]) break;
@@ -274,13 +274,13 @@ static void read_canned_config(char* filename)
 
         if (isspace(line[0])) {
             cc->name = strdup("");
-            cc->uid = atoi(strtok(line, " \n"));
+            cc->uid = atoi(strtok_r(line, " \n", &save));
         } else {
-            cc->name = strdup(strtok(line, " \n"));
-            cc->uid = atoi(strtok(NULL, " \n"));
+            cc->name = strdup(strtok_r(line, " \n", &save));
+            cc->uid = atoi(strtok_r(NULL, " \n", &save));
         }
-        cc->gid = atoi(strtok(NULL, " \n"));
-        cc->mode = strtol(strtok(NULL, " \n"), NULL, 8);
+        cc->gid = atoi(strtok_r(NULL, " \n", &save));
+        cc->mode = strtol(strtok_r(NULL, " \n", &save), NULL, 8);
         ++used;
     }
     if (used >= allocated) {
@@ -347,7 +347,7 @@ static void append_devnodes_desc(const char* filename)
 
     unsigned long line_num = 0;
 
-    char* line = NULL;
+    char* line = NULL, *save;
     size_t allocated_len;
     while (getline(&line, &allocated_len, fp) != -1) {
         char *type, *path, *args;
@@ -356,17 +356,17 @@ static void append_devnodes_desc(const char* filename)
 
         if (*line == '#') continue;
 
-        if (!(type = strtok(line, " \t"))) {
+        if (!(type = strtok_r(line, " \t", &save))) {
             devnodes_desc_error(filename, line_num, "a type is missing");
         }
 
         if (*type == '\n') continue;
 
-        if (!(path = strtok(NULL, " \t"))) {
+        if (!(path = strtok_r(NULL, " \t", &save))) {
             devnodes_desc_error(filename, line_num, "a path is missing");
         }
 
-        if (!(args = strtok(NULL, "\n"))) {
+        if (!(args = strtok_r(NULL, "\n", &save))) {
             devnodes_desc_error(filename, line_num, "args are missing");
         }
 
