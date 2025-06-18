@@ -22,6 +22,30 @@
       },
       "revId": "c85af5595254fae175cea517fe33ddaf5ba1183f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc81087_90eecc5f",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4039,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-06-18T03:51:04Z",
+      "side": 1,
+      "message": "Please file a bug explaining this and if you have a patch to address it, please send it.",
+      "parentUuid": "7c8277c0_1eb5c8f6",
+      "range": {
+        "startLine": 4039,
+        "startChar": 17,
+        "endLine": 4039,
+        "endChar": 41
+      },
+      "revId": "c85af5595254fae175cea517fe33ddaf5ba1183f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
