@@ -22,6 +22,30 @@
       },
       "revId": "45215ae6e5742d9dff5468d744a02013e3efbef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cee137_0cfaf5fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1345812
+      },
+      "writtenOn": "2025-06-20T06:13:53Z",
+      "side": 1,
+      "message": "The former interpretation is correct; `off` means to cancel the critical nature of the service. This is because `zygote.critical_window.minute` is only configured for specific products; for others, the critical setting should remain deactivated as it was prior to this code change.",
+      "parentUuid": "32fb2199_d1327d37",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "45215ae6e5742d9dff5468d744a02013e3efbef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
