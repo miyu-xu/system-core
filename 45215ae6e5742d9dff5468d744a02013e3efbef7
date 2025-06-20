@@ -46,6 +46,30 @@
       },
       "revId": "45215ae6e5742d9dff5468d744a02013e3efbef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b4f75a_a127e5a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2025-06-20T10:55:10Z",
+      "side": 1,
+      "message": "Thank you for the confirmation, Woody!",
+      "parentUuid": "23cee137_0cfaf5fd",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "45215ae6e5742d9dff5468d744a02013e3efbef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
