@@ -1472,6 +1472,10 @@ static void HandleInitSocket() {
 
 static void PropertyServiceThread(int fd, bool listen_init) {
     Epoll epoll;
+
+    // Restore prio for property thread
+    setpriority(PRIO_PROCESS, 0, 0);
+
     if (auto result = epoll.Open(); !result.ok()) {
         LOG(FATAL) << result.error();
     }
