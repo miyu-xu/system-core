@@ -770,6 +770,8 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
         }
     }
 
+    // Boost prio before reaping services
+    setpriority(PRIO_PROCESS, 0, -20);
     // optional shutdown step
     // 1. terminate all services except shutdown critical ones. wait for delay to finish
     if (shutdown_timeout > 0ms) {
@@ -780,6 +782,8 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
     SubcontextTerminate();
     // Reap subcontext pids.
     ReapAnyOutstandingChildren();
+    // Restore prio
+    setpriority(PRIO_PROCESS, 0, 0);
 
     // 3. send volume abort_fuse and volume shutdown to vold
     Service* vold_service = ServiceList::GetInstance().FindService("vold");
