@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "375dfe5a_873dff13",
+        "filename": "fs_mgr/libdm/dm_target.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-06-25T23:57:06Z",
+      "side": 1,
+      "message": "+1 that it should be opt-in. CC\u0027ing Bowgo since he might have some advice on how to plumb that in, though maybe just an ro property is good enough.",
+      "parentUuid": "61f24026_9455b228",
+      "range": {
+        "startLine": 124,
+        "startChar": 23,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "bdaa8bad1fcc9f02fb07a2e819fb9249edbf5664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6b345d0_7b3907c0",
         "filename": "fs_mgr/libfs_avb/avb_util.cpp",
         "patchSetId": 1
