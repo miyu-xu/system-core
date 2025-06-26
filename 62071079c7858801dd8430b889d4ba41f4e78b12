@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b451b45_4049b87e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3599697
+      },
+      "writtenOn": "2025-06-26T06:07:30Z",
+      "side": 1,
+      "message": "In the kernel log which i uploaded at issutracker 416409058, I checked that a kworker thread was accessing below /vendor just before the umount. If the kernel is performing writeback or other I/O operations when umount, it could lead to a umounti failure.\n\nThe reason for using 5 retries is that existing fs_mgr\u0027s umount_retry code reuse(https://cs.android.com/android/platform/superproject/main/+/main:system/core/fs_mgr/fs_mgr.cpp;l\u003d171?q\u003dumount_retry). I think it might be sufficient to finish I/O operations for umount.\n\nThe patch will ensure that it behaves the same as before when there are no issues. However, in problem where umount fails because of i/o operation, instead of triggering a panic, it will attempt retries.",
+      "parentUuid": "8a2e9348_d9fca001",
+      "revId": "62071079c7858801dd8430b889d4ba41f4e78b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e2177c_a666629d",
@@ -65,6 +83,30 @@
       "writtenOn": "2025-06-25T15:45:29Z",
       "side": 1,
       "message": "remove this line",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "62071079c7858801dd8430b889d4ba41f4e78b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2997ae_e0a052be",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3599697
+      },
+      "writtenOn": "2025-06-26T06:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e2177c_a666629d",
       "range": {
         "startLine": 26,
         "startChar": 1,
@@ -156,6 +198,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4e5164_b38e3ced",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3599697
+      },
+      "writtenOn": "2025-06-26T06:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "512178cd_eeaf32ec",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "62071079c7858801dd8430b889d4ba41f4e78b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21789033_5ca3dca2",
@@ -233,6 +299,30 @@
           ]
         }
       ],
+      "revId": "62071079c7858801dd8430b889d4ba41f4e78b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5ce6ab_93a94558",
+        "filename": "overlay_remounter/overlay_remounter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3599697
+      },
+      "writtenOn": "2025-06-26T06:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21789033_5ca3dca2",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 19
+      },
       "revId": "62071079c7858801dd8430b889d4ba41f4e78b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
