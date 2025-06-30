@@ -550,6 +550,20 @@ static bool CreateScratchOnData(std::string* scratch_device, bool* partition_exi
         return false;
     }
     if (!images->BackingImageExists(partition_name)) {
+        std::string block_device;
+        bool can_use_devicemapper;
+        if (!android::fiemap::FiemapWriter::GetBlockDeviceForFile("/data/gsi/", &block_device,
+                                                                  &can_use_devicemapper)) {
+            LOG(ERROR) << "Could not determine block device";
+            return false;
+        }
+
+        if (!can_use_devicemapper) {
+            LOG(WARNING) << "Skipping scratch image creation: /data must be mounted on top of "
+                            "device-mapper.";
+            return false;
+        }
+
         auto size = android::base::GetUintProperty<uint64_t>(kDataScratchSizeMbProp, 0) * 1_MiB;
         if (!size) {
             size = GetIdealDataScratchSize();
