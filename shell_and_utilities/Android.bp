@@ -19,6 +19,7 @@ phony {
         "bc",
         "bzip2",
         "cpu-target-features",
+        "ethtool",
         "fsck.exfat",
         "ldd",
         "logwrapper",
