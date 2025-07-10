@@ -89,16 +89,25 @@ static const GUID usb_class_id = ANDROID_USB_CLASS_ID;
 int recognized_device(usb_handle* handle, ifc_match_func callback);
 
 /// Opens usb interface (device) by interface (device) name.
-std::unique_ptr<usb_handle> do_usb_open(const wchar_t* interface_name);
+std::unique_ptr<usb_handle> create_interface(const wchar_t* interface_name);
+
+/// Set alternate setting for the interface
+bool interface_set_alt_setting(usb_handle* handle, unsigned char alt_setting);
+
+/// Opens usb endpoints.
+bool do_usb_open(usb_handle *handle);
 
 /// Cleans up opened usb handle
 void usb_cleanup_handle(usb_handle* handle);
+
+/// Cleans up opened endpoints
+void usb_cleanup_endpoints(usb_handle* handle);
 
 /// Cleans up (but don't close) opened usb handle
 void usb_kick(usb_handle* handle);
 
 
-std::unique_ptr<usb_handle> do_usb_open(const wchar_t* interface_name) {
+std::unique_ptr<usb_handle> create_interface(const wchar_t* interface_name) {
     // Allocate our handle
     std::unique_ptr<usb_handle> ret(new usb_handle);
 
@@ -111,35 +120,48 @@ std::unique_ptr<usb_handle> do_usb_open(const wchar_t* interface_name) {
         return nullptr;
     }
 
+    return ret;
+}
+
+bool interface_set_alt_setting(usb_handle* handle, unsigned char alt_setting) {
+    bool ret = AdbSetInterfaceAltSetting(handle->adb_interface, alt_setting);
+
+    if (!ret)
+        errno = GetLastError();
+
+    return ret;
+}
+
+bool do_usb_open(usb_handle *handle) {
     // Open read pipe (endpoint)
-    ret->adb_read_pipe =
-        AdbOpenDefaultBulkReadEndpoint(ret->adb_interface,
+    handle->adb_read_pipe =
+        AdbOpenDefaultBulkReadEndpoint(handle->adb_interface,
                                    AdbOpenAccessTypeReadWrite,
                                    AdbOpenSharingModeReadWrite);
-    if (nullptr != ret->adb_read_pipe) {
+    if (nullptr != handle->adb_read_pipe) {
         // Open write pipe (endpoint)
-        ret->adb_write_pipe =
-            AdbOpenDefaultBulkWriteEndpoint(ret->adb_interface,
+        handle->adb_write_pipe =
+            AdbOpenDefaultBulkWriteEndpoint(handle->adb_interface,
                                       AdbOpenAccessTypeReadWrite,
                                       AdbOpenSharingModeReadWrite);
-        if (nullptr != ret->adb_write_pipe) {
+        if (nullptr != handle->adb_write_pipe) {
             // Save interface name
             unsigned long name_len = 0;
 
             // First get expected name length
-            AdbGetInterfaceName(ret->adb_interface,
+            AdbGetInterfaceName(handle->adb_interface,
                           nullptr,
                           &name_len,
                           true);
             if (0 != name_len) {
                 // Now save the name
-                ret->interface_name.resize(name_len);
-                if (AdbGetInterfaceName(ret->adb_interface,
-                              &ret->interface_name[0],
+                handle->interface_name.resize(name_len);
+                if (AdbGetInterfaceName(handle->adb_interface,
+                              &handle->interface_name[0],
                               &name_len,
                               true)) {
                     // We're done at this point
-                    return ret;
+                    return true;
                 }
             }
         }
@@ -147,10 +169,10 @@ std::unique_ptr<usb_handle> do_usb_open(const wchar_t* interface_name) {
 
     // Something went wrong.
     errno = GetLastError();
-    usb_cleanup_handle(ret.get());
+    usb_cleanup_endpoints(handle);
     SetLastError(errno);
 
-    return nullptr;
+    return false;
 }
 
 ssize_t WindowsUsbTransport::Write(const void* data, size_t len) {
@@ -228,18 +250,25 @@ ssize_t WindowsUsbTransport::Read(void* data, size_t len) {
     return -1;
 }
 
-void usb_cleanup_handle(usb_handle* handle) {
+void usb_cleanup_endpoints(usb_handle* handle) {
     if (NULL != handle) {
         if (NULL != handle->adb_write_pipe)
             AdbCloseHandle(handle->adb_write_pipe);
         if (NULL != handle->adb_read_pipe)
             AdbCloseHandle(handle->adb_read_pipe);
+
+        handle->adb_write_pipe = NULL;
+        handle->adb_read_pipe = NULL;
+    }
+}
+
+void usb_cleanup_handle(usb_handle* handle) {
+    if (NULL != handle) {
+        usb_cleanup_endpoints(handle);
         if (NULL != handle->adb_interface)
             AdbCloseHandle(handle->adb_interface);
 
         handle->interface_name.clear();
-        handle->adb_write_pipe = NULL;
-        handle->adb_read_pipe = NULL;
         handle->adb_interface = NULL;
     }
 }
@@ -360,21 +389,29 @@ static std::unique_ptr<usb_handle> find_usb_device(ifc_match_func callback) {
             *copy_name = (char)(*wchar_name);
         }
         *copy_name = '\0';
+        entry_buffer_size = sizeof(entry_buffer);
 
         DBG("attempting to open interface %S\n", next_interface->device_name);
-        handle = do_usb_open(next_interface->device_name);
-        if (NULL != handle) {
-            // Lets see if this interface (device) belongs to us
-            if (recognized_device(handle.get(), callback)) {
-                // found it!
-                break;
-            } else {
-                usb_cleanup_handle(handle.get());
-                handle.reset();
+        handle = create_interface(next_interface->device_name);
+        if (handle == NULL)
+            continue;
+        for (unsigned char alt_setting = 0;
+             interface_set_alt_setting(handle.get(), alt_setting) &&
+             alt_setting < 0xff;
+             alt_setting++) {
+
+            DBG("trying alt setting %d\n", (int)alt_setting);
+            if (do_usb_open(handle.get())) {
+                // Lets see if this interface (device) belongs to us
+                if (recognized_device(handle.get(), callback)) {
+                    // found it!
+                    AdbCloseHandle(enum_handle);
+                    return handle;
+                }
             }
         }
-
-        entry_buffer_size = sizeof(entry_buffer);
+        usb_cleanup_handle(handle.get());
+        handle.reset();
     }
 
     AdbCloseHandle(enum_handle);
