@@ -84,6 +84,110 @@ class OsxUsbTransport : public UsbTransport {
     DISALLOW_COPY_AND_ASSIGN(OsxUsbTransport);
 };
 
+static int try_alternate(IOUSBInterfaceInterface500** interface, usb_handle* handle) {
+    UInt8 interfaceNumEndpoints;
+    IOReturn kr;
+
+    // Get the number of endpoints associated with this interface.
+    kr = (*interface)->GetNumEndpoints(interface, &interfaceNumEndpoints);
+
+    if (kr != 0) {
+        ERR("Unable to get number of endpoints: (%08x)\n", kr);
+        return -1;
+    }
+
+    // Get interface class, subclass and protocol
+    if ((*interface)->GetInterfaceClass(interface, &handle->info.ifc_class) != 0 ||
+        (*interface)->GetInterfaceSubClass(interface, &handle->info.ifc_subclass) != 0 ||
+        (*interface)->GetInterfaceProtocol(interface, &handle->info.ifc_protocol) != 0) {
+        ERR("Unable to get interface class, subclass and protocol\n");
+        return -1;
+    }
+
+    handle->info.has_bulk_in = 0;
+    handle->info.has_bulk_out = 0;
+
+    // Iterate over the endpoints for this interface and see if there
+    // are any that do bulk in/out.
+    for (UInt8 endpoint = 1; endpoint <= interfaceNumEndpoints; ++endpoint) {
+        UInt8 transferType;
+        UInt16 endPointMaxPacketSize = 0;
+        UInt8 interval;
+
+        // Attempt to retrieve the 'true' packet-size from supported interface.
+        kr = (*interface)
+                     ->GetEndpointProperties(interface, 0, endpoint, kUSBOut, &transferType,
+                                             &endPointMaxPacketSize, &interval);
+        if (kr == kIOReturnSuccess && !endPointMaxPacketSize) {
+            ERR("GetEndpointProperties() returned zero len packet-size");
+        }
+
+        UInt16 pipePropMaxPacketSize;
+        UInt8 number;
+        UInt8 direction;
+
+        // Proceed with extracting the transfer direction, so we can fill in the
+        // appropriate fields (bulkIn or bulkOut).
+        kr = (*interface)
+                     ->GetPipeProperties(interface, endpoint, &direction, &number, &transferType,
+                                         &pipePropMaxPacketSize, &interval);
+
+        if (kr == 0) {
+            if (transferType != kUSBBulk) {
+                continue;
+            }
+
+            if (direction == kUSBIn) {
+                handle->info.has_bulk_in = 1;
+                handle->bulkIn = endpoint;
+            } else if (direction == kUSBOut) {
+                handle->info.has_bulk_out = 1;
+                handle->bulkOut = endpoint;
+            }
+
+            if (handle->info.ifc_protocol == 0x01) {
+                handle->zero_mask = (endPointMaxPacketSize == 0) ? pipePropMaxPacketSize - 1
+                                                                 : endPointMaxPacketSize - 1;
+            }
+        } else {
+            ERR("could not get pipe properties for endpoint %u (%08x)\n", endpoint, kr);
+        }
+
+        if (handle->info.has_bulk_in && handle->info.has_bulk_out) {
+            break;
+        }
+    }
+
+    if (handle->callback(&handle->info) == 0) {
+        handle->interface = interface;
+        handle->success = 1;
+
+        /*
+         * Clear both the endpoints, because it has been observed
+         * that the Mac may otherwise (incorrectly) start out with
+         * them in bad state.
+         */
+
+        if (handle->info.has_bulk_in) {
+            kr = (*interface)->ClearPipeStallBothEnds(interface, handle->bulkIn);
+            if (kr != 0) {
+                ERR("could not clear input pipe; result %x, ignoring...\n", kr);
+            }
+        }
+
+        if (handle->info.has_bulk_out) {
+            kr = (*interface)->ClearPipeStallBothEnds(interface, handle->bulkOut);
+            if (kr != 0) {
+                ERR("could not clear output pipe; result %x, ignoring....\n", kr);
+            }
+        }
+
+        return 0;
+    }
+
+    return -1;
+}
+
 /** Try out all the interfaces and see if there's a match. Returns 0 on
  * success, -1 on failure. */
 static int try_interfaces(IOUSBDeviceInterface500** dev, usb_handle* handle) {
@@ -95,11 +199,10 @@ static int try_interfaces(IOUSBDeviceInterface500** dev, usb_handle* handle) {
     IOUSBInterfaceInterface500** interface = NULL;
     HRESULT result;
     SInt32 score;
-    UInt8 interfaceNumEndpoints;
 
-    request.bInterfaceClass = 0xff;
-    request.bInterfaceSubClass = 0x42;
-    request.bInterfaceProtocol = 0x03;
+    request.bInterfaceClass = kIOUSBFindInterfaceDontCare;
+    request.bInterfaceSubClass = kIOUSBFindInterfaceDontCare;
+    request.bInterfaceProtocol = kIOUSBFindInterfaceDontCare;
     request.bAlternateSetting = kIOUSBFindInterfaceDontCare;
 
     // Get an iterator for the interfaces on the device
@@ -169,106 +272,27 @@ static int try_interfaces(IOUSBDeviceInterface500** dev, usb_handle* handle) {
             continue;
         }
 
-        // Get the number of endpoints associated with this interface.
-        kr = (*interface)->GetNumEndpoints(interface, &interfaceNumEndpoints);
+        if (try_alternate(interface, handle) == 0) {
+            return 0;
+        }
 
+        UInt8 orig_alt;
+        kr = (*interface)->GetAlternateSetting(interface, &orig_alt);
         if (kr != 0) {
-            ERR("Unable to get number of endpoints: (%08x)\n", kr);
             goto next_interface;
         }
 
-        // Get interface class, subclass and protocol
-        if ((*interface)->GetInterfaceClass(interface, &handle->info.ifc_class) != 0 ||
-            (*interface)->GetInterfaceSubClass(interface, &handle->info.ifc_subclass) != 0 ||
-            (*interface)->GetInterfaceProtocol(interface, &handle->info.ifc_protocol) != 0)
-        {
-            ERR("Unable to get interface class, subclass and protocol\n");
-            goto next_interface;
-        }
-
-        handle->info.has_bulk_in = 0;
-        handle->info.has_bulk_out = 0;
-
-        // Iterate over the endpoints for this interface and see if there
-        // are any that do bulk in/out.
-        for (UInt8 endpoint = 1; endpoint <= interfaceNumEndpoints; ++endpoint) {
-            UInt8   transferType;
-            UInt16  endPointMaxPacketSize = 0;
-            UInt8   interval;
-
-            // Attempt to retrieve the 'true' packet-size from supported interface.
-            kr = (*interface)
-                 ->GetEndpointProperties(interface, 0, endpoint,
-                                       kUSBOut,
-                                       &transferType,
-                                       &endPointMaxPacketSize, &interval);
-            if (kr == kIOReturnSuccess && !endPointMaxPacketSize) {
-                ERR("GetEndpointProperties() returned zero len packet-size");
+        for (UInt8 alt = 0;; alt++) {
+            if (alt == orig_alt) {
+                continue;
             }
-
-            UInt16  pipePropMaxPacketSize;
-            UInt8   number;
-            UInt8   direction;
-
-            // Proceed with extracting the transfer direction, so we can fill in the
-            // appropriate fields (bulkIn or bulkOut).
-            kr = (*interface)->GetPipeProperties(interface, endpoint,
-                    &direction,
-                    &number, &transferType, &pipePropMaxPacketSize, &interval);
-
-            if (kr == 0) {
-                if (transferType != kUSBBulk) {
-                    continue;
-                }
-
-                if (direction == kUSBIn) {
-                    handle->info.has_bulk_in = 1;
-                    handle->bulkIn = endpoint;
-                } else if (direction == kUSBOut) {
-                    handle->info.has_bulk_out = 1;
-                    handle->bulkOut = endpoint;
-                }
-
-                if (handle->info.ifc_protocol == 0x01) {
-                    handle->zero_mask = (endPointMaxPacketSize == 0) ?
-                        pipePropMaxPacketSize - 1 : endPointMaxPacketSize - 1;
-                }
-            } else {
-                ERR("could not get pipe properties for endpoint %u (%08x)\n", endpoint, kr);
-            }
-
-            if (handle->info.has_bulk_in && handle->info.has_bulk_out) {
+            kr = (*interface)->SetAlternateInterface(interface, alt);
+            if (kr != 0) {
                 break;
             }
-        }
-
-        if (handle->callback(&handle->info) == 0) {
-            handle->interface = interface;
-            handle->success = 1;
-
-            /*
-             * Clear both the endpoints, because it has been observed
-             * that the Mac may otherwise (incorrectly) start out with
-             * them in bad state.
-             */
-
-            if (handle->info.has_bulk_in) {
-                kr = (*interface)->ClearPipeStallBothEnds(interface,
-                        handle->bulkIn);
-                if (kr != 0) {
-                    ERR("could not clear input pipe; result %x, ignoring...\n", kr);
-                }
+            if (try_alternate(interface, handle) == 0) {
+                return 0;
             }
-
-            if (handle->info.has_bulk_out) {
-                kr = (*interface)->ClearPipeStallBothEnds(interface,
-                        handle->bulkOut);
-                if (kr != 0) {
-                    ERR("could not clear output pipe; result %x, ignoring....\n", kr);
-                }
-            }
-
-            return 0;
         }
 
 next_interface:
