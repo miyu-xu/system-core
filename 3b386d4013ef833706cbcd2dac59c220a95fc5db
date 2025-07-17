@@ -111,6 +111,30 @@
       },
       "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f8025a_03d4c5a9",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 3472316
+      },
+      "writtenOn": "2025-07-17T14:14:47Z",
+      "side": 1,
+      "message": "Both, windows and osx, already enumerate only interfaces that are on active USB configuration (most of the times it is simply default first configuration, because a) devices has only one configuration, b) there is no other tool that is using the device, so there is no one who could change that setting).",
+      "parentUuid": "05123cea_964676b2",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "3b386d4013ef833706cbcd2dac59c220a95fc5db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
