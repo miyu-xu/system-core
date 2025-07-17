@@ -16,6 +16,24 @@
       "message": "@panikiel@google.com has added implementation of alternate interface support for osx. CL:3694246\n\nSince it is not possible to do it right now for windows (we need to change `AdbWinApi.dll` for that, but changing prebuild dll isn\u0027t allowed anymore), can we proceed with the current implementation?",
       "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86556be_02069ffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-17T18:27:54Z",
+      "side": 1,
+      "message": "Since you spent time on Windows and developed a mini-expertise, why not contribute a usb_windows.cpp file to the project :)? Now that Windows ships with WinUSB it is a managable task for a developer of your caliber. \n\nThis would tremendously help `fastboot` (and also `adb`). By fixing it only on macosx you essentially kick that can down the road. It will be up to the fastboot/adb maintainer to write that (if ever) and do their best to test it without your domain knowledge.",
+      "parentUuid": "aabd21c6_e9941cc9",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
