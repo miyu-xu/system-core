@@ -34,6 +34,24 @@
       "parentUuid": "aabd21c6_e9941cc9",
       "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daecfc23_88720668",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2031040
+      },
+      "writtenOn": "2025-07-18T09:19:20Z",
+      "side": 1,
+      "message": "I fully agree that `usb_windows.cpp` would be a great contribution to the `fastboot` client application.\n\nHowever, given constrained resources we have right now (Tomasz is leading implementation of bootloader fastboot on device side and passing security review there, which is P0 for us), would you be OK with filling a bug for implementing `usb_windows.cpp` and having it handled by Tomasz in some less urgent time (let\u0027s agree on finishing this one by the end of Q3 2025)?\n\nThe reason I\u0027m asking for landing `linux` support now and postphoning (a bit) Windows support is that most of the developers in our team are `linux` users (as well as a whole lab infrastructure is linux-based), and timely landing those now is critical for enabling lab infrastructure to work on USB-based solution.",
+      "parentUuid": "b86556be_02069ffa",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
