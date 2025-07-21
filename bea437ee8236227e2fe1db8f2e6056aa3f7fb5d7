@@ -97,6 +97,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05236db8_43a82f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:31:42Z",
+      "side": 1,
+      "message": "We cannot +2 code in aosp anymore. This should be submitted to internal git_main.",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba1394f8_9083775a",
         "filename": "fastboot/usb_linux.cpp",
         "patchSetId": 4
