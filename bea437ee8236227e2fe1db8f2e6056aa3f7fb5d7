@@ -263,6 +263,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "367cc200_c1a36ad7",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:31:12Z",
+      "side": 1,
+      "message": "Also worth a DBG to see what we are skipping?",
+      "range": {
+        "startLine": 277,
+        "startChar": 12,
+        "endLine": 277,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f36e3fea_0ebe0f29",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 277,
+                "startChar": 0,
+                "endLine": 277,
+                "endChar": 0
+              },
+              "replacement": "            DBG(\"Found interface descriptor, skipping it\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "749c23e4_30bb511b",
         "filename": "fastboot/usb_linux.cpp",
         "patchSetId": 4
@@ -349,6 +390,30 @@
           ]
         }
       ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f4d305_10cc238a",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:31:12Z",
+      "side": 1,
+      "message": "I meant that the comment should go above the if.",
+      "parentUuid": "749c23e4_30bb511b",
+      "range": {
+        "startLine": 421,
+        "startChar": 48,
+        "endLine": 421,
+        "endChar": 69
+      },
       "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
