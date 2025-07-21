@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52729797_eb2350dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "This would belong in a `details` section to explain how this is done.\n\nI would change this message with.\n\n```\nProblem: Within a configuration, an interface can have \"alternate settings\". In this alternate interfaces can be a valid fastboot interface. We currently only look at the default interface which leads to not detecting device properly.\n\nSolution: When inspecting a device, also look at the alternative interface.\n\nDetails: \u003cYou current commit message cleaned up by what is already covered above\u003e.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aabd21c6_e9941cc9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -68,6 +91,264 @@
       "side": 1,
       "message": "Ok to unlock your team on `linux`. Let\u0027s create a feature request in buganizer to not forget the Window side.",
       "parentUuid": "daecfc23_88720668",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1394f8_9083775a",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "//",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08569a65_f9ba3e9f",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "Always use `{`, `}`.",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "821a2859_fe5b375e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 240,
+                "startChar": 0,
+                "endLine": 241,
+                "endChar": 0
+              },
+              "replacement": "    if (len \u003c cfg-\u003ewTotalLength - cfg-\u003ebLength) {\n"
+            },
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 242,
+                "startChar": 0,
+                "endLine": 242,
+                "endChar": 0
+              },
+              "replacement": "    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b3120b_ef592132",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "Perhaps worth a DBG instead of silently failing?",
+      "range": {
+        "startLine": 241,
+        "startChar": 8,
+        "endLine": 241,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "da91730b_75073bc1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 241,
+                "startChar": 0,
+                "endLine": 241,
+                "endChar": 0
+              },
+              "replacement": "    {\n        DBG(\"Less data than expected based on config descriptor\\n\");\n"
+            },
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 242,
+                "startChar": 0,
+                "endLine": 242,
+                "endChar": 0
+              },
+              "replacement": "    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961b0bbc_cfbd46ca",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "//",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 243,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0bdd3a22_0edd6182",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 243,
+                "startChar": 0,
+                "endLine": 244,
+                "endChar": 0
+              },
+              "replacement": "    /* At this point, only interfaces within active configuration are interesting. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749c23e4_30bb511b",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "It looks like we do it anyway. The comment does not seem right.",
+      "range": {
+        "startLine": 421,
+        "startChar": 48,
+        "endLine": 421,
+        "endChar": 69
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "321b3d40_fa0a80c6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 420,
+                "startChar": 0,
+                "endLine": 425,
+                "endChar": 0
+              },
+              "replacement": "                /* Select alternate setting */\n                struct usbdevfs_setinterface set_ifc;\n                set_ifc.altsetting \u003d alt_ifc;\n                set_ifc.interface \u003d ifc;\n"
+            },
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 426,
+                "startChar": 0,
+                "endLine": 432,
+                "endChar": 0
+              },
+              "replacement": "                n \u003d ioctl(fd, USBDEVFS_SETINTERFACE, \u0026set_ifc);\n                if (n !\u003d 0) {\n                    close(fd);\n                    usb.reset();\n                    continue;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb19bc8_654e82c8",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T19:13:30Z",
+      "side": 1,
+      "message": "Use //",
+      "range": {
+        "startLine": 421,
+        "startChar": 20,
+        "endLine": 421,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8f119540_5ba8ae6e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fastboot/usb_linux.cpp",
+              "range": {
+                "startLine": 421,
+                "startChar": 0,
+                "endLine": 422,
+                "endChar": 0
+              },
+              "replacement": "                    // Select alternate setting if it is not default\n"
+            }
+          ]
+        }
+      ],
       "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
