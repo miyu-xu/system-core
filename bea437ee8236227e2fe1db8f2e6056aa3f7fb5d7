@@ -52,6 +52,24 @@
       "parentUuid": "b86556be_02069ffa",
       "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8024ecc2_d379f51a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-21T18:56:58Z",
+      "side": 1,
+      "message": "Ok to unlock your team on `linux`. Let\u0027s create a feature request in buganizer to not forget the Window side.",
+      "parentUuid": "daecfc23_88720668",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
