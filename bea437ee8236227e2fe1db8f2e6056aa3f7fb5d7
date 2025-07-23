@@ -112,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fdeacb_7c03b386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2031040
+      },
+      "writtenOn": "2025-07-23T07:36:45Z",
+      "side": 1,
+      "message": "Sure, done at b/433643986.\n\nIIUC, OSX support will be added right now as well, Windows support for this setting got postphoned. Thank you!  \n\nTomasz, please address other Fabien\u0027s comments here and merge the `usb_linux.cpp` fix (from ag/3435904).",
+      "parentUuid": "8024ecc2_d379f51a",
+      "revId": "bea437ee8236227e2fe1db8f2e6056aa3f7fb5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba1394f8_9083775a",
