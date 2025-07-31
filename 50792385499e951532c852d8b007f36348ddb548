@@ -51,6 +51,24 @@
       "parentUuid": "32666edb_fa9f91c9",
       "revId": "50792385499e951532c852d8b007f36348ddb548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90e7351_3ee28f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-07-31T13:09:58Z",
+      "side": 1,
+      "message": "git_main is not accessible to you.\n\nIf we finish the cherry-pick, this will be released in the next AOSP push which is expected to be the 25Q4 or 26Q1 release.\n\nWhen we do the cherry-pick, we keep authorship and the change id.",
+      "parentUuid": "ff307bf7_840db82c",
+      "revId": "50792385499e951532c852d8b007f36348ddb548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
