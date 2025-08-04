@@ -16,6 +16,23 @@
       "message": "Dear maintainers, \nI would appreciate if you take a look into this little patch.",
       "revId": "d2d95ea846a2eb88a74f1c5d0764d7aab90918c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448a2e54_83e14872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2020178
+      },
+      "writtenOn": "2025-08-04T07:37:27Z",
+      "side": 1,
+      "message": "Dear @zhangkelvin@google.com,\n\ncould you please apply the patch to the main branch?",
+      "revId": "d2d95ea846a2eb88a74f1c5d0764d7aab90918c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
