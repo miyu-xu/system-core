@@ -33,6 +33,24 @@
       "message": "Dear @zhangkelvin@google.com,\n\ncould you please apply the patch to the main branch?",
       "revId": "d2d95ea846a2eb88a74f1c5d0764d7aab90918c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf20353_1a2e0723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-08-05T03:10:12Z",
+      "side": 1,
+      "message": "Thanks for the fix, I\u0027ve cherry-picked this into the internal main branch.",
+      "parentUuid": "448a2e54_83e14872",
+      "revId": "d2d95ea846a2eb88a74f1c5d0764d7aab90918c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
