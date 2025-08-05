@@ -33,6 +33,24 @@
       "message": "How can this issue be reproduced?",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf583b8b_b9894f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4086815
+      },
+      "writtenOn": "2025-08-05T17:06:09Z",
+      "side": 1,
+      "message": "It\u0027s reproducible with adb remount on devices without metadata encryption. It takes some time for the super partition fallback (because scratch image is created first) which looks like a design flaw",
+      "parentUuid": "fc7f96b1_3c5c7e3b",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
