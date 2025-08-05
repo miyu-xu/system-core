@@ -105,6 +105,24 @@
       "parentUuid": "2dfa1ba0_37e6e189",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c560c859_54821c02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4086815
+      },
+      "writtenOn": "2025-08-05T17:42:13Z",
+      "side": 1,
+      "message": "Thank you for your response, I will abandon this patch then",
+      "parentUuid": "a229bb89_24f5a34c",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
