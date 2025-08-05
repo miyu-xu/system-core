@@ -69,6 +69,24 @@
       "parentUuid": "cf583b8b_b9894f94",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfa1ba0_37e6e189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4086815
+      },
+      "writtenOn": "2025-08-05T17:15:05Z",
+      "side": 1,
+      "message": "I see. But there are some legacy devices which could be updated to Android 14+. What would be the expected solution for such devices or are they not \"supported\" at all?",
+      "parentUuid": "e9b43e93_2e6c0290",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
