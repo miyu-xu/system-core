@@ -16,6 +16,23 @@
       "message": "Hello @dvander@google.com, could you please check if this fix makes sense?",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7f96b1_3c5c7e3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-08-05T15:32:23Z",
+      "side": 1,
+      "message": "How can this issue be reproduced?",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
