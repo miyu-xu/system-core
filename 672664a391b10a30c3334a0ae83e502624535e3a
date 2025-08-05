@@ -51,6 +51,24 @@
       "parentUuid": "fc7f96b1_3c5c7e3b",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b43e93_2e6c0290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-08-05T17:10:15Z",
+      "side": 1,
+      "message": "Okay, thanks for confirming. metadata encryption has been required since Android 11 so this fallback path isn\u0027t really supported anymore.",
+      "parentUuid": "cf583b8b_b9894f94",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
