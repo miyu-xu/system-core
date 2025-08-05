@@ -87,6 +87,24 @@
       "parentUuid": "e9b43e93_2e6c0290",
       "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a229bb89_24f5a34c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-08-05T17:23:51Z",
+      "side": 1,
+      "message": "An Android 10 device would be supported for upgrades to Android 15. In that case you can apply that patch to your device\u0027s branch. It looks fine.\n\nFor \"tip of tree\" AOSP it is pretty far outside the upgrade window.",
+      "parentUuid": "2dfa1ba0_37e6e189",
+      "revId": "672664a391b10a30c3334a0ae83e502624535e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
