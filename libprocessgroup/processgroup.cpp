@@ -47,6 +47,7 @@
 #include <cutils/android_filesystem_config.h>
 #include <processgroup/processgroup.h>
 #include <task_profiles.h>
+#include "build_flags.h"
 
 using android::base::GetBoolProperty;
 using android::base::StringPrintf;
@@ -296,7 +297,12 @@ void removeAllEmptyProcessGroups() {
     std::string path, memcg_apps_path;
 
     if (CgroupGetControllerPath(CGROUPV2_HIERARCHY_NAME, &path)) {
-        cgroups.push_back(path);
+        if (android::libprocessgroup_flags::cgroup_v2_sys_app_isolation()) {
+            cgroups.push_back(path + "/system");
+            cgroups.push_back(path + "/apps");
+        } else {
+            cgroups.push_back(path);
+        }
     }
     if (CgroupGetMemcgAppsPath(&memcg_apps_path) && memcg_apps_path != path) {
         cgroups.push_back(memcg_apps_path);
