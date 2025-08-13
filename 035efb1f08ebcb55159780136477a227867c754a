@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5b21bf_3c7cd655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-08-13T13:58:58Z",
+      "side": 1,
+      "message": "do they do this intentionally, or is it just a mistake?",
+      "range": {
+        "startLine": 14,
+        "startChar": 132,
+        "endLine": 14,
+        "endChar": 187
+      },
+      "revId": "035efb1f08ebcb55159780136477a227867c754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
