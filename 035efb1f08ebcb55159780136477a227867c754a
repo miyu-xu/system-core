@@ -22,6 +22,30 @@
       },
       "revId": "035efb1f08ebcb55159780136477a227867c754a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3daac3_7e47ac65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3711744
+      },
+      "writtenOn": "2025-08-13T14:37:38Z",
+      "side": 1,
+      "message": "Hi Jiyong,\n\nI agree that it\u0027s a bit of an odd necessity to issue swapoff in the case where there isn\u0027t a backing device, but we sometimes saw that we were rebooting into flashboot if we didn\u0027t do this even without a backing device configured (we haven\u0027t root caused it yet but there was a very clear correlation between rebooting into flashboot and not issuing swapoff on the shutdown path like this even w/o a backing device). I think there\u0027s a reasonable argument to be made for not accepting this, but on the other hand in general IMO it\u0027s arguably cleaner to issue a swapoff here so as to have a predictable cleanup step on the shutdown path, and the cost to the shutdown path should be a few ms at most.",
+      "parentUuid": "2c5b21bf_3c7cd655",
+      "range": {
+        "startLine": 14,
+        "startChar": 132,
+        "endLine": 14,
+        "endChar": 187
+      },
+      "revId": "035efb1f08ebcb55159780136477a227867c754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
