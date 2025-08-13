@@ -104,6 +104,24 @@
       "message": "If the swap isn\u0027t configured on the device, this error message might be misleading as it would end printing as swap failed. Could you please fix this ?",
       "revId": "50792385499e951532c852d8b007f36348ddb548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cad7407_13c8b081",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2025-08-13T11:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef06a2ea_4127df1f",
+      "revId": "50792385499e951532c852d8b007f36348ddb548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
