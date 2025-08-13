@@ -46,6 +46,53 @@
       },
       "revId": "035efb1f08ebcb55159780136477a227867c754a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecf6c23_5d8e8bd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-08-13T14:55:31Z",
+      "side": 1,
+      "message": "ack. so that sounds like such a case is an error, but you want like to make it less catastrophic, which I can get.",
+      "parentUuid": "5f3daac3_7e47ac65",
+      "range": {
+        "startLine": 14,
+        "startChar": 132,
+        "endLine": 14,
+        "endChar": 187
+      },
+      "revId": "035efb1f08ebcb55159780136477a227867c754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3e0ae4_57788e7c",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-08-13T14:55:31Z",
+      "side": 1,
+      "message": "how about making this comment more useful? ex: make sure to shutdown zram handle even if it is mis-configured without a backing device.",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 27
+      },
+      "revId": "035efb1f08ebcb55159780136477a227867c754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
