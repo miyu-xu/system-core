@@ -943,6 +943,10 @@ void HandlePowerctlMessage(const std::string& command) {
                         return;
                     }
                 }
+                // In a debug build, trigger a warm debug reset instead of a hard reset
+                if (GetBoolProperty("ro.debuggable", false)) {
+                    reboot_target += ",debug";
+                }
             } else if (std::find(cmd_params.begin(), cmd_params.end(), "quiescent")
                     != cmd_params.end()) { // Quiescent can be either subreason or details.
                 bootloader_message boot = {};
@@ -971,6 +975,16 @@ void HandlePowerctlMessage(const std::string& command) {
                     return;
                 }
                 reboot_target = "recovery";
+                // In a debug build, trigger a warm debug reset instead of a hard reset
+                if (GetBoolProperty("ro.debuggable", false)) {
+                    reboot_target += ",debug";
+                }
+            } else if (reboot_target == "userrequested" && cmd_params.size() > 2 &&
+                       (cmd_params[2] == "recovery" || cmd_params[2] == "fastboot")) {
+                // In a debug build, trigger a warm debug reset instead of a hard reset
+                if (GetBoolProperty("ro.debuggable", false)) {
+                    cmd_params[2] += ",debug";
+                }
             }
 
             // If there are additional parameter, pass them along
