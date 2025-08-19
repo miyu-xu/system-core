@@ -16,6 +16,23 @@
       "message": "is it guaranteed that any bootloader from our partners doesn\u0027t crash with this? i.e. are they expected to tokenize the params using commas, and ignore unknown tokens?",
       "revId": "714b2eed77d5007b65f5c95abdd20d6a7b48cd72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0882f2e_90526b72",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-08-19T08:53:22Z",
+      "side": 1,
+      "message": "Could we add the following code snippet here so that it gets handled in the for-loop below?\n\n```\nif (GetBoolProperty(\"ro.debuggable\", false)) {\n    cmd_params.push_back(\"debug\");\n}\n```",
+      "revId": "714b2eed77d5007b65f5c95abdd20d6a7b48cd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
