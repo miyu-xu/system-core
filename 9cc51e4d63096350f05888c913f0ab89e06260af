@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78c1e20_62c7b75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-08-27T07:02:03Z",
+      "side": 1,
+      "message": "Thanks for the submission. We have cherry-picked this to our internal main branch. This will be release as a part of the upcoming 25Q4 release. You may abandon this change here.",
+      "revId": "9cc51e4d63096350f05888c913f0ab89e06260af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
