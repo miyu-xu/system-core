@@ -16,6 +16,24 @@
       "message": "Thanks for the submission. We have cherry-picked this to our internal main branch. This will be release as a part of the upcoming 25Q4 release. You may abandon this change here.",
       "revId": "9cc51e4d63096350f05888c913f0ab89e06260af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0cfae4_be98fcd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1969763
+      },
+      "writtenOn": "2025-08-28T02:18:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b78c1e20_62c7b75c",
+      "revId": "9cc51e4d63096350f05888c913f0ab89e06260af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
