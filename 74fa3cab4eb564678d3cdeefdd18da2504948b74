@@ -71,6 +71,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b27a276_497dd696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4326028
+      },
+      "writtenOn": "2025-09-04T13:23:40Z",
+      "side": 1,
+      "message": "git fetch https://android.googlesource.com/platform/system/core refs/changes/80/529080/2 \u0026\u0026 git checkout -b change-529080 FETCH_HEAD",
+      "revId": "74fa3cab4eb564678d3cdeefdd18da2504948b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cdd33652_b6d7a69a",
         "filename": "rootdir/init.rc",
         "patchSetId": 2
