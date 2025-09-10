@@ -343,6 +343,7 @@ static void ReadCrashInfo(unique_fd& fd, siginfo_t* siginfo,
       process_info->scudo_ring_buffer_size = crash_info->data.d.scudo_ring_buffer_size;
       *recoverable_crash = crash_info->data.d.recoverable_crash;
       process_info->crash_detail_page = crash_info->data.d.crash_detail_page;
+      process_info->process_uptime = crash_info->data.d.process_uptime;
       FALLTHROUGH_INTENDED;
     case 1:
     case 2:

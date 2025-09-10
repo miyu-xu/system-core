@@ -102,6 +102,7 @@ struct __attribute__((__packed__)) CrashInfoDataDynamic : public CrashInfoDataSt
   size_t scudo_stack_depot_size;
   bool recoverable_crash;
   uintptr_t crash_detail_page;
+  uint64_t process_uptime;
 };
 
 struct __attribute__((__packed__)) CrashInfo {

@@ -62,4 +62,5 @@ struct ProcessInfo {
   uintptr_t untagged_fault_address = 0;
   uintptr_t maybe_tagged_fault_address = 0;
   uintptr_t crash_detail_page = 0;
+  uint64_t process_uptime = 0;
 };

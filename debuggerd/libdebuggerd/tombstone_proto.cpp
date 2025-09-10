@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/mman.h>
-#include <sys/sysinfo.h>
 #include <time.h>
 
 #include <map>
@@ -63,7 +62,6 @@
 #include <log/logprint.h>
 #include <private/android_filesystem_config.h>
 
-#include <procinfo/process.h>
 #include <unwindstack/AndroidUnwinder.h>
 #include <unwindstack/Error.h>
 #include <unwindstack/MapInfo.h>
@@ -860,17 +858,9 @@ void engrave_tombstone_proto(Tombstone* tombstone, unwindstack::AndroidUnwinder*
   // The main thread must have a valid siginfo.
   CHECK(target_thread.siginfo != nullptr);
 
-  struct sysinfo si;
-  sysinfo(&si);
-  android::procinfo::ProcessInfo proc_info;
-  std::string error;
-  if (android::procinfo::GetProcessInfo(target_thread.pid, &proc_info, &error)) {
-    uint64_t starttime = proc_info.starttime / sysconf(_SC_CLK_TCK);
-    result.set_process_uptime(si.uptime - starttime);
-  } else {
-    async_safe_format_log(ANDROID_LOG_ERROR, LOG_TAG, "failed to read process info: %s",
-                          error.c_str());
-  }
+  // Use the process uptime that was calculated in the crashing process
+  // to avoid persmission issues or when process dies before we read /proc/
+  result.set_process_uptime(process_info.process_uptime);
 
   result.set_page_size(getpagesize());
   result.set_has_been_16kb_mode(android::base::GetBoolProperty("ro.misctrl.16kb_before", false));

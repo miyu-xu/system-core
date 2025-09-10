@@ -49,6 +49,7 @@ struct __attribute__((packed)) debugger_process_info {
   size_t scudo_stack_depot_size;
   bool recoverable_crash;
   struct crash_detail_page_t* crash_detail_page;
+  uint64_t process_uptime;
 };
 
 // GWP-ASan calbacks to support the recoverable mode. Separate from the

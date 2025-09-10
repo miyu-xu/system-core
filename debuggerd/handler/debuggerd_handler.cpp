@@ -192,6 +192,9 @@ extern "C" void debuggerd_fallback_handler(siginfo_t*, ucontext_t*, void*);
 
 static debuggerd_callbacks_t g_callbacks;
 
+// Store process start time to use as base for uptime calculation
+static uint64_t g_process_start_boottime = 0;
+
 // Mutex to ensure only one crashing thread dumps itself.
 static pthread_mutex_t crash_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -456,6 +459,7 @@ static int debuggerd_dispatch_pseudothread(void* arg) {
     ASSERT_SAME_OFFSET(scudo_stack_depot_size, scudo_stack_depot_size);
     ASSERT_SAME_OFFSET(recoverable_crash, recoverable_crash);
     ASSERT_SAME_OFFSET(crash_detail_page, crash_detail_page);
+    ASSERT_SAME_OFFSET(process_uptime, process_uptime);
 #undef ASSERT_SAME_OFFSET
 
     iovs[3] = {.iov_base = &thread_info->process_info,
@@ -619,6 +623,14 @@ static void debuggerd_signal_handler(int signal_number, siginfo_t* info, void* c
   if (g_callbacks.get_process_info) {
     process_info = g_callbacks.get_process_info();
   }
+
+  // Calculate process uptime in the crashing process to avoid issues
+  // when crash_dump can't access /proc/ info
+  struct timespec boottime;
+  if (clock_gettime(CLOCK_BOOTTIME, &boottime) == 0 && g_process_start_boottime != 0) {
+    process_info.process_uptime = boottime.tv_sec - g_process_start_boottime;
+  }
+
   uintptr_t si_val = reinterpret_cast<uintptr_t>(info->si_ptr);
   if (signal_number == BIONIC_SIGNAL_DEBUGGER) {
     // Applications can set abort messages via android_set_abort_message without
@@ -820,6 +832,11 @@ static void debuggerd_signal_handler(int signal_number, siginfo_t* info, void* c
 void debuggerd_init(debuggerd_callbacks_t* callbacks) {
   if (callbacks) {
     g_callbacks = *callbacks;
+  }
+
+  struct timespec boottime;
+  if (clock_gettime(CLOCK_BOOTTIME, &boottime) == 0) {
+    g_process_start_boottime = boottime.tv_sec;
   }
 
   size_t thread_stack_pages = 8;

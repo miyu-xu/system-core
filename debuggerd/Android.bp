@@ -277,7 +277,6 @@ cc_library_static {
         "libasync_safe",
         "gwp_asan_crash_handler",
         "libtombstone_proto",
-        "libprocinfo",
         "libprotobuf-cpp-lite",
         "libscudo",
     ],
