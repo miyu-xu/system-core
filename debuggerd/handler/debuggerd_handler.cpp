@@ -730,6 +730,11 @@ static void debuggerd_signal_handler(int signal_number, siginfo_t* info, void* c
 
   log_signal_summary(info);
 
+  if (property_parse_bool("sys.init.in_shutdown")) {
+    async_safe_format_log(ANDROID_LOG_INFO, "libc", "Skipping tombstone during shutdown.");
+    return;
+  }
+
   // If we got here due to the signal BIONIC_SIGNAL_DEBUGGER, it's possible
   // this is not the main thread, which can cause the intercept logic to fail
   // since the intercept is only looking for the main thread. In this case,

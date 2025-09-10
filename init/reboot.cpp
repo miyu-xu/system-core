@@ -843,6 +843,7 @@ static void DoReboot(unsigned int cmd, const std::string& reason, const std::str
 static void EnterShutdown() {
     LOG(INFO) << "Entering shutdown mode";
     shutting_down = true;
+    SetProperty("sys.init.in_shutdown", "1");
     // Skip wait for prop if it is in progress
     ResetWaitForProp();
     // Clear EXEC flag if there is one pending
