@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9b01f8_61451f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-09-15T17:24:08Z",
+      "side": 1,
+      "message": "Confirmed with David, March 25th AOSP became readonly. \nI\u0027m going to abandon this AOSP change, and post it to ag/ for internal review.",
+      "parentUuid": "b33140c8_50551dfc",
+      "revId": "714b2eed77d5007b65f5c95abdd20d6a7b48cd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0882f2e_90526b72",
