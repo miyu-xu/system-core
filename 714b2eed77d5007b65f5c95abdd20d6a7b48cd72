@@ -50,6 +50,24 @@
       "message": "Could we add the following code snippet here so that it gets handled in the for-loop below?\n\n```\nif (GetBoolProperty(\"ro.debuggable\", false)) {\n    cmd_params.push_back(\"debug\");\n}\n```",
       "revId": "714b2eed77d5007b65f5c95abdd20d6a7b48cd72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f61861f_ccef2d39",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1885546
+      },
+      "writtenOn": "2025-09-15T17:01:07Z",
+      "side": 1,
+      "message": "I\u0027d prefer not adding this tag for all reboots except the recovery reboot.",
+      "parentUuid": "a0882f2e_90526b72",
+      "revId": "714b2eed77d5007b65f5c95abdd20d6a7b48cd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
