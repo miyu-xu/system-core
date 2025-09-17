@@ -16,6 +16,23 @@
       "message": "(not sure why I did it this way in the first place)",
       "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc5afd2_0f70c81a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-09-17T00:42:45Z",
+      "side": 1,
+      "message": "When this occurs, does GetProcessInfo return false? If so, would it be easier to try and read the start time from /proc/self/stat? That should get around the permissions issue.\n\nIf the process was killed, it doesn\u0027t seem like you are going to get much information. In fact, I\u0027ve never seen a tombstone get generated if the process gets killed in the time between the fork occurring and the tombstone is generated.",
+      "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
