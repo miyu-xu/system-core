@@ -51,6 +51,24 @@
       "parentUuid": "4dc5afd2_0f70c81a",
       "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eac17d4_412ccd9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-09-18T21:31:02Z",
+      "side": 1,
+      "message": "For possible crashes, we do a lot of work when crashing. If you can get the data without doing any allocations, it\u0027s likely to be fine. However, I do agree you probably don\u0027t want to open files and other things in the crashing process.\n\nBut I can\u0027t think of any way that you would actually even generate a tombstone if /proc/XXX is not readable or gone. At best, you might get the header. And having the uptime doesn\u0027t seem like it\u0027s very useful.\n\nDo you actually find this occurring often?",
+      "parentUuid": "43f05f7e_5aa48966",
+      "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
