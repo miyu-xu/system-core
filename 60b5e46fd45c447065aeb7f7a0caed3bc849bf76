@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf06fa05_b392b2d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-09-18T21:15:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t feel like the right approach. I don\u0027t think we want to miss out on crashes that occur during shutdown if they are real.\n\nThe crashes that you are ignoring, are they aborts or something else?\n\nIf you really don\u0027t want any tombstones generated, you could pull down tombstoned on your system rather than turn this off for everyone.",
+      "revId": "60b5e46fd45c447065aeb7f7a0caed3bc849bf76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
