@@ -52,6 +52,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006fee23_b6ce11e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4307747
+      },
+      "writtenOn": "2025-09-24T02:15:05Z",
+      "side": 1,
+      "message": "Please remove CPU controller from my devices",
+      "revId": "93da9f40409bcf6e5d1bb4bfd05b1c200a902743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d110df57_d23afc79",
