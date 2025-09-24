@@ -69,6 +69,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2335b0d7_593b0041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4307747
+      },
+      "writtenOn": "2025-09-24T02:21:29Z",
+      "side": 1,
+      "message": "Please help me with my device someone monitor me",
+      "revId": "93da9f40409bcf6e5d1bb4bfd05b1c200a902743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d110df57_d23afc79",
@@ -82,6 +99,30 @@
       "writtenOn": "2024-01-12T02:41:58Z",
       "side": 1,
       "message": "So, we are still using cpu controller to set uclamp limits?",
+      "range": {
+        "startLine": 62,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "93da9f40409bcf6e5d1bb4bfd05b1c200a902743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbff459e_0a416307",
+        "filename": "libprocessgroup/profiles/task_profiles.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 4307747
+      },
+      "writtenOn": "2025-09-24T02:21:29Z",
+      "side": 1,
+      "message": "Remove all CPU I dont want it",
+      "parentUuid": "d110df57_d23afc79",
       "range": {
         "startLine": 62,
         "startChar": 6,
