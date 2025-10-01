@@ -69,6 +69,24 @@
       "parentUuid": "43f05f7e_5aa48966",
       "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75cb6c63_2466a4ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4342511
+      },
+      "writtenOn": "2025-10-01T07:54:45Z",
+      "side": 1,
+      "message": "This occurs for all of our system_ext services, and some vendor services. Likely the underlying problem is that crashreporter drops its ptrace caps after forking.",
+      "parentUuid": "7eac17d4_412ccd9b",
+      "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
