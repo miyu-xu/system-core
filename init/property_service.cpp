@@ -1115,12 +1115,18 @@ static void property_initialize_ro_vendor_api_level() {
         return;
     }
 
-    auto vendor_api_level = GetIntProperty("ro.board.first_api_level", __ANDROID_VENDOR_API_MAX__);
-    if (vendor_api_level != __ANDROID_VENDOR_API_MAX__) {
-        // Update the vendor_api_level with "ro.board.api_level" only if both "ro.board.api_level"
-        // and "ro.board.first_api_level" are defined.
-        vendor_api_level = GetIntProperty("ro.board.api_level", vendor_api_level);
-    }
+    const auto board_first_api_level =
+            GetIntProperty("ro.board.first_api_level", __ANDROID_VENDOR_API_MAX__);
+    const bool is_frozen_chipset = board_first_api_level != __ANDROID_VENDOR_API_MAX__;
+
+    // In Android U and earlier, ro.board.api_level may not be defined, so use the first api level
+    // instead.
+    const auto board_api_level = GetIntProperty("ro.board.api_level", board_first_api_level);
+
+    // If the chipset is frozen, ro.vendor.api_level may be lowered to the board API level, since
+    // the vendor image is frozen and not expected to change anymore.
+    const auto effective_board_api_level =
+            is_frozen_chipset ? board_api_level : __ANDROID_VENDOR_API_MAX__;
 
     auto product_first_api_level =
             GetIntProperty("ro.product.first_api_level", __ANDROID_API_FUTURE__);
@@ -1129,8 +1135,8 @@ static void property_initialize_ro_vendor_api_level() {
         product_first_api_level = GetIntProperty("ro.build.version.sdk", __ANDROID_API_FUTURE__);
     }
 
-    vendor_api_level =
-            std::min(AVendorSupport_getVendorApiLevelOf(product_first_api_level), vendor_api_level);
+    const auto vendor_api_level = std::min(
+            AVendorSupport_getVendorApiLevelOf(product_first_api_level), effective_board_api_level);
 
     if (vendor_api_level < 0) {
         LOG(ERROR) << "Unexpected vendor api level for " << VENDOR_API_LEVEL_PROP << ". Check "
