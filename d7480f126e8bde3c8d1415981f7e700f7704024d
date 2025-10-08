@@ -87,6 +87,24 @@
       "parentUuid": "7eac17d4_412ccd9b",
       "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9fade7_df7a3207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-10-08T01:01:35Z",
+      "side": 1,
+      "message": "But do you actually get a tombstone with this change? That\u0027s why I\u0027m hesitant to do this for a case that won\u0027t actually generate a tombstone anyway.",
+      "parentUuid": "75cb6c63_2466a4ab",
+      "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
