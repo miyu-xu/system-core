@@ -105,6 +105,24 @@
       "parentUuid": "75cb6c63_2466a4ab",
       "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc1e353_3572f0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4342511
+      },
+      "writtenOn": "2025-10-08T15:39:33Z",
+      "side": 1,
+      "message": "Yes, we get a full tombstone with stacktrace and other info but with uptime \u00270\u0027.",
+      "parentUuid": "5b9fade7_df7a3207",
+      "revId": "d7480f126e8bde3c8d1415981f7e700f7704024d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
