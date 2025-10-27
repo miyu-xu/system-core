@@ -97,6 +97,9 @@ class TestDeviceInfo : public SnapshotManager::IDeviceInfo {
         unbootable_slots_.insert(slot);
         return true;
     }
+    bool IsSlotMarkedSuccessful(unsigned int slot) override {
+        return true;
+    }
     bool IsTestDevice() const override { return true; }
     bool IsFirstStageInit() const override { return first_stage_init_; }
     std::unique_ptr<IImageManager> OpenImageManager() const override {
