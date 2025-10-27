@@ -113,6 +113,7 @@ class ISnapshotManager {
         virtual bool SetBootControlMergeStatus(MergeStatus status) = 0;
         virtual bool SetActiveBootSlot(unsigned int slot) = 0;
         virtual bool SetSlotAsUnbootable(unsigned int slot) = 0;
+        virtual bool IsSlotMarkedSuccessful(unsigned int slot) = 0;
         virtual bool IsRecovery() const = 0;
         virtual bool IsTestDevice() const { return false; }
         virtual bool IsFirstStageInit() const = 0;

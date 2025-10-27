@@ -4155,6 +4155,7 @@ bool SnapshotManager::HandleImminentDataWipe(const std::function<void()>& callba
     }
 
     bool try_merge = false;
+    auto slot_number = SlotNumberForSlotSuffix(device_->GetSlotSuffix());
     switch (state) {
         case UpdateState::None:
         case UpdateState::Initiated:
@@ -4165,8 +4166,7 @@ bool SnapshotManager::HandleImminentDataWipe(const std::function<void()>& callba
                 LOG(INFO) << "Wipe is not impacted by rolled back update; allowing wipe";
                 break;
             }
-            if (!HasForwardMergeIndicator()) {
-                auto slot_number = SlotNumberForSlotSuffix(device_->GetSlotSuffix());
+            if (!HasForwardMergeIndicator() && !device_->IsSlotMarkedSuccessful(slot_number)) {
                 auto other_slot_number = SlotNumberForSlotSuffix(device_->GetOtherSlotSuffix());
 
                 // We're not allowed to forward merge, so forcefully rollback the
