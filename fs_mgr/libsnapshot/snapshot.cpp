@@ -4167,6 +4167,11 @@ bool SnapshotManager::HandleImminentDataWipe(const std::function<void()>& callba
             }
             if (!HasForwardMergeIndicator()) {
                 auto slot_number = SlotNumberForSlotSuffix(device_->GetSlotSuffix());
+                if (device_->IsSlotMarkedSuccessful(slot_number)) {
+                    LOG(INFO) << "slot marked successful, Allowing wipe due to unverified update.";
+                    try_merge = true;
+                    break;
+                }
                 auto other_slot_number = SlotNumberForSlotSuffix(device_->GetOtherSlotSuffix());
 
                 // We're not allowed to forward merge, so forcefully rollback the
