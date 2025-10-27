@@ -4165,7 +4165,7 @@ bool SnapshotManager::HandleImminentDataWipe(const std::function<void()>& callba
                 LOG(INFO) << "Wipe is not impacted by rolled back update; allowing wipe";
                 break;
             }
-            if (!HasForwardMergeIndicator()) {
+            if (!HasForwardMergeIndicator() && !device_->IsSlotMarkedSuccessful(slot_number)) {
                 auto slot_number = SlotNumberForSlotSuffix(device_->GetSlotSuffix());
                 auto other_slot_number = SlotNumberForSlotSuffix(device_->GetOtherSlotSuffix());
 
