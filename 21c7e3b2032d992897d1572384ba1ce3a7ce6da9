@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbe7dd8_d307bfcd",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4169,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2025-10-28T16:46:30Z",
+      "side": 1,
+      "message": "On a second thought, we should just cancel the merge if current slot is not marked successful. Could there be a case where slot is not marked successful, but there\u0027s a forward merge indicator?",
+      "range": {
+        "startLine": 4169,
+        "startChar": 47,
+        "endLine": 4169,
+        "endChar": 92
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7e097944_6bb217a6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libsnapshot/snapshot.cpp",
+              "range": {
+                "startLine": 4169,
+                "startChar": 0,
+                "endLine": 4170,
+                "endChar": 0
+              },
+              "replacement": "            if (!device_-\u003eIsSlotMarkedSuccessful(slot_number)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "21c7e3b2032d992897d1572384ba1ce3a7ce6da9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
