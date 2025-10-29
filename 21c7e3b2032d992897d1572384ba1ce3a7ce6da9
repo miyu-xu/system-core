@@ -40,6 +40,30 @@
       ],
       "revId": "21c7e3b2032d992897d1572384ba1ce3a7ce6da9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64df9943_ef4b2028",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4169,
+      "author": {
+        "id": 2011063
+      },
+      "writtenOn": "2025-10-29T02:34:49Z",
+      "side": 1,
+      "message": "Yes, there be a case where slot is not marked successful, but there\u0027s a forward merge indicator, we should try merge. There is a other case: could we merge if current slot is marked successful and there\u0027s not forward merge indicator?\nLike : we will rollback the old if we delay merge in CleanupPreviousUpdateAction::CheckForMergeDelay and then resetfactory.",
+      "parentUuid": "1bbe7dd8_d307bfcd",
+      "range": {
+        "startLine": 4169,
+        "startChar": 47,
+        "endLine": 4169,
+        "endChar": 92
+      },
+      "revId": "21c7e3b2032d992897d1572384ba1ce3a7ce6da9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
