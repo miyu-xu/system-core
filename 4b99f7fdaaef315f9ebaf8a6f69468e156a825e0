@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6d0c0a_e443ca2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2011063
+      },
+      "writtenOn": "2025-10-30T11:38:36Z",
+      "side": 1,
+      "message": "hi all: there two case:\n1. allow to merge when there\u0027s a forward merge indicator\n2. and also allow to merge when slot marked successful",
+      "revId": "4b99f7fdaaef315f9ebaf8a6f69468e156a825e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
