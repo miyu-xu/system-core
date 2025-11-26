@@ -69,6 +69,39 @@ static int Usage(void) {
     return -EINVAL;
 }
 
+class DefaultKeyTarget : public android::dm::DmTarget {
+  public:
+    DefaultKeyTarget(const std::string &type, uint64_t start, uint64_t num, const std::string &params)
+        : DmTarget(start, num), type_(type), parameters_(params) {
+
+      // Debug log to verify the table string
+      std::cerr << "Creating default-key target with parameters: " << parameters_ << std::endl;
+    }
+
+    std::string name() const override { return type_; }
+
+    std::string GetParameterString() const override { return parameters_; }
+
+  private:
+    std::string type_;
+    std::string parameters_;
+};
+
+class CryptTarget : public android::dm::DmTarget {
+  public:
+    CryptTarget(uint64_t start, uint64_t num, const std::string &params)
+        : DmTarget(start, num), parameters_(params) {
+      std::cerr << "Creating crypt target with parameters: " << parameters_ << std::endl;
+    }
+
+    std::string name() const override { return "crypt"; }
+
+    std::string GetParameterString() const override { return parameters_; }
+
+  private:
+    std::string parameters_;
+};
+
 class TargetParser final {
   public:
     TargetParser(int argc, char** argv) : arg_index_(0), argc_(argc), argv_(argv) {}
@@ -229,10 +262,50 @@ class TargetParser final {
             }
             return std::make_unique<DmTargetThinPool>(start_sector, num_sectors, metadata_dev,
                                                       data_dev, data_block_size, low_water_mark);
+        } else if (target_type == "default-key") {
+            if (!HasArgs(5)) {
+              std::cerr << "Expected: <keyslot> <cipher> <key_size> "
+                          "<device_path> <sector_offset>"
+                        << std::endl;
+              return nullptr;
+            }
+
+            std::string keyslot = NextArg();
+            std::string cipher = NextArg();
+            std::string key_size = NextArg();
+            std::string dev_path = NextArg();
+            std::string sector_offset = NextArg();
+
+            std::ostringstream table;
+            table << keyslot << " " << cipher << " " << key_size << " "
+                  << dev_path << " " << sector_offset;
+            // return std::make_unique<DmTarget>(target_type, start_sector,
+            // num_sectors, table.str());
+            return std::make_unique<DefaultKeyTarget>(target_type, start_sector,
+                                                      num_sectors, table.str());
+        } else if (target_type == "crypt") {
+            if (!HasArgs(5)) {
+              std::cerr << "Expected: <cipher> <key> <iv_offset> <device_path> "
+                          "<sector_offset>"
+                        << std::endl;
+              return nullptr;
+            }
+
+            std::string cipher = NextArg();
+            std::string key = NextArg();
+            std::string iv_offset = NextArg();
+            std::string dev_path = NextArg();
+            std::string sector_offset = NextArg();
+
+            std::ostringstream table;
+            table << cipher << " " << key << " " << iv_offset << " " << dev_path
+                  << " " << sector_offset;
+            return std::make_unique<CryptTarget>(start_sector, num_sectors,
+                                                table.str());
         } else if (target_type == "thin") {
             if (!HasArgs(2)) {
-                std::cerr << "Expected \"thin\" <pool dev> <dev id>" << std::endl;
-                return nullptr;
+              std::cerr << "Expected \"thin\" <pool dev> <dev id>" << std::endl;
+              return nullptr;
             }
 
             std::string pool_dev = NextArg();
@@ -240,8 +313,8 @@ class TargetParser final {
 
             uint64_t dev_id;
             if (!android::base::ParseUint(dev_id_str, &dev_id)) {
-                std::cerr << "Dev id must be an unsigned integer.\n";
-                return nullptr;
+              std::cerr << "Dev id must be an unsigned integer.\n";
+              return nullptr;
             }
             return std::make_unique<DmTargetThin>(start_sector, num_sectors, pool_dev, dev_id);
         } else {
