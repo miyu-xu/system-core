@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c97201_5d4355cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2025-12-01T23:07:36Z",
+      "side": 1,
+      "message": "Did this run through clang-format? I see a lot of tabs instead of spaces, and blocks that I think clang-format would collapse into one-liners.",
+      "revId": "0a67eb9aae9b22dc3bbb6ed746aa3e2004a25744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
