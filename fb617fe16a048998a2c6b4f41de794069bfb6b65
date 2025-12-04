@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88358542_a6439d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2025-12-04T16:24:44Z",
+      "side": 1,
+      "message": "Could you please file a bug and describe the issue you are solving with this change. Add a `Bug: \u003cbug number\u003e` in the patch description before `Change-Id`.\n\nI\u0027m not clear from this description why system_ext would be easier to update than system or vendor partitions.",
+      "revId": "fb617fe16a048998a2c6b4f41de794069bfb6b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
