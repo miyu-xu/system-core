@@ -16,6 +16,23 @@
       "message": "Hi @enh@google.com, @sadafebrahimi@google.com, could you PTAL at this? Thank you",
       "revId": "fe30d0d9de4a000500e4e284335bbd91d3e109ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e479b3_955a7a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-12-08T17:26:46Z",
+      "side": 1,
+      "message": "(cherrypick)",
+      "revId": "fe30d0d9de4a000500e4e284335bbd91d3e109ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
