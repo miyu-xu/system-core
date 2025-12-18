@@ -118,7 +118,7 @@ TEST(fs, PartitionTypes) {
 
         if (parent_bdev == userdata_bdev ||
             android::base::StartsWith(parent_bdev, "/dev/block/loop")) {
-            if (entry.flags & MS_RDONLY) {
+            if (entry.mount_point.find("apex") != std::string::npos) {
                 // APEXes should not be F2FS.
                 EXPECT_NE(entry.fs_type, "f2fs");
             }
