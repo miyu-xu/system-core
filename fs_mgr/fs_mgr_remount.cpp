@@ -194,7 +194,8 @@ static bool IsRemountable(Fstab& candidates, const FstabEntry& entry) {
     if (entry.fs_type == "vfat") {
         return false;
     }
-    if (auto candidate_entry = GetEntryForMountPoint(&candidates, entry.mount_point)) {
+    auto candidate_entry = GetEntryForMountPoint(&candidates, entry.mount_point, entry.fs_type);
+    if (candidate_entry) {
         return candidate_entry->fs_type == entry.fs_type;
     }
     return true;
