@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f76c5f8_2d244bf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T06:11:42Z",
+      "side": 1,
+      "message": "Any reason why this is still around ?",
+      "revId": "daddbd14eecf9aa5cef3fff5bca118356435a97f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
