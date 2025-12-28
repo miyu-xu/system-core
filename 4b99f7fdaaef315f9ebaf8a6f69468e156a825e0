@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fc2d98_5beabac3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T05:49:24Z",
+      "side": 1,
+      "message": "If there is a factory reset during merge delay, then in recovery, we should just drop the \"delay\" in update-engine and initiate the merge. That shouldn\u0027t have any changes in the libsnapshot layer. update-engine in recovery should bypass the merge-delay logic. That would make things simple. \n\nHave you tried that ?",
+      "revId": "4b99f7fdaaef315f9ebaf8a6f69468e156a825e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d6d0c0a_e443ca2b",
