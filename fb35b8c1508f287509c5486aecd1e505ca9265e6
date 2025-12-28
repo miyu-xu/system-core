@@ -16,6 +16,23 @@
       "message": "before test，please \"adb shell setenforce 0\"",
       "revId": "fb35b8c1508f287509c5486aecd1e505ca9265e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4abfe4ea_996be5e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T06:09:43Z",
+      "side": 1,
+      "message": "Given that we are moving towards ublk, please address this on ublk side of things.\n\nMaking changes to dm-user would have UAPI breakage. We should avoid it.\n\nPlease also include performance improvements in the patch when you update the review.",
+      "revId": "fb35b8c1508f287509c5486aecd1e505ca9265e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
