@@ -51,6 +51,93 @@
       "message": "Hello, can you help review this change?",
       "revId": "866073275a34ccf10a1a3505bcb1da0c0fea8617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79538ca5_84916cb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T06:04:26Z",
+      "side": 1,
+      "message": "I understand the reasoning behind this change - Please add that to the description.\n\nAlso, could you please send pprof traces for this ? We haven\u0027t seen this issue in this path, I would be curious to see the improvements.",
+      "revId": "866073275a34ccf10a1a3505bcb1da0c0fea8617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3f889c_6ca0132e",
+        "filename": "fs_mgr/libfiemap/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T06:04:26Z",
+      "side": 1,
+      "message": "How was this number arrived at ?\n\nWe have seen reports of DMA failures in O_DIRECT path with bigger block size.",
+      "fixSuggestions": [
+        {
+          "fixId": "139dcf6f_2b4e6dd1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libfiemap/fiemap_writer.cpp",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "// This size was chosen because larger sizes (e.g., 16MB) were observed to cause\n// DMA failures in the O_DIRECT path on some devices. 1MB is a safer size\n// that avoids these issues while still providing reasonable performance.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "866073275a34ccf10a1a3505bcb1da0c0fea8617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28972dcf_49fcb334",
+        "filename": "fs_mgr/libfiemap/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-28T06:04:26Z",
+      "side": 1,
+      "message": "This looks more like a debug patch. Please cleanup these code comments.",
+      "fixSuggestions": [
+        {
+          "fixId": "ff07e431_744a0a00",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fs_mgr/libfiemap/fiemap_writer.cpp",
+              "range": {
+                "startLine": 389,
+                "startChar": 0,
+                "endLine": 397,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "866073275a34ccf10a1a3505bcb1da0c0fea8617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
