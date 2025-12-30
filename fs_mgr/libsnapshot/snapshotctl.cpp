@@ -99,10 +99,12 @@ int Usage() {
                  "    Prepares devices to boot without snapshots on next boot.\n"
                  "    This does not delete the snapshot. It only removes the indicators\n"
                  "    so that first stage init will not mount from snapshots.\n"
-                 "  apply-update\n"
+                 "  apply-update <directory> {-w} {-s|--skip-slot-switch}\n"
                  "    Apply the incremental OTA update wherein the snapshots are\n"
                  "    directly written to COW block device. This will bypass update-engine\n"
                  "    and the device will be ready to boot from the target build.\n"
+                 "    -w: Use metadata on super partition\n"
+                 "    -s, --skip-slot-switch: Skip switching the active boot slot\n"
                  "  dump-verity-hash <directory where verity merkel tree hashes are stored> "
                  "[-verify]\n"
                  "    Dump the verity merkel tree hashes at the specified path\n"
@@ -125,7 +127,7 @@ class MapSnapshots {
     bool DeleteSnapshots();
     bool CleanupSnapshot();
     bool BeginUpdate();
-    bool ApplyUpdate();
+    bool ApplyUpdate(bool skip_slot_switch = false);
 
   private:
     std::optional<std::string> GetCowImagePath(std::string& name);
@@ -282,9 +284,8 @@ bool MapSnapshots::GetCowDevicePath(std::string partition_name, std::string* cow
     return true;
 }
 
-bool MapSnapshots::ApplyUpdate() {
+bool MapSnapshots::ApplyUpdate(bool skip_slot_switch) {
     auto scope_guard = android::base::make_scope_guard([]() { UmountScratch(false); });
-
     if (!PrepareUpdate()) {
         LOG(ERROR) << "PrepareUpdate failed";
         return false;
@@ -339,16 +340,20 @@ bool MapSnapshots::ApplyUpdate() {
         return false;
     }
 
-    auto hal = hal::BootControlClient::WaitForService();
-    if (!hal) {
-        LOG(ERROR) << "Could not find IBootControl HAL.\n";
-        return false;
-    }
-    auto target_slot_number = SlotNumberForSlotSuffix(target_slot);
-    auto cr = hal->SetActiveBootSlot(target_slot_number);
-    if (!cr.IsOk()) {
-        LOG(ERROR) << "Could not set active boot slot: " << cr.errMsg;
-        return false;
+    if (!skip_slot_switch) {
+        auto hal = hal::BootControlClient::WaitForService();
+        if (!hal) {
+            LOG(ERROR) << "Could not find IBootControl HAL.\n";
+            return false;
+        }
+        auto target_slot_number = SlotNumberForSlotSuffix(target_slot);
+        auto cr = hal->SetActiveBootSlot(target_slot_number);
+        if (!cr.IsOk()) {
+            LOG(ERROR) << "Could not set active boot slot: " << cr.errMsg;
+            return false;
+        }
+    } else {
+        LOG(INFO) << "Skipping boot slot switch as requested";
     }
 
     LOG(INFO) << "ApplyUpdate success";
@@ -646,16 +651,25 @@ bool ApplyUpdate(int argc, char** argv) {
     }
 
     if (argc < 3) {
-        std::cerr << " apply-update <directory location where snapshot patches are present> {-w}"
-                     "    Apply the snapshots to the COW block device\n";
+        std::cerr << " apply-update <directory location where snapshot patches are present> "
+                     "{-w} {-s|--skip-slot-switch}\n"
+                     "    Apply the snapshots to the COW block device\n"
+                     "    -w: Use metadata on super partition\n"
+                     "    -s, --skip-slot-switch: Skip switching the active boot slot\n";
         return false;
     }
 
     std::string path = std::string(argv[2]);
     bool metadata_on_super = false;
-    if (argc == 4) {
-        if (std::string(argv[3]) == "-w") {
+    bool skip_slot_switch = false;
+
+    // Parse optional flags
+    for (int i = 3; i < argc; i++) {
+        std::string arg = argv[i];
+        if (arg == "-w") {
             metadata_on_super = true;
+        } else if (arg == "-s" || arg == "--skip-slot-switch") {
+            skip_slot_switch = true;
         }
     }
 
@@ -665,7 +679,7 @@ bool ApplyUpdate(int argc, char** argv) {
     }
 
     MapSnapshots cow(path, metadata_on_super);
-    if (!cow.ApplyUpdate()) {
+    if (!cow.ApplyUpdate(skip_slot_switch)) {
         return false;
     }
     LOG(INFO) << "Apply update success. Please reboot the device";
