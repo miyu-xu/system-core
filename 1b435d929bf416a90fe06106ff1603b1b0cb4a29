@@ -195,6 +195,24 @@
       "parentUuid": "8c05c4db_41e8e09a",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3fd176d_fcf6dd23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4554676
+      },
+      "writtenOn": "2025-12-30T23:53:38Z",
+      "side": 1,
+      "message": "\u003e Ahh ok.. So, you want to just get to the bootloader from the current slot and then forcefully switch the slot.. I think that could work; and yes, that will should trigger merge.\n\nYes, exactly! This gives all the benefits of apply-update without the risk of switching to the unknown bootloader - which is a big problem for me.",
+      "parentUuid": "aad9997a_febbab02",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
