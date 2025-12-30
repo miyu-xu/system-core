@@ -69,6 +69,24 @@
       "parentUuid": "e372f59b_6c218e0a",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ae151b_77d0d684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-30T23:01:34Z",
+      "side": 1,
+      "message": "I see.. So, `snapshotctl map-snapshots` is what you are looking for; however, that wouldn\u0027t do the merge post reboot. It will allow mounting partitions over the snapshot.",
+      "parentUuid": "a1e4bd91_b6d573a0",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
