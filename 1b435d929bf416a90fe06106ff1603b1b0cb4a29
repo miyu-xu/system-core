@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee944ff_c0708f70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-30T17:20:54Z",
+      "side": 1,
+      "message": "This will not do snapshot-merge post update. Snapshot-merge will only happen when there is a slot switch.\n\nIf the goal here is to boot without slot switch then you could try:\n\n$snapshotctl map-snapshots\n\nPlease see the relevant code here:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/core/fs_mgr/libsnapshot/snapshotctl.cpp;l\u003d1109\n\nThis will boot the device off the snapshots (i.e target build) and then you could revert back to older build.\n\nThere is also a thin shell script wrapper which might be helpful.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/core/fs_mgr/libsnapshot/scripts/apply-update.sh;l\u003d102",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e372f59b_6c218e0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-30T17:20:54Z",
+      "side": 1,
+      "message": "Thanks for the patch.\n\nCould you please explain a bit more on the use case so that I can help. Thanks.",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
