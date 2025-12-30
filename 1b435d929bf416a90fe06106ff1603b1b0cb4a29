@@ -177,6 +177,24 @@
       "parentUuid": "8c05c4db_41e8e09a",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad9997a_febbab02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4554676
+      },
+      "writtenOn": "2025-12-30T23:51:28Z",
+      "side": 1,
+      "message": "That would be the ideal mode and would allow us to completely avoid booting into bootloader to flash bootloader + static partitions. For now, would this diff be sufficient? As long I manually trigger slot change from bootloader with `fastboot set_active ...` then I don\u0027t have to worry about the current state of the bootloader and it should always work\n\n\n-- Can you also help me understand how the `fastboot snapshot-update cancel` when wiping doesn\u0027t prevent the update? in https://cs.android.com/android/platform/superproject/main/+/main:tools/tradefederation/core/src/com/android/tradefed/util/image/IncrementalImageUtil.java;l\u003d586-600;bpv\u003d0;bpt\u003d1",
+      "parentUuid": "8c05c4db_41e8e09a",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
