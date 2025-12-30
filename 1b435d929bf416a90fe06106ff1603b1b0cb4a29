@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acece54d_57c93cff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 4554676
+      },
+      "writtenOn": "2025-12-30T22:16:38Z",
+      "side": 1,
+      "message": "@akailash@google.com ah this may also be useful, thanks for sharing.",
+      "parentUuid": "bee944ff_c0708f70",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e372f59b_6c218e0a",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-30T17:20:54Z",
       "side": 1,
       "message": "Thanks for the patch.\n\nCould you please explain a bit more on the use case so that I can help. Thanks.",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e4bd91_b6d573a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4554676
+      },
+      "writtenOn": "2025-12-30T22:16:38Z",
+      "side": 1,
+      "message": "Hey Akilesh, the goal here is to reboot to bootloader without the slot change, as we haven\u0027t flashed the bootloader and can\u0027t be sure what state it\u0027s in.\n\nLike so:\nslot A - adb - apply-update, reboot to bootloader\nslot A (instead of slot B currently) - fastboot - flash bootloader, switch to slot b, reboot bootloader\nslot B - fastboot - flash other static partitions, reboot\nslot B - adb -\u003e snapshot-merge occurs",
+      "parentUuid": "e372f59b_6c218e0a",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
