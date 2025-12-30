@@ -141,6 +141,24 @@
       "parentUuid": "2e944bca_6d369595",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c05c4db_41e8e09a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-30T23:36:58Z",
+      "side": 1,
+      "message": "\u003e However, I have no guarantee that the b slot will have a working bootloader (or any bootloader) prior to the HAL switch slot. This means using apply-update and rebooting to bootloader results in the device failing to boot to bootloader.\n\nYes. I have seen that issue as well. However, that could be addressed wherein we could unpack the bootloader and explicitly flash those to \"b\" partitions from user-space. The bootloader partitions are exposed as block devices. So, all the individual unpacked images of bootloader partition can be written to those \"b\" slot block devices before rebooting. That\u0027s pretty much how update-engine during OTA as well. However, it will involve a bit more work.",
+      "parentUuid": "4a3da0a5_0aef6a95",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
