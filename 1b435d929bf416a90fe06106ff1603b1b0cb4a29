@@ -105,6 +105,24 @@
       "parentUuid": "e3ae151b_77d0d684",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3da0a5_0aef6a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-30T23:31:45Z",
+      "side": 1,
+      "message": "\u003e map-snapshots likely won\u0027t be sufficient as we\u0027re flashing for CI where both we need to wipe userdata and also there may be later reboots which would otherwise revert the mounted snapshots.\n\nIf wiping is required, we can make this work. All we need to do is to make sure space to allocate delta patches is from super partition and not from /data. That will make map-snapshots work with data wipe. I did not do this as we moved towards using `snaspshotctl apply-update` and we wanted to snapshot-merge as well.\n\nHowever, if you want snapshot-merge as well without slot switch then that would be difficult as the logic in libsnapshot and all over \"init\" relies on the fact that snapshot-merge is done after a slot switch.\n\nSo, the question is - Would you be ok with just mounting on snapshots without merge ? Your patch seems to be doing that wherein post reboot partitions are mounted off snapshots.",
+      "parentUuid": "2e944bca_6d369595",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
