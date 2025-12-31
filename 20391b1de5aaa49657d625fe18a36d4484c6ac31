@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6147f1_d734435b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4553500
+      },
+      "writtenOn": "2025-12-31T14:17:02Z",
+      "side": 1,
+      "message": "adb/adbd.rc",
+      "revId": "20391b1de5aaa49657d625fe18a36d4484c6ac31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae01ee43_83f43e61",
+        "filename": "adb/adbd.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4553500
+      },
+      "writtenOn": "2025-12-31T14:17:02Z",
+      "side": 1,
+      "message": "mkdir /data/misc/adb 02750 system shell",
+      "revId": "20391b1de5aaa49657d625fe18a36d4484c6ac31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb50e21_e9dd4a5b",
+        "filename": "adb/adbd.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4553500
+      },
+      "writtenOn": "2025-12-31T14:17:02Z",
+      "side": 1,
+      "message": "```suggestion\non post-fs-data\n```",
+      "revId": "20391b1de5aaa49657d625fe18a36d4484c6ac31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5936fcd6_a374772c",
+        "filename": "adb/adbd.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4553500
+      },
+      "writtenOn": "2025-12-31T14:17:02Z",
+      "side": 1,
+      "message": "# adbd is controlled via property triggers in init.\u003cplatform\u003e.usb.rc",
+      "revId": "20391b1de5aaa49657d625fe18a36d4484c6ac31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5f955b_8440ebea",
+        "filename": "adb/adbd.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4553500
+      },
+      "writtenOn": "2025-12-31T14:17:02Z",
+      "side": 1,
+      "message": "mkdir /data/adb 0700 root root",
+      "revId": "20391b1de5aaa49657d625fe18a36d4484c6ac31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
