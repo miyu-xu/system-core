@@ -213,6 +213,24 @@
       "parentUuid": "aad9997a_febbab02",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de35a50_d7bf8933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2025-12-31T04:42:17Z",
+      "side": 1,
+      "message": "\u003e Can you also help me understand how the fastboot snapshot-update cancel when wiping doesn\u0027t prevent the update?\n\n`fastboot snapshot-update cancel` is required because bootloader will reject the wipe if there are any pending updates. This is required for actual OTA given the snapshot patches may reside on /data.\n\nHowever, in this case, when we pass \"-w\" option, we ensure that none of the snapshot patches or the snapshot metadata resides on /data or on /metadata. Hence, data wipe is safe. However, in order to get away from bootloader gateway, we explicitly call \"snapshot-update cancel\" so that bootloader will allow the data wipe.\n\n\u003e As long I manually trigger slot change from bootloader with fastboot set_active ... then I don\u0027t have to worry about the current state of the bootloader and it should always work\n\nI think this should work but I haven\u0027t tried it. Please test it locally.\n\nIdeally i would suggest to try the option to flash the bootloader from user-space itself as that would be the cleanest approach and will be on par with the OTA update mechanics. \n\nPlease see here for more details:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:tools/tradefederation/core/src/com/android/tradefed/util/image/IncrementalImageUtil.java;l\u003d343\n\nIf that\u0027s possible, it would address the concerns of invalid state of the bootloader in the other slot.",
+      "parentUuid": "a3fd176d_fcf6dd23",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
