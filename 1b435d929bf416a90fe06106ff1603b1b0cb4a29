@@ -231,6 +231,24 @@
       "parentUuid": "a3fd176d_fcf6dd23",
       "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7511e8f0_f8b2e671",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4554676
+      },
+      "writtenOn": "2026-01-05T18:35:39Z",
+      "side": 1,
+      "message": "Thanks @akailash@google.com! I\u0027ll investigate the bootloader flashing mechanism as I agree that it would be strictly better.\n\nI see this is a simple block overwrite `dd if\u003d/data/bootloader/%s of\u003d/dev/block/by-name/%s%s` so expect it should be simple to implement",
+      "parentUuid": "7de35a50_d7bf8933",
+      "revId": "1b435d929bf416a90fe06106ff1603b1b0cb4a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
