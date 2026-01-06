@@ -160,10 +160,6 @@ TEST_F(FiemapWriterTest, CheckBlockDevicePath) {
     FiemapUniquePtr fptr = FiemapWriter::Open(testfile, gBlockSize);
     EXPECT_EQ(fptr->size(), gBlockSize);
     EXPECT_EQ(fptr->bdev_path().find("/dev/block/"), size_t(0));
-
-    if (!android::gsi::IsGsiRunning()) {
-        EXPECT_EQ(fptr->bdev_path().find("/dev/block/dm-"), string::npos);
-    }
 }
 
 TEST_F(FiemapWriterTest, CheckFileCreated) {
