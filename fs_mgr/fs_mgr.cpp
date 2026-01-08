@@ -2122,20 +2122,24 @@ bool fs_mgr_swapon_all(const Fstab& fstab) {
             // on a system (all the memory comes from the same pool) so
             // we can assume the device number is 0.
             if (entry.max_comp_streams >= 0) {
+                std::string zram_conf_mcs = !entry.sysfs_path.empty() ? entry.sysfs_path +
+                        "/max_comp_streams" : ZRAM_CONF_MCS;
                 auto zram_mcs_fp = std::unique_ptr<FILE, decltype(&fclose)>{
-                        fopen(ZRAM_CONF_MCS, "re"), fclose};
+                        fopen(zram_conf_mcs.c_str(), "re"), fclose};
                 if (zram_mcs_fp == nullptr) {
-                    LERROR << "Unable to open zram conf comp device " << ZRAM_CONF_MCS;
+                    LERROR << "Unable to open zram conf comp device " << zram_conf_mcs;
                     ret = false;
                     continue;
                 }
                 fprintf(zram_mcs_fp.get(), "%d\n", entry.max_comp_streams);
             }
 
+            std::string zram_conf_dev = !entry.sysfs_path.empty() ? entry.sysfs_path +
+                    "/disksize" : ZRAM_CONF_DEV;
             auto zram_fp =
-                    std::unique_ptr<FILE, decltype(&fclose)>{fopen(ZRAM_CONF_DEV, "re+"), fclose};
+                    std::unique_ptr<FILE, decltype(&fclose)>{fopen(zram_conf_dev, "re+"), fclose};
             if (zram_fp == nullptr) {
-                LERROR << "Unable to open zram conf device " << ZRAM_CONF_DEV;
+                LERROR << "Unable to open zram conf device " << zram_conf_dev;
                 ret = false;
                 continue;
             }
