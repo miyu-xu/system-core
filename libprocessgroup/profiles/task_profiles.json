@@ -728,6 +728,14 @@
     {
       "Name": "OtaProfiles",
       "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "HighEnergySaving" ]
+    },
+    {
+      "Name": "CPUSET_LMKD_REAP_TARGET",
+      "Profiles": [ "CPUSET_SP_FOREGROUND" ]
+    },
+    {
+      "Name": "SCHED_LMKD_REAP_TARGET",
+      "Profiles": [ "SCHED_SP_FOREGROUND" ]
     }
   ]
 }
