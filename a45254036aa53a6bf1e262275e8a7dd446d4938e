@@ -22,6 +22,30 @@
       },
       "revId": "a45254036aa53a6bf1e262275e8a7dd446d4938e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7619d7b4_4d97f632",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 2044797
+      },
+      "writtenOn": "2026-01-12T21:33:07Z",
+      "side": 1,
+      "message": "Asking for clarifications on https://b.corp.google.com/issues/473744042",
+      "parentUuid": "fab0ca0d_38908b08",
+      "range": {
+        "startLine": 2117,
+        "startChar": 17,
+        "endLine": 2117,
+        "endChar": 41
+      },
+      "revId": "a45254036aa53a6bf1e262275e8a7dd446d4938e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
