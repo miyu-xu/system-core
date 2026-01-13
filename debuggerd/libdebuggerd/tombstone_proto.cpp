@@ -854,6 +854,7 @@ void engrave_tombstone_proto(Tombstone* tombstone, unwindstack::AndroidUnwinder*
 
   const ThreadInfo& target_thread = threads.at(target_tid);
   result.set_pid(target_thread.pid);
+  result.set_ppid(target_thread.ppid);
   result.set_tid(target_thread.tid);
   result.set_uid(target_thread.uid);
   result.set_selinux_label(target_thread.selinux_label);

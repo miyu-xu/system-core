@@ -109,8 +109,8 @@ static void print_thread_header(CallbackType callback, const Tombstone& tombston
   } else {
     CB(should_log, "Cmdline: <unknown>");
   }
-  CB(should_log, "pid: %d, tid: %d, name: %s  >>> %s <<<", tombstone.pid(), thread.id(),
-     thread.name().c_str(), process_name);
+  CB(should_log, "pid: %d, ppid: %d, tid: %d, name: %s  >>> %s <<<", tombstone.pid(),
+     tombstone.ppid(), thread.id(), thread.name().c_str(), process_name);
   CB(should_log, "uid: %d", tombstone.uid());
   if (thread.tagged_addr_ctrl() != -1) {
     CB(should_log, "tagged_addr_ctrl: %016" PRIx64 "%s", thread.tagged_addr_ctrl(),
