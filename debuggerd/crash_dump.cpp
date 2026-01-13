@@ -582,6 +582,15 @@ int main(int argc, char** argv) {
   if (getppid() != target_process) {
     LOG(FATAL) << "parent died";
   }
+
+  // Read the proc/<pid>/stat before we fork.
+  auto target_process_stat = Process::Stat::get_from_pid(target_process);
+  if (!target_process_stat) {
+    LOG(FATAL) << "failed to get stat for process " << target_process;
+  }
+
+  pid_t target_process_ppid = target_process_stat->ppid;
+
   atrace_end(ATRACE_TAG);
 
   // Reparent ourselves to init, so that the signal handler can waitpid on the
