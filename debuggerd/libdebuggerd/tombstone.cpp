@@ -56,6 +56,7 @@ void engrave_tombstone_ucontext(int tombstone_fd, int proto_fd, uint64_t abort_m
                                 siginfo_t* siginfo, ucontext_t* ucontext) {
   pid_t uid = getuid();
   pid_t pid = getpid();
+  pid_t ppid = getppid();
   pid_t target_tid = gettid();
 
   log_t log;
@@ -76,7 +77,7 @@ void engrave_tombstone_ucontext(int tombstone_fd, int proto_fd, uint64_t abort_m
   std::map<pid_t, ThreadInfo> threads;
   threads[target_tid] = ThreadInfo {
     .registers = std::move(regs), .uid = uid, .tid = target_tid,
-    .thread_name = std::move(thread_name), .pid = pid, .command_line = std::move(command_line),
+    .thread_name = std::move(thread_name), .pid = pid, .ppid = ppid, .command_line = std::move(command_line),
     .selinux_label = std::move(selinux_label), .siginfo = siginfo, .signo = siginfo->si_signo,
     // Only supported on aarch64 for now.
 #if defined(__aarch64__)
@@ -93,6 +94,7 @@ void engrave_tombstone_ucontext(int tombstone_fd, int proto_fd, uint64_t abort_m
             .uid = thread.uid,
             .tid = tid,
             .pid = thread.pid,
+            .ppid = thread.ppid,
             .command_line = thread.command_line,
             .thread_name = get_thread_name(tid),
             .tagged_addr_ctrl = thread.tagged_addr_ctrl,
