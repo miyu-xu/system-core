@@ -33,6 +33,7 @@ struct ThreadInfo {
   std::string thread_name;
 
   pid_t pid;
+  pid_t ppid;
 
   std::vector<std::string> command_line;
   std::string selinux_label;
