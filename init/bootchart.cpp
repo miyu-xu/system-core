@@ -103,6 +103,41 @@ static void log_file(FILE* log, const char* procfile) {
   }
 }
 
+static std::string cmdlineToString(const std::string& cmdline) {
+  std::string result;
+  result.reserve(cmdline.size());
+
+  for (char c : cmdline) {
+    if (c == '\0') {
+      result.push_back(' ');
+    } else {
+      result.push_back(c);
+    }
+  }
+
+  // Remove all trailing spaces (cmdline may end with multiple \0)
+  while (!result.empty() && result.back() == ' ') {
+    result.pop_back();
+  }
+
+  // Truncate path: if result starts with '/', find the last '/' and keep only what comes after
+  if (!result.empty() && result[0] == '/') {
+    size_t last_slash = result.find_last_of('/');
+    if (last_slash != std::string::npos && last_slash < result.size() - 1) {
+      size_t space_pos = result.find(' ', last_slash);
+      if (space_pos != std::string::npos) {
+        // Keep executable name (after last /) and all arguments
+        result = result.substr(last_slash + 1);
+      } else {
+        // No arguments, just keep the executable name
+        result = result.substr(last_slash + 1);
+      }
+    }
+  }
+
+  return result;
+}
+
 static void log_processes(FILE* log) {
   log_uptime(log);
 
@@ -117,12 +152,17 @@ static void log_processes(FILE* log) {
     // name from /proc/<pid>/cmdline.
     std::string cmdline;
     android::base::ReadFileToString(StringPrintf("/proc/%d/cmdline", pid), &cmdline);
-    const char* full_name = cmdline.c_str(); // So we stop at the first NUL.
+
+    // Capture the full cmdline (all argv)
+    std::string full_name;
+    if (!cmdline.empty()) {
+      full_name = cmdlineToString(cmdline);
+    }
 
     // Read process stat line.
     std::string stat;
     if (android::base::ReadFileToString(StringPrintf("/proc/%d/stat", pid), &stat)) {
-      if (!cmdline.empty()) {
+      if (!full_name.empty()) {
         // Substitute the process name with its real name.
         size_t open = stat.find('(');
         size_t close = stat.find_last_of(')');
