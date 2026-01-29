@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb47e20_35bc91f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-01-29T12:58:45Z",
+      "side": 1,
+      "message": "Thanks for the contribution, Trieu. By the way, as commented below, the routine doesn\u0027t handle quite a few cases. Please fix them, and add tests. And consider moving that function (pid to human-readable process name) to `system/libprocinfo`. (not sure what @enh@google.com would think though)",
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66f185d_705493e0",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-01-29T12:58:45Z",
+      "side": 1,
+      "message": "this could give us a wrong truncation. ex: `/bin/ls /home/user` would give `user`.\n\nin addition this doesn\u0027t handle cases like `./foo`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 47,
+        "endLine": 123,
+        "endChar": 95
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1499c0d_9ef7b202",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-01-29T12:58:45Z",
+      "side": 1,
+      "message": "this is always true, due to `result[0] \u003d\u003d \u0027/\u0027` check above.",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6be7e0f_dc403c95",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-01-29T12:58:45Z",
+      "side": 1,
+      "message": "statements are the same for the two branches.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
