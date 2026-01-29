@@ -37,6 +37,7 @@
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 
 using android::base::StringPrintf;
 using android::base::boot_clock;
@@ -115,19 +116,48 @@ static void log_processes(FILE* log) {
 
     // /proc/<pid>/stat only has truncated task names, so get the full
     // name from /proc/<pid>/cmdline.
-    std::string cmdline;
-    android::base::ReadFileToString(StringPrintf("/proc/%d/cmdline", pid), &cmdline);
-    const char* full_name = cmdline.c_str(); // So we stop at the first NUL.
+    std::string cmdline_path = StringPrintf("/proc/%d/cmdline", pid);
+    std::string process_cmdline;
+    if (android::base::ReadFileToString(cmdline_path, &process_cmdline)) {
+      // Remove trailing null chars
+      while (!process_cmdline.empty() && process_cmdline.back() == '\0') {
+        process_cmdline.pop_back();
+      }
+      // Replace remaining null chars with spaces
+      std::replace(process_cmdline.begin(), process_cmdline.end(), '\0', ' ');
+      process_cmdline = android::base::Trim(process_cmdline);
+
+      // Trim the executable path, should keep only the basename
+      if (!process_cmdline.empty()) {
+        size_t first_space = process_cmdline.find(' ');
+        std::string executable;
+        std::string args;
+
+        if (first_space != std::string::npos) {
+          executable = process_cmdline.substr(0, first_space);
+          args = process_cmdline.substr(first_space);
+        } else {
+          executable = process_cmdline;
+        }
+        size_t last_slash = executable.find_last_of('/');
+        if (last_slash != std::string::npos && last_slash < executable.size() - 1) {
+          executable = executable.substr(last_slash + 1);
+        }
+        process_cmdline = executable + args;
+      }
+    } else {
+      process_cmdline = "unknown process";
+    }
 
     // Read process stat line.
     std::string stat;
     if (android::base::ReadFileToString(StringPrintf("/proc/%d/stat", pid), &stat)) {
-      if (!cmdline.empty()) {
+      if (!process_cmdline.empty()) {
         // Substitute the process name with its real name.
         size_t open = stat.find('(');
         size_t close = stat.find_last_of(')');
         if (open != std::string::npos && close != std::string::npos) {
-          stat.replace(open + 1, close - open - 1, full_name);
+          stat.replace(open + 1, close - open - 1, process_cmdline);
         }
       }
       fputs(stat.c_str(), log);
