@@ -85,6 +85,23 @@
       },
       "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a9fcc7_367bfced",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-01-29T16:15:25Z",
+      "side": 1,
+      "message": "a better version of this code is already in init:\n```\n    std::string cmdline_path \u003d StringPrintf(\"proc/%d/cmdline\", from_pid);\n    std::string process_cmdline;\n    if (ReadFileToString(cmdline_path, \u0026process_cmdline)) {\n        std::replace(process_cmdline.begin(), process_cmdline.end(), \u0027\\0\u0027, \u0027 \u0027);\n        process_cmdline \u003d Trim(process_cmdline);\n    } else {\n        process_cmdline \u003d \"unknown process\";\n    }\n```\nfactor that out and reuse it.",
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
