@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bdd308e_59904411",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T19:24:11Z",
+      "side": 1,
+      "message": "Include source and target SELinux contexts in the error message to improve\ndebuggability when permission checks fail.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 68
+      },
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
