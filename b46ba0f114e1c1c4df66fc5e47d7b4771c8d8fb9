@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bb7d9b_4be4afc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Thanks for the review and the suggestions.\n\nI\u0027ve fixed them as Mr. @enh@google.com suggested.\n\nI agree that moving this logic to system/libprocinfo would improve reusability and testability. For now, I intend to keep the change local to bootchart to limit the scope, but I’m happy to follow up if that’s preferred.\n\nPlease help review again by the way.",
+      "parentUuid": "1eb47e20_35bc91f8",
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66f185d_705493e0",
@@ -31,6 +49,30 @@
       "writtenOn": "2026-01-29T12:58:45Z",
       "side": 1,
       "message": "this could give us a wrong truncation. ex: `/bin/ls /home/user` would give `user`.\n\nin addition this doesn\u0027t handle cases like `./foo`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 47,
+        "endLine": 123,
+        "endChar": 95
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a27e7c_fc1041cb",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Acknowledged. Remove since logic is changed.",
+      "parentUuid": "c66f185d_705493e0",
       "range": {
         "startLine": 123,
         "startChar": 47,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c628f271_c683e78e",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Acknowledged. Remove since logic is changed.",
+      "parentUuid": "a1499c0d_9ef7b202",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6be7e0f_dc403c95",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f532ba_829c0909",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Acknowledged. Remove since logic is changed.",
+      "parentUuid": "b6be7e0f_dc403c95",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a9fcc7_367bfced",
@@ -100,6 +190,24 @@
       "writtenOn": "2026-01-29T16:15:25Z",
       "side": 1,
       "message": "a better version of this code is already in init:\n```\n    std::string cmdline_path \u003d StringPrintf(\"proc/%d/cmdline\", from_pid);\n    std::string process_cmdline;\n    if (ReadFileToString(cmdline_path, \u0026process_cmdline)) {\n        std::replace(process_cmdline.begin(), process_cmdline.end(), \u0027\\0\u0027, \u0027 \u0027);\n        process_cmdline \u003d Trim(process_cmdline);\n    } else {\n        process_cmdline \u003d \"unknown process\";\n    }\n```\nfactor that out and reuse it.",
+      "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc367f6_3e8ab0dd",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Acknowledged.\nI reuse this logic and adding as 2 points below. Please help review.",
+      "parentUuid": "33a9fcc7_367bfced",
       "revId": "b46ba0f114e1c1c4df66fc5e47d7b4771c8d8fb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5dfc9c4_0d8de803",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "to use StringPrintf",
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb49e4b_a7b20265",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "We should removes all trailing \u0027\\0\u0027 characters before replacing them with spaces.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7793a125_4fb9e2b5",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Use the same part in init::HandlControlMessage.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 61
+      },
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5968e1_03eeef5e",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "We should keep only the excutable name and remove the path of it. I tested multiple corner cases, for instances:\n- Full path with arguments: \"/system/bin/ls /home/user -rlt\" → \"ls /home/user -rlt\"\n- Relative path: \"./test --arg1\" → \"test --arg1\"\n- Deeply nested binary: \"/vendor/bin/hw/android.hardware.audio@2.0-service\" → \"android.hardware.audio@2.0-service\"\n- Kernel threads / Empty cmdline: cmdline is empty → keep as stat file, eg: \"kworker/3:0-events\"\n- Null-terminated argv: \"/system/bin/top\\0--arg1\\0--arg2\\0\\0\\0\\0\" → \"top --arg1 --arg2\"\n- Root directory executable: \"/init\" → \"init\"\n- Leading/Trailing whitespace: \" /system/bin/app \" → \"app\"\n- No arguments: \"/system/bin/sh\" → \"sh\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 7
+      },
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663eb776_8acb47b6",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-30T20:12:02Z",
+      "side": 1,
+      "message": "Use the same part in init::HandlControlMessage.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
