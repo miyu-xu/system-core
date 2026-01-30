@@ -108,22 +108,25 @@ static void log_processes(FILE* log) {
 
   std::unique_ptr<DIR, int(*)(DIR*)> dir(opendir("/proc"), closedir);
   struct dirent* entry;
+
   while ((entry = readdir(dir.get())) != NULL) {
-    // Only match numeric values.
     int pid = atoi(entry->d_name);
     if (pid == 0) continue;
 
-    // /proc/<pid>/stat only has truncated task names, so get the full
-    // name from /proc/<pid>/cmdline.
     std::string cmdline;
-    android::base::ReadFileToString(StringPrintf("/proc/%d/cmdline", pid), &cmdline);
-    const char* full_name = cmdline.c_str(); // So we stop at the first NUL.
+    android::base::ReadFileToString(
+        StringPrintf("/proc/%d/cmdline", pid), &cmdline);
 
-    // Read process stat line.
+    std::string full_name;
+    if (!cmdline.empty()) {
+      full_name = CmdlineToString(cmdline);
+    }
+
     std::string stat;
-    if (android::base::ReadFileToString(StringPrintf("/proc/%d/stat", pid), &stat)) {
-      if (!cmdline.empty()) {
-        // Substitute the process name with its real name.
+    if (android::base::ReadFileToString(
+            StringPrintf("/proc/%d/stat", pid), &stat)) {
+
+      if (!full_name.empty()) {
         size_t open = stat.find('(');
         size_t close = stat.find_last_of(')');
         if (open != std::string::npos && close != std::string::npos) {
