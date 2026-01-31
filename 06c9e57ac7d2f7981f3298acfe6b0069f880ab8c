@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0748e96_4b264747",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-01-31T13:29:43Z",
+      "side": 1,
+      "message": "Fyi... In my scenario, it was called at init second stage from this function: load_properties_from_file(\"/vendor/build.prop\", nullptr, \u0026properties)\n\nAdditionally, after this log was printed,for instance:\ninit: Do not have permissions to set \u0027ro.com.google.gmsversion\u0027\nto \u0027N_preview\u0027: SELinux permission check failed\n\nThere were no further related denial logs printed, so it\u0027s hard to debug that such violation.",
+      "parentUuid": "c62f341f_ce8e3274",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9bdd308e_59904411",
