@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "744a6c19_93981c14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-01-31T13:45:31Z",
+      "side": 1,
+      "message": "the selinux check failure implies that libselinux was initialized. then you must have seen the selinux denial message.\n\nif this means a bug that selinux denials in the init process are not printed by libselinux, we need to fix that instead.\n\ncc: @inseob@google.com",
+      "parentUuid": "d0748e96_4b264747",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9bdd308e_59904411",
