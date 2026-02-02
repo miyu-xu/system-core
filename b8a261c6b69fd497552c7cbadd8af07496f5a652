@@ -18,6 +18,40 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d48b8a4_f78d6193",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-02-02T22:25:53Z",
+      "side": 1,
+      "message": "don\u0027t add this new local: it\u0027s still only used on one line.",
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfb90cb_e6e96cdc",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-02-02T22:25:53Z",
+      "side": 1,
+      "message": "don\u0027t rename this: it just makes the diff larger and more confusing.",
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ffb49e4b_a7b20265",
@@ -54,6 +88,30 @@
       "writtenOn": "2026-01-30T20:12:02Z",
       "side": 1,
       "message": "Use the same part in init::HandlControlMessage.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 61
+      },
+      "revId": "b8a261c6b69fd497552c7cbadd8af07496f5a652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b827d40_8e235d4f",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-02-02T22:25:53Z",
+      "side": 1,
+      "message": "like i said, refactor so you can reuse the same code. don\u0027t just duplicate it.",
+      "parentUuid": "7793a125_4fb9e2b5",
       "range": {
         "startLine": 127,
         "startChar": 0,
