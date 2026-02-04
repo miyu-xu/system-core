@@ -211,6 +211,10 @@ static const char* get_disable_linear_lookup_option(void) {
     return nullptr;
 }
 
+static bool should_set_no_kernel_check() {
+    return android::base::GetBoolProperty("ro.fsck_no_kernel_check", false);
+}
+
 static void check_fs(const std::string& blk_device, const std::string& fs_type,
                      const std::string& target, int* fs_stat) {
     int status;
@@ -319,24 +323,20 @@ static void check_fs(const std::string& blk_device, const std::string& fs_type,
         } else {
             const char* linear_lookup_option = get_disable_linear_lookup_option();
             const char* force = should_force_check(*fs_stat) ? "-f" : "-a";
+            std::vector<const char*> f2fs_fsck_argv = {F2FS_FSCK_BIN, force, "-c", "10000",
+                                                       "--debug-cache"};
 
             if (linear_lookup_option) {
-                const char* f2fs_fsck_argv[] = {
-                        F2FS_FSCK_BIN,     force,           "-c",
-                        "10000",           "--debug-cache", linear_lookup_option,
-                        blk_device.c_str()};
-                LINFO << "Running " << F2FS_FSCK_BIN << " " << force << " -c 10000 --debug-cache "
-                      << linear_lookup_option << " " << realpath(blk_device);
-                ret = logwrap_fork_execvp(ARRAY_SIZE(f2fs_fsck_argv), f2fs_fsck_argv, &status,
-                                          false, LOG_KLOG | LOG_FILE, false, FSCK_LOG_FILE);
-            } else {
-                const char* f2fs_fsck_argv[] = {F2FS_FSCK_BIN, force,           "-c",
-                                                "10000",       "--debug-cache", blk_device.c_str()};
-                LINFO << "Running " << F2FS_FSCK_BIN << " " << force << " -c 10000 --debug-cache "
-                      << realpath(blk_device);
-                ret = logwrap_fork_execvp(ARRAY_SIZE(f2fs_fsck_argv), f2fs_fsck_argv, &status,
-                                          false, LOG_KLOG | LOG_FILE, false, FSCK_LOG_FILE);
+                f2fs_fsck_argv.push_back(linear_lookup_option);
             }
+            if (should_set_no_kernel_check()) {
+                // disable periodic full scans on kernel version changes
+                f2fs_fsck_argv.push_back("--no-kernel-check");
+            }
+            f2fs_fsck_argv.push_back(blk_device.c_str());
+            LINFO << "Running " << android::base::Join(f2fs_fsck_argv, " ");
+            ret = logwrap_fork_execvp(f2fs_fsck_argv.size(), f2fs_fsck_argv.data(), &status, false,
+                                      LOG_KLOG | LOG_FILE, false, FSCK_LOG_FILE);
             if (ret < 0) {
                 /* No need to check for error in fork, we can't really handle it now */
                 LERROR << "Failed trying to run " << F2FS_FSCK_BIN;
