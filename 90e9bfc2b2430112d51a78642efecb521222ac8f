@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e47f56c_a1911dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2026-02-05T21:34:23Z",
+      "side": 1,
+      "message": "It\u0027s worth noting that `fsck.f2fs` monthly full scans are still gated on `!c.no_kernel_check` (see [this patch](https://android.googlesource.com/platform/external/f2fs-tools/+/9ee091e8%5E%21/)), given that they\u0027re currently triggered only if the kernel version hasn\u0027t changed.\n\nArguably the two are only loosely related, so if periodic scans get decoupled from kernel version checks in `f2fs-tools` in the future, we may need to adjust the logic here in `fs_mgr.cpp`.",
+      "revId": "90e9bfc2b2430112d51a78642efecb521222ac8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
