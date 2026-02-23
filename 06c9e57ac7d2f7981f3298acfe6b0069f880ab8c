@@ -74,6 +74,47 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7337d0a_6ce4d35e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-02-23T12:59:31Z",
+      "side": 1,
+      "message": "Ack. I am fine with this change. I left a comment though. PTAL.",
+      "parentUuid": "60c4010b_794d6f9a",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9209eac_d59b1f2d",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-02-23T12:59:31Z",
+      "side": 1,
+      "message": "you would want to print the name of the property here. printing property context here is a loss of information because multiple properties can be in the same property context.",
+      "range": {
+        "startLine": 529,
+        "startChar": 37,
+        "endLine": 529,
+        "endChar": 54
+      },
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9bdd308e_59904411",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
