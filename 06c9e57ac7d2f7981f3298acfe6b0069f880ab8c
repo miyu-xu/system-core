@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c4010b_794d6f9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-02-23T12:20:04Z",
+      "side": 1,
+      "message": "Dear Mr. Jiyong,\n\nI have checked the dmesg again and confirmed that only a few avc denials are captured during booting, for instance:\n[ 12.717204][ T65] audit: type\u003d1107 ... scontext\u003du:r:vendor_init:s0 tcontext\u003du:object_r:bluetooth_prop:s0 tclass\u003dproperty_service\n\nWhile many others are indeed being dropped by the kernel\u0027s ratelimiting mechanism:\n[ 11.282349][ T65] kauditd_printk_skb: 86 callbacks suppressed\n\nSince libselinux functions correctly but its output is silenced by the kernel during the high-traffic boot phase, adding the source and target contexts directly to the init error log avoids the need for developers to manually modify kernel boot parameters (like printk.ratelimit\u003d0) just to identify a property permission failure.\n\nCould you please reconsider if this enhancement is feasible for improving the debuggability? If not, I will abandon this patch and seek a local workaround.\n\nRegards,",
+      "parentUuid": "744a6c19_93981c14",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9bdd308e_59904411",
