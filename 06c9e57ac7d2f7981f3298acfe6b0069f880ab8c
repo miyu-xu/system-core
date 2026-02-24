@@ -115,6 +115,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "35420895_fff9c043",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-02-24T02:28:44Z",
+      "side": 1,
+      "message": "Dear Mr.Jiyong,\n\nActually, the property name is already printed by the caller at the line #809.\n\nThis change simply appends the SELinux contexts to the existing error message for better visibility. For example (applied on my device):\n- As-is:\n[   13.696663][    T1] init: Do not have permissions to set \u0027ro.com.google.gmsversion\u0027 to \u0027N_preview\u0027 in property file \u0027/vendor/build.prop\u0027: SELinux permission check failed\n- To-be:\n[   12.681786][    T1] init: Do not have permissions to set \u0027ro.com.google.gmsversion\u0027 to \u0027N_preview\u0027 in property file \u0027/vendor/build.prop\u0027: SELinux permission check failed (source_context\u003du:r:vendor_init:s0, target_context\u003du:object_r:default_prop:s0)",
+      "parentUuid": "d9209eac_d59b1f2d",
+      "range": {
+        "startLine": 529,
+        "startChar": 37,
+        "endLine": 529,
+        "endChar": 54
+      },
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9bdd308e_59904411",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
@@ -132,6 +156,23 @@
         "endLine": 530,
         "endChar": 68
       },
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e654cc_a20c5cff",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-02-24T02:28:44Z",
+      "side": 1,
+      "message": "The property name is already printed by the caller at this line.",
       "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
