@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8932d8d_2cc91de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-02-24T10:29:32Z",
+      "side": 1,
+      "message": "Dear Mr.Inseob,\n\nFYI...\n- Since these denials occur during boot, then setting rate by auditctl is not applied when rebooting.\n- When loading property files from /vendor* or /odm*, the process operates under the restricted vendor_init context as line #729 rather than the full init context. This is where the SELinux denials specifically occur.",
+      "parentUuid": "a10c8975_dde32567",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9209eac_d59b1f2d",
@@ -172,6 +190,29 @@
         "startChar": 0,
         "endLine": 530,
         "endChar": 68
+      },
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d01dfa_27e0d855",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 4467802
+      },
+      "writtenOn": "2026-02-24T10:29:32Z",
+      "side": 1,
+      "message": "the context is set to u:r:vendor_init:s0 here when loading property file in kVendorPathPrefixes",
+      "range": {
+        "startLine": 725,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 5
       },
       "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
