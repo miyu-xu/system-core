@@ -92,6 +92,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a10c8975_dde32567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2026-02-24T04:18:10Z",
+      "side": 1,
+      "message": "Can you elaborate on your use case please?\n\n* We can manually increase rate limit with `auditctl`.\n* You mentioned `init` and `property_service` but actually `init` can set any properties.",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9209eac_d59b1f2d",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
