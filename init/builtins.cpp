@@ -1001,11 +1001,11 @@ static Result<void> do_chown(const BuiltinArguments& args) {
     return {};
 }
 
-static mode_t get_mode(const char *s) {
+static mode_t get_mode(const char* s) {
     mode_t mode = 0;
     while (*s) {
         if (*s >= '0' && *s <= '7') {
-            mode = (mode<<3) | (*s-'0');
+            mode = (mode << 3) | (*s - '0');
         } else {
             return -1;
         }
