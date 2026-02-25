@@ -160,6 +160,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "723a9e67_1f0ff2e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-02-25T03:54:15Z",
+      "side": 1,
+      "message": "Note. This is merged in git_main.",
+      "revId": "06c9e57ac7d2f7981f3298acfe6b0069f880ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9209eac_d59b1f2d",
