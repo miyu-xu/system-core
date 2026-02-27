@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391d2757_df80d2ca",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2026-02-27T17:30:39Z",
+      "side": 1,
+      "message": "While I don\u0027t want to discount the time difference, I have several concerns with moving this here. What is the primary benefit of having netd available earlier?\n\nSome of my concerns with this:\n\n1. Use of aconfig flags will break since this is prior to aconfig setup.\n2. Potential issues with selinux since this is prior to the recursive restorecon\n3. Other dependencies issues?",
+      "revId": "b392309c1796b940fea66009ef33aeb2af72c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
