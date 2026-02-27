@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88fbacc_ef8f109b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-02-27T12:26:27Z",
+      "side": 1,
+      "message": "Note that we are moving away from using loop device for APEXes. APEXes will be activated by directly mounting from *.apex files, bypassing the need for loop devices.\n\nSo, I don\u0027t think we want to do this optimization for 16-qpr2 and later releases.\n\ncc: @jooyung@google.com",
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0dd0dc83_60af1c76",
