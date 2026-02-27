@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "967c0a74_93b7bdfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-02-27T16:39:20Z",
+      "side": 1,
+      "message": "Acknowledged. Thank you for the clarification. \nHowever, since our current project is based on Android 14 (specifically the android-automotiveos-14.0.0_lts5 tag) from our vendor chipset, we are still considering a backport of this optimization to improve performance on our current platform.\nIf it is allowed, could you advise on the best branch to target for this? We noticed android14-qpr1-automotiveos-release on Google Source, but we want to ensure we align with the proper maintenance path for Automotive A14. Should we target that branch, or is there a specific A14 main release branch you recommend?\n\nRegards,",
+      "parentUuid": "b88fbacc_ef8f109b",
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0dd0dc83_60af1c76",
         "filename": "init/block_dev_initializer.cpp",
         "patchSetId": 2
