@@ -44,6 +44,7 @@
 #include <libgsi/libgsi.h>
 #include <liblp/liblp.h>
 #include <libsnapshot/snapshot.h>
+#include <libdm/loop_control.h>
 
 #include "block_dev_initializer.h"
 #include "devices.h"
@@ -90,6 +91,8 @@ class FirstStageMountVBootV2 : public FirstStageMount {
     bool DoFirstStageMount() override;
 
   private:
+    // Initialize extra devices required during second stage init.
+    void InitExtraDevices();
     bool InitDevices();
     bool InitRequiredDevices(std::set<std::string> devices);
     bool CreateLogicalPartitions();
@@ -279,6 +282,45 @@ static bool IsMicrodroidStrictBoot() {
     return access("/proc/device-tree/chosen/avf,strict-boot", F_OK) == 0;
 }
 
+void FirstStageMountVBootV2::InitExtraDevices() {
+    // Pre-create a bunch of loop devices to accelerate apexd later. This effectively overrides
+    // CONFIG_BLK_DEV_LOOP_MIN_COUNT. 128 loop devices should be enough for now because most
+    // devices have < 100 apexes.
+    constexpr int kMaxLoopDevices = 128;
+    // Fire off a thread to pre-create the loop devices to avoid blocking the init.
+    std::thread([]() {
+        Timer loop_timer;
+        dm::LoopControl loop_control;
+        BlockDevInitializer block_dev_init;
+        int created_count = 0;
+        for (int i = 0; i < kMaxLoopDevices; i++) {
+            // Check if loop device already exists in kernel (created by CONFIG_BLK_DEV_LOOP_MIN_COUNT
+            // or BOARD_KERNEL_CMDLINE with loop.max_loop)
+            // physical path
+            std::string phys_path = StringPrintf("/sys/devices/virtual/block/loop%d", i);
+            // logical path
+            std::string log_path = StringPrintf("/sys/block/loop%d", i);
+
+            bool kernel_device_exists = (access(phys_path.c_str(), F_OK) == 0) ||
+                                        (access(log_path.c_str(), F_OK) == 0);
+            if (!kernel_device_exists) {
+                if (!loop_control.Add(i)) {
+                    PLOG(ERROR) << "InitExtraDevices: Failed to create loop device " << i << " in kernel";
+                    continue;
+                }
+            }
+            // Create device node via uevent instead of mknod for proper SELinux context
+            if (block_dev_init.InitLoopDevice(i)) {
+                created_count++;
+            } else {
+                PLOG(ERROR) << "InitExtraDevices: Failed to create /dev/block/loop" << i << " via uevent";
+            }
+        }
+        LOG(INFO) << "InitExtraDevices: Created " << created_count << "/"
+                  << kMaxLoopDevices << " loop devices in " << loop_timer;
+    }).detach();
+}
+
 bool FirstStageMountVBootV2::InitDevices() {
     if (!block_dev_init_.InitBootDevicesFromPartUuid()) {
         return false;
@@ -312,6 +354,7 @@ bool FirstStageMountVBootV2::InitDevices() {
 
     if constexpr (com::android::apex::flags::mount_before_data()) {
         block_dev_init_.InitLoopDevices();
+        InitExtraDevices();
     }
 
     return true;
