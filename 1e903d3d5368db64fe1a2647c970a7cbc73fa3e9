@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd0dc83_60af1c76",
+        "filename": "init/block_dev_initializer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-02-27T10:50:20Z",
+      "side": 1,
+      "message": "Add new function of ueventd creating /dev/loop[id] nodes.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac46c66_ac12dd53",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-02-27T10:50:20Z",
+      "side": 1,
+      "message": "loop-control.Add(id) only create loop device in /sys, not indeed create a node in /dev",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 13
+      },
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67199cb8_064620de",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-02-27T10:50:20Z",
+      "side": 1,
+      "message": "This trigger uevent listener to create the /dev/loop[...] nodes",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 13
+      },
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2941e1f6_9668b115",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-02-27T10:50:20Z",
+      "side": 1,
+      "message": "after loop-control is created, we can pre-create /dev/loop[id] nodes before ueventd doing its coldboot, so the nodes can be available earlier for apexd-bootstrap mounting packages.",
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
