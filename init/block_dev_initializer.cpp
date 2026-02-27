@@ -84,6 +84,31 @@ void BlockDevInitializer::InitLoopDevices() {
     (void)InitMiscDevice("loop-control");
 }
 
+bool BlockDevInitializer::InitLoopDevice(int loop_number) {
+    const std::string loop_path = "/devices/virtual/block/loop" + std::to_string(loop_number);
+    bool found = false;
+    auto loop_callback = [this, &loop_path, &found](const Uevent& uevent) {
+        if (uevent.path == loop_path) {
+            device_handler_->HandleUevent(uevent);
+            found = true;
+            return ListenerAction::kStop;
+        }
+        return ListenerAction::kContinue;
+    };
+    uevent_listener_.RegenerateUeventsForPath("/sys" + loop_path, loop_callback);
+    if (!found) {
+        LOG(INFO) << "loop" << loop_number << " device not found in /sys, waiting for its uevent";
+        Timer t;
+        uevent_listener_.Poll(loop_callback, 10s);
+        LOG(INFO) << "Wait for loop" << loop_number << " returned after " << t;
+    }
+    if (!found) {
+        LOG(ERROR) << "loop" << loop_number << " device not found after polling timeout";
+        return false;
+    }
+    return true;
+}
+
 bool BlockDevInitializer::InitDeviceMapper() {
     return InitMiscDevice("device-mapper");
 }

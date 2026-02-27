@@ -37,6 +37,7 @@ class BlockDevInitializer final {
     bool InitPlatformDevice(const std::string& device);
     bool InitHvcDevice(const std::string& device);
     void InitLoopDevices();
+    bool InitLoopDevice(int loop_number);
     bool InitUblkMiscDevices(const std::string& name);
 
   private:
