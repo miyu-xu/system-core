@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e62655e6_4c74d334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-02-28T00:56:14Z",
+      "side": 1,
+      "message": "Android 14 is very old. In general, we maintain such old branches only for bug fixes and security fixes. This change certainly isn\u0027t.\n\nI don\u0027t know the detailed logistics around AAOS though. Perhaps in the context of AAOS Android 14 may still be in-development? I don\u0027t know. \n\nI think the best approach for you is to reach out to the AAOS team via your Google TAM.",
+      "parentUuid": "967c0a74_93b7bdfc",
+      "revId": "1e903d3d5368db64fe1a2647c970a7cbc73fa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0dd0dc83_60af1c76",
         "filename": "init/block_dev_initializer.cpp",
         "patchSetId": 2
