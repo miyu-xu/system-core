@@ -16,6 +16,24 @@
       "message": "While I don\u0027t want to discount the time difference, I have several concerns with moving this here. What is the primary benefit of having netd available earlier?\n\nSome of my concerns with this:\n\n1. Use of aconfig flags will break since this is prior to aconfig setup.\n2. Potential issues with selinux since this is prior to the recursive restorecon\n3. Other dependencies issues?",
       "revId": "b392309c1796b940fea66009ef33aeb2af72c627",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8921d570_64cf268e",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-02T13:13:17Z",
+      "side": 1,
+      "message": "Dear Mr. Neil Kapron,\n\nThank you for the thorough review and raising these important concerns. I appreciate it.\n\nRegarding your questions:\n\nPrimary benefit of having netd available earlier:\n\nOn the SA6155/SA8155 platforms, we have network-dependent services (Ethernet configuration, VLAN setup, and vehicle network services) when the device is in factory/garage, that must be operational early in the boot sequence to meet OEM requirements during factory or garage modes. Given that, they require, for instance, netd to be available to set up their network rules and interfaces. Currently, these services either:\n\n- Fail their initial network setup and must retry, adding latency\n- Use workarounds that delay their full initialization since we can init is block ing of handling numerous stuff at post-fs-data in init.rc and we cannot easily modify this behavior on the vendor side.\n\nBy making netd available earlier, we could eliminate these retry cycles and allow network-critical services to complete their initialization without delays. This is particularly important for automotive use cases where fast boot times and reliable network setup (for diagnostics, connectivity, and vehicle functions) are critical requirements.\n\nRegarding your corncerns:\n\n1. ACKed. I\u0027ve checked and our current platform (based on an earlier Android version) does not contain aconfig-related code, so this is not affecting our testing. However, I understand your concern for upstream and later compatibility.\nTo address this properly for the mainline codebase and ensure the change is safe for all platforms. We could consider to move the bpfloader/netd startup to after aconfig services initialization (after mainline_aconfigd_socket_service at line #1045). This ensures that even if bpfloader or netd add aconfig flag dependencies in the future, the ordering will be correct.\n\n2. SELinux restorecon:\nI\u0027ve reviewed the init.rc sequence and confirmed that after apexd activation, the only restorecon operation is on /data partition. Since bpfloader operates on /sys/fs/bpf and netd primarily works with network interfaces and iptables (not touching /data during initialization), this restorecon does not affect them. The required SELinux contexts for bpfloader and netd are established earlier in the boot sequence, so moving their startup to this location should not cause SELinux issues. I\u0027ve also tested with and confirmed no new denials. However, please let me know if there are specific edge cases I should re-examine.\n\n3. Other dependencies:\nI\u0027ve checked all initialization steps between apexd activation and the original load-bpf-programs trigger to ensure no hidden dependencies are broken by this change.\nThe services\u0027s initialization sequence through \npost-fs-data -\u003e load-bpf-programs -\u003e bpf-progs-loaded,\nremains unaffected.\n\nCould you please reconsider this proposal? If you agree with the adjustments regarding aconfig ordering, I would like to push a new patchset to address your aforementioned concern. However, if this approach is still not feasible for the mainline, I will look for alternative workarounds and may have to abandon this change.\n\nRegards,",
+      "parentUuid": "391d2757_df80d2ca",
+      "revId": "b392309c1796b940fea66009ef33aeb2af72c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
