@@ -34,6 +34,24 @@
       "parentUuid": "391d2757_df80d2ca",
       "revId": "b392309c1796b940fea66009ef33aeb2af72c627",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e53fe34_7efcfa06",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2026-03-02T16:42:22Z",
+      "side": 1,
+      "message": "Acknowledge the use case... I wasn\u0027t considering AAOS at the time. Thanks for the thorough explaination. \n\n1. The current internal version of bpfloader-rs does rely on aconfig, so please proceed with updating to move after aconfig service init.\n\n2. Ack, perhaps @jeffv@google.com could comment with any further concerns\n\n3. Ack, will need @maze@google.com to sign off on this move.",
+      "parentUuid": "8921d570_64cf268e",
+      "revId": "b392309c1796b940fea66009ef33aeb2af72c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
