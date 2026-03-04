@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79afefc3_6d6dabab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2026-03-04T19:24:30Z",
+      "side": 1,
+      "message": "This definitely doesn\u0027t apply cleanly (at all) at tip of tree / A17, because of lots of refactoring that has happened since then.\n\nI\u0027m also unsure how to judge whether all the prerequisities are actually met at this point in the boot process.  Particularly worried about \u0027apexd-snapshotde\u0027 and \u0027verity_update_state\u0027 - what that means for rollbacks working, which is critical.\n\nTethering apex (which ships portions of the bpfloader \u0026 netd) also depends on sdkext, which appears to be handled/parsed by derive_sdk.  Running before that seems dangerous (even if it likely currently works) from a long term maintainability perspective.\n\nNot sure who at G knows the boot process well enough to even be able to answer such questions.",
+      "revId": "a5f81bf77a820d78c2fa9222294fc8b6435bfd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd3aead4_be8dd1c5",
@@ -14,6 +31,29 @@
       "writtenOn": "2026-03-04T18:32:50Z",
       "side": 1,
       "message": "I would add a line here referencing the need for aconfig",
+      "revId": "a5f81bf77a820d78c2fa9222294fc8b6435bfd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ee16b0_67c01eb4",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2026-03-04T19:24:30Z",
+      "side": 1,
+      "message": "definitely needs to be after 1045 write",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 14
+      },
       "revId": "a5f81bf77a820d78c2fa9222294fc8b6435bfd8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
