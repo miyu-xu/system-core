@@ -30,6 +30,8 @@
 #include <condition_variable>
 #include <memory>
 #include <mutex>
+#include <optional>
+#include <string_view>
 #include <thread>
 
 #include <android-base/chrono_utils.h>
@@ -40,16 +42,34 @@
 
 using android::base::StringPrintf;
 using android::base::boot_clock;
+using android::base::GetBoolProperty;
+using android::base::ReadFileToString;
 using namespace std::chrono_literals;
 
 namespace android {
 namespace init {
 
-static std::thread* g_bootcharting_thread;
+static std::optional<std::thread> g_bootcharting_thread;
 
 [[clang::no_destroy]] static std::mutex g_bootcharting_finished_mutex;
 [[clang::no_destroy]] static std::condition_variable g_bootcharting_finished_cv;
 static bool g_bootcharting_finished;
+
+static std::string get_bootchart_path(std::string_view file) {
+    static const bool early = GetBoolProperty("ro.boot.bootchart.enabled", false);
+    return std::string(early ? "/dev/bootchart/" : "/data/bootchart/") + std::string(file);
+}
+
+static bool is_bootchart_enabled() {
+    // Support bootchart start on early-init
+    if (GetBoolProperty("ro.boot.bootchart.enabled", false)) {
+        return true;
+    }
+    // Otherwise, fallback to start on post-fs-data
+    // We don't care about the content, but we do care that /data/bootchart/enabled exists.
+    std::string start;
+    return ReadFileToString("/data/bootchart/enabled", &start);
+}
 
 static long long get_uptime_jiffies() {
     constexpr int64_t kNanosecondsPerJiffy = 10000000;
@@ -77,9 +97,9 @@ static void log_header() {
   if (fingerprint.empty()) return;
 
   std::string kernel_cmdline;
-  android::base::ReadFileToString("/proc/cmdline", &kernel_cmdline);
+  ReadFileToString("/proc/cmdline", &kernel_cmdline);
 
-  auto fp = fopen_unique("/data/bootchart/header", "we");
+  auto fp = fopen_unique(get_bootchart_path("header").c_str(), "we");
   if (!fp) return;
   fprintf(&*fp, "version = Android init 0.8\n");
   fprintf(&*fp, "title = Boot chart for Android (%s)\n", date);
@@ -98,7 +118,7 @@ static void log_file(FILE* log, const char* procfile) {
   log_uptime(log);
 
   std::string content;
-  if (android::base::ReadFileToString(procfile, &content)) {
+  if (ReadFileToString(procfile, &content)) {
     fprintf(log, "%s\n", content.c_str());
   }
 }
@@ -116,12 +136,12 @@ static void log_processes(FILE* log) {
     // /proc/<pid>/stat only has truncated task names, so get the full
     // name from /proc/<pid>/cmdline.
     std::string cmdline;
-    android::base::ReadFileToString(StringPrintf("/proc/%d/cmdline", pid), &cmdline);
+    ReadFileToString(StringPrintf("/proc/%d/cmdline", pid), &cmdline);
     const char* full_name = cmdline.c_str(); // So we stop at the first NUL.
 
     // Read process stat line.
     std::string stat;
-    if (android::base::ReadFileToString(StringPrintf("/proc/%d/stat", pid), &stat)) {
+    if (ReadFileToString(StringPrintf("/proc/%d/stat", pid), &stat)) {
       if (!cmdline.empty()) {
         // Substitute the process name with its real name.
         size_t open = stat.find('(');
@@ -155,11 +175,11 @@ static void bootchart_thread_main() {
       return;
   }
   // Open log files.
-  auto stat_log = fopen_unique("/data/bootchart/proc_stat.log", "we");
+  auto stat_log = fopen_unique(get_bootchart_path("proc_stat.log").c_str(), "we");
   if (!stat_log) return;
-  auto proc_log = fopen_unique("/data/bootchart/proc_ps.log", "we");
+  auto proc_log = fopen_unique(get_bootchart_path("proc_ps.log").c_str(), "we");
   if (!proc_log) return;
-  auto disk_log = fopen_unique("/data/bootchart/proc_diskstats.log", "we");
+  auto disk_log = fopen_unique(get_bootchart_path("proc_diskstats.log").c_str(), "we");
   if (!disk_log) return;
 
   log_header();
@@ -180,14 +200,12 @@ static void bootchart_thread_main() {
 }
 
 static Result<void> do_bootchart_start() {
-    // We don't care about the content, but we do care that /data/bootchart/enabled actually exists.
-    std::string start;
-    if (!android::base::ReadFileToString("/data/bootchart/enabled", &start)) {
+    if (!is_bootchart_enabled()) {
         LOG(VERBOSE) << "Not bootcharting";
         return {};
     }
-
-    g_bootcharting_thread = new std::thread(bootchart_thread_main);
+    if (!g_bootcharting_thread)
+        g_bootcharting_thread.emplace(bootchart_thread_main);
     return {};
 }
 
@@ -202,8 +220,7 @@ static Result<void> do_bootchart_stop() {
     }
 
     g_bootcharting_thread->join();
-    delete g_bootcharting_thread;
-    g_bootcharting_thread = nullptr;
+    g_bootcharting_thread.reset();
     return {};
 }
 

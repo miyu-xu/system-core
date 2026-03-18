@@ -13,6 +13,10 @@ import /system/etc/init/hw/init.${ro.zygote}.rc
 
 # Cgroups are mounted right before early-init using list from /etc/cgroups.json
 on early-init
+    # Allow bootchart to capture from the beginning of second-stage init.
+    mkdir /dev/bootchart 0755 root root
+    bootchart start
+
     # Disable sysrq from keyboard
     write /proc/sys/kernel/sysrq 0
 
@@ -102,6 +106,9 @@ on early-init
     restorecon /tmp
     chown shell shell /tmp
     chmod 0771 /tmp
+
+on early-init && property:ro.boot.bootchart.enabled=""
+    rmdir /dev/bootchart
 
 on init
     sysclktz 0
