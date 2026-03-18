@@ -46,10 +46,15 @@ namespace android {
 namespace init {
 
 static std::thread* g_bootcharting_thread;
+static bool bootchart_early_init = false;
 
 [[clang::no_destroy]] static std::mutex g_bootcharting_finished_mutex;
 [[clang::no_destroy]] static std::condition_variable g_bootcharting_finished_cv;
 static bool g_bootcharting_finished;
+
+static std::string get_bootchart_path(const std::string& file) {
+    return std::string(bootchart_early_init ? "/dev/bootchart/" : "/data/bootchart/") + file;
+}
 
 static long long get_uptime_jiffies() {
     constexpr int64_t kNanosecondsPerJiffy = 10000000;
@@ -79,7 +84,7 @@ static void log_header() {
   std::string kernel_cmdline;
   android::base::ReadFileToString("/proc/cmdline", &kernel_cmdline);
 
-  auto fp = fopen_unique("/data/bootchart/header", "we");
+  auto fp = fopen_unique(get_bootchart_path("header").c_str(), "we");
   if (!fp) return;
   fprintf(&*fp, "version = Android init 0.8\n");
   fprintf(&*fp, "title = Boot chart for Android (%s)\n", date);
@@ -155,11 +160,11 @@ static void bootchart_thread_main() {
       return;
   }
   // Open log files.
-  auto stat_log = fopen_unique("/data/bootchart/proc_stat.log", "we");
+  auto stat_log = fopen_unique(get_bootchart_path("proc_stat.log").c_str(), "we");
   if (!stat_log) return;
-  auto proc_log = fopen_unique("/data/bootchart/proc_ps.log", "we");
+  auto proc_log = fopen_unique(get_bootchart_path("proc_ps.log").c_str(), "we");
   if (!proc_log) return;
-  auto disk_log = fopen_unique("/data/bootchart/proc_diskstats.log", "we");
+  auto disk_log = fopen_unique(get_bootchart_path("proc_diskstats.log").c_str(), "we");
   if (!disk_log) return;
 
   log_header();
@@ -180,14 +185,27 @@ static void bootchart_thread_main() {
 }
 
 static Result<void> do_bootchart_start() {
-    // We don't care about the content, but we do care that /data/bootchart/enabled actually exists.
-    std::string start;
-    if (!android::base::ReadFileToString("/data/bootchart/enabled", &start)) {
-        LOG(VERBOSE) << "Not bootcharting";
-        return {};
-    }
+    // Support bootchart start on early-init
+    bool enabled_via_cmdline = android::base::GetBoolProperty("ro.boot.bootchart.enabled", false);
+    if (enabled_via_cmdline) {
+      // Check if bootchart already launched.
+        if (bootchart_early_init) {
+            LOG(INFO) << "bootchart already started";
+            return {};
+        }
+        bootchart_early_init = true;
+    } else {
+      // Otherwise, fallback to start on post-fs-data
+      // We don't care about the content, but we do care that /data/bootchart/enabled actually exists.
+      std::string start;
+      if (!android::base::ReadFileToString("/data/bootchart/enabled", &start)) {
+          LOG(VERBOSE) << "Not bootcharting";
+          return {};
+      }
 
-    g_bootcharting_thread = new std::thread(bootchart_thread_main);
+    }
+    if (!g_bootcharting_thread)
+      g_bootcharting_thread = new std::thread(bootchart_thread_main);
     return {};
 }
 
