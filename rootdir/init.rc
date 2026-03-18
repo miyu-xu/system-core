@@ -13,6 +13,10 @@ import /system/etc/init/hw/init.${ro.zygote}.rc
 
 # Cgroups are mounted right before early-init using list from /etc/cgroups.json
 on early-init
+    # Allow bootchart to capture from the beginning of second-stage init.
+    mkdir /dev/bootchart 0755 root root
+    bootchart start
+
     # Disable sysrq from keyboard
     write /proc/sys/kernel/sysrq 0
 

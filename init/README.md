@@ -550,9 +550,18 @@ Commands
 --------
 
 `bootchart [start|stop]`
-> Start/stop bootcharting. These are present in the default init.rc files,
-  but bootcharting is only active if the file /data/bootchart/enabled exists;
-  otherwise bootchart start/stop are no-ops.
+> Start/stop bootcharting. These are present in the default init.rc files.
+> Bootcharting is active only when one of the following is enabled:
+>
+> - early-init: add `androidboot.bootchart.enabled=1` to the kernel command line.
+>
+>   For example:
+>
+>   $ fastboot boot boot.img --cmdline="androidboot.bootchart.enabled=1"
+>
+> - post-fs-data: create the file `/data/bootchart/enabled`
+>
+> Otherwise bootchart start/stop are no-ops.
 
 `chmod <octal-mode> <path>`
 > Change file access permissions.
