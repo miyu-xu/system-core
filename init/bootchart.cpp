@@ -28,6 +28,7 @@
 
 #include <chrono>
 #include <condition_variable>
+#include <fstream>
 #include <memory>
 #include <mutex>
 #include <thread>
@@ -37,6 +38,7 @@
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 
 using android::base::StringPrintf;
 using android::base::boot_clock;
@@ -64,6 +66,37 @@ static std::unique_ptr<FILE, decltype(&fclose)> fopen_unique(const char* filenam
   return result;
 }
 
+static std::string get_cpu_model() {
+#if defined(__i386__) || defined(__x86_64__)
+    static const char* kModelKey = "model name";
+#elif defined(__arm__) || defined(__aarch64__)
+    static const char* kModelKey = "Processor";
+#else
+    static const char* kModelKey = nullptr;
+#endif
+
+    if (kModelKey) {
+        std::ifstream infile("/proc/cpuinfo");
+        if (infile.is_open()) {
+            std::string line;
+            while (std::getline(infile, line)) {
+                if (android::base::StartsWith(line, kModelKey)) {
+                    std::vector<std::string> parts = android::base::Split(line, ":");
+                    if (parts.size() > 1) {
+                        return android::base::Trim(parts[1]);
+                    }
+                }
+            }
+        }
+    }
+
+    utsname uts;
+    if (uname(&uts) != -1) {
+        return uts.machine;
+    }
+    return "unknown";
+}
+
 static void log_header() {
   char date[32];
   time_t now_t = time(NULL);
@@ -85,8 +118,7 @@ static void log_header() {
   fprintf(&*fp, "title = Boot chart for Android (%s)\n", date);
   fprintf(&*fp, "system.uname = %s %s %s %s\n", uts.sysname, uts.release, uts.version, uts.machine);
   fprintf(&*fp, "system.release = %s\n", fingerprint.c_str());
-  // TODO: use /proc/cpuinfo "model name" line for x86, "Processor" line for arm.
-  fprintf(&*fp, "system.cpu = %s\n", uts.machine);
+  fprintf(&*fp, "system.cpu = %s\n", get_cpu_model().c_str());
   fprintf(&*fp, "system.kernel.options = %s\n", kernel_cmdline.c_str());
 }
 
