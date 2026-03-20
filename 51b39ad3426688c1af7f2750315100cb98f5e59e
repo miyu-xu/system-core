@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d8f48d_6d3f0203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-03-20T09:55:04Z",
+      "side": 1,
+      "message": "Patchset 2:\n\nUpdated per review feedback:\n- Using std::getline instead of ReadFileToString to stop reading immediately when key is found\n- Using Split(\":\") for robust delimiter-based parsing instead of find/substr",
+      "revId": "51b39ad3426688c1af7f2750315100cb98f5e59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

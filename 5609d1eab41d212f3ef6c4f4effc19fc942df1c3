@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49dad6fc_0bb9e207",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-03-20T09:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5556c6d_934c62a4",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 73
+      },
+      "revId": "5609d1eab41d212f3ef6c4f4effc19fc942df1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fd8d866_a0fcea19",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-03-20T07:35:22Z",
       "side": 1,
       "message": "This looks fragile as it depends on the exact format. I\u0027d split the line with `:` as the delimiter, take the second one (if exists), and strip whitespace from it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 63,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "5609d1eab41d212f3ef6c4f4effc19fc942df1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9f0032_4683ac0a",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-03-20T09:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd8d866_a0fcea19",
       "range": {
         "startLine": 84,
         "startChar": 63,
