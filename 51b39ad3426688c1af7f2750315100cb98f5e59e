@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e21522_02c3267e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-03-21T06:57:26Z",
+      "side": 1,
+      "message": "Refactored to use C++17 if-with-initializer and unindented the logic. Thanks!",
+      "revId": "51b39ad3426688c1af7f2750315100cb98f5e59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e919160_43272114",
@@ -31,6 +48,24 @@
       "writtenOn": "2026-03-20T16:59:44Z",
       "side": 1,
       "message": "if (std::ifstream infile(\"/proc/cpuinfo\"); in_file.is_open()) {\n\nThen you can unindent everything a bit.",
+      "revId": "51b39ad3426688c1af7f2750315100cb98f5e59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f905da4c_f0a7b721",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-03-21T06:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e919160_43272114",
       "revId": "51b39ad3426688c1af7f2750315100cb98f5e59e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
