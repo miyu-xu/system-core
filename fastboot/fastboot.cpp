@@ -744,7 +744,7 @@ static bool UnzipToMemory(ZipArchiveHandle zip, const std::string& entry_name,
 
 // Windows' tmpfile(3) requires administrator rights because
 // it creates temporary files in the root directory.
-static FILE* win32_tmpfile() {
+static int make_temporary_fd(const char* /*what*/) {
     char temp_path[PATH_MAX];
     DWORD nchars = GetTempPath(sizeof(temp_path), temp_path);
     if (nchars == 0 || nchars >= sizeof(temp_path)) {
@@ -756,14 +756,19 @@ static FILE* win32_tmpfile() {
         die("GetTempFileName failed, error %ld", GetLastError());
     }
 
-    return fopen(filename, "w+bTD");
-}
+#ifndef _O_TEMPORARY
+#define _O_TEMPORARY 0x0040
+#endif
+#ifndef _O_SHORT_LIVED
+#define _O_SHORT_LIVED 0x1000
+#endif
 
-#define tmpfile win32_tmpfile
-
-static int make_temporary_fd(const char* /*what*/) {
-    // TODO: reimplement to avoid leaking a FILE*.
-    return fileno(tmpfile());
+    int fd = open(filename, O_BINARY | O_CREAT | O_RDWR | _O_TEMPORARY | _O_SHORT_LIVED,
+                  S_IREAD | S_IWRITE);
+    if (fd == -1) {
+        die("failed to create temporary file %s: %s", filename, strerror(errno));
+    }
+    return fd;
 }
 
 #else
