@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c49e896_b918de15",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged. Resolve in latest ps.",
+      "parentUuid": "75cd1a0b_7b0a1261",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b09819c_9ea92117",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-03-19T06:49:01Z",
       "side": 1,
       "message": "move this inside of get_bootchart_path.\n\n```\nstatic std::string get_bootchart_path(...) {\n    static bool early \u003d GetBoolProperty(..., false);\n    return std::string(early ? ...);\n}\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2bcf74_78030cc4",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged. Resolve in latest ps.",
+      "parentUuid": "5b09819c_9ea92117",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf19d3bf_72e2a408",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged. Resolve in latest ps.",
+      "parentUuid": "349f7f0c_8b4d6622",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a5e6e9e_4a3e145f",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-03-19T06:49:01Z",
       "side": 1,
       "message": "this function became a bit harder to read. suggestion:\n\n1. add a new function which tells whether we need bootchart or not. it shall be `ro.boot.bootchart.enabled \u003d\u003d true` || `/data/bootchar/enabled` exists.\n\n2. start the thread only once",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa637af_91cec58a",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged. Resolve in latest ps.",
+      "parentUuid": "6a5e6e9e_4a3e145f",
       "range": {
         "startLine": 187,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1635c301_57829d24",
+        "filename": "init/bootchart.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged. Resolve in latest ps.",
+      "parentUuid": "fc2df93d_fbab33e4",
+      "range": {
+        "startLine": 189,
+        "startChar": 31,
+        "endLine": 189,
+        "endChar": 46
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a4fe1a8_2e048ddc",
@@ -129,6 +249,30 @@
       "writtenOn": "2026-03-19T06:49:01Z",
       "side": 1,
       "message": "this could be under\n\n```\non ro.boot.bootchart.enabled \u003d\u003d 1 \u0026\u0026 early-init\n   mkdir /dev/bootchart..\n   bootchart start\n```\n\nso that you don\u0027t create the empty file when not needed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "f9c6348474b478a5a367ad2b160875c89f2dea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48140bab_0c4174c5",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4656873
+      },
+      "writtenOn": "2026-03-23T05:14:35Z",
+      "side": 1,
+      "message": "Acknowledged but I\u0027d prefer remove if unused at line #110. PTAL.",
+      "parentUuid": "6a4fe1a8_2e048ddc",
       "range": {
         "startLine": 16,
         "startChar": 0,
