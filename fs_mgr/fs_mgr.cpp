@@ -2191,7 +2191,7 @@ bool fs_mgr_swapon_all(const Fstab& fstab) {
             // device.  There is no point in having multiple zram devices
             // on a system (all the memory comes from the same pool) so
             // we can assume the device number is 0.
-            if (entry.max_comp_streams >= 0) {
+            if (entry.max_comp_streams > 0) {
                 auto zram_mcs_fp = std::unique_ptr<FILE, decltype(&fclose)>{
                         fopen(ZRAM_CONF_MCS, "re"), fclose};
                 if (zram_mcs_fp == nullptr) {
