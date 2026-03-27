@@ -16,6 +16,23 @@
       "message": "Thanks, this has been cherry-picked to internal main.",
       "revId": "3b46988cfb7cf3b9468cae9b4e33eff4a457cc34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a8625e_1f8b9913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2026-03-27T06:19:12Z",
+      "side": 1,
+      "message": "6.18 is launch kernel for Android 17, is 16-qpr2-release the right branch?\n\nI think this needs to be merged internally for andorid 17",
+      "revId": "3b46988cfb7cf3b9468cae9b4e33eff4a457cc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
