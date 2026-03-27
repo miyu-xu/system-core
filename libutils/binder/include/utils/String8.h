@@ -142,9 +142,6 @@ public:
             void                toLower();
 
 private:
-            String8 getPathDir(void) const;
-            String8 getPathExtension(void) const;
-
             status_t            real_append(const char* other, size_t numChars);
 
             const char* mString;
