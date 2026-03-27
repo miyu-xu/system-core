@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc09968_2d99e3da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-03-27T18:50:48Z",
+      "side": 1,
+      "message": "looks like there\u0027s still a vendor blob with a reference to one of these functions:\n```\nld.lld: error: undefined symbol: _ZNK7android7String810getPathDirEv\n```\nyou might get away with removing the other symbol though, since that didn\u0027t seem to break anything in presubmit? (though there are _many_ more builds in postsubmit, so \"don\u0027t be surprised if even that ends up getting reverted later\".)",
+      "revId": "3f47aeb691bbafba979ebbdcf8a2aabbcc6d38a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
