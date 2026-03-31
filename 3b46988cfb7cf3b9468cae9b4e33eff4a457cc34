@@ -87,6 +87,24 @@
       "parentUuid": "3382685d_ad64392c",
       "revId": "3b46988cfb7cf3b9468cae9b4e33eff4a457cc34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c19128f_04140e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2026-03-31T07:58:48Z",
+      "side": 1,
+      "message": "Thanks for your guidance. Cherry-picking it to our downstream branch won\u0027t fix the issue when replacing the GSI image. \nI have tried another approach: adding \"max_comp_streams\u003d-1\" to the fstab file, it worked well. So we can abandon this patch.\nThank you all for your help!",
+      "parentUuid": "51a6122c_3683106e",
+      "revId": "3b46988cfb7cf3b9468cae9b4e33eff4a457cc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
