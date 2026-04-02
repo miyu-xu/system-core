@@ -53,6 +53,7 @@ void print_usage(void) {
     LOG(INFO) << "  -h, --help: Print this help";
     LOG(INFO) << "  -l, --list: List modules matching pattern";
     LOG(INFO) << "  -r, --remove: Remove MODULE (multiple modules may be specified)";
+    LOG(INFO) << "  -p, --parallel=N: Load modules in parallel using N threads";
     LOG(INFO) << "  -s, --syslog: print to syslog also";
     LOG(INFO) << "  -q, --quiet: disable messages";
     LOG(INFO) << "  -v, --verbose: enable more messages, even more with a second -v";
@@ -158,6 +159,7 @@ extern "C" int modprobe_main(int argc, char** argv) {
     std::vector<std::string> mod_dirs;
     modprobe_mode mode = AddModulesMode;
     bool blocklist = false;
+    int num_threads = 1;
     int rv = EXIT_SUCCESS;
 
     int opt, fd;
@@ -172,13 +174,14 @@ extern "C" int modprobe_main(int argc, char** argv) {
         { "show-depends",        no_argument,       0, 'D' },
         { "help",                no_argument,       0, 'h' },
         { "list",                no_argument,       0, 'l' },
+        { "parallel",            required_argument, 0, 'p' },
         { "quiet",               no_argument,       0, 'q' },
         { "remove",              no_argument,       0, 'r' },
         { "syslog",              no_argument,       0, 's' },
         { "verbose",             no_argument,       0, 'v' },
     };
     // clang-format on
-    while ((opt = getopt_long(argc, argv, "a::bd:Dhlqrsv", long_options, &option_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "a::bd:Dhlp:qrsv", long_options, &option_index)) != -1) {
         switch (opt) {
             case 'a':
                 // toybox modprobe supported -a to load multiple modules, this
@@ -216,6 +219,9 @@ extern "C" int modprobe_main(int argc, char** argv) {
             case 'l':
                 check_mode();
                 mode = ListModulesMode;
+                break;
+            case 'p':
+                num_threads = atoi(optarg);
                 break;
             case 'q':
                 android::base::SetMinimumLogSeverity(android::base::WARNING);
@@ -300,11 +306,23 @@ extern "C" int modprobe_main(int argc, char** argv) {
 
     Modprobe m(mod_dirs, modules_load_file.empty() ? "modules.load" : modules_load_file, blocklist);
     if (mode == AddModulesMode && !modules_load_file.empty()) {
-        if (!m.LoadListedModules(false)) {
-            PLOG(ERROR) << "Failed to load all the modules from " << modules_load_file;
+        auto ret = num_threads > 1 ? m.LoadModulesParallel(num_threads, false /* strict */)
+                                   : m.LoadListedModules(false);
+        if (!ret) {
+            LOG(ERROR) << "Failed to load all the modules from " << modules_load_file;
             return EXIT_FAILURE;
         }
         /* Fall-through to load modules provided on the command line (if any)*/
+    }
+    if (mode == AddModulesMode && modules.size() > 1 && num_threads > 1) {
+        // Special case for parallel module loading. For consistency with the
+        // default sequential mode below, make sure to keep going in case of
+        // individual load failures.
+        if (!m.LoadModulesParallel(modules, num_threads, false /* strict */)) {
+            LOG(ERROR) << "Failed to load one or more modules";
+            rv = EXIT_FAILURE;
+        }
+        return rv;
     }
 
     for (const auto& module : modules) {

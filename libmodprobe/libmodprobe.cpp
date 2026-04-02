@@ -152,17 +152,22 @@ bool Modprobe::IsBlocklisted(const std::string& module_name) {
     return module_blocklist_.count(canonical_name) > 0;
 }
 
+bool Modprobe::LoadModulesParallel(int num_threads, bool strict) {
+    return LoadModulesParallel(module_load_, num_threads, strict);
+}
+
 // Another option to load kernel modules. load independent modules dependencies
 // in parallel and then update dependency list of other remaining modules,
 // repeat these steps until all modules are loaded.
 // Discard all blocklist.
 // Softdeps are taken care in InsmodWithDeps().
-bool Modprobe::LoadModulesParallel(int num_threads) {
+bool Modprobe::LoadModulesParallel(const std::vector<std::string>& modules, int num_threads,
+                                   bool strict) {
     bool ret = true;
     std::map<std::string, std::vector<std::string>> mod_with_deps;
 
     // Get dependencies
-    for (const auto& module : module_load_) {
+    for (const auto& module : modules) {
         // Skip blocklist modules
         if (IsBlocklisted(module)) {
             LOG(VERBOSE) << "LMP: Blocklist: Module " << module << " skipping...";
@@ -221,7 +226,15 @@ bool Modprobe::LoadModulesParallel(int num_threads) {
                 mods_path_to_load.pop_back();
 
                 lk.unlock();
-                ret_load &= LoadWithAliases(mod_to_load, true);
+                if (!LoadWithAliases(mod_to_load, true)) {
+                    if (!strict) {
+                        // In non-strict mode, ignore modules that cannot be loaded. Pretend the
+                        // load was successful so the module gets removed from mod_with_deps below
+                        // and we don't keep retrying indefinitely.
+                        SetModuleLoaded(mod_to_load);
+                    }
+                    ret_load = false;
+                }
                 lk.lock();
                 if (!ret_load) {
                     ret &= ret_load;
@@ -237,7 +250,7 @@ bool Modprobe::LoadModulesParallel(int num_threads) {
             thread.join();
         }
 
-        if (!ret) return ret;
+        if (!ret && strict) return ret;
 
         std::lock_guard guard(module_loaded_lock_);
         // Remove loaded module form mod_with_deps and soft dependencies of other modules
@@ -323,4 +336,17 @@ bool Modprobe::GetAllDependencies(const std::string& module,
         }
     }
     return true;
+}
+
+void Modprobe::SetModuleLoaded(const std::string& module_name) {
+    auto it = module_deps_.find(module_name);
+    if (it == module_deps_.end()) {
+        return;
+    }
+
+    const std::string& path_name = it->second[0];
+
+    std::lock_guard guard(module_loaded_lock_);
+    module_loaded_.emplace(module_name);
+    module_loaded_paths_.emplace(path_name);
 }

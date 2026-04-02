@@ -34,7 +34,9 @@ class Modprobe {
              bool use_blocklist = true);
     Modprobe(ModuleConfig config, bool use_blocklist = true);
 
-    bool LoadModulesParallel(int num_threads) EXCLUDES(module_loaded_lock_);
+    bool LoadModulesParallel(int num_threads, bool strict = false) EXCLUDES(module_loaded_lock_);
+    bool LoadModulesParallel(const std::vector<std::string>& modules, int num_threads,
+                             bool strict = true) EXCLUDES(module_loaded_lock_);
     bool LoadListedModules(bool strict = true);
     bool LoadWithAliases(const std::string& module_name, bool strict,
                          const std::string& parameters = "") EXCLUDES(module_loaded_lock_);
@@ -45,6 +47,7 @@ class Modprobe {
                             std::vector<std::string>* post_dependencies);
     int GetModuleCount() { return module_count_; }
     bool IsBlocklisted(const std::string& module_name);
+    void SetModuleLoaded(const std::string& module_name) EXCLUDES(module_loaded_lock_);
 
   private:
     bool InsmodWithDeps(const std::string& module_name, const std::string& parameters);
