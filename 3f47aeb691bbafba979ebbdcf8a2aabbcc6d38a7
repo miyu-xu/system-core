@@ -70,6 +70,24 @@
       "parentUuid": "e96ba3a4_16dc4f1e",
       "revId": "3f47aeb691bbafba979ebbdcf8a2aabbcc6d38a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c972353_2ed2b9ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-03T08:09:43Z",
+      "side": 1,
+      "message": "I see. I\u0027ve been testing on aosp_cf_x86_64_phone (Cuttlefish), which explains why my builds were passing despite the symbol removal. I don\u0027t have the proprietary blobs for husky locally to catch that link error.",
+      "parentUuid": "09cca26a_dabe5fb9",
+      "revId": "3f47aeb691bbafba979ebbdcf8a2aabbcc6d38a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
