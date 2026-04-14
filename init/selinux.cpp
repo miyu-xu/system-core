@@ -77,7 +77,7 @@
 #include <libsnapshot/snapshot.h>
 #include <selinux/android.h>
 
-#include "block_dev_initializer.h"
+#include "first_stage_device_initializer.h"
 #include "debug_ramdisk.h"
 #include "reboot_utils.h"
 #include "second_stage_resources.h"
@@ -623,11 +623,11 @@ void MountMissingSystemPartitions() {
         return;
     }
 
-    BlockDevInitializer block_dev_init;
+    FirstStageDeviceInitializer first_stage_dev_init;
     for (auto& entry : extra_fstab) {
         if (access(entry.blk_device.c_str(), F_OK) != 0) {
             auto block_dev = android::base::Basename(entry.blk_device);
-            if (!block_dev_init.InitDmDevice(block_dev)) {
+            if (!first_stage_dev_init.InitDmDevice(block_dev)) {
                 LOG(ERROR) << "Failed to find device-mapper node: " << block_dev;
                 continue;
             }

@@ -24,10 +24,9 @@
 namespace android {
 namespace init {
 
-// TODO: should this be renamed to FirstStageDevInitialize?
-class BlockDevInitializer final {
+class FirstStageDeviceInitializer final {
   public:
-    BlockDevInitializer();
+    FirstStageDeviceInitializer();
 
     bool InitBootDevicesFromPartUuid();
     bool InitDeviceMapper();

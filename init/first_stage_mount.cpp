@@ -45,7 +45,7 @@
 #include <liblp/liblp.h>
 #include <libsnapshot/snapshot.h>
 
-#include "block_dev_initializer.h"
+#include "first_stage_device_initializer.h"
 #include "devices.h"
 #include "result.h"
 #include "snapuserd_transition.h"
@@ -121,7 +121,7 @@ class FirstStageMountVBootV2 : public FirstStageMount {
     // The super path is only set after InitDevices, and is invalid before.
     std::string super_path_;
     std::string super_partition_name_;
-    BlockDevInitializer block_dev_init_;
+    FirstStageDeviceInitializer first_stage_dev_init_;
     // Reads all AVB keys before chroot into /system, as they might be used
     // later when mounting other partitions, e.g., /vendor and /product.
     std::map<std::string, std::vector<std::string>> preload_avb_key_blobs_;
@@ -280,7 +280,7 @@ static bool IsMicrodroidStrictBoot() {
 }
 
 bool FirstStageMountVBootV2::InitDevices() {
-    if (!block_dev_init_.InitBootDevicesFromPartUuid()) {
+    if (!first_stage_dev_init_.InitBootDevicesFromPartUuid()) {
         return false;
     }
 
@@ -296,7 +296,7 @@ bool FirstStageMountVBootV2::InitDevices() {
 
     if (IsMicrodroid() && android::virtualization::IsOpenDiceChangesFlagEnabled()) {
         if (IsMicrodroidStrictBoot()) {
-            if (!block_dev_init_.InitPlatformDevice("open-dice0")) {
+            if (!first_stage_dev_init_.InitPlatformDevice("open-dice0")) {
                 return false;
             }
         }
@@ -311,7 +311,7 @@ bool FirstStageMountVBootV2::InitDevices() {
     }
 
     if constexpr (com::android::apex::flags::mount_before_data()) {
-        block_dev_init_.InitLoopDevices();
+        first_stage_dev_init_.InitLoopDevices();
     }
 
     return true;
@@ -337,13 +337,13 @@ void FirstStageMountVBootV2::GetSuperDeviceName(std::set<std::string>* devices) 
 // Found partitions will then be removed from it for the subsequent member
 // function to check which devices are NOT created.
 bool FirstStageMountVBootV2::InitRequiredDevices(std::set<std::string> devices) {
-    if (!block_dev_init_.InitDeviceMapper()) {
+    if (!first_stage_dev_init_.InitDeviceMapper()) {
         return false;
     }
     if (devices.empty()) {
         return true;
     }
-    return block_dev_init_.InitDevices(std::move(devices));
+    return first_stage_dev_init_.InitDevices(std::move(devices));
 }
 
 bool FirstStageMountVBootV2::InitDmLinearBackingDevices(
@@ -377,9 +377,9 @@ bool FirstStageMountVBootV2::CreateLogicalPartitions() {
     if (!IsMicrodroid() && SnapshotManager::IsSnapshotManagerNeeded()) {
         auto init_devices = [this](const std::string& device) -> bool {
             if (android::base::StartsWith(device, "/dev/block/dm-")) {
-                return block_dev_init_.InitDmDevice(device);
+                return first_stage_dev_init_.InitDmDevice(device);
             }
-            return block_dev_init_.InitDevices({device});
+            return first_stage_dev_init_.InitDevices({device});
         };
 
         SnapshotManager::MapTempOtaMetadataPartitionIfNeeded(init_devices);
@@ -417,18 +417,18 @@ bool FirstStageMountVBootV2::CreateSnapshotPartitions(SnapshotManager* sm) {
 
     sm->SetUeventRegenCallback([this](const std::string& device) -> bool {
         if (android::base::StartsWith(device, "/dev/block/dm-")) {
-            return block_dev_init_.InitDmDevice(device);
+            return first_stage_dev_init_.InitDmDevice(device);
         }
         if (android::base::StartsWith(device, "/dev/dm-user/")) {
-            return block_dev_init_.InitDmUser(android::base::Basename(device));
+            return first_stage_dev_init_.InitDmUser(android::base::Basename(device));
         }
         if (android::base::StartsWith(device, "/dev/block/ublkb")) {
-            return block_dev_init_.InitDmDevice(device);
+            return first_stage_dev_init_.InitDmDevice(device);
         }
         if (android::base::StartsWith(device, "/dev/ublk")) {
-            return block_dev_init_.InitUblkMiscDevices(android::base::Basename(device));
+            return first_stage_dev_init_.InitUblkMiscDevices(android::base::Basename(device));
         }
-        return block_dev_init_.InitDevices({device});
+        return first_stage_dev_init_.InitDevices({device});
     });
     if (!sm->CreateLogicalAndSnapshotPartitions(super_path_)) {
         return false;
@@ -455,7 +455,7 @@ bool FirstStageMountVBootV2::MountPartition(const Fstab::iterator& begin, bool e
         if (!fs_mgr_update_logical_partition(&(*begin))) {
             return false;
         }
-        if (!block_dev_init_.InitDmDevice(begin->blk_device)) {
+        if (!first_stage_dev_init_.InitDmDevice(begin->blk_device)) {
             return false;
         }
     }
@@ -661,7 +661,7 @@ bool FirstStageMountVBootV2::MountPartitions() {
     auto init_devices = [this](std::set<std::string> devices) -> bool {
         for (auto iter = devices.begin(); iter != devices.end();) {
             if (android::base::StartsWith(*iter, "/dev/block/dm-")) {
-                if (!block_dev_init_.InitDmDevice(*iter)) {
+                if (!first_stage_dev_init_.InitDmDevice(*iter)) {
                     return false;
                 }
                 iter = devices.erase(iter);
@@ -873,7 +873,7 @@ bool FirstStageMountVBootV2::SetUpDmVerity(FstabEntry* fstab_entry) {
             // The exact block device name (fstab_rec->blk_device) is changed to
             // "/dev/block/dm-XX". Needs to create it because ueventd isn't started in init
             // first stage.
-            return block_dev_init_.InitDmDevice(fstab_entry->blk_device);
+            return first_stage_dev_init_.InitDmDevice(fstab_entry->blk_device);
         default:
             return false;
     }
