@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e128615_4546d5ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-04-14T12:36:24Z",
+      "side": 1,
+      "message": "I have a small comment. Otherwise, LGTM",
+      "revId": "4d2960eeb92c07d796dc472c9ebc33c512284795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe469e2b_5091968c",
+        "filename": "init/host_builtin_stubs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2026-04-14T12:36:24Z",
+      "side": 1,
+      "message": "This new file seems unrelated to the renaming of `BlockDevInitializer`. Was it intended to be part of this change? It doesn\u0027t seem to be used in any of the build rules modified in this CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 0
+      },
+      "revId": "4d2960eeb92c07d796dc472c9ebc33c512284795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
