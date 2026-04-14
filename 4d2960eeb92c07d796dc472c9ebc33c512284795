@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff98b736_fc55918e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-14T13:15:48Z",
+      "side": 1,
+      "message": "I addressed the issue",
+      "revId": "4d2960eeb92c07d796dc472c9ebc33c512284795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe469e2b_5091968c",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "It is a mixup I was working on different part that leaked in this working branch",
       "parentUuid": "fe469e2b_5091968c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 0
+      },
+      "revId": "4d2960eeb92c07d796dc472c9ebc33c512284795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd44fe10_dc088b2e",
+        "filename": "init/host_builtin_stubs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-14T13:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8c70ec_7676b34c",
       "range": {
         "startLine": 1,
         "startChar": 0,
