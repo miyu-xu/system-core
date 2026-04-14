@@ -20,7 +20,9 @@
 #include <private/fs_config.h>
 
 #include <android-base/file.h>
+#include <algorithm>
 #include <string>
+#include <vector>
 
 /* NOTES
 **
@@ -31,11 +33,11 @@
 */
 
 struct fs_config_entry {
-    char* name;
+    std::string name;
     int uid, gid, mode;
 };
 
-static struct fs_config_entry* canned_config = NULL;
+static std::vector<fs_config_entry> canned_config;
 static const char* target_out_path = NULL;
 
 #define TRAILER "TRAILER!!!"
@@ -45,20 +47,19 @@ static int total_size = 0;
 static void fix_stat(const char *path, struct stat *s)
 {
     uint64_t capabilities;
-    if (canned_config) {
+    if (!canned_config.empty()) {
         // Use the list of file uid/gid/modes loaded from the file
         // given with -f.
 
-        struct fs_config_entry* empty_path_config = NULL;
-        struct fs_config_entry* p;
-        for (p = canned_config; p->name; ++p) {
-            if (!p->name[0]) {
-                empty_path_config = p;
+        const fs_config_entry* empty_path_config = NULL;
+        for (const auto& entry : canned_config) {
+            if (entry.name.empty()) {
+                empty_path_config = &entry;
             }
-            if (strcmp(p->name, path) == 0) {
-                s->st_uid = p->uid;
-                s->st_gid = p->gid;
-                s->st_mode = p->mode | (s->st_mode & ~07777);
+            if (entry.name == path) {
+                s->st_uid = entry.uid;
+                s->st_gid = entry.gid;
+                s->st_mode = entry.mode | (s->st_mode & ~07777);
                 return;
             }
         }
@@ -142,25 +143,14 @@ static void _eject_trailer()
 
 static void _archive(char *in, char *out, int ilen, int olen);
 
-static int compare(const void* a, const void* b) {
-  return strcmp(*(const char**)a, *(const char**)b);
-}
-
 static void _archive_dir(char *in, char *out, int ilen, int olen)
 {
-    int i, t;
     struct dirent *de;
 
     DIR* d = opendir(in);
     if (d == NULL) err(1, "cannot open directory '%s'", in);
 
-    // TODO: switch to std::vector
-    int size = 32;
-    int entries = 0;
-    char** names = (char**) malloc(size * sizeof(char*));
-    if (names == NULL) {
-      errx(1, "failed to allocate dir names array (size %d)", size);
-    }
+    std::vector<std::string> names;
 
     while((de = readdir(d)) != 0){
             /* xxx: feature? maybe some dotfiles are okay */
@@ -169,42 +159,28 @@ static void _archive_dir(char *in, char *out, int ilen, int olen)
             /* xxx: hack. use a real exclude list */
         if(!strcmp(de->d_name, "root")) continue;
 
-        if (entries >= size) {
-          size *= 2;
-          names = (char**) realloc(names, size * sizeof(char*));
-          if (names == NULL) {
-            errx(1, "failed to reallocate dir names array (size %d)", size);
-          }
-        }
-        names[entries] = strdup(de->d_name);
-        if (names[entries] == NULL) {
-          errx(1, "failed to strdup name \"%s\"", de->d_name);
-        }
-        ++entries;
+        names.push_back(de->d_name);
     }
 
-    qsort(names, entries, sizeof(char*), compare);
+    std::sort(names.begin(), names.end());
 
-    for (i = 0; i < entries; ++i) {
-        t = strlen(names[i]);
+    for (const auto& name : names) {
+        size_t t = name.size();
         in[ilen] = '/';
-        memcpy(in + ilen + 1, names[i], t + 1);
+        memcpy(in + ilen + 1, name.c_str(), t + 1);
 
         if(olen > 0) {
             out[olen] = '/';
-            memcpy(out + olen + 1, names[i], t + 1);
+            memcpy(out + olen + 1, name.c_str(), t + 1);
             _archive(in, out, ilen + t + 1, olen + t + 1);
         } else {
-            memcpy(out, names[i], t + 1);
+            memcpy(out, name.c_str(), t + 1);
             _archive(in, out, ilen + t + 1, t);
         }
 
         in[ilen] = 0;
         out[olen] = 0;
-
-        free(names[i]);
     }
-    free(names);
 
     closedir(d);
 }
@@ -250,46 +226,39 @@ static void archive(const char* start, const char* prefix) {
 
 static void read_canned_config(char* filename)
 {
-    int allocated = 8;
-    int used = 0;
-
-    canned_config =
-        (struct fs_config_entry*)malloc(allocated * sizeof(struct fs_config_entry));
+    canned_config.clear();
 
     FILE* fp = fopen(filename, "r");
     if (fp == NULL) err(1, "failed to open canned file '%s'", filename);
 
     char* line = NULL;
-    size_t allocated_len;
+    size_t allocated_len = 0;
     while (getline(&line, &allocated_len, fp) != -1) {
         if (!line[0]) break;
-        if (used >= allocated) {
-            allocated *= 2;
-            canned_config = (struct fs_config_entry*)realloc(
-                canned_config, allocated * sizeof(struct fs_config_entry));
-            if (canned_config == NULL) errx(1, "failed to reallocate memory");
-        }
 
-        struct fs_config_entry* cc = canned_config + used;
+        fs_config_entry cc;
 
+        char* name = NULL;
+        char* uid_str = NULL;
         if (isspace(line[0])) {
-            cc->name = strdup("");
-            cc->uid = atoi(strtok(line, " \n"));
+            cc.name = "";
+            uid_str = strtok(line, " \n");
         } else {
-            cc->name = strdup(strtok(line, " \n"));
-            cc->uid = atoi(strtok(NULL, " \n"));
+            name = strtok(line, " \n");
+            if (name) cc.name = name;
+            uid_str = strtok(NULL, " \n");
         }
-        cc->gid = atoi(strtok(NULL, " \n"));
-        cc->mode = strtol(strtok(NULL, " \n"), NULL, 8);
-        ++used;
+
+        if (uid_str) cc.uid = atoi(uid_str);
+
+        char* gid_str = strtok(NULL, " \n");
+        if (gid_str) cc.gid = atoi(gid_str);
+
+        char* mode_str = strtok(NULL, " \n");
+        if (mode_str) cc.mode = strtol(mode_str, NULL, 8);
+
+        canned_config.push_back(cc);
     }
-    if (used >= allocated) {
-        ++allocated;
-        canned_config = (struct fs_config_entry*)realloc(
-            canned_config, allocated * sizeof(struct fs_config_entry));
-        if (canned_config == NULL) errx(1, "failed to reallocate memory");
-    }
-    canned_config[used].name = NULL;
 
     free(line);
     fclose(fp);
