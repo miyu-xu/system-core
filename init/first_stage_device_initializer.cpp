@@ -21,7 +21,7 @@
 #include <android-base/strings.h>
 #include <fs_mgr.h>
 
-#include "block_dev_initializer.h"
+#include "first_stage_device_initializer.h"
 
 namespace android {
 namespace init {
@@ -29,7 +29,7 @@ namespace init {
 using android::base::Timer;
 using namespace std::chrono_literals;
 
-BlockDevInitializer::BlockDevInitializer() : uevent_listener_(16 * 1024 * 1024) {
+FirstStageDeviceInitializer::FirstStageDeviceInitializer() : uevent_listener_(16 * 1024 * 1024) {
     auto boot_devices = android::fs_mgr::GetBootDevices();
     device_handler_ = std::make_unique<DeviceHandler>(
             std::vector<Permissions>{}, std::vector<SysfsPermissions>{}, std::vector<Subsystem>{},
@@ -45,7 +45,7 @@ BlockDevInitializer::BlockDevInitializer() : uevent_listener_(16 * 1024 * 1024) 
 //
 // NOTE that `boot_part_uuid` is only specified on newer devices. Older devices
 // specified `boot_devices` directly.
-bool BlockDevInitializer::InitBootDevicesFromPartUuid() {
+bool FirstStageDeviceInitializer::InitBootDevicesFromPartUuid() {
     bool uuid_check_done = false;
 
     auto boot_part_callback = [&, this](const Uevent& uevent) -> ListenerAction {
@@ -80,25 +80,25 @@ bool BlockDevInitializer::InitBootDevicesFromPartUuid() {
 }
 
 // Second_stage_init requires loop-control before ueventd starts.
-void BlockDevInitializer::InitLoopDevices() {
+void FirstStageDeviceInitializer::InitLoopDevices() {
     (void)InitMiscDevice("loop-control");
 }
 
-bool BlockDevInitializer::InitDeviceMapper() {
+bool FirstStageDeviceInitializer::InitDeviceMapper() {
     return InitMiscDevice("device-mapper");
 }
 
-bool BlockDevInitializer::InitDmUser(const std::string& name) {
+bool FirstStageDeviceInitializer::InitDmUser(const std::string& name) {
     return InitMiscDevice("dm-user!" + name);
 }
 
-bool BlockDevInitializer::InitUblkMiscDevices(const std::string& name) {
+bool FirstStageDeviceInitializer::InitUblkMiscDevices(const std::string& name) {
     LOG(INFO) << "InitUblkMiscDevices " << name;
     if (name == "ublk-control") return InitMiscDevice(name);
 
     return InitMiscDevice("ublk-control/" + name);
 }
-bool BlockDevInitializer::InitMiscDevice(const std::string& name) {
+bool FirstStageDeviceInitializer::InitMiscDevice(const std::string& name) {
     const std::string dm_path = "/devices/virtual/misc/" + name;
     bool found = false;
     auto dm_callback = [this, &dm_path, &found](const Uevent& uevent) {
@@ -123,7 +123,7 @@ bool BlockDevInitializer::InitMiscDevice(const std::string& name) {
     return true;
 }
 
-ListenerAction BlockDevInitializer::HandleUevent(const Uevent& uevent,
+ListenerAction FirstStageDeviceInitializer::HandleUevent(const Uevent& uevent,
                                                  std::set<std::string>* devices) {
     // Ignore everything that is not a block device.
     if (uevent.subsystem != "block") {
@@ -189,7 +189,7 @@ ListenerAction BlockDevInitializer::HandleUevent(const Uevent& uevent,
 //
 // NOTE: on newer systems partitions _must_ be on the "boot device". See
 // comments inside HandleUevent().
-bool BlockDevInitializer::InitDevices(std::set<std::string> devices) {
+bool FirstStageDeviceInitializer::InitDevices(std::set<std::string> devices) {
     auto uevent_callback = [&, this](const Uevent& uevent) -> ListenerAction {
         return HandleUevent(uevent, &devices);
     };
@@ -215,21 +215,21 @@ bool BlockDevInitializer::InitDevices(std::set<std::string> devices) {
 }
 
 // Creates "/dev/block/dm-XX" for dm nodes by running coldboot on /sys/block/dm-XX.
-bool BlockDevInitializer::InitDmDevice(const std::string& device) {
+bool FirstStageDeviceInitializer::InitDmDevice(const std::string& device) {
     const std::string device_name(basename(device.c_str()));
     const std::string syspath = "/sys/block/" + device_name;
     return InitDevice(syspath, device_name);
 }
 
-bool BlockDevInitializer::InitPlatformDevice(const std::string& dev_name) {
+bool FirstStageDeviceInitializer::InitPlatformDevice(const std::string& dev_name) {
     return InitDevice("/sys/devices/platform", dev_name);
 }
 
-bool BlockDevInitializer::InitHvcDevice(const std::string& dev_name) {
+bool FirstStageDeviceInitializer::InitHvcDevice(const std::string& dev_name) {
     return InitDevice("/sys/devices/virtual/tty", dev_name);
 }
 
-bool BlockDevInitializer::InitDevice(const std::string& syspath, const std::string& device_name) {
+bool FirstStageDeviceInitializer::InitDevice(const std::string& syspath, const std::string& device_name) {
     bool found = false;
 
     auto uevent_callback = [&device_name, this, &found](const Uevent& uevent) {

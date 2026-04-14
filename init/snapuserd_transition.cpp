@@ -43,7 +43,7 @@
 #include <selinux/android.h>
 #include <snapuserd/snapuserd_client.h>
 
-#include "block_dev_initializer.h"
+#include "first_stage_device_initializer.h"
 #include "lmkd_service.h"
 #include "service_utils.h"
 #include "util.h"
@@ -209,18 +209,18 @@ SnapuserdSelinuxHelper::SnapuserdSelinuxHelper(std::unique_ptr<SnapshotManager>&
     // ublk block devices.
     sm_->SetUeventRegenCallback([this](const std::string& device) -> bool {
         if (android::base::StartsWith(device, "/dev/dm-user/")) {
-            return block_dev_init_.InitDmUser(android::base::Basename(device));
+            return first_stage_dev_init_.InitDmUser(android::base::Basename(device));
         }
         if (android::base::StartsWith(device, "/dev/block/dm-")) {
-            return block_dev_init_.InitDmDevice(device);
+            return first_stage_dev_init_.InitDmDevice(device);
         }
         if (android::base::StartsWith(device, "/dev/block/ublkb")) {
-            return block_dev_init_.InitDmDevice(device);
+            return first_stage_dev_init_.InitDmDevice(device);
         }
         if (android::base::StartsWith(device, "/dev/ublk")) {
-            return block_dev_init_.InitUblkMiscDevices(android::base::Basename(device));
+            return first_stage_dev_init_.InitUblkMiscDevices(android::base::Basename(device));
         }
-        return block_dev_init_.InitDevices({device});
+        return first_stage_dev_init_.InitDevices({device});
     });
 }
 
@@ -398,10 +398,10 @@ void SnapuserdSelinuxHelper::ProcessSnapuserdUeventRequests(int request_fd) {
                       << "\" on fd: " << request_fd;
             auto timeout_ms = 500ms;
             if (android::base::StartsWith(message, "/dev/ublkc")) {
-                block_dev_init_.InitUblkMiscDevices(android::base::Basename(message));
+                first_stage_dev_init_.InitUblkMiscDevices(android::base::Basename(message));
                 android::fs_mgr::WaitForFile(message, timeout_ms);
             } else if (android::base::StartsWith(message, "/dev/block/ublk")) {
-                block_dev_init_.InitDmDevice(message);
+                first_stage_dev_init_.InitDmDevice(message);
                 android::fs_mgr::WaitForFile(message, timeout_ms);
             } else {
                 LOG(WARNING) << "Received unknown UBLK device request: \"" << message
@@ -477,7 +477,7 @@ void SnapuserdSelinuxHelper::RelaunchFirstStageSnapuserd() {
             // To handle this, a socket pair is used:
             // - snapuserd (child) writes requested device paths to its end of the socket.
             // - init (parent) reads these paths from its end (sockets[0]).
-            // - init then uses BlockDevInitializer to create/initialize these device nodes
+            // - init then uses FirstStageDeviceInitializer to create/initialize these device nodes
             //   and waits for them to appear.
             // This communication continues until snapuserd sends a "DONE" message,
             // indicating all its required UBLK devices have been requested.

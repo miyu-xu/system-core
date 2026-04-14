@@ -24,7 +24,7 @@
 
 #include <libsnapshot/snapshot.h>
 
-#include "block_dev_initializer.h"
+#include "first_stage_device_initializer.h"
 
 namespace android {
 namespace init {
@@ -55,7 +55,7 @@ class SnapuserdSelinuxHelper final {
     void ProcessSnapuserdUeventRequests(int request_fd);
 
     std::unique_ptr<SnapshotManager> sm_;
-    BlockDevInitializer block_dev_init_;
+    FirstStageDeviceInitializer first_stage_dev_init_;
     pid_t old_pid_;
     std::vector<std::string> argv_;
     bool using_ublk_ = false;

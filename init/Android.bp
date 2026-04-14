@@ -62,7 +62,7 @@ init_common_sources = [
 ]
 init_device_sources = [
     "apex_init_util.cpp",
-    "block_dev_initializer.cpp",
+    "first_stage_device_initializer.cpp",
     "bootchart.cpp",
     "builtins.cpp",
     "coldboot.cpp",
@@ -376,7 +376,7 @@ init_first_stage_cc_defaults {
     stem: "init",
 
     srcs: [
-        "block_dev_initializer.cpp",
+        "first_stage_device_initializer.cpp",
         "devices.cpp",
         "first_stage_console.cpp",
         "first_stage_init.cpp",
