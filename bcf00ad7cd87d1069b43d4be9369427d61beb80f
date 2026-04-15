@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af72680a_d8081a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:38:54Z",
+      "side": 1,
+      "message": "Yes, it boots. I have verified the changes by performing a full build and successfully booting a Cuttlefish virtual device (aosp_cf_x86_64_phone) to completion.",
+      "parentUuid": "a5f4bd41_0d507b21",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2feb736_9c34bba3",
         "filename": "mkbootfs/mkbootfs.cpp",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a05dfdf_aa0c4407",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:38:54Z",
+      "side": 1,
+      "message": "Done. Switched to std::map for efficient lookups.",
+      "parentUuid": "c2feb736_9c34bba3",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de9162c1_f5d642f0",
         "filename": "mkbootfs/mkbootfs.cpp",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2026-04-14T19:39:38Z",
       "side": 1,
       "message": "alternatively, this code could just use scandir(..., alphasort)...\n\n(if there is a reason to stick with readdir(), use std::unique_ptr so the closedir is on the same line as the opendir and handled by RAII.)",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c038d2d_03886172",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:38:54Z",
+      "side": 1,
+      "message": "Done. Used std::unique_ptr to ensure the directory is always closed.",
+      "parentUuid": "de9162c1_f5d642f0",
       "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -77,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7716fc32_5885213f",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:38:54Z",
+      "side": 1,
+      "message": "Done. Using name.size() directly now.",
+      "parentUuid": "6f40c09a_429ba6d6",
+      "range": {
+        "startLine": 168,
+        "startChar": 15,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3440c699_3740f72b",
         "filename": "mkbootfs/mkbootfs.cpp",
         "patchSetId": 1
@@ -88,6 +166,24 @@
       "writtenOn": "2026-04-14T19:39:38Z",
       "side": 1,
       "message": "this can be on L247",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609d8a24_a09d7053",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:38:54Z",
+      "side": 1,
+      "message": "Done. Moved the declaration inside the loop.",
+      "parentUuid": "3440c699_3740f72b",
       "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
