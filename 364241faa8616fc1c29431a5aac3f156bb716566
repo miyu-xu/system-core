@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a1c79b_e0161484",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2026-04-15T16:12:20Z",
+      "side": 1,
+      "message": "not needed now you have a `return` on L60",
+      "revId": "364241faa8616fc1c29431a5aac3f156bb716566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
