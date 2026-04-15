@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "840bca78_2a6c467c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af72680a_d8081a75",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2feb736_9c34bba3",
@@ -71,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc3ba9b_2675b3ad",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a05dfdf_aa0c4407",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de9162c1_f5d642f0",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "Done. Used std::unique_ptr to ensure the directory is always closed.",
       "parentUuid": "de9162c1_f5d642f0",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36707685_9e5d2074",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c038d2d_03886172",
       "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -153,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3658f6_9b4df1db",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7716fc32_5885213f",
+      "range": {
+        "startLine": 168,
+        "startChar": 15,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3440c699_3740f72b",
@@ -184,6 +262,24 @@
       "side": 1,
       "message": "Done. Moved the declaration inside the loop.",
       "parentUuid": "3440c699_3740f72b",
+      "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07259b3d_ade7d713",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "609d8a24_a09d7053",
       "revId": "bcf00ad7cd87d1069b43d4be9369427d61beb80f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
