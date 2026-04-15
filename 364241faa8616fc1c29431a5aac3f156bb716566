@@ -16,6 +16,24 @@
       "message": "not needed now you have a `return` on L60",
       "revId": "364241faa8616fc1c29431a5aac3f156bb716566",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf79a10_739424c8",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-15T17:23:29Z",
+      "side": 1,
+      "message": "i removed the return from the L60",
+      "parentUuid": "20a1c79b_e0161484",
+      "revId": "364241faa8616fc1c29431a5aac3f156bb716566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
