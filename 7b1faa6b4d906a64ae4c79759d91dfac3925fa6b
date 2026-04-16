@@ -16,6 +16,24 @@
       "message": "there still needs to be a return here, no, to match the original code\u0027s semantics?\n\n(it was a return after the } that was wrong.)",
       "revId": "7b1faa6b4d906a64ae4c79759d91dfac3925fa6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90de73f6_9033afb1",
+        "filename": "mkbootfs/mkbootfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 4709909
+      },
+      "writtenOn": "2026-04-16T05:40:17Z",
+      "side": 1,
+      "message": "I have addressed the issue nd added the return statement where it is intended.",
+      "parentUuid": "c438d54a_b39fe808",
+      "revId": "7b1faa6b4d906a64ae4c79759d91dfac3925fa6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
