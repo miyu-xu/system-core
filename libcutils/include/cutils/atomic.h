@@ -71,6 +71,12 @@
  * If they are not, atomicity is not guaranteed.
  */
 
+#ifdef PLATFORM_WINDOWS
+ANDROID_ATOMIC_INLINE
+volatile std::atomic<int32_t>* to_atomic_int_least32_t(volatile const int32_t* addr) {
+    return reinterpret_cast<volatile std::atomic<int32_t>*>(const_cast<volatile int32_t*>(addr));
+}
+#else
 ANDROID_ATOMIC_INLINE
 volatile atomic_int_least32_t* to_atomic_int_least32_t(volatile const int32_t* addr) {
 #ifdef __cplusplus
@@ -79,6 +85,7 @@ volatile atomic_int_least32_t* to_atomic_int_least32_t(volatile const int32_t* a
     return (volatile atomic_int_least32_t*)addr;
 #endif
 }
+#endif
 
 /*
  * Basic arithmetic and bitwise operations.  These all provide a
@@ -92,35 +99,55 @@ int32_t android_atomic_inc(volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
         /* Int32_t, if it exists, is the same as int_least32_t. */
+#ifdef PLATFORM_WINDOWS
+    return a->fetch_add(1, std::memory_order_release);
+#else
     return atomic_fetch_add_explicit(a, 1, memory_order_release);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
 int32_t android_atomic_dec(volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return a->fetch_sub(1, std::memory_order_release);
+#else
     return atomic_fetch_sub_explicit(a, 1, memory_order_release);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
 int32_t android_atomic_add(int32_t value, volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return a->fetch_add(value, std::memory_order_release);
+#else
     return atomic_fetch_add_explicit(a, value, memory_order_release);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
 int32_t android_atomic_and(int32_t value, volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return a->fetch_and(value, std::memory_order_release);
+#else
     return atomic_fetch_and_explicit(a, value, memory_order_release);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
 int32_t android_atomic_or(int32_t value, volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return a->fetch_or(value, std::memory_order_release);
+#else
     return atomic_fetch_or_explicit(a, value, memory_order_release);
+#endif
 }
 
 /*
@@ -141,20 +168,32 @@ ANDROID_ATOMIC_INLINE
 int32_t android_atomic_acquire_load(volatile const int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return a->load(std::memory_order_acquire);
+#else
     return atomic_load_explicit(a, memory_order_acquire);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
 int32_t android_atomic_release_load(volatile const int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    std::atomic_thread_fence(std::memory_order_seq_cst);
+#else
     atomic_thread_fence(memory_order_seq_cst);
+#endif
     /* Any reasonable clients of this interface would probably prefer   */
     /* something weaker.  But some remaining clients seem to be         */
     /* abusing this API in strange ways, e.g. by using it as a fence.   */
     /* Thus we are conservative until we can get rid of remaining       */
     /* clients (and this function).                                     */
+#ifdef PLATFORM_WINDOWS
+    return a->load(std::memory_order_relaxed);
+#else
     return atomic_load_explicit(a, memory_order_relaxed);
+#endif
 }
 
 /*
@@ -172,8 +211,13 @@ ANDROID_ATOMIC_INLINE
 void android_atomic_acquire_store(int32_t value, volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    a->store(value, std::memory_order_relaxed);
+    std::atomic_thread_fence(std::memory_order_seq_cst);
+#else
     atomic_store_explicit(a, value, memory_order_relaxed);
     atomic_thread_fence(memory_order_seq_cst);
+#endif
     /* Again overly conservative to accomodate weird clients.   */
 }
 
@@ -181,7 +225,11 @@ ANDROID_ATOMIC_INLINE
 void android_atomic_release_store(int32_t value, volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    a->store(value, std::memory_order_release);
+#else
     atomic_store_explicit(a, value, memory_order_release);
+#endif
 }
 
 /*
@@ -201,10 +249,16 @@ int android_atomic_acquire_cas(int32_t oldvalue, int32_t newvalue,
                            volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return !a->compare_exchange_strong(oldvalue, newvalue,
+                                      std::memory_order_acquire,
+                                      std::memory_order_acquire);
+#else
     return !atomic_compare_exchange_strong_explicit(
                                           a, &oldvalue, newvalue,
                                           memory_order_acquire,
                                           memory_order_acquire);
+#endif
 }
 
 ANDROID_ATOMIC_INLINE
@@ -212,10 +266,16 @@ int android_atomic_release_cas(int32_t oldvalue, int32_t newvalue,
                                volatile int32_t* addr)
 {
     volatile atomic_int_least32_t* a = to_atomic_int_least32_t(addr);
+#ifdef PLATFORM_WINDOWS
+    return !a->compare_exchange_strong(oldvalue, newvalue,
+                                      std::memory_order_release,
+                                      std::memory_order_relaxed);
+#else
     return !atomic_compare_exchange_strong_explicit(
                                           a, &oldvalue, newvalue,
                                           memory_order_release,
                                           memory_order_relaxed);
+#endif
 }
 
 /*
@@ -232,7 +292,11 @@ void android_compiler_barrier(void)
 ANDROID_ATOMIC_INLINE
 void android_memory_barrier(void)
 {
+#ifdef PLATFORM_WINDOWS
+    std::atomic_thread_fence(std::memory_order_seq_cst);
+#else
     atomic_thread_fence(memory_order_seq_cst);
+#endif
 }
 
 /*
