@@ -22,6 +22,12 @@
 #include <stdatomic.h>
 #ifdef __cplusplus
 #include <atomic>
+#ifdef atomic_thread_fence
+#undef atomic_thread_fence
+#endif
+#ifdef atomic_signal_fence
+#undef atomic_signal_fence
+#endif
 #endif
 
 #ifdef __cplusplus
