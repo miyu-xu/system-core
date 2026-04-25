@@ -42,6 +42,14 @@
 # define __android_unused __attribute__((__unused__))
 #endif
 
+#if !defined(_Nonnull)
+#define _Nonnull
+#endif
+
+#if !defined(_Nullable)
+#define _Nullable
+#endif
+
 /*
  * ===========================================================================
  *      Thread wrappers

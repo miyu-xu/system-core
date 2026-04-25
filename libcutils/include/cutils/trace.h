@@ -26,6 +26,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <cutils/compiler.h>
+#ifdef __cplusplus
+#include <atomic>
+using atomic_bool = std::atomic_bool;
+#endif
 
 __BEGIN_DECLS
 
